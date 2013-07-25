@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  type: 
+  deal_id: 
+  path: MyString
+
+two:
+  type: 
+  deal_id: 
+  path: MyString
