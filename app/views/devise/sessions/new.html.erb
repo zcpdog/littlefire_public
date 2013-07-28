@@ -1,17 +1,24 @@
-<h2>Sign in</h2>
-
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
-
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
-
-  <div><%= f.submit "Sign in" %></div>
+<% content_for :head_path do %>
+	<span class="topbar-action-text is-hidden-tablet">你还不是小伙伴？</span>
+	<%=link_to "我要成为小伙伴", new_user_registration_path, class: "button"%>
 <% end %>
-
-<%= render "devise/shared/links" %>
+<div class="box-right-form">
+	<%=form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|%>
+	<h1 class="box-heading">登陆</h1>
+	<div class="error-container"></div>
+	<div class="input-group ill-input">
+		<%=f.email_field :email, :autofocus => true, type: :email, placeholder: "电子邮箱"%>
+	</div>
+	<div class="input-group ill-input">
+		<%=f.password_field :password,type: :password, placeholder: "密码"%>
+	</div>
+	<%if devise_mapping.rememberable? %>
+	<div style="display: inline-block;">
+		<%=f.label :remember_me,"记住我",:class => "checkbox inline"%><%=f.check_box :remember_me, type: :checkbox, style: "float:right"%>
+	</div>
+	<% end %>
+	<div class="input-group">
+		<input name="commit" type="submit" value="登 陆" /> <small><%=link_to "我忘记了密码", new_user_password_path%></small>
+	</div>
+	<%end%>
+</div>

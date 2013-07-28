@@ -4,7 +4,7 @@ class CreateDeals < ActiveRecord::Migration
       t.references  :user,  index: true
       t.references  :merchant,  index: true
       t.references  :category,  index: true
-      t.string      :status
+      t.string      :state
       t.string      :title
       t.text        :reason
       t.string      :location

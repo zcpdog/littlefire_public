@@ -1,0 +1,6 @@
+<%= f.input :name%>
+<%= f.input :url, as: :text %>
+
+<%= f.semantic_fields_for :picture do |asset_f| %>
+      <%= asset_f.input :image, as: :file %>
+<% end %>

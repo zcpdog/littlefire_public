@@ -1,0 +1,7 @@
+<p><%=@deal.title%></p>
+<p><%=@deal.reason%></p>
+<p><%=@deal.merchant.name%></p>
+<p><%=@deal.category.name%></p>
+<%@deal.pictures.each do |pic|%>
+	<%=image_tag pic.image.url%>
+<%end%>

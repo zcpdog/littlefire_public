@@ -1,0 +1,8 @@
+<li class="string attach attachment"> 
+  <%= f.file_field :image, :class => "upload_file" %>
+  <% if f.object.image_file_name_was.present? %>
+   <%= link_to f.object.image_file_name, f.object.url %>  <%= link_to_remove_fields "Delete", f %>
+  <% else %>
+    <%= link_to_remove_fields "Delete", f %> 
+  <% end %>
+</li> 

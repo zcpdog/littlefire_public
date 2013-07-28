@@ -29,14 +29,24 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'will_paginate', '~> 3.0'
 gem 'devise'
+gem "cancan"
 gem 'aasm'
-gem "resque", "~> 2.0.0.pre.1", github: "resque/resque"
-gem "paperclip", "~> 3.0"
+gem "resque", '~> 2.0.0.pre.1', github: "resque/resque"
+gem "paperclip", '~> 3.0'
+gem 'formtastic', '~> 2.3.0.rc2'
+gem "twitter-bootstrap-rails"
+
+gem 'formtastic-bootstrap'
+
+gem "jquery-fileupload-rails"
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
+
+#disable logging of asset pipleline
+gem 'quiet_assets', :group => :development
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

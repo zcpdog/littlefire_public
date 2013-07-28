@@ -1,18 +1,94 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
-
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.submit "Sign up" %></div>
+<% content_for :head_path do %>
+<span class="topbar-action-text is-hidden-tablet">已经是小伙伴了？</span>
+<%=link_to "登陆", new_user_session_path, class: "button"%>
+	
 <% end %>
+<div class="box-right-form">
+	<h1 class="box-heading">创建小伙伴账号</h1>
 
-<%= render "devise/shared/links" %>
+	<%=form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|%>
+	<%=devise_error_messages!%>
+
+	<div class="input-group ill-input">
+		<%=f.label "电子邮件"%>
+		<%=f.email_field :email, :autofocus => true%>
+	</div>
+
+	<div class="input-group ill-input">
+		<%=f.label "密码"%>
+		<%=f.password_field :password%>
+	</div>
+
+	<div class="input-group ill-input">
+		<%=f.label "密码确认"%>
+		<%=f.password_field :password_confirmation%>
+	</div>
+
+	<div id='captcha'>
+		<div id="recaptcha-widget" class="input-group">
+
+			<div class="inputs">
+				<div id="recaptcha_image"></div>
+
+				<input type="text" id="recaptcha_response_field"
+					name="recaptcha_response_field" class="required" /> <label
+					for="recaptcha_response_field" class="recaptcha-field-label">
+					<small> <span class="recaptcha_only_if_image">Type
+							the two words</span> <span class="recaptcha_only_if_audio">Type
+							the numbers you hear</span>
+				</small>
+				</label>
+
+				<ul class="recaptcha-controls">
+					<li><a href="javascript:Recaptcha.reload()"
+						class="refresh icon icon-arrows-ccw"> <span class="icon-alt">Try
+								a different one</span>
+					</a></li>
+
+					<li><span class="recaptcha_only_if_image"> <a
+							href="javascript:Recaptcha.switch_type('audio')"
+							class="icon icon-volume-up"> <span class="icon-alt">Try
+									an audio version</span>
+						</a>
+					</span> <span class="recaptcha_only_if_audio"> <a
+							href="javascript:Recaptcha.switch_type('image')"
+							class="icon icon-picture"> <span class="icon-alt">Try
+									an image version</span>
+						</a>
+					</span></li>
+
+					<li><a class="help icon icon-help-circled"
+						href="javascript:Recaptcha.showhelp()" title="Help"> <span
+							class="icon-alt">Help</span>
+					</a></li>
+				</ul>
+
+				<script type="text/javascript">
+					var RecaptchaOptions = {
+						"theme" : "custom",
+						"custom_theme_widget" : "recaptcha-widget"
+					};
+				</script>
+				<script type="text/javascript"
+					src="https://www.google.com/recaptcha/api/challenge?k=6LeL1wUAAAAAAJ6M4Rd6GzH86I_9_snNaLPqy_ff&amp;error=expression">
+					
+				</script>
+				<noscript>
+					<iframe
+						src="https://www.google.com/recaptcha/api/noscript?k=6LeL1wUAAAAAAJ6M4Rd6GzH86I_9_snNaLPqy_ff"
+						height="300" width="500" style="border: none;"></iframe>
+					<br />
+					<textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+					<input type="hidden" name="recaptcha_response_field"
+						value="manual_challenge" />
+				</noscript>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="input-group">
+		<input name="commit" type="submit" value="创建账号" />
+	</div>
+	<%end%>
+</div>
