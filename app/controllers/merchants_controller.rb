@@ -1,5 +1,6 @@
 class MerchantsController < ApplicationController
-  #before_filter :find_model, :only => [:show, :edit, :update, :destroy]
+  layout "welcome"
+  before_filter :find_merchant, :only => [:show, :edit, :update, :destroy]
 
   # GET /models
   # GET /models.xml
@@ -15,7 +16,6 @@ class MerchantsController < ApplicationController
   # GET /models/1
   # GET /models/1.xml
   def show
-    @merchant = Merchant.find(params[:id])
     respond_to do |wants|
       wants.html # show.html.erb
       wants.xml  { render :xml => @merchant }
@@ -35,7 +35,6 @@ class MerchantsController < ApplicationController
 
   # GET /models/1/edit
   def edit
-    @merchant = Merchant.find(params[:id])
     respond_to do |wants|
       wants.html # new.html.erb
       wants.xml  { render :xml => @merchant }
@@ -77,9 +76,7 @@ class MerchantsController < ApplicationController
   # DELETE /models/1
   # DELETE /models/1.xml
   def destroy
-    @merchant=Merchant.find params[:id]
     @merchant.destroy
-
     respond_to do |wants|
       wants.html { redirect_to(merchants_path) }
       wants.xml  { head :ok }
@@ -87,7 +84,7 @@ class MerchantsController < ApplicationController
   end
 
   private
-    def find_model
+    def find_merchant
       @merchant = Merchant.find(params[:id])
     end
     

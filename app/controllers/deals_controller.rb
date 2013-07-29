@@ -1,11 +1,10 @@
 class DealsController < ApplicationController
+  layout "welcome"
   before_filter :find_model, :only => [:show, :edit, :update, :destroy]
-
   # GET /models
   # GET /models.xml
   def index
-    @deals = Deal.all.paginate(:page => params[:page],per_page: 2).order('id DESC')
-    
+    @deals = Deal.all.paginate(page: params[:page], per_page: 20).order('id DESC')
     respond_to do |wants|
       wants.html # index.html.erb
       wants.xml  { render :xml => @deals }
