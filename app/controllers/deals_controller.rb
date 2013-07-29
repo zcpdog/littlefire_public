@@ -1,5 +1,4 @@
 class DealsController < ApplicationController
-  layout "welcome"
   before_filter :find_model, :only => [:show, :edit, :update, :destroy]
   # GET /models
   # GET /models.xml

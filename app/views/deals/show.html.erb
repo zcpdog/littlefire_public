@@ -1,7 +1,13 @@
-<p><%=@deal.title%></p>
-<p><%=@deal.reason%></p>
-<p><%=@deal.merchant.name%></p>
-<p><%=@deal.category.name%></p>
-<%@deal.pictures.each do |pic|%>
-	<%=image_tag pic.image.url%>
-<%end%>
+<div class="content-l">
+	<ul class="item-list mixed">
+		<li class="template">
+			<p><%=@deal.title%></p>
+			<p><%=@deal.reason%></p>
+			<p><%=@deal.merchant.name%></p>
+			<p><%=@deal.category.name%></p>
+			<%@deal.pictures.each do |pic|%>
+				<%=image_tag pic.image.url%>
+			<%end%>
+		</li>
+	</ul>
+</div>

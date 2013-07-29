@@ -1,6 +1,4 @@
 Partner::Application.routes.draw do
-  
-  get "welcome/index"
   devise_for :users
   resources :merchants
   resources :deals

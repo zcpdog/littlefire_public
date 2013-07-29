@@ -1,5 +1,4 @@
 class MerchantsController < ApplicationController
-  layout "welcome"
   before_filter :find_merchant, :only => [:show, :edit, :update, :destroy]
 
   # GET /models
