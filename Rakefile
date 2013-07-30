@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Partner::Application.load_tasks
+Deercoming::Application.load_tasks

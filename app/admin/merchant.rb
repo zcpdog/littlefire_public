@@ -8,13 +8,13 @@ ActiveAdmin.register Merchant do
   end
   
   controller do
-    def update 
-    end
-    
-    private 
-    def permitted_params
-      puts "iamin=================================="
-      params.permit(merchant: [:name, :url])
+    def resource_params
+      # puts "=================================================="
+#       puts params.require(:merchant).permit(:name,:url).inspect
+#       puts "=================================================="
+#       puts params.require
+#       puts "=================================================="
+      [params.require(:merchant).permit(:name,:url)]
     end
   end
 end
