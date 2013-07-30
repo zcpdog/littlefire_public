@@ -17,4 +17,13 @@ ActiveAdmin.register AdminUser do
     end
     f.actions
   end
+  
+  controller do
+    def resource_params
+      permitted_params = Array.new
+      unless request.get?
+        permitted_params.push params.require(:admin_user).permit(:email,:password,:password_confirmation)
+      end
+    end
+  end
 end

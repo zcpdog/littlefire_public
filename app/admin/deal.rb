@@ -1,13 +1,11 @@
 ActiveAdmin.register Deal do
-
   controller do
     def resource_params
-      # puts "=================================================="
-#       puts params.require(:merchant).permit(:name,:url).inspect
-#       puts "=================================================="
-#       puts params.require
-#       puts "=================================================="
-      [params.require(:merchant).permit(:name,:url)]
+      permitted_params = Array.new
+      unless request.get?
+        permitted_params.push params.require(:deal).permit(:user_id,:merchant_id,:categoy_id,:title,
+        :reason,:location,:due_date,:amazing_price)
+      end
     end
   end
 end

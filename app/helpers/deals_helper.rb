@@ -8,7 +8,7 @@ module DealsHelper
         render( partial_path(f, options) + association.to_s, :f => builder)
       end
     end
-    link_to_function(name, h("add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")"), :class => 'add_form_field')
+    link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")", :class => 'add_form_field')
   end
   
   def partial_path(f, options={})

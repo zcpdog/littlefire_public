@@ -9,12 +9,10 @@ ActiveAdmin.register Merchant do
   
   controller do
     def resource_params
-      # puts "=================================================="
-#       puts params.require(:merchant).permit(:name,:url).inspect
-#       puts "=================================================="
-#       puts params.require
-#       puts "=================================================="
-      [params.require(:merchant).permit(:name,:url)]
+      permitted_params = Array.new
+      unless request.get?
+        permitted_params.push params.require(:merchant).permit(:name,:url)
+      end
     end
   end
 end

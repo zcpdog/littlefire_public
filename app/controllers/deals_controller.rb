@@ -24,7 +24,6 @@ class DealsController < ApplicationController
   def new
     @deal = Deal.new
     @deal.pictures.build
-    @deal.pictures.build
     respond_to do |wants|
       wants.html # new.html.erb
       wants.xml  { render :xml => @deal }
