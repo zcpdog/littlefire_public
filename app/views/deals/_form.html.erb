@@ -9,7 +9,8 @@ function remove_fields(link) {
 	$(link).closest(".answers, .attachment, div.discussion_topic").hide();	
 }
 </script>
-<%= f.inputs :title %>
+
+<%= f.inputs :title ,:class=> "input-xxlarge" %>
 <%= f.inputs :reason %>
 <%= f.inputs :location %>
 <%= f.inputs :amazing_price %>

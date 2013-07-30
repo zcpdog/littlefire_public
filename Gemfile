@@ -35,7 +35,6 @@ gem "paperclip", '~> 3.0'
 gem 'formtastic', '~> 2.3.0.rc2'
 gem "twitter-bootstrap-rails"
 gem 'formtastic-bootstrap'
-gem "jquery-fileupload-rails"
 
 #for active admin
 gem 'responders'
