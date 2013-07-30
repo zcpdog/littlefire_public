@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
-# Use mysql as the database for Active Record
+# Use mysql2 as the database for Active Record, don't use mysql gem
 gem 'mysql2'
 
 # Use SCSS for stylesheets
@@ -27,7 +27,6 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-gem 'will_paginate', '~> 3.0'
 gem 'devise'
 gem "cancan"
 gem 'aasm'
@@ -35,17 +34,24 @@ gem "resque", '~> 2.0.0.pre.1', github: "resque/resque"
 gem "paperclip", '~> 3.0'
 gem 'formtastic', '~> 2.3.0.rc2'
 gem "twitter-bootstrap-rails"
-
 gem 'formtastic-bootstrap'
-
 gem "jquery-fileupload-rails"
+
+#for active admin
+gem 'responders'
+gem 'inherited_resources'
+gem 'ransack',             github: 'ernie/ransack', branch: 'rails-4'
+gem 'activeadmin',         github: 'gregbell/active_admin', branch: 'rails4'
+
+#pagination
+gem 'kaminari'   
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
 
 #disable logging of asset pipleline
-gem 'quiet_assets', :group => :development
+gem 'quiet_assets', group: :development
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

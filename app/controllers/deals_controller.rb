@@ -3,7 +3,7 @@ class DealsController < ApplicationController
   # GET /models
   # GET /models.xml
   def index
-    @deals = Deal.all.paginate(page: params[:page], per_page: 20).order('id DESC')
+    @deals = Deal.order('id DESC').page params[:page]
     respond_to do |wants|
       wants.html # index.html.erb
       wants.xml  { render :xml => @deals }
