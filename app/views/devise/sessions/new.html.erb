@@ -14,8 +14,8 @@
 		<%=f.password_field :password,type: :password, placeholder: "密码"%>
 	</div>
 	<%if devise_mapping.rememberable? %>
-	<div style="display: inline-block;">
-		<%=f.label :remember_me,"记住我",:class => "checkbox inline"%><%=f.check_box :remember_me, type: :checkbox, style: "float:right"%>
+	<div>
+		<label class="checkbox" for="user_remember_me"><input id="user_remember_me" name="user[remember_me]" type="checkbox" value="1">记住我</label>
 	</div>
 	<% end %>
 	<div class="captcha-container">

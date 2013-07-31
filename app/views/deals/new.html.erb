@@ -1,22 +1,11 @@
-<div class="content-l">
-	<ul class="item-list mixed">
-		<li class="template">
-			<div class="container-fluid">
-				<div class="row-fluid">
-					<div class="span12">
-						<%= semantic_form_for @deal, html:  { multipart: true } do |f| %>
-						   <%= f.inputs  do %>
-							 <%= render  'form',  f: f %>
-						   <% end %>
-   
-						   <%= f.actions do %>
-						     <%= f.action :submit, as: :button %>
-						     <%= f.action :cancel, as: :link %>
-						   <% end %>
-						<%end%>
-					</div>
-				</div>
-			</div>
-		</li>
-	</ul>
-</div>
+<%= semantic_form_for @deal, html:  { multipart: true } do |f| %>
+   <%= f.inputs  do %>
+	 <%= render  'form',  f: f %>
+   <% end %>
+
+   <%= f.actions do %>
+     <%= f.action :submit, as: :button %>
+     <%= f.action :cancel, as: :link %>
+   <% end %>
+<%end%>
+
