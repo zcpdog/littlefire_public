@@ -79,6 +79,9 @@ GEM
     arel (4.0.0)
     atomic (1.1.10)
     bcrypt-ruby (3.1.1)
+    bootstrap-glyphicons (0.0.1)
+      railties (>= 3.0)
+      sass (>= 3.2)
     bourbon (3.1.8)
       sass (>= 3.2.0)
       thor
@@ -208,6 +211,7 @@ DEPENDENCIES
   aasm
   activeadmin!
   anjlab-bootstrap-rails!
+  bootstrap-glyphicons
   cancan
   coffee-rails (~> 4.0.0)
   devise

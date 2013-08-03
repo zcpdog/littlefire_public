@@ -36,6 +36,7 @@ gem 'formtastic', '~> 2.3.0.rc2'
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
                               :github => 'anjlab/bootstrap-rails',
                               :branch => '3.0.0'
+gem 'bootstrap-glyphicons'
 gem 'holder_rails'
 
 #gem 'formtastic-bootstrap'

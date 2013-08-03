@@ -1,5 +1,5 @@
 class Deal < ActiveRecord::Base
-  paginates_per 10
+  paginates_per 20
   include AASM
   
   belongs_to :user

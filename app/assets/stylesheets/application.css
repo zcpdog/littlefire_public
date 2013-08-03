@@ -11,4 +11,5 @@
  *= require_self
  *= require twitter/bootstrap
  *= require mybootstrap
+ *= require bootstrap/glyphicons
  */

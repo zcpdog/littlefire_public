@@ -1,130 +1,98 @@
+<div class="container">
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+  </div>
+  <div class="body-content">
 
-    <title>鹿来了</title>
-  </head>
-  <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">鹿来了</a>
-        <div class="nav-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li class="nav-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
-          </ul>
-          <form class="navbar-form form-inline pull-right">
-            <input type="text" placeholder="邮箱">
-            <input type="password" placeholder="密码">
-            <button type="submit" class="btn">登陆</button>
-			<button type="submit" class="btn">注册</button>
-          </form>
-        </div><!--/.nav-collapse -->
-      </div>
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-lg-10">
+	  <%@deals.each do |deal|%>
+	<div class="panel  panel-info">
+	  <div class="panel-heading"><a href="#"><b><%=deal.title%></b></a></div>
+	<div class=row>
+		<div class="col-lg-4">
+			分类： <%=deal.category.try(:name)%>	
+		</div>
+		<div class="col-lg-2">
+			来自：苏宁易购
+		</div>
+		<div class="col-lg-3">
+			<div class="pull-right"><a href="#">直达链接 <span class="glyphicon glyphicon-globe"></span></a></div>
+		</div>
+		<div class="col-lg-3">
+			<div class="pull-right">时间</div>
+		</div>
+	</div>
+	<hr>
+	  <div class="row">
+		<div class="col-lg-9">
+			
+			<p><%=deal.reason%></p>
+			
+		</div>
+	    <div class="col-lg-3">
+	      <a href="#" class="thumbnail">
+	        <img data-src="holder.js/100%x150" alt="">
+			
+	      </a>
+		<br>
+		
+	    </div>
+	  </div>
+	  <div class="row">
+	  	<div class="col-lg-9">
+	  		<div class="pull-right"><a href="#">展开全文<span class="glyphicon glyphicon-chevron-down"></span></a></div>
+	  	</div>
+	  </div>
+			   
+		
+		<div class="panel-footer  row">
+			<div class="col-lg-2">
+				评价本文 
+			</div>
+			<div class="col-lg-2">
+				<a href="#"><span class="glyphicon glyphicon-thumbs-up">11</span></a>
+			</div>
+			<div class="col-lg-2">
+				<a href="#"><span class="glyphicon glyphicon-thumbs-down">22</span></a>
+			</div>
+			<div class="col-lg-2">
+				<a href="#"><span class="glyphicon glyphicon-comment"></span></a>
+			</div>
+			<div class="col-lg-2">
+				<a href="#"><span class="glyphicon glyphicon-share"></span></a>
+			</div>
+			
+		</div>
+	</div>
+	<%end%>
+	<!--end of panel-->
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="progress progress-striped active">
+				  <div class="progress-bar" style="width: 100%"></div>
+				</div>
+			</div>
+			<div class="col-lg-8">
+				<div class="pull-right"><%= paginate @deals %></div>
+			</div>
+		</div>
     </div>
-	
-    <div class="container">
+  <!--end of col-lg-10-->
+      <div class="col-lg-2">
+		<div class="panel">
+		  <div class="panel-heading"><strong>Panel heading</strong></div>
+		  你好呀
+		</div>   
+     </div>
+    </div>
+    <hr>
+    <footer>
+      <p>&copy; Company 2013</p>
+    </footer>
+  </div>
 
-      <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <h2>鹿来了</h2>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-      </div>
-
-      <div class="body-content">
-
-        <!-- Example row of columns -->
-        <div class="row">
-          <div class="col-lg-10">
-			<div class="panel">
-			  <div class="panel-heading"><strong>Panel heading</strong></div>
-			  <div class="row">
-				<div class="col-lg-9"></div>
-			    <div class="col-lg-3">
-			      <a href="#" class="thumbnail">
-			        <img data-src="holder.js/100%x180" alt="">
-			      </a>
-			    </div>
-			  </div>
-			</div>
-			<div class="panel">
-			  <div class="panel-heading"><strong>Panel heading</strong></div>
-			  <div class="row">
-				<div class="col-lg-9"></div>
-			    <div class="col-lg-3">
-			      <a href="#" class="thumbnail">
-			        <img data-src="holder.js/100%x180" alt="">
-			      </a>
-			    </div>
-			  </div>
-			</div>
-			<div class="panel ">
-			  <div class="panel-heading"><a href="#"><h3>卖好东西呀</h3></a></div>
-			  <div class="row">
-				<div class="col-lg-9">
-					<div >
-					分类： 厨房用品, 国内促销	<div class="pull-right">推荐人：wuxikun</div>
-				</div>
-				
-					<hr>
-					<p>大部分网友对于魔声的耳塞产品出来的声音不太认可，主要是由于之前魔声与Beats合作推出的耳机（Beats现已被HTC收购）过于偏重外观，使得魔声在耳机发烧友中的口碑不是很好。在与Beats解除合作后，魔声开始与很多品牌和艺人进行合作尝试，声音质量有了显著提升，但没有了Beats的出色营销，很多产品都没能被人们熟知。</p>
-				</div>
-			    <div class="col-lg-3">
-				      <a href="#" class="thumbnail">
-				        <img data-src="holder.js/100%x180" alt="">
-				      </a>
-					<div class="panel">
-					  <a href="#">直达链接</a>
-					</div>
-					武汉
-			    </div>
-			  </div>
-			  
-				<div class="well well-small">评价本文</div>
-			</div>
-			<!--end of panel-->
-          </div>
-          <div class="col-lg-2">
-  			<div class="panel">
-  			  <div class="panel-heading"><strong>Panel heading</strong></div>
-  			  你好呀
-  			</div>
-            
-         </div>
-          
-        </div>
-
-        <hr>
-
-        <footer>
-          <p>&copy; Company 2013</p>
-        </footer>
-      </div>
-
-    </div> <!-- /container -->
-
-  </body>
-</html>
+</div> <!-- /container -->
