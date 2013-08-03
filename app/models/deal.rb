@@ -7,7 +7,7 @@ class Deal < ActiveRecord::Base
   belongs_to :merchant
   has_many   :deal_urls
   
-  has_many   :comments, dependent: :destroy
+  has_many   :comments, as: :commentable, dependent: :destroy
   has_many   :reports, dependent: :destroy
   
   has_many   :pictures, as: :imageable, dependent: :destroy

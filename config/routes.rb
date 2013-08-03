@@ -60,4 +60,10 @@ Deercoming::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  namespace :profile do
+    resources :deals
+    resources :credit_logs
+    resources :grade
+    resources :comment
+  end
 end

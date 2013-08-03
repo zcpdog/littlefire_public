@@ -1,14 +1,10 @@
 <div class="container">
 
-  <!-- Main jumbotron for a primary marketing message or call to action -->
-  <div class="jumbotron">
-    <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-  </div>
   <div class="body-content">
 
     <!-- Example row of columns -->
     <div class="row">
-      <div class="col-lg-10">
+      <div class="col-lg-9">
 	  <%@deals.each do |deal|%>
 	<div class="panel  panel-info">
 	  <div class="panel-heading"><a href="#"><b><%=deal.title%></b></a></div>
@@ -16,10 +12,10 @@
 		<div class="col-lg-4">
 			分类： <%=deal.category.try(:name)%>	
 		</div>
-		<div class="col-lg-2">
+		<div class="col-lg-3">
 			来自：苏宁易购
 		</div>
-		<div class="col-lg-3">
+		<div class="col-lg-2">
 			<div class="pull-right"><a href="#">直达链接 <span class="glyphicon glyphicon-globe"></span></a></div>
 		</div>
 		<div class="col-lg-3">
@@ -44,14 +40,14 @@
 	  </div>
 	  <div class="row">
 	  	<div class="col-lg-9">
-	  		<div class="pull-right"><a href="#">展开全文<span class="glyphicon glyphicon-chevron-down"></span></a></div>
+	  		<div class="pull-right"><a href="#"><%=t :unfold_deal%><span class="glyphicon glyphicon-chevron-down"></span></a></div>
 	  	</div>
 	  </div>
 			   
 		
 		<div class="panel-footer  row">
 			<div class="col-lg-2">
-				评价本文 
+				<%=t :comment_deal%>
 			</div>
 			<div class="col-lg-2">
 				<a href="#"><span class="glyphicon glyphicon-thumbs-up">11</span></a>
@@ -82,7 +78,7 @@
 		</div>
     </div>
   <!--end of col-lg-10-->
-      <div class="col-lg-2">
+      <div class="col-lg-3">
 		<div class="panel">
 		  <div class="panel-heading"><strong>Panel heading</strong></div>
 		  你好呀

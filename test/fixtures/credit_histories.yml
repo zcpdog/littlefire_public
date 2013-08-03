@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  creditable_id: 
+  user_id: 
+  credit: 1
+
+two:
+  creditable_id: 
+  user_id: 
+  credit: 1

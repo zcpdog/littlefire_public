@@ -5,20 +5,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
     
-  belongs_to    :role
   has_one       :picture, as: :imageable
-  has_one       :coin, dependent: :destroy
   
-  before_save :make_sure_user_has_a_role
-  def role? somerole
-    self.role.key == somerole
-  end
-  
-  private
-  def make_sure_user_has_a_role
-    if role.nil?
-      role = Role.customer
-    end
-  end
+  has_many      :deals
+  has_many      :favorites, dependent: :destroy
+  has_many      :credit_histories, dependent: :destroy
+  has_many      :comments
+  has_many      :grades
   
 end

@@ -15,5 +15,7 @@
 //= require turbolinks
 //= require twitter/bootstrap
 //= require holder
+//= require customize
+//= require bootstrap-hover-dropdown
 
 

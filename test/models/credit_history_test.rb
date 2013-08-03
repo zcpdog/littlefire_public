@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ViewpointTest < ActiveSupport::TestCase
+class CreditHistoryTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -39,6 +39,7 @@ gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
 gem 'bootstrap-glyphicons'
 gem 'holder_rails'
 
+#gem 'rails-i18n', '~> 4.0.0.pre' # For 4.0.x
 #gem 'formtastic-bootstrap'
 
 #for active admin
