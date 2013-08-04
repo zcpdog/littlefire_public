@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class DealUrlTest < ActiveSupport::TestCase
+class NoticeTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

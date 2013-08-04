@@ -5,9 +5,8 @@ class Deal < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
   belongs_to :merchant
-  has_many   :deal_urls
-  
-  has_many   :comments, as: :commentable, dependent: :destroy
+  has_many   :links, dependent: :destroy
+  has_many   :comments, dependent: :destroy
   has_many   :reports, dependent: :destroy
   
   has_many   :pictures, as: :imageable, dependent: :destroy
@@ -33,5 +32,15 @@ class Deal < ActiveRecord::Base
      end
    end
    
-   
+  def fixed_title
+    
+  end
+  
+  def fixed_body
+    
+  end
+  
+  def preview_body
+    body[0,150]
+  end
 end

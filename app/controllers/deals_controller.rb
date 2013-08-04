@@ -23,7 +23,7 @@ class DealsController < ApplicationController
   # GET /models/new.xml
   def new
     @deal = Deal.new
-    @deal.pictures.build
+    @deal.links.build
     respond_to do |wants|
       wants.html # new.html.erb
       wants.xml  { render :xml => @deal }
@@ -83,7 +83,7 @@ class DealsController < ApplicationController
     end
     
     def deal_params
-      params.require(:deal).permit(:user, :merchant_id,:category_id,:title,:reason,
+      params.require(:deal).permit(:user, :merchant_id,:category_id,:title,:body,
       :location,:due_date,:amazing_price, pictures_attributes: :image)
       
     end

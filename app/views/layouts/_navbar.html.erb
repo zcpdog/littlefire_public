@@ -23,25 +23,39 @@
             <li><a href="#">One more separated link</a></li>
           </ul>
         </li>
-      </ul>
-		<%if user_signed_in?%>
-			<ul class="nav navbar-nav pull-right">
+      </ul>	
+		<ul class="nav navbar-nav pull-right">
+	        <li class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+	  			<span class="glyphicon glyphicon-edit"></span><%=t("post_deal")%> <b class="caret"></b>
+	  		</a>
+	          <ul class="dropdown-menu">
+	            <li>
+	  			  <%=link_to t(:post_deal), new_deal_path%>
+	  		  </li>
+	          </ul>
+	        </li>
+		  <%if user_signed_in?%>
 		      <li class="dropdown">
-		        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Dropdown <b class="caret"></b></a>
+		        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+					<span class="glyphicon glyphicon-user"></span>Dropdown <b class="caret"></b>
+				</a>
 		        <ul class="dropdown-menu">
-		          <li><a href="#"><%=t(:profile_dashboard)%></a></li>
+		          <li><a href="#"><%=t(:dashboard)%></a></li>
 		          <li class="divider"></li>
-		          <li><%=link_to t(:sign_out),destroy_user_session_path,method: :delete%></li>
+		          <li><%=link_to t(:sign_out), destroy_user_session_path,method: :delete%></li>
 		        </ul>
 		      </li>
-		  	</ul>
-		<%end%>
-      <div class="navbar-form form-inline pull-right">
-		  <%unless user_signed_in?%>
-			  <%=link_to t('sign_in'),new_user_session_path,:class=>"btn btn-primary"%>
-			  <%=link_to t('sign_up'),new_user_registration_path,:class=>"btn btn-success"%>
+		  <%else%>
+		  	<li >
+				<form class="navbar-form form-inline">
+					<%=link_to t('sign_in'),new_user_session_path, class: "btn btn-primary"%>
+					<%=link_to t('sign_up'),new_user_registration_path, class: "btn btn-success"%>
+				</form>
+			</li>
 		  <%end%>
-      </div>	
+		  	  
+	  	</ul>	
     </div><!--/.nav-collapse -->
   </div>
 </div>

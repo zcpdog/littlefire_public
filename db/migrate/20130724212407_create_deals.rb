@@ -6,7 +6,7 @@ class CreateDeals < ActiveRecord::Migration
       t.references  :category,  index: true
       t.string      :state
       t.string      :title
-      t.text        :reason
+      t.text        :body
       t.string      :location
       t.datetime    :due_date
       t.boolean     :amazing_price

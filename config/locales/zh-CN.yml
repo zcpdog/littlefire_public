@@ -11,8 +11,13 @@ zh-CN:
   go_back: 返回
   unfold_deal:  展开全文
   comment_deal: 评论本文
-
-
+  deal:
+   title: 标题
+   body:  推荐理由
+   location:  购买地区
+   link:  链接
+   due_date:  活动截止日期
+   is_amazing_price: 是否小伙伴价格
   date:
     abbr_day_names:
     - 日

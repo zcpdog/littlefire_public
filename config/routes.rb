@@ -5,6 +5,14 @@ Deercoming::Application.routes.draw do
   resources :merchants
   resources :deals
   
+  namespace :user do
+    resources :deals
+    resources :credit_histories
+    resources :grades
+    resources :comments
+    resources :favorites
+  end
+  
   root 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -60,10 +68,5 @@ Deercoming::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  namespace :profile do
-    resources :deals
-    resources :credit_logs
-    resources :grade
-    resources :comment
-  end
+  
 end

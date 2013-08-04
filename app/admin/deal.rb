@@ -4,7 +4,7 @@ ActiveAdmin.register Deal do
       permitted_params = Array.new
       unless request.get?
         permitted_params.push params.require(:deal).permit(:user_id,:merchant_id,:categoy_id,:title,
-        :reason,:location,:due_date,:amazing_price)
+        :body,:location,:due_date,:amazing_price)
       end
     end
   end

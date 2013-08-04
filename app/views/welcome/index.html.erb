@@ -4,47 +4,49 @@
 
     <!-- Example row of columns -->
     <div class="row">
-      <div class="col-lg-9">
+      <div class="col-lg-9 no_padding_right">
 	  <%@deals.each do |deal|%>
 	<div class="panel  panel-info">
 	  <div class="panel-heading"><a href="#"><b><%=deal.title%></b></a></div>
-	<div class=row>
-		<div class="col-lg-4">
-			分类： <%=deal.category.try(:name)%>	
-		</div>
-		<div class="col-lg-3">
-			来自：苏宁易购
-		</div>
-		<div class="col-lg-2">
-			<div class="pull-right"><a href="#">直达链接 <span class="glyphicon glyphicon-globe"></span></a></div>
-		</div>
-		<div class="col-lg-3">
-			<div class="pull-right">时间</div>
-		</div>
-	</div>
-	<hr>
 	  <div class="row">
 		<div class="col-lg-9">
-			
-			<p><%=deal.reason%></p>
-			
+			<div class="row">
+				<div class="col-lg-4">
+					分类： <%=deal.category.try(:name)%>	
+				</div>
+				<div class="col-lg-3">
+					来自：苏宁易购
+				</div>
+				<div class="col-lg-2">
+					<div class="pull-right"><a href="#"> <span class="glyphicon glyphicon-globe"></span></a></div>
+				</div>
+				
+			</div>
+			<hr>
+			<p><%=deal.body%></p>
 		</div>
 	    <div class="col-lg-3">
-	      <a href="#" class="thumbnail">
-	        <img data-src="holder.js/100%x150" alt="">
+			<div class="thumbnail" >
+				asdf
+				<hr class="nobottom">
+			      <a href="#" >
+			        <img data-src="holder.js/100%x140" alt="">
+			      </a>
+				  <hr class="noup">
+				  adsfaf
 			
-	      </a>
+	    </div>
 		<br>
 		
 	    </div>
 	  </div>
 	  <div class="row">
 	  	<div class="col-lg-9">
-	  		<div class="pull-right"><a href="#"><%=t :unfold_deal%><span class="glyphicon glyphicon-chevron-down"></span></a></div>
+	  		<div class="pull-right"><a href="#">
+				<%=t :unfold_deal%><span class="glyphicon glyphicon-chevron-down"></span></a>
+			</div>
 	  	</div>
-	  </div>
-			   
-		
+	  </div>   
 		<div class="panel-footer  row">
 			<div class="col-lg-2">
 				<%=t :comment_deal%>
@@ -61,7 +63,6 @@
 			<div class="col-lg-2">
 				<a href="#"><span class="glyphicon glyphicon-share"></span></a>
 			</div>
-			
 		</div>
 	</div>
 	<%end%>
@@ -78,8 +79,8 @@
 		</div>
     </div>
   <!--end of col-lg-10-->
-      <div class="col-lg-3">
-		<div class="panel">
+      <div class="col-lg-3 no_padding_left">
+		<div class="panel panel-success">
 		  <div class="panel-heading"><strong>Panel heading</strong></div>
 		  你好呀
 		</div>   

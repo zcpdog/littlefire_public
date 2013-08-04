@@ -34,7 +34,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       # t.string :authentication_token
       
       t.string    :username
-      t.integer   :credit
+      t.integer   :credit, :null => false, :default => 0
 
 
       t.timestamps
