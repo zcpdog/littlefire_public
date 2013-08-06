@@ -11,10 +11,14 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require holder
 //= require customize
 //= require bootstrap-hover-dropdown
+//= require turbolinks
+
+
 
 

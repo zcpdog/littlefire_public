@@ -24,6 +24,7 @@ class DealsController < ApplicationController
   def new
     @deal = Deal.new
     @deal.links.build
+    @deal.pictures.build
     respond_to do |wants|
       wants.html # new.html.erb
       wants.xml  { render :xml => @deal }
@@ -38,7 +39,7 @@ class DealsController < ApplicationController
   # POST /models.xml
   def create
     @deal = Deal.new(deal_params)
-
+    @deal.generate_info
     respond_to do |wants|
       if @deal.save
         flash[:notice] = 'Deal was successfully created.'
@@ -81,11 +82,10 @@ class DealsController < ApplicationController
     def find_model
       @deal = Deal.find(params[:id])
     end
-    
     def deal_params
-      params.require(:deal).permit(:user, :merchant_id,:category_id,:title,:body,
-      :location,:due_date,:amazing_price, pictures_attributes: :image)
-      
+      params.require(:deal).permit(:user, :merchant_id,:category_id,:title,:body,:purchase_link,
+        :location,:due_date,:amazing_price, pictures_attributes: [:image,:_destroy],
+        links_attributes: [:url,:_destroy])
     end
 
 end

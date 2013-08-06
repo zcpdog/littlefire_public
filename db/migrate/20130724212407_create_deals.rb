@@ -10,6 +10,7 @@ class CreateDeals < ActiveRecord::Migration
       t.string      :location
       t.datetime    :due_date
       t.boolean     :amazing_price
+      t.string      :purchase_link
       
       t.timestamps
     end

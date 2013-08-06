@@ -1,32 +1,58 @@
+<%= stylesheet_link_tag    "deals", :media => "all" %>
+<%= javascript_include_tag "deals" %>
+
 <div class="container">
 	<div class="row">
-		<div class="col-lg-9">
+		<div class="col-lg-10">
 			<div class="panel">
 				<div class="row">
-					<div class="col-lg-11">
+					<div class="col-lg-12">
 					<fieldset>
 						<%= form_for @deal, html: {class: "nifty_form"} do |f| %>
 					    <div class="form-group">
 							<%=f.label :title, t("deal.title")%>
 							<%= f.text_field :title, autofocus: true, placeholder: t("deal.title"), class: "form-control" %>
 					    </div>
-						 <% f.fields_for :links do |link_f| %>
-			  			    <div class="form-group">
-			  					<%=link_f.label :url, t("deal.link")%>
-			  					<%=link_f.text_field :url, placeholder: t("deal.link"), class: "form-control" %>
-			  			    </div>
+						 <%= f.fields_for :links do |builder| %>
+						 <div class="fields form-group">
+						 	<div class="row">
+						 		<div class="col-lg-11">
+									<%=builder.label :url, t("deal.link")%>
+						 			<%=builder.text_field :url, placeholder: t("deal.link"), class: "form-control" %>
+						 		</div>
+						 	</div>
+						 </div>
 						 <% end %>
+ 						<div class="form-group">
+ 						  <p class="pull-right"><%= link_to_add_fields "Add Link", f, :links %></p>
+ 					    </div>
 						<div class="form-group">
 						  <%=f.label :body, t("deal.body")%>
 						  <%= f.text_area :body, class: "form-control", rows: "6" %>
 					    </div>
+						
+						<hr>
+						
+						 <%= f.fields_for :pictures do |builder| %>
+						 <div class="fields form-group">
+						 	<div class="row">
+						 		<div class="col-lg-11">
+									<%=builder.label :image, t("deal.link")%>
+						 			<%=builder.file_field :image, placeholder: t("deal.link"), class: "form-control" %>
+						 		</div>
+						 	</div>
+						 </div>
+						 <% end %>
+  						<div class="form-group">
+  						  <p class="pull-right"><%= link_to_add_fields "Add Picture", f, :pictures %></p>
+  					    </div>
 		  			    <div class="form-group">
 		  					<%=f.label :location, t("deal.location")%>
 		  					<%= f.text_field :location, placeholder: t("deal.location"), class: "form-control" %>
 		  			    </div>
-					    <div class="form-group">
+					    <div class="form-group" >
 							<%=f.label :due_date, t("deal.due_date")%>
-							<%= f.text_field :due_date, placeholder: t("deal.due_date"), class: "form-control" %>
+							<%= f.text_field :due_date, placeholder: t("deal.due_date"), class: "form-control datepicker"%>
 					    </div>
 					    <div class="form-group">
 						    <div class="checkbox">
@@ -44,4 +70,14 @@
 		</div>
 	</div>
 </div>
+
+<%= tinymce %>
+<script type="text/javascript">
+  $('.datepicker').datepicker({
+  	startDate: 'today',
+	forceParse: true,
+	language: 'zh-CN',
+	format: 'yyyy-mm-dd'
+  });  
+</script>
 

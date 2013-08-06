@@ -33,19 +33,14 @@ body {
 max-width: 950px;
 }
 
-hr.nobottom{
-	margin-top: 20px;
-	margin-bottom: 0px;
-}
-hr.noup{
-	margin-top: 0px;
-	margin-bottom: 20px;
-}
-
-.col-lg-3.no_padding_left {
+.non-padding-left {
 	padding-left: 0px;
 }
 
-.col-lg-9.no_padding_right {
+.non-padding-right {
 	padding-right: 0px;
+}
+
+.non-margin-bottom {
+	margin-bottom: 0px;
 }

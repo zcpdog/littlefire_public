@@ -1,12 +1,12 @@
 zh-CN:
-  sign_in: 登陆
+  sign_in: 登录
   sign_up: 注册
   email:	电子邮箱
   username: 用户名
   password: 密码
   password_confirmation: 密码确认
   sign_up_info: 注册成为小伙伴
-  sign_in_info: 登陆小伙伴账号
+  sign_in_info: 登录小伙伴账号
   remember_me: 记住我
   go_back: 返回
   unfold_deal:  展开全文

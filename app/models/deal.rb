@@ -1,11 +1,15 @@
 class Deal < ActiveRecord::Base
+  require 'domainatrix'
   paginates_per 20
   include AASM
   
   belongs_to :user
   belongs_to :category
   belongs_to :merchant
+  
   has_many   :links, dependent: :destroy
+  accepts_nested_attributes_for :links
+  
   has_many   :comments, dependent: :destroy
   has_many   :reports, dependent: :destroy
   
@@ -31,16 +35,13 @@ class Deal < ActiveRecord::Base
        transitions :from => :showing, :to => :deprecated
      end
    end
-   
-  def fixed_title
-    
-  end
   
-  def fixed_body
-    
-  end
-  
-  def preview_body
-    body[0,150]
+  def generate_info
+    if self.links.any?
+      self.purchase_link = links.first.url
+      domainatrix = Domainatrix.parse(purchase_link)
+      merchant_domain = "#{domainatrix.domain}.#{domainatrix.public_suffix}"
+      self.merchant =  Merchant.find_by domain: merchant_domain
+    end
   end
 end

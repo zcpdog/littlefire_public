@@ -4,40 +4,38 @@
 
     <!-- Example row of columns -->
     <div class="row">
-      <div class="col-lg-9 no_padding_right">
+      <div class="col-lg-9 non-padding-right">
 	  <%@deals.each do |deal|%>
 	<div class="panel  panel-info">
-	  <div class="panel-heading"><a href="#"><b><%=deal.title%></b></a></div>
+	  <div class="panel-heading"><%=link_to deal.title.html_safe, deal_path(deal), style: "color: #000"%></div>
 	  <div class="row">
 		<div class="col-lg-9">
 			<div class="row">
-				<div class="col-lg-4">
-					分类： <%=deal.category.try(:name)%>	
+				<div class="col-lg-6">
+					<%=deal.category.try(:name)%>	
 				</div>
-				<div class="col-lg-3">
-					来自：苏宁易购
+				<div class="col-lg-6 ">
+					<div class="pull-right"><%=deal.try(:merchant).try(:name)%></div>
 				</div>
-				<div class="col-lg-2">
-					<div class="pull-right"><a href="#"> <span class="glyphicon glyphicon-globe"></span></a></div>
-				</div>
-				
 			</div>
 			<hr>
 			<p><%=deal.body%></p>
 		</div>
 	    <div class="col-lg-3">
-			<div class="thumbnail" >
-				asdf
-				<hr class="nobottom">
-			      <a href="#" >
-			        <img data-src="holder.js/100%x140" alt="">
+			<div class="thumbnail">
+				<div style="width:140px;height:140px;">
+			      <a href="<%=deal_path(deal)%>" >
+					<%if deal.pictures.any?%>
+						<%=image_tag deal.pictures.first.image.url(:thumb)%>
+					<%else%>
+			        	<img data-src="holder.js/100%x140" alt="" >
+					<%end%>
 			      </a>
-				  <hr class="noup">
-				  adsfaf
-			
-	    </div>
-		<br>
-		
+			  </div>
+	        </div>
+		  <div class="panel non-margin-bottom">
+			  <a href="#"> <span class="glyphicon glyphicon-globe">直达链接</span></a>
+		  </div>
 	    </div>
 	  </div>
 	  <div class="row">
@@ -79,7 +77,7 @@
 		</div>
     </div>
   <!--end of col-lg-10-->
-      <div class="col-lg-3 no_padding_left">
+      <div class="col-lg-3 non-padding-left">
 		<div class="panel panel-success">
 		  <div class="panel-heading"><strong>Panel heading</strong></div>
 		  你好呀

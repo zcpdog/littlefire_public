@@ -88,7 +88,7 @@ class MerchantsController < ApplicationController
     end
     
     def merchant_params
-      params.require(:merchant).permit(:name, :url, picture_attributes: :image)
+      params.require(:merchant).permit(:name, :link, picture_attributes: :image)
     end
 
 end

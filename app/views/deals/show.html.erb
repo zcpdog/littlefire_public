@@ -2,9 +2,7 @@
 	<ul class="item-list mixed">
 		<li class="template">
 			<p><%=@deal.title%></p>
-			<p><%=@deal.body</p>
-			<p><%=@deal.merchant.name%></p>
-			<p><%=@deal.category.name%></p>
+			<p><%=@deal.body%></p>
 			<%@deal.pictures.each do |pic|%>
 				<%=image_tag pic.image.url%>
 			<%end%>
