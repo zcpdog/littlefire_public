@@ -5,4 +5,3 @@
 #= require bootstrap-datepicker/core
 #= require bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN
 #= require bootstrap-fileupload.min
-#= require dynamic-form

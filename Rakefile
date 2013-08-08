@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Deercoming::Application.load_tasks
+Littlefire::Application.load_tasks

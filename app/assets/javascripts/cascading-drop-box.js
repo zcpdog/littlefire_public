@@ -1,6 +1,6 @@
 $(document).ready(function(){
-	$(".hello").change(function(){
+	$(".category").change(function(){
 		$(this).attr("name","");
-		//$(this).parent().append("hello");
+		$(this).parent().append("hello");
 	});
 })

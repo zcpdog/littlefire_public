@@ -2,7 +2,7 @@ ActiveAdmin.register Deal do
   form :html => { :enctype => "multipart/form-data" } do |f|
     f.inputs "Details" do
       f.input :user
-      f.input :category,:input_html=>{:class=>"hello world"}
+      f.input :category,:input_html=>{:class=>"category"}, :hint=>"选择一级分类"
       f.input :merchant
       f.input :purchase_link
       f.input :amazing_price
@@ -38,7 +38,7 @@ ActiveAdmin.register Deal do
       row :category
       row :merchant
       row :purchase_link do
-        link_to(deal.purchase_link,deal.purchase_link) unless deal.purchase_link.nil?
+        link_to(deal.purchase_link,deal.purchase_link,target: "_blank") unless deal.purchase_link.nil?
       end
       row :amazing_price do
         "小伙伴价格" if deal.amazing_price
