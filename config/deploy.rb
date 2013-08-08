@@ -1,4 +1,5 @@
 require "rvm/capistrano"
+require "bundler/capistrano"
 
 set :application, "littlefire"
 set :repository,  "git@bitbucket.org:zcpdog/littlefire.git"
