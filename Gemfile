@@ -31,7 +31,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'devise'
 gem "cancan"
 gem 'aasm'
-#gem "resque", '~> 2.0.0.pre.1', github: "resque/resque"
+gem "resque", '~> 2.0.0.pre.1', github: "resque/resque"
 gem "paperclip", '~> 3.0'
 gem 'formtastic', '~> 2.3.0.rc2'
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
