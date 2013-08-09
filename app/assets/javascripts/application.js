@@ -19,6 +19,7 @@
 //= require bootstrap-hover-dropdown
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN
+//= deals
 //= require turbolinks
 
 
