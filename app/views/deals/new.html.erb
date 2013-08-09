@@ -33,9 +33,22 @@
 						 <%= f.fields_for :pictures do |builder| %>
 						 <div class="fields form-group">
 						 	<div class="row">
-						 		<div class="col-lg-11">
-									<%=builder.label :image, t("deal.link")%>
-						 			<%=builder.file_field :image, placeholder: t("deal.link"), class: "form-control" %>
+						 		<div class="col-lg-11 file-upload">
+									<%=builder.label :image, t("deal.picture")%>
+									<%=builder.file_field :image, class: "real-file", style: "display:none;" %>
+									<div class="input-append">
+										<div class="row">
+											<div class="col-lg-9">
+												<input class="form-control file-display-field" placeholder="<%=t("deal.picture")%>" type="text" disabled>
+								 		 	</div>
+											<div class="col-lg-3 pull-right">
+											  
+								      		  <a class="btn btn-primary file-upload-btn"><span class="glyphicon glyphicon-upload"></span></i> 
+												  Browse</a>
+										    </div>
+										</div>
+				
+									</div>
 						 		</div>
 						 	</div>
 						 </div>
@@ -57,7 +70,7 @@
 							  <%= f.label :amazing_price, t("deal.is_amazing_price") %>
 						    </div>
 					    </div>
-						  <%= f.submit "Create", class: "btn primary" %>
+						  <%= f.submit "Create", class: "btn btn-primary" %>
 						  <%=link_to t(:go_back), root_path%>
 						<% end %>
 					</fieldset>
@@ -67,26 +80,4 @@
 		</div>
 	</div>
 </div>
-
-<%= tinymce %>
-<script type="text/javascript">
-  $('.datepicker').datepicker({
-  	startDate: 'today',
-	forceParse: true,
-	language: 'zh-CN',
-	format: 'yyyy-mm-dd'
-  });  
-	$("body").delegate( "a[data-remove]", "click", function() {
-	  	$(this).prev("input[type=hidden]").val("1");
-		$(this).closest(".fields").hide();  
-	});
-
-	$("a[data-association]").click(function(){
-		var association = $(this).data("association");
-		var content = $(this).data("content");
-	  	var new_id = new Date().getTime();
-	  	var regexp = new RegExp("new_" + association, "g");
-		$(this).parent().before(content.replace(regexp, new_id));
-	});
-</script>
 

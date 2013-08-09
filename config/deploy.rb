@@ -36,6 +36,12 @@ namespace :deploy do
   task :config_symlink do
     run "cp /home/zcpdog/database.yml #{current_release}/config/database.yml"
   end
+  
+  task :restart do
+    sudo "/opt/nginx/sbin/nginx -s reload"
+    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
+  end
+  
 end
 
 
