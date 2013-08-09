@@ -17,6 +17,8 @@
 //= require holder
 //= require customize
 //= require bootstrap-hover-dropdown
+//= require bootstrap-datepicker/core
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN
 //= require turbolinks
 
 
