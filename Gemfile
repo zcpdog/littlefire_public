@@ -38,13 +38,11 @@ gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
                               :github => 'anjlab/bootstrap-rails',
                               :branch => '3.0.0'
 gem 'bootstrap-glyphicons'
-gem 'holder_rails'
-#gem 'jquery-turbolinks'
-#gem 'rails-i18n', '~> 4.0.0.pre' # For 4.0.x
-#gem 'formtastic-bootstrap'
+
 gem 'tinymce-rails',      github: 'spohlenz/tinymce-rails', branch: 'tinymce-4'
 gem 'bootstrap-datepicker-rails'
 
+#A cruel mistress that uses the public suffix domain 
 gem "domainatrix", "~> 0.0.11"
 
 #for active admin
@@ -52,6 +50,9 @@ gem 'responders'
 gem 'inherited_resources'
 gem 'ransack',             github: 'ernie/ransack', branch: 'rails-4'
 gem 'activeadmin',         github: 'gregbell/active_admin', branch: 'rails4'
+#end for active admin
+
+#gem 'rack-ssl-enforcer'
 
 #pagination
 gem 'kaminari'   

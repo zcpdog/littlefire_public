@@ -9,4 +9,8 @@ module ApplicationHelper
     end
     link_to name , "javascript:void(0)", "data-association"=>"#{association}", "data-content"=>"#{fields}"
   end
+  
+  def active_if(page_name)
+    "active" if params[:action] == page_name
+  end
 end

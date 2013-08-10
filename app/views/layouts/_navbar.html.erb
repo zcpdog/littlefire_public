@@ -25,7 +25,7 @@
 						<a href="#" class="btn btn-success"><%=t(:dashboard)%></a>
 						<%=link_to t(:sign_out), destroy_user_session_path,method: :delete, class: "btn btn-info"%>
 					<%else%>
-						<%=link_to t('sign_in'),new_user_session_path, class: "btn btn-primary"%>
+						<%=link_to t('sign_in'),new_user_session_path, class: "btn btn-primary active"%>
 						<%=link_to t('sign_up'),new_user_registration_path, class: "btn btn-success"%>
 					<%end%>
 				</form>

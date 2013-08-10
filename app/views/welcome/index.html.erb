@@ -1,10 +1,9 @@
 <div class="container">
-
+	<div class=" panel">
+	<div class="panel-heading">我和我的小伙伴们都惊呆了</div>
   <div class="body-content">
-
-    <!-- Example row of columns -->
     <div class="row">
-      <div class="col-lg-9 non-padding-right">
+      <div class="col-lg-9 non-padding-right non-padding-left">
 	  <%@deals.each do |deal|%>
 	<div class="panel  panel-info">
 	  <div class="panel-heading"><%=link_to deal.title.html_safe, deal_path(deal), style: "color: #000"%></div>
@@ -20,13 +19,25 @@
 			</div>
 			<hr>
 			<p><%=deal.body%></p>
+			<div class="deal-body-hidden" style="display:none;">
+				<p>this is hidden pragraph</p>
+				<%if deal.pictures.any?%>
+				<ul>
+					<%deal.pictures.each do |pic|%>
+						<li style="list-style:none;">
+							<%=image_tag deal.pictures.first.image.url(:medium), class: :lazy%>
+						</li>
+					<%end%>
+				</ul>
+				<%end%>
+			</div>
 		</div>
 	    <div class="col-lg-3">
 			<div class="thumbnail">
 				<div style="width:140px;height:140px;">
 			      <a href="<%=deal_path(deal)%>" >
 					<%if deal.pictures.any?%>
-						<%=image_tag deal.pictures.first.image.url(:thumb)%>
+						<%=image_tag deal.pictures.first.image.url(:thumb), class: :lazy%>
 					<%else%>
 			        	<img data-src="holder.js/100%x140" alt="" >
 					<%end%>
@@ -40,8 +51,10 @@
 	  </div>
 	  <div class="row">
 	  	<div class="col-lg-9">
-	  		<div class="pull-right"><a href="#">
-				<%=t :unfold_deal%><span class="glyphicon glyphicon-chevron-down"></span></a>
+	  		<div class="pull-right">
+				<a href="javascript:void(0)" class="">
+					<%=t :unfold_deal%><span class="glyphicon glyphicon-chevron-down"></span>
+				</a>
 			</div>
 	  	</div>
 	  </div>   
@@ -56,7 +69,7 @@
 				<a href="#"><span class="glyphicon glyphicon-thumbs-down">22</span></a>
 			</div>
 			<div class="col-lg-2">
-				<a href="#"><span class="glyphicon glyphicon-comment"></span></a>
+				<a href="javascript:void(0)" class="comment-popover" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="" title="hello"><span class="glyphicon glyphicon-comment"></span></a>
 			</div>
 			<div class="col-lg-2">
 				<a href="#"><span class="glyphicon glyphicon-share"></span></a>
@@ -77,9 +90,9 @@
 		</div>
     </div>
   <!--end of col-lg-10-->
-      <div class="col-lg-3 non-padding-left">
-		<div class="panel panel-success">
-		  <div class="panel-heading"><strong>Panel heading</strong></div>
+      <div class="col-lg-3 non-padding-left non-padding-right">
+		<div class="panel panel-success" data-spy="affix" >
+		  <div class="panel-heading"><strong>Panel headingasdfjas</strong></div>
 		  你好呀
 		</div>   
      </div>
@@ -89,5 +102,8 @@
       <p>&copy; Company 2013</p>
     </footer>
   </div>
-
+</div>
 </div> <!-- /container -->
+<script>
+	$("img.lazy").lazyload();
+</script>
