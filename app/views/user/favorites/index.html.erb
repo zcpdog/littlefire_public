@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="body-content">
+    <div class="row">
+      <div class="col-lg-9 non-padding-right">
+		  <div class="panel panel-info">
+			<%if @deals.any?%>
+				<table class="table table-hover">
+					<thead>
+			          <tr>
+			            <th>Image</th>
+			            <th>Title</th>
+			            <th>Time</th>
+						<th>State</th>
+						<th>Points</th>
+			          </tr>
+			        </thead>
+					<tbody>
+					  <%@deals.each do |deal|%>
+				          <tr>
+				            <td>
+				            	<%if deal.pictures.any?%>
+									<%=image_tag deal.pictures.first.image.url(:thumb) unless deal.pictures.first.image.nil?%>
+								<%end%>
+				            </td>
+				            <td><%=link_to(deal.title, deal.purchase_link)%></td>
+				            <td><%=Time.zone.now%></td>
+							<td><%=deal.state%></td>
+				            <td>5</td>
+				          </tr>
+					  <%end%>
+			        </tbody>
+				</table>
+			<%else%>
+				<div class="well well-sm">你好没有发言过，<%=link_to "点击发言", new_deal_path%></div>
+			<%end%>
+			<%= paginate @deals %>
+		</div>
+		
+      </div>
+  <!--end of col-lg-10-->
+  	  <%=render "user/common/right_side_bar"%>
+    </div>
+    <hr>
+    <%=render "user/common/footer"%>
+  </div>
+</div> <!-- /container -->

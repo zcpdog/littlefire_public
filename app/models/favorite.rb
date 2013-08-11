@@ -1,4 +1,6 @@
 class Favorite < ActiveRecord::Base
-  belongs_to :favorable, polymorphic: true
+  belongs_to :deal
   belongs_to :user
+  
+  scope :stored_by, ->(user) { order("id DESC").where(user: user)}
 end

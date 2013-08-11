@@ -1,9 +1,7 @@
 <div class="container">
-	<div class=" panel">
-	<div class="panel-heading">我和我的小伙伴们都惊呆了</div>
   <div class="body-content">
     <div class="row">
-      <div class="col-lg-9 non-padding-right non-padding-left">
+      <div class="col-lg-9 non-padding-right">
 	  <%@deals.each do |deal|%>
 	<div class="panel  panel-info">
 	  <div class="panel-heading"><%=link_to deal.title.html_safe, deal_path(deal), style: "color: #000"%></div>
@@ -90,7 +88,7 @@
 		</div>
     </div>
   <!--end of col-lg-10-->
-      <div class="col-lg-3 non-padding-left non-padding-right">
+      <div class="col-lg-3 non-padding-left">
 		<div class="panel panel-success" data-spy="affix" >
 		  <div class="panel-heading"><strong>Panel headingasdfjas</strong></div>
 		  你好呀
@@ -102,7 +100,6 @@
       <p>&copy; Company 2013</p>
     </footer>
   </div>
-</div>
 </div> <!-- /container -->
 <script>
 	$("img.lazy").lazyload();

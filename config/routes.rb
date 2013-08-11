@@ -2,14 +2,16 @@ Littlefire::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users
-  resources :merchants
-  resources :deals
   
+  #resources :merchants, only: [:index, :show]
+  resources :categories, only: [:index, :show]
+  resources :deals, only: [:index, :new, :create, :show]
+  get 'user/dashboard'  =>  'user#dashboard'
   namespace :user do
-    resources :deals
-    resources :credit_histories
-    resources :grades
-    resources :comments
+    resources :deals, except: :destroy
+    resources :credit_histories, only: [:index]
+    resources :grades, except: :destroy
+    resources :comments, except: :destroy
     resources :favorites
   end
   
