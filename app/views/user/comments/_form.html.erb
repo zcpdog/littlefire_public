@@ -1,0 +1,22 @@
+<%if comments.any? %>
+	<table class="table table-hover">
+		<tbody>
+		  <%comments.each do |comment|%>
+	          <tr>
+	            <td>
+	            	<%if comment.deal.pictures.any?%>
+						<%=image_tag comment.deal.pictures.first.image.url(:tiny) unless comment.deal.pictures.first.image.nil?%>
+					<%end%>
+	            </td>
+	            <td>
+	            	<%=link_to comment.deal.title, deal_path(comment.deal)%>
+					<br>
+					你的评论: <%=comment.content%>
+	            </td>
+	          </tr>
+		  <%end%>
+        </tbody>
+	</table>
+<%else%>
+	<div class="well well-small">你还没有评论</div>
+<%end%>

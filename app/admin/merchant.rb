@@ -2,7 +2,7 @@ ActiveAdmin.register Merchant do
   form do |f|
     f.inputs "Details" do
       f.input :name
-      f.input :url, as: :url
+      f.input :link, as: :url
     end
     f.actions
   end

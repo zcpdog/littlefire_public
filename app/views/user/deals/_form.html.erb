@@ -1,0 +1,21 @@
+<%if deals.any?%>
+	<table class="table">
+		<tbody>
+		  <%deals.each do |deal|%>
+	          <tr>
+	            <td>
+	            	<%if deal.pictures.any?%>
+						<%=image_tag deal.pictures.first.image.url(:tiny) unless deal.pictures.first.image.nil?%>
+					<%end%>
+	            </td>
+	            <td><%=link_to(deal.title, deal.purchase_link)%></td>
+	            <td><%=Time.zone.now%></td>
+				<td><%=deal.state%></td>
+	            <td>5</td>
+	          </tr>
+		  <%end%>
+        </tbody>
+	</table>
+<%else%>
+	<div class="well well-small">你好没有发言过，<%=link_to "点击发言", new_deal_path%></div>
+<%end%>

@@ -1,0 +1,4 @@
+var comment_favorite=$("#deal_<%=@favorite.deal_id%>").find(".deal-favorite")
+var child = comment_favorite.children();
+comment_favorite.text(parseInt(comment_favorite.text())+1);
+comment_favorite.prepend(child);

@@ -1,0 +1,27 @@
+<%if grades.any?%>
+	<table class="table table-hover">
+		<tbody>
+		  <%grades.each do |grade|%>
+	          <tr>
+	            <td>
+	            	<%if grade.gradable.pictures.any?%>
+						<%=image_tag grade.gradable.pictures.first.image.url(:tiny) unless grade.gradable.pictures.first.image.nil?%>
+					<%end%>
+	            </td>
+	            <td>
+					<%=link_to grade.gradable.title, deal_path(grade.gradable)%>
+					<br>
+					你的打分：
+					<%if grade.agree%>
+					值得
+					<%else%>
+					不值
+					<%end%>
+				</td>	
+	          </tr>
+		  <%end%>
+        </tbody>
+	</table>
+<%else%>
+	<div class="well well-small">你还没有评价</div>
+<%end%>

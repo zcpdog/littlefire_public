@@ -1,0 +1,18 @@
+<%if favorites.any?%>
+	<table class="table table-hover">
+		<tbody>
+		  <%favorites.each do |favorite|%>
+	          <tr>
+	            <td>
+	            	<%if favorite.deal.pictures.any?%>
+						<%=image_tag favorite.deal.pictures.first.image.url(:tiny) unless favorite.deal.pictures.first.image.nil?%>
+					<%end%>
+	            </td>
+	            <td><%=link_to favorite.deal.title, deal_path(favorite.deal)%></td>
+	          </tr>
+		  <%end%>
+        </tbody>
+	</table>
+<%else%>
+	<div class="well well-small">你还没有收藏</div>
+<%end%>

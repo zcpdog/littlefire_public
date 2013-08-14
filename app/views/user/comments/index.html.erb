@@ -6,9 +6,9 @@
 		</div>
       <div class="span9 non-padding-right">
 		  <div class="panel panel-info">
-			<div class="well well-small"> 我的收藏</div>
-			<%=render "user/favorites/form", favorites: @favorites%>
-			<%= paginate @favorites %>
+			<div class="well well-small">我的评论</div>
+			<%=render "user/comments/form", comments: @comments%>
+			<%= paginate @comments %>
 		</div>
 		
       </div>

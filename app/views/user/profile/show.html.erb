@@ -1,0 +1,36 @@
+<div class="container-fluid">
+  <div class="body-content">
+    <div class="row-fluid">
+		<div class="span3">
+			<%=render "user/common/left_side_bar"%>
+		</div>
+      <div class="span9">
+		  <div class="panel panel-info">
+			<div class="well well-small"> 我的个人信息</div>
+			<div class="row-fluid">
+				<div class="span3">
+				<%if current_user.avatar.exists?%>
+					<%=image_tag current_user.avatar.url(:thumb)%>
+				<%else%>
+				  <div class="thumbnail">
+					<img data-src="holder.js/115x115" alt="115x115" >
+			        <div class="caption">
+			          <p><a href="#" class="btn btn-primary btn-block">上传照片</a> </p>
+			        </div>
+			      </div>
+				<%end%>
+			    </div>
+				<div class="span9">
+				<%=current_user.username%>
+				<br>
+				<%=current_user.email%>
+				</div>
+				
+			</div>
+		</div>
+      </div>
+    </div>
+    <hr>
+    <%=render "user/common/footer"%>
+  </div>
+</div>

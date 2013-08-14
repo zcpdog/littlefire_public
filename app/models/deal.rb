@@ -1,4 +1,5 @@
 class Deal < ActiveRecord::Base
+  default_scope order("created_at DESC")
   require 'domainatrix'
   paginates_per 20
   include AASM
@@ -11,6 +12,8 @@ class Deal < ActiveRecord::Base
   accepts_nested_attributes_for :links
   
   has_many   :comments, dependent: :destroy
+  has_many   :favorites,  dependent: :destroy
+  has_many   :grades, as: :gradable, dependent: :destroy
   has_many   :reports, dependent: :destroy
   
   has_many   :pictures, as: :imageable, dependent: :destroy
@@ -43,5 +46,7 @@ class Deal < ActiveRecord::Base
       merchant_domain = "#{domainatrix.domain}.#{domainatrix.public_suffix}"
       self.merchant =  Merchant.find_by domain: merchant_domain
     end
+    self.display_title = self.title
+    self.display_body = self.body
   end
 end

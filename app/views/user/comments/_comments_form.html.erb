@@ -1,0 +1,11 @@
+<%if comments.any?%>
+	<table class="table table-bordered">
+		<tbody>
+		<%comments.each do |comment|%>
+	    <tr>
+	      <td><%=comment.content%></td>  
+	    </tr>
+		<%end%>
+		</tbody>
+	</table>
+<%end%>

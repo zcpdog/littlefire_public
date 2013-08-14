@@ -1,7 +1,7 @@
 <div class="container">
   <div class="body-content">
     <div class="row">
-      <div class="col-lg-9 non-padding-right">
+      <div class="span9 non-padding-right">
 		  <div class="panel panel-info">
 			<%if @deals.any?%>
 				<table class="table table-hover">
@@ -31,13 +31,13 @@
 			        </tbody>
 				</table>
 			<%else%>
-				<div class="well well-sm">你好没有发言过，<%=link_to "点击发言", new_deal_path%></div>
+				<div class="well well-small">你好没有发言过，<%=link_to "点击发言", new_deal_path%></div>
 			<%end%>
 			<%= paginate @deals %>
 		</div>
 		
       </div>
-  <!--end of col-lg-10-->
+  <!--end of span10-->
   	  <%=render "user/common/right_side_bar"%>
     </div>
     <hr>

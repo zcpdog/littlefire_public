@@ -15,10 +15,10 @@ ActiveAdmin.register Deal do
       end
     end
     f.inputs "Title" do
-      f.input :title, label: "Title", input_html: { :class => "tinymce" }
+      f.input :display_title, label: "Title", input_html: { :class => "tinymce" }
     end
     f.inputs "Reason" do
-      f.input :body, label: "Reason", input_html: { :class => "tinymce" }
+      f.input :display_body, label: "Reason", input_html: { :class => "tinymce" }
     end
     f.inputs "Pictures" do
       f.has_many :pictures do |picture|

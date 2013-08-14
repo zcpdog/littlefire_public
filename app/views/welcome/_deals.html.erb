@@ -1,0 +1,61 @@
+<%deals.each do |deal|%>
+<div id="deal_<%=deal.id%>">
+<div class="well well-small"><strong><%=link_to deal.display_title.html_safe, deal_path(deal)%></strong></div>
+<div class="row-fluid">
+  <div class="span9">
+    <div ><%=deal.display_body.html_safe%></div>
+	<a href="#" class="pull-right">更多</a>
+  </div>
+  <div class="span3">
+	<div class="thumbnail">
+		<%if deal.pictures.any?%>
+			<%=image_tag deal.pictures.first.image.url(:thumb), class: "media-object"%>
+		<%else%>
+	    	<img data-src="holder.js/130x130" alt="" class="media-object">
+		<%end%>
+      	<div class="caption">
+        	<a href="#" class="btn btn-block">直达链接</a>
+      	</div>
+    </div>
+  </div>
+</div>
+<div class="row-fluid">
+	<ul class="breadcrumb deal-toolbar">
+	  <li>
+		  <%=link_to "<i class='icon-comments'></i>#{deal.comments.size}".html_safe, 
+		   show_recent_user_deal_comments_path(deal), method: :get, remote: true, 
+		   class: "deal-toolbar-link deal-show-comment"%>
+		  <span class="divider">|</span>
+	  </li>
+	  <li>
+		  <%=link_to "<i class='icon-thumbs-up'></i>#{deal.agree_count}".html_safe, 
+		  user_grades_path(:gradable_id => deal.id,:gradable_type => 'Deal' ,:agree => 1), 
+		  method: :post, remote: true, class: "deal-toolbar-link deal-grade-up"%>
+		  <span class="divider">|</span>
+	  <li>
+		  <%=link_to "<i class='icon-thumbs-down'></i>#{deal.disagree_count}".html_safe, 
+		  user_grades_path(:gradable_id => deal.id,:gradable_type => 'Deal' ,:agree => 0), 
+		  method: :post, remote: true, class: "deal-toolbar-link deal-grade-down"%>
+		  <span class="divider">|</span>
+	  </li>
+	  <li>
+		  <%=link_to "<i class='icon-heart-empty'></i>#{deal.favorites.size}".html_safe, 
+		  user_deal_favorites_path(deal), method: :post, remote: true, 
+		  class: "deal-toolbar-link deal-favorite"%>
+		  <span class="divider">|</span>
+	  </li>
+	  <li class="pull-right"><a href="#"><i class="icon-share"></i></a></li>
+	</ul>
+	<div class="comment-field" style="display: none;">
+		<%= form_for([:user,deal ,Comment.new], remote: true) do |f| %>
+		  <%=f.text_area :content, rows: 2, class: "input-xxlarge comment-area"%>
+		  <button type="submit" class="btn submit-comment">发表评论</button>
+		  <a href="javascript:void(0)" class="comment-field-cancel">取消</a>
+		<% end %>
+		<div class="comment-content">
+		</div>
+	</div>
+</div>
+</div>
+<hr>
+<%end%>

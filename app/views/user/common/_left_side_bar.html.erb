@@ -1,0 +1,9 @@
+<ul class="nav nav-tabs nav-stacked ">
+  <%=active_link_to 'Dashboard', "/user/dashboard", :wrap_tag => :li%>
+  <%=active_link_to 'Profile', "/user/profile", :wrap_tag => :li%>
+  <%=active_link_to 'Deals', user_deals_path, :wrap_tag => :li%>
+  <%=active_link_to 'Favorites', user_favorites_path, :wrap_tag => :li%>
+  <%=active_link_to 'Comments', user_comments_path, :wrap_tag => :li%>
+  <%=active_link_to 'Grades', user_grades_path, :wrap_tag => :li%>
+  <li><%=link_to "Credit Histories", "#"%></li>
+</ul>

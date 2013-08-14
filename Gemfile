@@ -16,7 +16,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
+gem "less-rails" 
+gem "twitter-bootstrap-rails", '~>2.2.8'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -34,9 +36,8 @@ gem 'aasm'
 gem "resque", '~> 2.0.0.pre.1', github: "resque/resque"
 gem "paperclip", '~> 3.0'
 gem 'formtastic', '~> 2.3.0.rc2'
-gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
-                              :github => 'anjlab/bootstrap-rails',
-                              :branch => '3.0.0'
+gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails'
+                              
 gem 'bootstrap-glyphicons'
 
 gem 'tinymce-rails',      github: 'spohlenz/tinymce-rails', branch: 'tinymce-4'
@@ -51,6 +52,8 @@ gem 'inherited_resources'
 gem 'ransack',             github: 'ernie/ransack', branch: 'rails-4'
 gem 'activeadmin',         github: 'gregbell/active_admin', branch: 'rails4'
 #end for active admin
+
+gem 'active_link_to'
 
 #gem 'rack-ssl-enforcer'
 

@@ -1,21 +1,21 @@
-<div class="container">
-	<div class="row">
-		<div class="col-lg-10">
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span9">
 			<div class="panel">
-				<div class="row">
-					<div class="col-lg-12">
+				<div class="row-fluid">
+					<div class="span12">
 					<fieldset>
 						<%= form_for @deal, html: {class: "nifty_form"} do |f| %>
 					    <div class="form-group">
 							<%=f.label :title, t("deal.title")%>
-							<%= f.text_field :title, autofocus: true, placeholder: t("deal.title"), class: "form-control" %>
+							<%= f.text_field :title, autofocus: true, placeholder: t("deal.title"), class: "input-block-level" %>
 					    </div>
 						 <%= f.fields_for :links do |builder| %>
 						 <div class="fields form-group">
-						 	<div class="row">
-						 		<div class="col-lg-11">
+						 	<div class="row-fluid">
+						 		<div class="span11">
 									<%=builder.label :url, t("deal.link")%>
-						 			<%=builder.text_field :url, placeholder: t("deal.link"), class: "form-control" %>
+						 			<%=builder.text_field :url, placeholder: t("deal.link"), class: "input-block-level" %>
 						 		</div>
 						 	</div>
 						 </div>
@@ -25,25 +25,24 @@
  					    </div>
 						<div class="form-group">
 						  <%=f.label :body, t("deal.body")%>
-						  <%= f.text_area :body, class: "form-control", rows: "6" %>
+						  <%= f.text_area :body, class: "input-block-level", rows: "6" %>
 					    </div>
 						
 						<hr>
 						
 						 <%= f.fields_for :pictures do |builder| %>
 						 <div class="fields form-group">
-						 	<div class="row">
-						 		<div class="col-lg-11 file-upload">
+						 	<div class="row-fluid">
+						 		<div class="span11 file-upload">
 									<%=builder.label :image, t("deal.picture")%>
 									<%=builder.file_field :image, class: "real-file", style: "display:none;" %>
 									<div class="input-append">
-										<div class="row">
-											<div class="col-lg-9">
-												<input class="form-control file-display-field" placeholder="<%=t("deal.picture")%>" type="text" disabled>
+										<div class="row-fluid">
+											<div class="span9">
+												<input class="input-block-level file-display-field" placeholder="<%=t("deal.picture")%>" type="text" disabled>
 								 		 	</div>
-											<div class="col-lg-3 pull-right">
-											  
-								      		  <a class="btn btn-primary file-upload-btn"><span class="glyphicon glyphicon-upload"></span></i> 
+											<div class="span3 pull-right">
+								      		  <a class="btn btn-primary file-upload-btn"><i class="icon-cloud-upload"></i></i> 
 												  Browse</a>
 										    </div>
 										</div>
@@ -58,11 +57,11 @@
   					    </div>
 		  			    <div class="form-group">
 		  					<%=f.label :location, t("deal.location")%>
-		  					<%= f.text_field :location, placeholder: t("deal.location"), class: "form-control" %>
+		  					<%= f.text_field :location, placeholder: t("deal.location"), class: "input-block-level" %>
 		  			    </div>
 					    <div class="form-group" >
 							<%=f.label :due_date, t("deal.due_date")%>
-							<%= f.text_field :due_date, placeholder: t("deal.due_date"), class: "form-control datepicker"%>
+							<%= f.text_field :due_date, placeholder: t("deal.due_date"), class: "input-block-level datepicker"%>
 					    </div>
 					    <div class="form-group">
 						    <div class="checkbox">

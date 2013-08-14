@@ -6,12 +6,21 @@ Littlefire::Application.routes.draw do
   #resources :merchants, only: [:index, :show]
   resources :categories, only: [:index, :show]
   resources :deals, only: [:index, :new, :create, :show]
-  get 'user/dashboard'  =>  'user#dashboard'
+  get 'user/dashboard' => 'user#dashboard'
+  get 'user/profile' => 'user#profile'
   namespace :user do
     resources :deals, except: :destroy
     resources :credit_histories, only: [:index]
     resources :grades, except: :destroy
-    resources :comments, except: :destroy
+    resources :deals do
+      resources :comments do
+        collection do
+          get 'show_recent'
+        end
+      end
+      resources :favorites
+    end
+    resources :comments
     resources :favorites
   end
   

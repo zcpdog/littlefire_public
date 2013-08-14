@@ -5,6 +5,10 @@ class CreateComments < ActiveRecord::Migration
       t.references  :deal,  index: true
       t.integer     :parent_id, index: true
       t.text        :content
+      
+      t.integer     :agree_count,  default: 0
+      t.integer     :disagree_count,  default: 0
+      
       t.timestamps
     end
   end

@@ -26,6 +26,20 @@ $(document).ready(function(){
 		$(this).parent().before(content.replace(regexp, new_id));
 	});
 	
+	$(".deal-toolbar-link").bind("ajax:error", function(evt, data, status, xhr){
+		if(data.status==401){
+			$('#please-login').modal({
+				remote: "/users/sign_in"
+			})
+		}else if (data.status == 500){
+			alert("something wrong");
+		}
+	});
+
+	$(".comment-field-cancel").click(function(){
+		$(this).closest(".comment-field").hide();
+	});
+	
 })
 
 
