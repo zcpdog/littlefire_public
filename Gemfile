@@ -43,7 +43,7 @@ gem "bootstrap-datepicker-rails", "~> 1.1.1.6"
 
 #A cruel mistress that uses the public suffix domain 
 gem "domainatrix", "~> 0.0.11"
-
+gem "sunspot", "~> 2.0.0"
 #for active admin
 gem "responders", "~> 1.0.0.rc"
 gem "inherited_resources", "~> 1.4.1"

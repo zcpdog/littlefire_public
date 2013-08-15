@@ -1,10 +1,11 @@
 <div class="container-fluid">
+	<%=render "subnav"%>
 	<div class="row-fluid">
 		<div class="span9">
-			<%=render "deals", deals: @deals%>
+			<%=render "form", deals: @deals%>
 		</div>
 		<div class="span3">
-			<%=render "right_side_bar"%>
+			<%=render "right_sidebar"%>
 		</div>
 	</div>
 </div>
