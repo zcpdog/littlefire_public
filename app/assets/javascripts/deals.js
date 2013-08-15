@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	$(".file-upload-btn").click(function(){
+	$("body").delegate(".file-upload-btn","click",function(){
 		$(this).closest("div.file-upload").children(".real-file").click();
 	});
 	$(".real-file").change(function(){
