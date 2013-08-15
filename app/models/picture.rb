@@ -3,7 +3,7 @@ class Picture < ActiveRecord::Base
   belongs_to :imageable, polymorphic: true
   
   has_attached_file :image,
-    :styles => { :large => "600x600>", :medium => "300x300>", :thumb => "130x130>", :tiny => "50x50>" },
+    :styles => { :large => "500x500>", :medium => "200x200>", :thumb => "130x130>", :tiny => "50x50>" },
     :url => "/system/:imageable/:id/:style/:filename",
     :path => ":rails_root/public:url"
     

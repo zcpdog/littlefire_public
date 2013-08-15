@@ -78,6 +78,10 @@ $(document).ready(function(){
 			$(element).closest('.control-group').removeClass('warning');
 		}
 	 });
+	 
+	 $("body").delegate(".deal-body-toggle","click",function(){
+		 $(this).closest("div[id^='deal']").find(".deal-body-extra").toggle();
+	 });
 	
 })
 

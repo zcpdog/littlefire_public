@@ -51,6 +51,13 @@ class DealsController < ApplicationController
       end
     end
   end
+  
+  def unfold
+    @deal = Deal.find params[:id]
+    respond_to do |format|
+      format.js
+    end
+  end
 
   # PUT /models/1
   # PUT /models/1.xml

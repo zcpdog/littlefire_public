@@ -6,6 +6,11 @@ Littlefire::Application.routes.draw do
   #resources :merchants, only: [:index, :show]
   resources :categories, only: [:index, :show]
   resources :deals, only: [:index, :new, :create, :show]
+  resources :deals do
+    member do
+      get 'unfold'
+    end
+  end
   get 'user/dashboard' => 'user#dashboard'
   get 'user/profile' => 'user#profile'
   namespace :user do

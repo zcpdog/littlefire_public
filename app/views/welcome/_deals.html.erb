@@ -2,9 +2,9 @@
 <div id="deal_<%=deal.id%>">
 	<div class="well well-small"><strong><%=link_to deal.display_title.html_safe, deal_path(deal)%></strong></div>
 	<div class="row-fluid">
-	  <div class="span9">
-	    <div ><%=deal.display_body.html_safe%></div>
-		<a href="#" class="pull-right">更多</a>
+	  <div class="span9 deal-body">
+	    <div class="deal-body-presview"><%=deal.display_body.html_safe%></div>
+		<div class="deal-body-extra"></div>
 	  </div>
 	  <div class="span3">
 		<div class="thumbnail">
@@ -14,10 +14,17 @@
 		    	<img data-src="holder.js/130x130" alt="" class="media-object">
 			<%end%>
 	      	<div class="caption">
-	        	<a href="#" class="btn btn-block">直达链接</a>
+	        	<a href="/" class="btn btn-block">直达链接</a>
 	      	</div>
 	    </div>
 	  </div>
+	</div>
+	<div class="row-fluid">
+		<div class="span9">
+			<%=link_to "展开更多<i class='icon-sort-down'></i>".html_safe, 
+			  unfold_deal_path(deal), method: :get, remote: true, 
+			  class: "pull-right deal-unfold"%>
+		</div>
 	</div>
 	<%=render "deal_tool_bar", deal: deal%>
 </div>
