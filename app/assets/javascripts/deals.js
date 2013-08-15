@@ -1,4 +1,3 @@
-$(document).ready(function(){
 	$("body").delegate(".file-upload-btn","click",function(){
 		$(this).closest("div.file-upload").children(".real-file").click();
 	});
@@ -82,7 +81,5 @@ $(document).ready(function(){
 	 $("body").delegate(".deal-body-toggle","click",function(){
 		 $(this).closest("div[id^='deal']").find(".deal-body-extra").toggle();
 	 });
-	
-})
 
 
