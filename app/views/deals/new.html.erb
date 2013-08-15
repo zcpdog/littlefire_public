@@ -33,7 +33,6 @@
 							  <%= f.text_area :body, class: "input-block-level", rows: "6", placeholder: "请填写理由，100至500字" %>
 					  		</div>
 					    </div>
-						<hr>
 						 <%= f.fields_for :pictures do |builder| %>
 						 <div class="fields control-group">
 							 <div class="controls">
@@ -41,30 +40,28 @@
 							 		<div class="span11 file-upload">
 										<%=builder.label :image, t("deal.picture")%>
 										<%=builder.file_field :image, class: "real-file", style: "display:none;" %>
-										<div class="input-append">
-											<div class="row-fluid">
-												<div class="span9">
-													<input class="input-block-level file-display-field" placeholder="<%=t("deal.picture")%>" 
-													type="text" disabled>
-									 		 	</div>
-												<div class="span3 pull-right">
-									      		  <a class="btn btn-primary file-upload-btn"><i class="icon-cloud-upload"></i></i> 
-													  浏览</a>
-											    </div>
-											</div>
-				
+										<div class="row-fluid">
+											<div class="span9">
+												<input class="input-block-level file-display-field"
+													 placeholder="<%=t("deal.picture")%>"  type="text" disabled>
+								 		 	</div>
+											<div class="span3">
+								      		  <a class="btn btn-primary file-upload-btn"><i class="icon-cloud-upload"></i></i> 
+												  浏览</a>
+										    </div>
 										</div>
 							 		</div>
 							 	</div>
 							</div>
 						 </div>
 						 <% end %>
-  						<div class="control-group">
-							<div class="controls">
-  						  	  <p class="pull-right"><%= link_to_add_fields "Add Picture", f, :pictures %></p>
-						    </div>
-  					    </div>
-		  			    <div class="control-group">
+   						<div class="control-group">
+ 							<div class="controls">
+   						  	  <div class="pull-right"><%= link_to_add_fields "Add Picture", f, :pictures %></div>
+ 						    </div>
+   					    </div>
+						 <hr>
+						 <div class="control-group">
 							<div class="controls">
 		  					<%=f.label :location, t("deal.location")%>
 		  					<%= f.text_field :location, placeholder: t("deal.location"), class: "input-block-level" %>

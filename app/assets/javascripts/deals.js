@@ -1,22 +1,42 @@
-	$("body").delegate(".file-upload-btn","click",function(){
-		$(this).closest("div.file-upload").children(".real-file").click();
-	});
-	$(".real-file").change(function(){
-		$('.file-display-field').val($(".real-file").val());
-		$(this).next("div").find(".file-display-field").val($(this).val().replace(/^.*[\\\/]/, ''));
-	});
+$(document).on("click",".file-upload-btn", function(){
+	$(this).closest("div.file-upload").children(".real-file").click();
+});
+
+$(document).on("change",".real-file", function(){
+	$('.file-display-field').val($(".real-file").val());
+	$(this).next("div").find(".file-display-field").val($(this).val().replace(/^.*[\\\/]/, ''));
+});
+
+$(document).on("click","a[data-remove]",function(){
+  	$(this).prev("input[type=hidden]").val("1");
+	$(this).closest(".fields").hide();  
+});
+
+$(document).on("ajax:error",".deal-toolbar-link",function(evt, data, status, xhr){
+	if(data.status==401){
+		$('#please-login').modal();
+	}else if (data.status == 500){
+		alert("something wrong");
+	}
+});
+
+$(document).on("click",".comment-field-cancel",function(){
+	$(this).closest(".comment-field").hide();
+});
+
+$(document).on("click",".deal-body-toggle",function(){
+	$(this).closest("div[id^='deal']").find(".deal-body-extra").toggle();
+});
+
+$(document).ready(function(){
 	
 	$('.datepicker').datepicker({
 		startDate: 'today',
 		forceParse: true,
 		language: 'zh-CN',
 		format: 'yyyy-mm-dd'
-	});  
-	$("body").delegate( "a[data-remove]", "click", function() {
-	  	$(this).prev("input[type=hidden]").val("1");
-		$(this).closest(".fields").hide();  
-	});
-
+	});  	
+	
 	$("a[data-association]").click(function(){
 		var association = $(this).data("association");
 		var content = $(this).data("content");
@@ -24,21 +44,7 @@
 	  	var regexp = new RegExp("new_" + association, "g");
 		$(this).parent().before(content.replace(regexp, new_id));
 	});
-	
-	$(".deal-toolbar-link").bind("ajax:error", function(evt, data, status, xhr){
-		if(data.status==401){
-			$('#please-login').modal({
-				remote: "/users/sign_in"
-			})
-		}else if (data.status == 500){
-			alert("something wrong");
-		}
-	});
 
-	$(".comment-field-cancel").click(function(){
-		$(this).closest(".comment-field").hide();
-	});
-	
 	$('.comment-form').validate({
 	    rules: {
 	      "comment[content]": {
@@ -77,9 +83,7 @@
 			$(element).closest('.control-group').removeClass('warning');
 		}
 	 });
-	 
-	 $("body").delegate(".deal-body-toggle","click",function(){
-		 $(this).closest("div[id^='deal']").find(".deal-body-extra").toggle();
-	 });
+	
+})
 
 

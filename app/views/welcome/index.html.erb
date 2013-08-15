@@ -8,6 +8,7 @@
 		</div>
 	</div>
 </div>
+
 <!-- Modal -->
 <div id="please-login" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
@@ -15,8 +16,11 @@
     <h3 id="myModalLabel">请登录</h3>
   </div>
   <div class="modal-body">
+	  <%=render "devise/sessions/form"%>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
   </div>
+  
 </div>
+

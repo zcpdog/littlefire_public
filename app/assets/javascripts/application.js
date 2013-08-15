@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
+
 //= require twitter/bootstrap
 //= require holder
 //= require bootstrap-hover-dropdown
@@ -22,6 +23,7 @@
 //= require deals
 //= require devise
 //= require messages_zh
+
 //= require turbolinks
 
 
