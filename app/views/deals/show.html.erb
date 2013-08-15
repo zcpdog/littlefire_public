@@ -4,7 +4,7 @@
 			<p><%=@deal.title%></p>
 			<p><%=@deal.body%></p>
 			<%@deal.pictures.each do |pic|%>
-				<%=image_tag pic.image.url%>
+				<%=image_tag pic.image.url(:large)%>
 			<%end%>
 		</li>
 	</ul>

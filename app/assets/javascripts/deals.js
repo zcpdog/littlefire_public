@@ -40,6 +40,45 @@ $(document).ready(function(){
 		$(this).closest(".comment-field").hide();
 	});
 	
+	$('.comment-form').validate({
+	    rules: {
+	      "comment[content]": {
+	        minlength: 10,
+			maxlength: 140,
+	        required: true
+	      }
+	    },
+		highlight: function(element,errorClass, validClass) {
+			$(element).closest('.control-group').addClass('warning');
+		},
+		unhighlight: function(element,errorClass, validClass){
+			$(element).closest('.control-group').removeClass('warning');
+		},
+		errorLabelContainer: ".help-inline",
+		errorElement: "span"
+	 });
+	 
+	 $('.deal-form').validate({
+ 	    rules: {
+			"deal[title]": {
+				minlength: 15,
+				maxlength: 80,
+				required: true
+			},
+			"deal[body]":{
+				minlength: 50,
+				maxlength: 500,
+				required: true
+			}
+ 	    },
+		highlight: function(element,errorClass, validClass) {
+			$(element).closest('.control-group').addClass('warning');
+		},
+		unhighlight: function(element,errorClass, validClass){
+			$(element).closest('.control-group').removeClass('warning');
+		}
+	 });
+	
 })
 
 

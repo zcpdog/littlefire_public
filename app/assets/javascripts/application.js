@@ -15,12 +15,13 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require holder
-//= require customize
 //= require bootstrap-hover-dropdown
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN
+//= require jquery.validate.min
 //= require deals
-//= require jquery.lazyload.min
+//= require devise
+//= require messages_zh
 //= require turbolinks
 
 

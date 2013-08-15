@@ -1,10 +1,13 @@
-<div class="fields form-group">
-	<div class="row-fluid">
-		<div class="span11">
-			<%=f.text_field :url, placeholder: t("deal.link"), class: "input-block-level" %>
-		</div>
-		<div>
-			<%= link_to_remove_fields "Remove", f  %>	
+<div class="fields control-group">
+	<div class="controls">
+		<div class="row-fluid">
+			<div class="span11">
+				<%=f.text_field :url, placeholder: t("deal.link"), class: "input-block-level url" %>
+			</div>
+			<div class="span1">
+				<%= link_to_remove_fields "Remove", f  %>	
+			</div>
 		</div>
 	</div>
+	
 </div>
