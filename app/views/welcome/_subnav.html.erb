@@ -2,12 +2,13 @@
   <div class="navbar-inner">
     <ul class="nav">
       <li class="active"><a href="#">首页</a></li>
-      <li><a href="#">Link</a></li>
-      <li><a href="#">Link</a></li>
+      <li><a href="javascript:void(0);">发现频道</a></li>
+      <li><a href="javascript:void(0);">晒单</a></li>
     </ul>
-	<form class="navbar-form pull-right">
-	  <input type="text" class="span2">
-	  <button type="submit" class="btn">搜索</button>
-	</form>		
+		
+	<%= form_tag deals_path, :method => :get, class: "navbar-form pull-right" do %>
+	    <%= text_field_tag :search, params[:search], class: "span2" %>
+	    <%= submit_tag "搜索" , class: "btn"%>
+	<% end %>	
   </div>
 </div>

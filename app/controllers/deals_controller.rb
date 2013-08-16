@@ -3,11 +3,12 @@ class DealsController < ApplicationController
   # GET /models
   # GET /models.xml
   def index
-    @deals = Deal.order('id DESC').page params[:page]
-    respond_to do |wants|
-      wants.html # index.html.erb
-      wants.xml  { render :xml => @deals }
+    Sunspot.search(Deal)
+    @search = Sunspot.search(Deal) do
+      fulltext params[:search]
     end
+    @deals = @search.results
+    render "welcome/index"
   end
 
   # GET /models/1

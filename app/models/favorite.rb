@@ -1,5 +1,5 @@
 class Favorite < ActiveRecord::Base
-  default_scope order("created_at DESC")
+  default_scope {order("created_at DESC")}
   
   belongs_to :deal, counter_cache: true
   belongs_to :user

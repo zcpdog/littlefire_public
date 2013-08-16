@@ -1,3 +1,4 @@
-$("#deal_<%=@deal.id%>").find(".deal-body-extra").html("<%=escape_javascript(render(partial: 'deals/extra', locals: { deal: @deal }))%>");
+$("#deal_<%=@deal.id%>").find(".deal-body-extra").html("<%=@deal.display_body_extra.try(:html_safe)%>");
+$("#deal_<%=@deal.id%>").find(".deal-body-extra").append("<%=escape_javascript(render(partial: 'deals/extra', locals: { deal: @deal }))%>");
 $("#deal_<%=@deal.id%>").find(".deal-unfold").removeClass("deal-unfold").addClass("deal-body-toggle").
 	attr("href","javascript:void(0);").removeAttr("data-remote").removeAttr("data-method");

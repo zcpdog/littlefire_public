@@ -34,6 +34,7 @@ gem "cancan", "~> 1.6.10"
 gem "aasm", "~> 3.0.20"
 gem "resque", "~> 1.24.1"
 gem "paperclip", '~> 3.0'
+#gem "paperclip", "~> 3.5.1"
 gem 'formtastic', '~> 2.3.0.rc2'
                               
 gem "bootstrap-glyphicons", "~> 0.0.1"
@@ -43,7 +44,8 @@ gem "bootstrap-datepicker-rails", "~> 1.1.1.6"
 
 #A cruel mistress that uses the public suffix domain 
 gem "domainatrix", "~> 0.0.11"
-gem "sunspot", "~> 2.0.0"
+gem "sunspot_rails", "~> 2.0.0"
+
 #for active admin
 gem "responders", "~> 1.0.0.rc"
 gem "inherited_resources", "~> 1.4.1"
@@ -62,6 +64,11 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :development do
+  gem 'quiet_assets'
+  gem "capistrano", "~> 2.15.5"
+end
+
 #disable logging of asset pipleline
 gem 'quiet_assets', group: :development
 
@@ -71,8 +78,6 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # Use unicorn as the app server
 # gem 'unicorn'
 
-# Use Capistrano for deployment
-gem "capistrano", "~> 2.15.5", group: :development
 gem "rvm-capistrano", "~>1.4.4"
 # Use debugger
 # gem 'debugger', group: [:development, :test]

@@ -1,5 +1,5 @@
 class Deal < ActiveRecord::Base
-  default_scope order("created_at DESC")
+  default_scope {order("created_at DESC")}
   require 'domainatrix'
   paginates_per 20
   include AASM
@@ -40,13 +40,24 @@ class Deal < ActiveRecord::Base
    end
   
   def generate_info
-    if self.links.any?
-      self.purchase_link = links.first.url
+    if links.any?
+      purchase_link = links.first.url
       domainatrix = Domainatrix.parse(purchase_link)
       merchant_domain = "#{domainatrix.domain}.#{domainatrix.public_suffix}"
-      self.merchant =  Merchant.find_by domain: merchant_domain
+      merchant =  Merchant.find_by domain: merchant_domain
     end
-    self.display_title = self.title
-    self.display_body = self.body
+    display_title = title
+    
+    if body.length > 200
+      display_body = body[0..199]
+      display_body_extra = body[200..body.length]
+    else
+      display_body = body
+    end
+  end
+  
+  searchable do
+    text :title, :boost => 5
+    text :body
   end
 end

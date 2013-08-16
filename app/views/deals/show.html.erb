@@ -1,11 +1,11 @@
-<div class="content-l">
-	<ul class="item-list mixed">
-		<li class="template">
-			<p><%=@deal.title%></p>
-			<p><%=@deal.body%></p>
-			<%@deal.pictures.each do |pic|%>
-				<%=image_tag pic.image.url(:large)%>
-			<%end%>
-		</li>
-	</ul>
+<div class="container-fluid">
+	<%=render "/welcome/subnav"%>
+	<div class="row-fluid">
+		<div class="span9">
+			<%=render "detail", deal: @deal%>
+		</div>
+		<div class="span3">
+			<%=render "/welcome/right_sidebar"%>
+		</div>
+	</div>
 </div>

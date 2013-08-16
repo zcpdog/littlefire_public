@@ -13,7 +13,8 @@ class CreateDeals < ActiveRecord::Migration
       t.string      :purchase_link
       
       t.string      :display_title
-      t.string      :display_body
+      t.text        :display_body
+      t.text        :display_body_extra
       
       t.integer     :comments_count
       t.integer     :agree_count,  default: 0

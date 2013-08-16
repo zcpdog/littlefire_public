@@ -20,6 +20,9 @@ ActiveAdmin.register Deal do
     f.inputs "Reason" do
       f.input :display_body, label: "Reason", input_html: { :class => "tinymce" }
     end
+    f.inputs "Extra" do
+      f.input :display_body_extra, label: "Extra", input_html: { :class => "tinymce" }
+    end
     f.inputs "Pictures" do
       f.has_many :pictures do |picture|
         picture.input :image, :as => :file, :label => "Image",
@@ -44,10 +47,10 @@ ActiveAdmin.register Deal do
         "小伙伴价格" if deal.amazing_price
       end
       row :tile do
-        deal.title.html_safe
+        deal.title
       end
       row "body" do 
-        deal.body.html_safe
+        deal.body
       end
       row "Images" do
          ul do
@@ -66,9 +69,9 @@ ActiveAdmin.register Deal do
     def resource_params
       permitted_params = Array.new
       unless request.get?
-        permitted_params.push params.require(:deal).permit(:user_id,:merchant_id,:categoy_id,:title,:purchase_link,
-          :body,:location,:due_date,:amazing_price,[links_attributes: [:url,:id,:_destroy]],
-          [pictures_attributes: [:image, :id, :_destroy]])
+        permitted_params.push params.require(:deal).permit(:user_id,:merchant_id,:categoy_id,:purchase_link,
+          :location,:due_date,:amazing_price,[links_attributes: [:url,:id,:_destroy]], :display_title,
+          :display_body, :display_body_extra,[pictures_attributes: [:image, :id, :_destroy]])
       end
     end
   end

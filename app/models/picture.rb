@@ -1,5 +1,5 @@
 class Picture < ActiveRecord::Base
-  default_scope  { where("image_file_name IS NOT NULL")}
+  default_scope { where("image_file_name IS NOT NULL")}
   belongs_to :imageable, polymorphic: true
   
   has_attached_file :image,
