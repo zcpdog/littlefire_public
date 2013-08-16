@@ -7,5 +7,5 @@ class Picture < ActiveRecord::Base
     :url => "/system/:imageable/:id/:style/:filename",
     :path => ":rails_root/public:url"
     
-  validates_attachment_size  :image, less_than: 15.megabytes
+  validates_attachment_size  :image, less_than: 1.megabytes
 end

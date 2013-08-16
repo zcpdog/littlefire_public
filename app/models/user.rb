@@ -15,5 +15,7 @@ class User < ActiveRecord::Base
     :styles => { :medium => "115x115>", :thumb => "88x88>", :tiny => "50x50>" },
     :url => "/system/:user/:id/:style/:filename",
     :path => ":rails_root/public:url"
+    
+  validates_attachment_size  :avatar, less_than: 1.megabytes
   
 end
