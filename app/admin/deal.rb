@@ -1,7 +1,7 @@
 ActiveAdmin.register Deal do
+  menu :label => I18n.t("admin.deal"), :priority => 2
   form :html => { :enctype => "multipart/form-data" } do |f|
     f.inputs "Details" do
-      f.input :user
       f.input :category,:input_html=>{:class=>"category"}, :hint=>"选择一级分类"
       f.input :merchant
       f.input :purchase_link
@@ -44,7 +44,7 @@ ActiveAdmin.register Deal do
         link_to(deal.purchase_link,deal.purchase_link,target: "_blank") unless deal.purchase_link.nil?
       end
       row :amazing_price do
-        "小伙伴价格" if deal.amazing_price
+        t("admin.amazing_price") if deal.amazing_price
       end
       row :tile do
         deal.title
@@ -63,6 +63,28 @@ ActiveAdmin.register Deal do
       end
     end
     active_admin_comments
+  end
+  
+  index do
+    column :pictures do |deal|
+      link_to(image_tag(deal.pictures.first.image.url(:tiny)), admin_deal_path(deal))
+    end
+    column :state do |deal|
+      if deal.waiting?
+        status_tag "待审核"
+        
+      end
+    end
+    column :title do |deal|
+      link_to deal.short_title, admin_deal_path(deal)
+    end
+    column :created_at
+    column :updated_at
+    default_actions
+  end
+  
+  index :as => :grid do |deal|
+    link_to(image_tag(deal.pictures.first.image.url(:tiny)), admin_deal_path(deal))
   end
   
   controller do

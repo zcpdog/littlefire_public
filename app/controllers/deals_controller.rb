@@ -40,7 +40,6 @@ class DealsController < ApplicationController
   # POST /models.xml
   def create
     @deal = Deal.new(deal_params)
-    @deal.generate_info
     respond_to do |wants|
       if @deal.save
         flash[:notice] = 'Deal was successfully created.'

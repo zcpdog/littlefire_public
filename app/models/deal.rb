@@ -1,3 +1,4 @@
+require 'nokogiri'
 class Deal < ActiveRecord::Base
   default_scope {order("created_at DESC")}
   require 'domainatrix'
@@ -19,6 +20,10 @@ class Deal < ActiveRecord::Base
   has_many   :pictures, as: :imageable, dependent: :destroy
   accepts_nested_attributes_for :pictures, allow_destroy: true
   
+  before_save :generate_info, if: Proc.new {|deal| deal.new_record?}
+  before_save :update_plain_text, unless: Proc.new {|deal| deal.new_record?}
+  
+  
   aasm_column :state
   aasm do
      state :waiting, :initial => true
@@ -37,27 +42,47 @@ class Deal < ActiveRecord::Base
      event :outmode do
        transitions :from => :showing, :to => :deprecated
      end
-   end
-  
-  def generate_info
-    if links.any?
-      purchase_link = links.first.url
-      domainatrix = Domainatrix.parse(purchase_link)
-      merchant_domain = "#{domainatrix.domain}.#{domainatrix.public_suffix}"
-      merchant =  Merchant.find_by domain: merchant_domain
-    end
-    display_title = title
-    
-    if body.length > 200
-      display_body = body[0..199]
-      display_body_extra = body[200..body.length]
-    else
-      display_body = body
-    end
   end
   
   searchable do
     text :title, :boost => 5
     text :body
+    
+  end
+  handle_asynchronously :solr_index, :queue => 'solr_index'
+  
+  def short_title
+    if title.length > 15
+      title[0,15] << "..."
+    else
+      title
+    end
+  end
+  
+  protected
+  
+  def generate_info
+    if self.links.any?
+      self.purchase_link = self.links.first.url
+      domainatrix = Domainatrix.parse(purchase_link)
+      merchant_domain = "#{domainatrix.domain}.#{domainatrix.public_suffix}"
+      self.merchant =  Merchant.find_by domain: merchant_domain
+    end
+    self.display_title = self.title
+    
+    if self.body.length > 200
+      self.display_body = self.body[0..200]
+      self.display_body_extra = self.body[200..self.body.length]
+    else
+      self.display_body = self.body
+      self.display_body_extra = ""
+    end
+  end
+     
+  def update_plain_text
+    if self.display_body_changed? or self.display_body_extra_changed? or self.display_title_changed?
+      self.body = Nokogiri::HTML(display_body+display_body_extra).text
+      self.title = Nokogiri::HTML(display_title).text
+    end
   end
 end

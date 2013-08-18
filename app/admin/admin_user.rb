@@ -1,4 +1,5 @@
 ActiveAdmin.register AdminUser do
+  menu :label => I18n.t("admin.admin_user"), :parent => I18n.t("admin.management")
   index do
     column :email
     column :current_sign_in_at

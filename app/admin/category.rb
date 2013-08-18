@@ -1,5 +1,5 @@
 ActiveAdmin.register Category do
-  
+  menu :label => I18n.t( "admin.category"), :parent => I18n.t("admin.management")
   
   controller do
     def resource_params

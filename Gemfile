@@ -33,8 +33,9 @@ gem "devise", "~> 3.0.2"
 gem "cancan", "~> 1.6.10"
 gem "aasm", "~> 3.0.20"
 gem "resque", "~> 1.24.1"
-gem "paperclip", '~> 3.0'
-#gem "paperclip", "~> 3.5.1"
+#gem "paperclip", '~> 3.0'
+gem "paperclip", "~> 3.5.1"
+gem "upyun-paperclip", "~> 0.1.5"
 gem 'formtastic', '~> 2.3.0.rc2'
                               
 gem "bootstrap-glyphicons", "~> 0.0.1"
@@ -46,12 +47,16 @@ gem "bootstrap-datepicker-rails", "~> 1.1.1.6"
 gem "domainatrix", "~> 0.0.11"
 gem "sunspot_rails", "~> 2.0.0"
 
+gem "nokogiri", "~> 1.6.0"
 #for active admin
 gem "responders", "~> 1.0.0.rc"
 gem "inherited_resources", "~> 1.4.1"
 gem "ransack", "~> 1.0.0"
 gem 'activeadmin',         github: 'gregbell/active_admin', branch: 'rails4'
 #end for active admin
+
+gem "delayed_job_active_record", "~> 4.0.0"
+gem "daemons", "~> 1.1.9"
 
 gem "active_link_to", "~> 1.0.1"
 

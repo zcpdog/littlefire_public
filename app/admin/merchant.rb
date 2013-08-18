@@ -1,4 +1,5 @@
 ActiveAdmin.register Merchant do
+  menu :label => I18n.t("admin.merchant"), :parent => I18n.t("admin.management")
   form do |f|
     f.inputs "Details" do
       f.input :name
