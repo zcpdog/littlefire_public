@@ -16,11 +16,11 @@ class User::FavoritesController < UserController
   end
   
   def destroy
-    @deal = Deal.find(params[:deal])
-    @deal.destroy
-    respond_to do |wants|
-      wants.html { redirect_to(deals_path) }
-      wants.xml  { head :ok }
+    @favorite = Favorite.find(params[:id])
+    @favorite.destroy
+    respond_to do |format|
+      format.html
+      format.js {render :delete}
     end
   end
 end

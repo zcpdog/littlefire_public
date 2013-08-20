@@ -1,5 +1,6 @@
 class Grade < ActiveRecord::Base
   default_scope {order("created_at DESC")}
+  paginates_per 20
   scope :deal_grades, -> { where(gradable_type: :Deal) }
   belongs_to :gradable, polymorphic: true
   belongs_to :user

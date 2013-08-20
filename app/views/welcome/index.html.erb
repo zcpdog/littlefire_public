@@ -3,10 +3,12 @@
 	<div class="row-fluid">
 		<div class="span9">
 			<%=render "welcome/deal_list", deals: @deals%>
+			<%=paginate @deals%>
 		</div>
 		<div class="span3">
 			<%=render "welcome/right_sidebar"%>
 		</div>
+		
 	</div>
 </div>
 

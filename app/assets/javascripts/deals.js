@@ -1,3 +1,8 @@
+function goback(event_element){
+	$('html, body').animate({
+        scrollTop: event_element.closest("div[id^='deal']").position().top - 50
+    });
+}
 $(document).on("click",".file-upload-btn", function(){
 	$(this).closest("div.file-upload").children(".real-file").click();
 });
@@ -22,11 +27,25 @@ $(document).on("ajax:error",".deal-toolbar-link",function(evt, data, status, xhr
 
 $(document).on("click",".comment-field-cancel",function(){
 	$(this).closest(".comment-field").hide();
+	goback($(this));
 });
 
 $(document).on("click",".deal-body-toggle",function(){
-	$(this).closest("div[id^='deal']").find(".deal-body-extra").toggle();
+	var deal_body_extra=$(this).closest("div[id^='deal']").find(".deal-body-extra")
+	if(deal_body_extra.is(":visible")){
+		deal_body_extra.hide();
+		$(this).html("展开全文<i class='icon-sort-down'></i>");
+		goback($(this));
+	}else{
+		deal_body_extra.show();
+		$(this).html("向上收起<i class='icon-sort-up'></i>");
+	}
 });
+
+$(document).on("click",".deal-show-comment-toggle",function(){
+	$(this).closest("div[id^='deal']").find(".comment-field").toggle();
+});
+
 
 $(document).ready(function(){
 	

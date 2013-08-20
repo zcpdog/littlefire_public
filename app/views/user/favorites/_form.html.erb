@@ -2,13 +2,17 @@
 	<table class="table table-hover">
 		<tbody>
 		  <%favorites.each do |favorite|%>
-	          <tr>
+	          <tr id="favorite<%=favorite.id%>">
 	            <td>
 	            	<%if favorite.deal.pictures.any?%>
-						<%=image_tag favorite.deal.pictures.first.image.url(:tiny) unless favorite.deal.pictures.first.image.nil?%>
+						<%=image_tag favorite.deal.pictures.first.image.url(:tiny), 
+						:height => 50, :width => 50 unless favorite.deal.pictures.first.image.nil?%>
 					<%end%>
 	            </td>
 	            <td><%=link_to favorite.deal.title, deal_path(favorite.deal)%></td>
+				<td>
+					<%=link_to "取消收藏", user_favorite_path(favorite), method: :delete, remote: true%>
+				</td>
 	          </tr>
 		  <%end%>
         </tbody>

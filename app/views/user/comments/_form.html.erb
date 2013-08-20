@@ -5,7 +5,8 @@
 	          <tr>
 	            <td>
 	            	<%if comment.deal.pictures.any?%>
-						<%=image_tag comment.deal.pictures.first.image.url(:tiny) unless comment.deal.pictures.first.image.nil?%>
+						<%=image_tag comment.deal.pictures.first.image.url(:tiny),
+						:height => 50, :width => 50 unless comment.deal.pictures.first.image.nil?%>
 					<%end%>
 	            </td>
 	            <td>

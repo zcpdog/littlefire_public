@@ -35,6 +35,9 @@ gem "aasm", "~> 3.0.20"
 gem "resque", "~> 1.24.1"
 #gem "paperclip", '~> 3.0'
 gem "paperclip", "~> 3.5.1"
+gem "rest-client", "~> 1.6.7"
+gem "carrierwave-upyun", "~> 0.1.6"
+gem "carrierwave", "~> 0.9.0"
 gem "upyun-paperclip", "~> 0.1.5"
 gem 'formtastic', '~> 2.3.0.rc2'
                               
@@ -72,6 +75,7 @@ end
 group :development do
   gem 'quiet_assets'
   gem "capistrano", "~> 2.15.5"
+  gem "mini_magick"
 end
 
 #disable logging of asset pipleline

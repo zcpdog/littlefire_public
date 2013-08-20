@@ -5,17 +5,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   
+  has_one       :picture, as: :imageable, dependent: :destroy
   has_many      :deals
   has_many      :favorites, dependent: :destroy
   has_many      :credit_histories, dependent: :destroy
   has_many      :comments
   has_many      :grades
-  
-  has_attached_file :avatar,
-    :styles => { :medium => "115x115>", :thumb => "88x88>", :tiny => "50x50>" },
-    :url => "/system/:user/:id/:style/:filename",
-    :path => ":rails_root/public:url"
-    
-  validates_attachment_size  :avatar, less_than: 1.megabytes
   
 end

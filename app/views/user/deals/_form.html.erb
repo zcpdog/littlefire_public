@@ -5,7 +5,8 @@
 	          <tr>
 	            <td>
 	            	<%if deal.pictures.any?%>
-						<%=image_tag deal.pictures.first.image.url(:tiny) unless deal.pictures.first.image.nil?%>
+						<%=image_tag deal.pictures.first.image.url(:tiny),
+						:height => 50, :width => 50 unless deal.pictures.first.image.nil?%>
 					<%end%>
 	            </td>
 	            <td><%=link_to(deal.title, deal.purchase_link)%></td>

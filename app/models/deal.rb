@@ -1,9 +1,10 @@
 require 'nokogiri'
+require 'domainatrix'
 class Deal < ActiveRecord::Base
-  default_scope {order("created_at DESC")}
-  require 'domainatrix'
-  paginates_per 20
   include AASM
+  
+  default_scope {order("created_at DESC")}
+  paginates_per 20
   
   belongs_to :user
   belongs_to :category

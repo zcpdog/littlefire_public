@@ -5,7 +5,8 @@
 	          <tr>
 	            <td>
 	            	<%if grade.gradable.pictures.any?%>
-						<%=image_tag grade.gradable.pictures.first.image.url(:tiny) unless grade.gradable.pictures.first.image.nil?%>
+						<%=image_tag grade.gradable.pictures.first.image.url(:tiny),
+						:height => 50, :width => 50 unless grade.gradable.pictures.first.image.nil?%>
 					<%end%>
 	            </td>
 	            <td>
