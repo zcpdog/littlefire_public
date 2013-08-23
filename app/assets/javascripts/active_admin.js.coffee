@@ -1,9 +1,12 @@
 #= require active_admin/base
-#= require tinymce
+#= require tinymce/tinymce.min
 #= require cascading-drop-box
 $(document).ready ->
   tinyMCE.init({
      mode: 'textareas',
      theme : 'modern',
-	 selector: '.tinymce'
+	 selector: '.tinymce',
+	 plugins: "link textcolor image wordcount media preview",
+	 toolbar1: "styleselect | outdent indent | bold italic | link | forecolor | image media | preview",
+	 language: "zh_CN"
    });

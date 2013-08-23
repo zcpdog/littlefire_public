@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:weibo]
   
   has_one       :picture, as: :imageable, dependent: :destroy
   has_many      :deals
@@ -11,5 +11,6 @@ class User < ActiveRecord::Base
   has_many      :credit_histories, dependent: :destroy
   has_many      :comments
   has_many      :grades
+  has_many      :authentications
   
 end

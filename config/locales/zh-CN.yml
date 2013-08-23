@@ -1,46 +1,49 @@
 zh-CN:
-  sign_in: 登录
-  sign_up: 注册
-  email:	电子邮箱
-  username: 用户名
-  password: 密码
-  password_confirmation: 密码确认
-  sign_up_info: 注册成为小伙伴
-  sign_in_info: 登录小伙伴账号
-  remember_me: 记住我
-  go_back: 返回
-  unfold_deal:  展开全文
-  comment_deal: 评论本文
+  sign_in: "登录"
+  sign_up: "注册"
+  email:	"电子邮箱"
+  username: "用户名"
+  password: "密码"
+  password_confirmation: "密码确认"
+  sign_up_info: "注册成为小伙伴"
+  sign_in_info: "登录小伙伴账号"
+  remember_me: "记住我"
+  go_back: "返回"
+  unfold_deal:  "展开全文"
+  comment_deal: "评论本文"
+  post_deal: "爆料"
+  dashboard: "个人中心"
+  sign_out: "登出"
   deal:
-   title: 标题
-   body:  推荐理由
-   location:  购买地区
-   link:  链接
-   due_date:  活动截止日期
-   is_amazing_price: 是否小伙伴价格
-   picture:	上传图片
+   title: "标题"
+   body:  "推荐理由"
+   location:  "购买地区"
+   link:  "链接"
+   due_date:  "活动截止日期"
+   is_amazing_price: "是否小伙伴价格"
+   picture:	"上传图片"
   admin:
-   management: 管理
-   deal: 爆料
-   merchant: 电商
-   admin_user: 管理员
-   comment: 评论
-   category: 分类
-   user: 用户
-   amazing_price: 小伙伴价格
+   management: "管理"
+   deal: "爆料"
+   merchant: "电商"
+   admin_user: "管理员"
+   comment: "评论"
+   category: "分类"
+   user: "用户"
+   amazing_price: "小伙伴价格"
   activerecord:
    models:
-    deal: 爆料
-    merchant: 电商
-    admin_user: 管理员
-    category: 管理员
-    user: 用户
-    comment: 评论
-    grade: 打分
-    favorite: 收藏
-    picture: 图片
-    link: 链接
-    credit_history: 积分记录
+    deal: "爆料"
+    merchant: "电商"
+    admin_user: "管理员"
+    category: "分类"
+    user: "用户"
+    comment: "评论"
+    grade: "打分"
+    favorite: "收藏"
+    picture: "图片"
+    link: "链接"
+    credit_history: "积分记录"
   date:
     abbr_day_names:
     - 日

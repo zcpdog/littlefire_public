@@ -19,3 +19,10 @@ body {
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
 	background-color: #0088cc;
 }
+
+hr.low-margin {
+	margin: 10px 0;
+}
+a.header:visited { 
+	color: #000
+} 

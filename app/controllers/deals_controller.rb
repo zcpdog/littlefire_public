@@ -1,16 +1,23 @@
 class DealsController < ApplicationController
   before_filter :find_model, :only => [:show, :edit, :update, :destroy]
+  #before_filter
   # GET /models
   # GET /models.xml
   def index
-    Sunspot.search(Deal)
-    @search = Sunspot.search(Deal) do
-      fulltext params[:search]
+    if params[:category_id].present?
+      @category = Category.find_by(id: params[:category_id])||Category.first
+      @deals = @category.deals.page params[:page] 
+    else
+      @search = Sunspot.search(Deal) do
+        fulltext params[:search]
+        order_by(:created_at, :desc)
+        paginate :page => params[:page], :per_page => 20
+      end
+      @deals = @search.results
     end
-    @deals = @search.results
     render "welcome/index"
   end
-
+  
   # GET /models/1
   # GET /models/1.xml
   def show

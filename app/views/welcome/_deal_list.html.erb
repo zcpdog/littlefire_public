@@ -1,9 +1,16 @@
 <%deals.each do |deal|%>
 <div id="deal_<%=deal.id%>">
-	<div class="well well-small"><strong><%=link_to deal.display_title.html_safe, deal_path(deal)%></strong></div>
+	<h4><%=link_to deal.display_title.html_safe, deal_path(deal),:class=>:header%></h4>
+	<hr class="low-margin">
 	<div class="row-fluid">
 	  <div class="span9 deal-body">
-	    <div class="deal-body-presview"><%=deal.display_body.html_safe%></div>
+		  <div><a href="javascript:void(0);"><i class="icon-th-list"></i></a>
+			  <%=deal.categories.map{|category|link_to category.name, 
+				  deals_path(:category_id => category.id)}.join(" | ").html_safe if deal.categories.any?%>
+			  <div class="pull-right"><%=deal.created_at.to_formatted_s(:db)%></div>
+		  </div>
+		  <hr class="low-margin">
+	    <div class="deal-body-presview" style="line-height:200%"><%=deal.display_body.html_safe%></div>
 		<div class="deal-body-extra"></div>
 	  </div>
 	  <div class="span3">
@@ -27,5 +34,4 @@
 	</div>
 	<%=render "welcome/toolbar", deal: deal%>
 </div>
-<hr>
 <%end%>

@@ -1,5 +1,8 @@
 <div class="row-fluid">
 	<ul class="breadcrumb deal-toolbar">
+		<li>
+			评价本文<span class="divider"><i class="icon-chevron-right"></i></span>
+		<li>
 	  <li>
 		  <%=link_to "<i class='icon-comments'></i>#{deal.comments.size}".html_safe, 
 		   show_recent_user_deal_comments_path(deal), method: :get, remote: true, 
@@ -18,7 +21,7 @@
 		  <span class="divider">|</span>
 	  </li>
 	  <li>
-		  <%=link_to "<i class='icon-heart-empty'></i>#{deal.favorites.size}".html_safe, 
+		  <%=link_to "<i class='icon-heart'></i>#{deal.favorites.size}".html_safe, 
 		  user_deal_favorites_path(deal), method: :post, remote: true, 
 		  class: "deal-toolbar-link deal-favorite"%>
 		  <span class="divider">|</span>

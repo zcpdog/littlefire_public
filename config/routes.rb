@@ -1,8 +1,9 @@
 Littlefire::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  devise_for :users
-  
+  devise_for :users, controllers: {
+    omniauth_callbacks: :authentications
+  }
   #resources :merchants, only: [:index, :show]
   resources :categories, only: [:index, :show]
   resources :deals, only: [:index, :new, :create, :show]
@@ -28,6 +29,9 @@ Littlefire::Application.routes.draw do
     resources :comments
     resources :favorites
   end
+  
+  get "syncs/:type/new" => "syncs#new", :as => :sync_new
+  get "syncs/:type/callback" => "syncs#callback", :as => :sync_callback
   
   root 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.

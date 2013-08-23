@@ -1,0 +1,10 @@
+development:
+      key:    "144813434"
+      secret: "5f7880a16c798e307a218f8532d8431f"
+      url:    "http://112.124.17.179/"
+      callback: "http://localhost:3000/users/auth/weibo/callback"
+production:
+      key:    "you api key"
+      secret: "your secret"
+      url:    "http://yoursite.com"
+      callback: "http://localhost:3000/your_callback_url"

@@ -7,8 +7,11 @@ class Deal < ActiveRecord::Base
   paginates_per 20
   
   belongs_to :user
-  belongs_to :category
+ 
   belongs_to :merchant
+  
+  has_and_belongs_to_many :categories
+  accepts_nested_attributes_for :categories
   
   has_many   :links, dependent: :destroy
   accepts_nested_attributes_for :links
@@ -23,7 +26,6 @@ class Deal < ActiveRecord::Base
   
   before_save :generate_info, if: Proc.new {|deal| deal.new_record?}
   before_save :update_plain_text, unless: Proc.new {|deal| deal.new_record?}
-  
   
   aasm_column :state
   aasm do
@@ -46,9 +48,12 @@ class Deal < ActiveRecord::Base
   end
   
   searchable do
-    text :title, :boost => 5
-    text :body
-    
+    text :title, :boost => 5,:stored => true
+    text :body,:stored => true
+    time :created_at
+    text :categories do
+      categories.map { |category| category.name }
+    end
   end
   handle_asynchronously :solr_index, :queue => 'solr_index'
   
