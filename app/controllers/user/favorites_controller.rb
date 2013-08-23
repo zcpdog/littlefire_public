@@ -7,11 +7,11 @@ class User::FavoritesController < UserController
     @favorite = Favorite.new
     @favorite.deal= Deal.find params[:deal_id]
     @favorite.user = current_user if user_signed_in?
-    if cookies[:favorited_list].blank?
-      cookies[:favorited_list] = params[:deal_id]
-    else
-      cookies[:favorited_list] = cookies[:favorited_list] << ",#{params[:deal_id]}"
-    end
+    # if cookies[:favorited_list].blank?
+#       cookies[:favorited_list] = params[:deal_id]
+#     else
+#       cookies[:favorited_list] = cookies[:favorited_list] << ",#{params[:deal_id]}"
+#     end
     puts cookies[:favorited_list]
     respond_to do |format|
       if @favorite.save

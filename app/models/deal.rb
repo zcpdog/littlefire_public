@@ -68,7 +68,7 @@ class Deal < ActiveRecord::Base
   protected
   
   def generate_info
-    if self.links.any?
+    if self.links.any? and self.purchase_link.nil?
       self.purchase_link = self.links.first.url
       domainatrix = Domainatrix.parse(purchase_link)
       merchant_domain = "#{domainatrix.domain}.#{domainatrix.public_suffix}"

@@ -5,7 +5,7 @@
 				<div class="row-fluid">
 					<div class="span12">
 					<fieldset>
-						<%= form_for @deal, html: {class: "deal-form"} do |f| %>
+						<%= form_for @deal, html: {class: "deal-form",multipart: true} do |f| %>
 					    <div class="control-group">
 							<div class="controls">
 							<%=f.label :title, t("deal.title")%>

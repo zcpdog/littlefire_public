@@ -14,9 +14,9 @@
 						<img data-src="holder.js/130x130" alt="130x130" >
 					<%else%>
 						<%=image_tag current_user.picture.image.url(:thumb)%>
-					<%end%>
+					<%end%> 
 			        <div class="caption">
-			          <p><a href="#" class="btn btn-primary btn-block">上传照片</a> </p>
+			          <p><a href="#uploader" class="btn btn-primary btn-block" data-toggle="modal">上传照片</a> </p>
 			        </div>
 			      </div>
 			    </div>
@@ -33,4 +33,34 @@
     <hr>
     <%=render "user/common/footer"%>
   </div>
+</div>
+<div id="uploader" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">上传照片</h3>
+  </div>
+  <%=form_for [:user,Picture.new], html: {multipart: true} do |f|%>
+  <div class="modal-body">
+	  <%=f.label :image, t("deal.picture")%>
+	  <div class="file-upload">
+			<div class="row-fluid">
+				<div class="span9">
+					<%=f.file_field :image, class: "real-file required", style: "display:none;" %>
+					<input class="input-block-level file-display-field required"
+						 placeholder="<%=t("deal.picture")%>"  type="text" readonly="readonly">
+	 		 	</div>
+				<div class="span3">
+	      		  <a class="btn btn-primary file-upload-btn"><i class="icon-cloud-upload"></i></i> 
+					  浏览</a>
+			    </div>
+			</div>
+		</div>
+	  
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+	<button class="btn btn-primary" type="submit">Upload</button>
+  </div>
+  <%end%>
+  
 </div>

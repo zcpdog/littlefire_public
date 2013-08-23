@@ -7,6 +7,8 @@ class Grade < ActiveRecord::Base
   
   after_save :update_count
   
+  validates :user , uniqueness: { scope: [:gradable_id, :gradable_type],
+      message: "只能打分一次" }
   private 
   def update_count
     if agree

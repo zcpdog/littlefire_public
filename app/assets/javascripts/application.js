@@ -18,6 +18,7 @@
 //= require holder
 //= require bootstrap-hover-dropdown
 //= require bootstrap-datepicker/core
+//= require bootstrap-fileupload.min
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN
 //= require jquery.validate.min
 //= require deals

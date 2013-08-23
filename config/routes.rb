@@ -16,6 +16,7 @@ Littlefire::Application.routes.draw do
   get 'user/profile' => 'user#profile'
   namespace :user do
     resources :deals, except: :destroy
+    resources :pictures, only: :create
     resources :credit_histories, only: [:index]
     resources :grades, except: :destroy
     resources :deals do

@@ -5,4 +5,7 @@ class Favorite < ActiveRecord::Base
   belongs_to :user
   
   scope :stored_by, ->(user) { where(user: user)}
+  
+  validates :deal, uniqueness: { scope: :user,
+      message: "只能收藏一次" }
 end

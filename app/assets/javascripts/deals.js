@@ -4,7 +4,7 @@ function goback(event_element){
     });
 }
 $(document).on("click",".file-upload-btn", function(){
-	$(this).closest("div.file-upload").children(".real-file").click();
+	$(this).closest("div.file-upload").find(".real-file").click();
 });
 
 $(document).on("change",".real-file", function(){

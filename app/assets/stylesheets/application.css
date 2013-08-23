@@ -12,4 +12,5 @@
  *= require bootstrap_and_overrides
  *= require bootstrap-datepicker
  *= require bootstrap-custom
+ *= require bootstrap-fileupload.min
  */
