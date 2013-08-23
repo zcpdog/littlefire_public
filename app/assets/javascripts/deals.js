@@ -67,7 +67,7 @@ $(document).ready(function(){
 	$('.comment-form').validate({
 	    rules: {
 	      "comment[content]": {
-	        minlength: 10,
+	        minlength: 5,
 			maxlength: 140,
 	        required: true
 	      }
@@ -85,7 +85,7 @@ $(document).ready(function(){
 	 $('.deal-form').validate({
  	    rules: {
 			"deal[title]": {
-				minlength: 15,
+				minlength: 10,
 				maxlength: 80,
 				required: true
 			},

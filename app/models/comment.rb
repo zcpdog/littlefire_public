@@ -7,4 +7,8 @@ class Comment < ActiveRecord::Base
   
   belongs_to :parent, foreign_key: :parent_id, class_name: :Comment
   has_many    :children, foreign_key: :parent_id, class_name: :Comment , dependent: :destroy
+  
+  validates :content, length: { in: 5..140 }, presence: true
+  validates :user, presence: true
+  validates :deal, presence: true
 end

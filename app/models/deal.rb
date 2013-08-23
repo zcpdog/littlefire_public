@@ -7,7 +7,6 @@ class Deal < ActiveRecord::Base
   paginates_per 20
   
   belongs_to :user
- 
   belongs_to :merchant
   
   has_and_belongs_to_many :categories
@@ -26,6 +25,9 @@ class Deal < ActiveRecord::Base
   
   before_save :generate_info, if: Proc.new {|deal| deal.new_record?}
   before_save :update_plain_text, unless: Proc.new {|deal| deal.new_record?}
+  
+  validates :title, length: { in: 10..100}
+  validates :body, length: { maximum: 3000}
   
   aasm_column :state
   aasm do

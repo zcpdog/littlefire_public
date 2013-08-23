@@ -2,7 +2,7 @@ common: &common
   weibo:
     api_key: "144813434"
     api_secret: "5f7880a16c798e307a218f8532d8431f"
-    redirect_uri: "http://112.124.17.179/"
+    redirect_uri: "http://127.0.0.1:3000/users/auth/weibo/callback"
 production:
   <<: *common
 
