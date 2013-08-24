@@ -86,12 +86,12 @@ $(document).ready(function(){
  	    rules: {
 			"deal[title]": {
 				minlength: 10,
-				maxlength: 80,
+				maxlength: 100,
 				required: true
 			},
 			"deal[body]":{
-				minlength: 50,
-				maxlength: 500,
+				minlength: 100,
+				maxlength: 5000,
 				required: true
 			}
  	    },

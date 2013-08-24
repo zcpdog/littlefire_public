@@ -21,9 +21,9 @@ class DealsController < ApplicationController
   # GET /models/1
   # GET /models/1.xml
   def show
-    respond_to do |wants|
-      wants.html # show.html.erb
-      wants.xml  { render :xml => @deal }
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @deal }
     end
   end
 
@@ -33,9 +33,9 @@ class DealsController < ApplicationController
     @deal = Deal.new
     @deal.links.build
     @deal.pictures.build
-    respond_to do |wants|
-      wants.html # new.html.erb
-      wants.xml  { render :xml => @deal }
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @deal }
     end
   end
 
@@ -47,14 +47,12 @@ class DealsController < ApplicationController
   # POST /models.xml
   def create
     @deal = Deal.new(deal_params)
-    respond_to do |wants|
+    respond_to do |format|
       if @deal.save
         flash[:notice] = 'Deal was successfully created.'
-        wants.html { redirect_to(@deal) }
-        wants.xml  { render :xml => @deal, :status => :created, :location => @deal }
+        format.html { redirect_to root_path }
       else
-        wants.html { render :action => "new" }
-        wants.xml  { render :xml => @deal.errors, :status => :unprocessable_entity }
+        format.html { render :action => "new" }
       end
     end
   end
@@ -69,14 +67,14 @@ class DealsController < ApplicationController
   # PUT /models/1
   # PUT /models/1.xml
   def update
-    respond_to do |wants|
+    respond_to do |format|
       if @deal.update_attributes(deal_params)
         flash[:notice] = 'Deal was successfully updated.'
-        wants.html { redirect_to(@deal) }
-        wants.xml  { head :ok }
+        format.html { redirect_to(@deal) }
+        format.xml  { head :ok }
       else
-        wants.html { render :action => "edit" }
-        wants.xml  { render :xml => @deal.errors, :status => :unprocessable_entity }
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @deal.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -86,9 +84,9 @@ class DealsController < ApplicationController
   def destroy
     @deal = Deal.find(params[:deal])
     @deal.destroy
-    respond_to do |wants|
-      wants.html { redirect_to(deals_path) }
-      wants.xml  { head :ok }
+    respond_to do |format|
+      format.html { redirect_to(deals_path) }
+      format.xml  { head :ok }
     end
   end
 

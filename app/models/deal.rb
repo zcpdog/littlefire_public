@@ -2,7 +2,6 @@ require 'nokogiri'
 require 'domainatrix'
 class Deal < ActiveRecord::Base
   include AASM
-  #default_scope {where(state: [:published,:deprecated]).order("created_at DESC")}
   default_scope {where(state: [:published,:deprecated]).order("created_at DESC")}
   paginates_per 20
   
@@ -27,7 +26,7 @@ class Deal < ActiveRecord::Base
   before_save :update_plain_text, unless: Proc.new {|deal| deal.new_record?}
   
   validates :title, length: { in: 10..100}
-  validates :body, length: { maximum: 3000}
+  validates :body, length: { maximum: 5000}
   
   aasm_column :state
   aasm do
