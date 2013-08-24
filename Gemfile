@@ -37,6 +37,8 @@ gem "active_link_to", "~> 1.0.1"
 gem "rvm-capistrano", "~>1.4.4"
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem "mini_magick", "~> 3.6.0"
+gem 'tinymce-rails', github: 'spohlenz/tinymce-rails', branch: 'tinymce-4'
+gem 'tinymce-rails-langs'
 #gem "rack-ssl-enforcer", "~> 0.2.5"
 
 group :doc do

@@ -1,5 +1,5 @@
 #= require active_admin/base
-#= require tinymce/tinymce.min
+#= require tinymce
 #= require cascading-drop-box
 $(document).ready ->
   tinyMCE.init({
