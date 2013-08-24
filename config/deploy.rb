@@ -21,8 +21,9 @@ set :keep_releases, 4
 # if you want to clean up old releases on each deploy uncomment this:
 # after "deploy:restart", "deploy:cleanup"
 after "deploy:setup", "deploy:create_database_yaml"
-before "deploy:assets:precompile","deploy:config_symlink"
-after "deploy:symlink",     "deploy:migrate"
+before "deploy:assets:precompile", "deploy:config_symlink"
+after "deploy:create_symlink", "deploy:migrate"
+
 namespace :deploy do
   desc "Creates database.yml for project/branch"
   task :create_database_yaml do
@@ -34,7 +35,8 @@ namespace :deploy do
   
   desc "copy database.yml to /current_release/config"
   task :config_symlink do
-    run "cp /home/zcpdog/database.yml #{current_release}/config/database.yml"
+    run "ln -nsf #{shared_path}/config/database.yml #{current_release}/config"
+    #run "ln -nsf #{shared_path}/log/production.log #{current_release}/log/production.log"
   end
   
   task :restart do

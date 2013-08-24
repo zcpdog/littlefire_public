@@ -36,6 +36,7 @@ gem "kaminari", "~> 0.14.1"
 gem "active_link_to", "~> 1.0.1"
 gem "rvm-capistrano", "~>1.4.4"
 gem 'bcrypt-ruby', '~> 3.0.0'
+gem "mini_magick", "~> 3.6.0"
 #gem "rack-ssl-enforcer", "~> 0.2.5"
 
 group :doc do
@@ -45,5 +46,4 @@ end
 group :development do
   gem "quiet_assets", "~> 1.0.2"
   gem "capistrano", "~> 2.15.5"
-  gem "mini_magick", "~> 3.6.0"
 end

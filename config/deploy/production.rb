@@ -1,7 +1,7 @@
 server "112.124.17.179", :app, :web, :db, :primary => true
 set :user, "zcpdog"
 set :rails_env, "production"
-set :application, 'production'
+set :application, 'littlefire'
 set :deploy_to,   "/home/zcpdog/var/www/apps/#{application}"
 #set :branch,       "production"
 set :db_user,        "root"
