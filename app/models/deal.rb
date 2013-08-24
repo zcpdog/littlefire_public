@@ -2,8 +2,8 @@ require 'nokogiri'
 require 'domainatrix'
 class Deal < ActiveRecord::Base
   include AASM
-  
-  default_scope {order("created_at DESC")}
+  #default_scope {where(state: [:published,:deprecated]).order("created_at DESC")}
+  default_scope {where(state: [:published,:deprecated]).order("created_at DESC")}
   paginates_per 20
   
   belongs_to :user
@@ -31,21 +31,31 @@ class Deal < ActiveRecord::Base
   
   aasm_column :state
   aasm do
-     state :waiting, :initial => true
-     state :showing
+     state :unchecked, :initial => true
+     state :checking
+     state :accepted
      state :rejected
+     state :published
      state :deprecated
 
+     event :check do
+       transitions :from => :unchecked, :to => :checking
+     end
+     
      event :accept do
-       transitions :from => :waiting, :to => :showing
+       transitions :from => :checking, :to => :accepted
      end
 
      event :reject do
-       transitions :from => :waiting, :to => :rejected
+       transitions :from => [:unchecked, :checking, :accepted], :to => :rejected
+     end
+     
+     event :publish do
+       transitions :from => :accepted, :to => :published, :guard => :ready?
      end
 
-     event :outmode do
-       transitions :from => :showing, :to => :deprecated
+     event :deprecate do
+       transitions :from => :published, :to => :deprecated
      end
   end
   
@@ -65,6 +75,10 @@ class Deal < ActiveRecord::Base
     else
       title
     end
+  end
+  
+  def ready?
+    true
   end
   
   protected

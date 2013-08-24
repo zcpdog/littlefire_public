@@ -4,7 +4,7 @@ class ProductionImageUploader < CarrierWave::Uploader::Base
   storage :upyun
 
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "production/uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
   
   def url(version_name="")

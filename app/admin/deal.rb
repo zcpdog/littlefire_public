@@ -1,5 +1,32 @@
 ActiveAdmin.register Deal do
+  scope :unchecked
+  scope :checking
+  scope :accepted
+  scope :published
+  scope :deprecated
+  scope :rejected
   menu :label => I18n.t("admin.deal"), :priority => 2
+  batch_action :destroy, false
+  batch_action :check, :confirm => I18n.t("admin.confirm") do |selection|
+    Deal.unscoped.find(selection).each {|deal| deal.check! if deal.may_check?}
+    redirect_to collection_path, :notice => "操作成功!"
+  end
+  
+  batch_action :accept, :confirm => I18n.t("admin.confirm") do |selection|
+    Deal.unscoped.find(selection).each {|deal| deal.accept! if deal.may_accept?}
+    redirect_to collection_path, :notice => "操作成功!"
+  end
+  
+  batch_action :publish, :confirm => I18n.t("admin.confirm") do |selection|
+    Deal.unscoped.find(selection).each {|deal| deal.publish! if deal.may_publish?}
+    redirect_to collection_path, :notice => "操作成功!"
+  end
+  
+  batch_action :reject, :confirm => I18n.t("admin.confirm") do |selection|
+    Deal.unscoped.find(selection).each {|deal| deal.reject! if deal.may_reject?}
+    redirect_to collection_path, :notice => "操作成功!"
+  end
+  
   form :html => { :enctype => "multipart/form-data" } do |f|
     f.inputs "Details" do  
       f.input :merchant
@@ -68,12 +95,23 @@ ActiveAdmin.register Deal do
   end
   
   index do
+    selectable_column
     column :pictures do |deal|
       link_to(image_tag(deal.pictures.first.image.url(:tiny)), admin_deal_path(deal)) if deal.pictures.any?
     end
     column :state do |deal|
-      if deal.waiting?
+      if deal.unchecked?
         status_tag "待审核"
+      elsif deal.checking?
+        status_tag "审核中", :warning
+      elsif deal.accepted?
+        status_tag "通过", :warning
+      elsif deal.published?
+        status_tag "发布", :ok
+      elsif deal.deprecated?
+        status_tag "过期", :warning
+      elsif deal.rejected?
+        status_tag "丢弃", :error
       end
     end
     column :title do |deal|
@@ -84,11 +122,14 @@ ActiveAdmin.register Deal do
     default_actions
   end
   
-  index :as => :grid do |deal|
-    link_to(image_tag(deal.pictures.first.image.url(:tiny)), admin_deal_path(deal))
-  end
+  # index :as => :grid do |deal|
+#     link_to(image_tag(deal.pictures.first.try(:image).try(:url(:tiny))), admin_deal_path(deal))
+#   end
   
   controller do
+    def scoped_collection
+      Deal.unscoped
+    end
     def resource_params
       permitted_params = Array.new
       unless request.get?
