@@ -46,7 +46,7 @@ class DealsController < ApplicationController
   # POST /models
   # POST /models.xml
   def create
-    @deal = Deal.new(deal_params)
+    @deal = Deal.unscoped.new(deal_params)
     respond_to do |format|
       if @deal.save
         flash[:notice] = 'Deal was successfully created.'
