@@ -23,6 +23,10 @@ body {
 hr.low-margin {
 	margin: 10px 0;
 }
-a.header:visited { 
+a.header { 
 	color: #000
 } 
+
+div.deal-body-presview {
+	line-height:200%
+}
