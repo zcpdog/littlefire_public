@@ -39,7 +39,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem "mini_magick", "~> 3.6.0"
 gem 'tinymce-rails', github: 'spohlenz/tinymce-rails', branch: 'tinymce-4'
 gem 'tinymce-rails-langs'
-gem 'whenever', :require => false
+gem 'whenever'
 #gem "rack-ssl-enforcer", "~> 0.2.5"
 
 group :doc do
