@@ -2,6 +2,9 @@ require "rvm/capistrano"
 require "bundler/capistrano"
 require 'capistrano/ext/multistage'
 
+set :whenever_environment, defer { production }
+require "whenever/capistrano"
+
 set :stages, ["staging", "production"]
 set :default_stage, "staging"
 default_run_options[:pty] = true

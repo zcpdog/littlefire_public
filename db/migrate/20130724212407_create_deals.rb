@@ -3,7 +3,6 @@ class CreateDeals < ActiveRecord::Migration
     create_table :deals do |t|
       t.references  :user,  index: true
       t.references  :merchant,  index: true
-      t.references  :category,  index: true
       t.string      :state
       t.string      :title
       t.text        :body
