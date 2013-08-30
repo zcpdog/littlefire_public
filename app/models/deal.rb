@@ -25,8 +25,8 @@ class Deal < ActiveRecord::Base
   before_save :generate_info, if: Proc.new {|deal| deal.new_record?}
   before_save :update_plain_text, unless: Proc.new {|deal| deal.new_record?}
   
-  validates :title, length: { in: 10..100}
-  validates :body, length: { maximum: 5000}
+  validates :title, length: { in: 10..255}
+  validates :body, length: { maximum: 10000}
   
   aasm_column :state
   aasm do

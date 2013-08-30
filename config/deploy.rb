@@ -2,9 +2,8 @@ require "rvm/capistrano"
 require "bundler/capistrano"
 require 'capistrano/ext/multistage'
 
-set :whenever_command, "bundle exec whenever"
-set :whenever_environment, defer { production }
 require "whenever/capistrano"
+set :whenever_command, "bundle exec whenever"
 
 set :stages, ["staging", "production"]
 set :default_stage, "staging"

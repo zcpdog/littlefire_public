@@ -1,3 +1,4 @@
+set :whenever_environment, 'production'
 server "112.124.17.179", :app, :web, :db, :primary => true
 set :user, "zcpdog"
 set :rails_env, "production"

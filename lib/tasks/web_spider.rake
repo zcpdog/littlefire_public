@@ -14,9 +14,11 @@ namespace :app do
         deal.merchant = Merchant.find_by(name: raw_deal.merchant)
         deal.categories.push raw_deal.category.split(",").
           map{|cat_name|Category.find_by(name: cat_name.strip)}.reject { |c| c.nil? }
-        picture = Picture.new
-        picture.remote_image_url = raw_deal.pro_img
-        deal.pictures.push picture
+          raw_deal.image.split(",").each do |image_url|
+          picture = Picture.new
+          picture.remote_image_url = image_url
+          deal.pictures.push picture
+        end
         deal.clone = true
         deal.save!
       rescue Exception => e
