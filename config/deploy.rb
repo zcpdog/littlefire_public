@@ -32,10 +32,11 @@ namespace :deploy do
   task :create_database_yaml do
     sudo "mkdir -p #{shared_path}/config"
     sudo "chown #{user}:#{user} #{shared_path}/config"
-    db = {"#{rails_env}" => {'adapter' => db_adapter, 'encoding' => db_encoding, 
-      'database' => "#{remote_db_name}", 'username' => db_user, 'password' => db_password}, 
+    db = {
+      "#{rails_env}" => {'adapter' => db_adapter, 'encoding' => db_encoding, 
+        'database' => "#{remote_db_name}", 'username' => db_user, 'password' => db_password}, 
       "aws" =>{'adapter' => aws_db_adapter, 'encoding' => aws_db_encoding, 
-        'database' => "aws_db_database", 'username' => aws_db_user, 'password'=> aws_db_password, 
+        'database' => aws_db_database, 'username' => aws_db_user, 'password' => aws_db_password, 
         'port' => aws_db_port, 'timeout' => aws_db_timeout, 'host' => aws_db_host}}
     put db.to_yaml, "#{shared_path}/config/database.yml"
   end
