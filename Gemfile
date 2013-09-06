@@ -40,6 +40,7 @@ gem "mini_magick", "~> 3.6.0"
 gem 'tinymce-rails', github: 'spohlenz/tinymce-rails', branch: 'tinymce-4'
 gem 'tinymce-rails-langs'
 gem "whenever", "~> 0.8.4"
+gem "resque_mailer", "~> 2.2.4"
 #gem "rack-ssl-enforcer", "~> 0.2.5"
 
 group :doc do
