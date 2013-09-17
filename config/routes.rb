@@ -1,4 +1,5 @@
 Littlefire::Application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users, controllers: {
@@ -7,6 +8,7 @@ Littlefire::Application.routes.draw do
   #resources :merchants, only: [:index, :show]
   resources :categories, only: [:index, :show]
   resources :deals, only: [:index, :new, :create, :show]
+  resources :posts, only: [:index, :new, :create, :show]
   resources :deals do
     member do
       get 'unfold'

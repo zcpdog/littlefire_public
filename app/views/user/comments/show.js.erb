@@ -1,11 +1,11 @@
-if($("#deal_<%=@comment.deal_id%>").find("tbody").length>0){
-	$("#deal_<%=@comment.deal_id%>").find("tbody").prepend("<tr><td><%=@comment.content%></td></tr>");
+if($("#deal_<%=@comment.commentable_id%>").find("tbody").length>0){
+	$("#deal_<%=@comment.commentable_id%>").find("tbody").prepend("<tr><td><%=@comment.content%></td></tr>");
 }else{
-	$("#deal_<%=@comment.deal_id%>").find(".comment-content").
+	$("#deal_<%=@comment.commentable_id%>").find(".comment-content").
 		html("<table class='table table-bordered'><tbody><tr><td><%=@comment.content%></td></tr></tbody></table>");
 }
-var comment_link=$("#deal_<%=@comment.deal_id%>").find(".deal-show-comment")
+var comment_link=$("#deal_<%=@comment.commentable_id%>").find(".deal-show-comment")
 var child = comment_link.children();
 comment_link.text(parseInt(comment_link.text())+1);
 comment_link.prepend(child);
-$("#deal_<%=@comment.deal_id%>").find(".comment-area").val("");
+$("#deal_<%=@comment.commentable_id%>").find(".comment-area").val("");

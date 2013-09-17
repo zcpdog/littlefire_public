@@ -28,5 +28,4 @@ module DealsHelper
 #       f.hidden_field(:_destroy) + link_to_function(name, "remove_form_partial(this)", :class => "buttony top")
 #     end
 
-
 end

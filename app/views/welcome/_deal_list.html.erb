@@ -7,14 +7,14 @@
 		  <div><a href="javascript:void(0);"><i class="icon-th-list"></i></a>
 			  <%=deal.categories.map{|category|link_to category.name, 
 				  deals_path(:category_id => category.id)}.join(" | ").html_safe if deal.categories.any?%>
-			  <div class="pull-right"><%=deal.created_at.to_formatted_s(:db)%></div>
+			  <div class="pull-right"><%=time_ago_in_words deal.created_at%>前@<%=deal.merchant.try(:name)%></div>
 		  </div>
 		  <hr class="low-margin">
 	    <div class="deal-body-presview"><%=deal.display_body.html_safe%></div>
 		<div class="deal-body-extra"></div>
 	  </div>
 	  <div class="span3">
-		<div class="thumbnail">
+		<div class="thumbnail">	
 			<%if deal.pictures.any?%>
 				<%=image_tag deal.pictures.first.image.url(:thumb), class: "media-object"%>
 			<%else%>

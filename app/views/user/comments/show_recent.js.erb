@@ -1,4 +1,4 @@
-var deal_field = $("#deal_<%=@deal_id%>");
+var deal_field = $("#deal_<%=@deal.id%>");
 deal_field.find(".comment-field").show();
 deal_field.find(".comment-content").html("<%=escape_javascript(render(partial: 'user/comments/comments_form', locals: { comments: @comments }))%>");
 deal_field.find(".deal-show-comment").attr("href","javascript:void(0);").addClass("deal-show-comment-toggle");

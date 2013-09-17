@@ -3,6 +3,7 @@ require 'domainatrix'
 class Deal < ActiveRecord::Base
   include AASM
   default_scope {where(state: [:published,:deprecated]).order("created_at DESC")}
+  scope :owned_by, ->(user) { where(user: user)}
   paginates_per 20
   
   belongs_to :user
@@ -14,8 +15,8 @@ class Deal < ActiveRecord::Base
   has_many   :links, dependent: :destroy
   accepts_nested_attributes_for :links
   
-  has_many   :comments, dependent: :destroy
-  has_many   :favorites,  dependent: :destroy
+  has_many   :comments, as: :commentable, dependent: :destroy
+  has_many   :favorites, as: :favorable, dependent: :destroy
   has_many   :grades, as: :gradable, dependent: :destroy
   has_many   :reports, dependent: :destroy
   

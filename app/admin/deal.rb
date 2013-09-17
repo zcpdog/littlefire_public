@@ -44,14 +44,17 @@ ActiveAdmin.register Deal do
       end
     end
     f.inputs "Title" do
-      f.input :display_title, label: "Title", input_html: { :class => "tinymce" }
+      f.input :display_title, as: :ckeditor, :input_html => { :ckeditor => {:language => "zh-cn"} }
     end
-    f.inputs "Reason" do
-      f.input :display_body, label: "Reason", input_html: { :class => "tinymce" }
+    
+    f.inputs "Body" do
+      f.input :display_body, as: :ckeditor, :input_html => { :ckeditor => {:language => "zh-cn"} }
     end
-    f.inputs "Extra" do
-      f.input :display_body_extra, label: "Extra", input_html: { :class => "tinymce" }
+    
+    f.inputs "Extra Body" do
+      f.input :display_body_extra, as: :ckeditor, :input_html => { :ckeditor => {:language => "zh-cn"} }
     end
+   
     f.inputs "Pictures" do
       f.has_many :pictures do |picture|
         picture.input :image, :as => :file, :label => "Image",

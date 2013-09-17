@@ -4,13 +4,13 @@
 		  <%comments.each do |comment|%>
 	          <tr>
 	            <td>
-	            	<%if comment.deal.pictures.any?%>
-						<%=image_tag comment.deal.pictures.first.image.url(:tiny),
-						:height => 50, :width => 50 unless comment.deal.pictures.first.image.nil?%>
+	            	<%if comment.commentable.pictures.any?%>
+						<%=image_tag comment.commentable.pictures.first.image.url(:tiny),
+						:height => 50, :width => 50 unless comment.commentable.pictures.first.image.nil?%>
 					<%end%>
 	            </td>
 	            <td>
-	            	<%=link_to comment.deal.title, deal_path(comment.deal)%>
+	            	<%=link_to comment.commentable.title, eval("#{comment.commentable_type.downcase}_path")(comment.commentable)%>
 					<br>
 					你的评论: <%=comment.content%>
 	            </td>

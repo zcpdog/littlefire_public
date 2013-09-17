@@ -1,6 +1,7 @@
 # encoding: utf-8
 
 class ProductionImageUploader < CarrierWave::Uploader::Base
+  #include Ckeditor::Backend::CarrierWave
   storage :upyun
 
   def store_dir

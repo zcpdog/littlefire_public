@@ -1,8 +1,5 @@
 class Picture < ActiveRecord::Base
   belongs_to :imageable, polymorphic: true
-  
-  #validates :imageable_id, presence: true
-  #validates :imageable_type, presence: true
   validates :image, presence: true
   
   if Rails.env.production?

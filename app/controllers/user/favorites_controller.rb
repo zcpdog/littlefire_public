@@ -1,18 +1,12 @@
 class User::FavoritesController < UserController
   def index
-    @favorites = Favorite.page params[:page]
+    @favorites = Favorite.owned_by(current_user).page params[:page]
   end
   
   def create
     @favorite = Favorite.new
-    @favorite.deal= Deal.find params[:deal_id]
-    @favorite.user = current_user if user_signed_in?
-    # if cookies[:favorited_list].blank?
-#       cookies[:favorited_list] = params[:deal_id]
-#     else
-#       cookies[:favorited_list] = cookies[:favorited_list] << ",#{params[:deal_id]}"
-#     end
-    puts cookies[:favorited_list]
+    @favorite.favorable= Deal.find params[:deal_id]
+    @favorite.user = current_user
     respond_to do |format|
       if @favorite.save
         format.html

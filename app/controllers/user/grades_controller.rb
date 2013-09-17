@@ -1,6 +1,6 @@
 class User::GradesController < UserController
   def index
-    @grades = Grade.deal_grades.page params[:page]
+    @grades = Grade.deal_grades.owned_by(current_user).page params[:page]
   end
   
   def create
