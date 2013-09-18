@@ -13,6 +13,9 @@ Littlefire::Application.routes.draw do
     member do
       get 'unfold'
     end
+    collection do
+      get 'search'
+    end
   end
   get 'user/dashboard' => 'user#dashboard'
   get 'user/profile' => 'user#profile'

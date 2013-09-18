@@ -25,6 +25,8 @@ zh-CN:
   admin:
    management: "管理"
    deal: "爆料"
+   post: "文章"
+   label: "标签"
    merchant: "电商"
    admin_user: "管理员"
    comment: "评论"

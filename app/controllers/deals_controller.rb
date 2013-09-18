@@ -4,6 +4,13 @@ class DealsController < ApplicationController
   # GET /models
   # GET /models.xml
   def index
+    @deals = Deal.order('id DESC').page params[:page]
+    respond_to do |wants|
+      wants.html # index.html.erb
+    end
+  end
+  
+  def search
     if params[:category_id].present?
       @category = Category.find_by(id: params[:category_id])||Category.first
       @deals = @category.deals.page params[:page] 
@@ -23,7 +30,6 @@ class DealsController < ApplicationController
   def show
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @deal }
     end
   end
 
@@ -35,7 +41,6 @@ class DealsController < ApplicationController
     @deal.pictures.build
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @deal }
     end
   end
 
@@ -71,10 +76,8 @@ class DealsController < ApplicationController
       if @deal.update_attributes(deal_params)
         flash[:notice] = 'Deal was successfully updated.'
         format.html { redirect_to(@deal) }
-        format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @deal.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -86,7 +89,6 @@ class DealsController < ApplicationController
     @deal.destroy
     respond_to do |format|
       format.html { redirect_to(deals_path) }
-      format.xml  { head :ok }
     end
   end
 

@@ -1,12 +1,12 @@
 <div class="navbar">
   <div class="navbar-inner">
     <ul class="nav">
-      <li class="active"><%=link_to "首页", root_path%></li>
-	  <li><%=link_to "购物经验", posts_path(label: :experience)%></li>
+      <%=active_link_to "折扣频道", deals_path, :wrap_tag => :li%>
+	  <%=active_link_to "经验频道", posts_path, :wrap_tag => :li%>
       <li><a href="javascript:void(0);">其他频道即将上线</a></li>
     </ul>
-		
-	<%= form_tag deals_path, :method => :get, class: "navbar-form pull-right" do %>
+	
+	<%= form_tag search_deals_path, :method => :get, class: "navbar-form pull-right" do %>
 	    <%= text_field_tag :search, params[:search], class: "span2" %>
 	    <%= submit_tag "搜索" , class: "btn"%>
 	<% end %>	

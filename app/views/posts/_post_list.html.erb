@@ -1,0 +1,31 @@
+<%posts.each do |post|%>
+<div id="deal_<%=post.id%>">
+	<h4><%=link_to post.title.html_safe, post_path(post),:class=>:header%></h4>
+	<hr class="low-margin">
+	<div class="row-fluid">
+	  <div class="span9 deal-body">
+		  <div><a href="javascript:void(0);"><i class="icon-th-list"></i></a>
+			  <%=post.categories.map{|category|link_to category.name, 
+				  posts_path(:category_id => category.id)}.join(" | ").html_safe if post.categories.any?%>
+			  <div class="pull-right"><%=time_ago_in_words post.created_at%>前</div>
+		  </div>
+		  <hr class="low-margin">
+	    <div class="deal-body-presview"><%=post.plain_text_body[0..199].html_safe%></div>
+		<div class="deal-body-extra"></div>
+	  </div>
+	  <div class="span3">
+		<div class="thumbnail">	
+			<%if post.pictures.any?%>
+				<%=image_tag post.pictures.first.image.url(:thumb), class: "media-object"%>
+			<%else%>
+		    	<img data-src="holder.js/130x130" alt="" class="media-object">
+			<%end%>
+	      	<div class="caption">
+				<%=link_to "查看全文", post_path(post), class: "btn btn-block"%>
+	      	</div>
+	    </div>
+	  </div>
+	</div>
+	<%#=render "welcome/toolbar", deal: deal%>
+</div>
+<%end%>

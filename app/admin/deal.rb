@@ -70,7 +70,9 @@ ActiveAdmin.register Deal do
       row :user do
         link_to deal.user.username admin_user_path(deal.user) unless deal.user.nil?
       end
-      row :categories
+      row :categories do
+        deal.categories.map{|category| category.name }.join(",")
+      end
       row :merchant
       row :purchase_link do
         link_to(deal.purchase_link,deal.purchase_link,target: "_blank") unless deal.purchase_link.nil?
@@ -125,10 +127,6 @@ ActiveAdmin.register Deal do
     default_actions
   end
   
-  # index :as => :grid do |deal|
-#     link_to(image_tag(deal.pictures.first.try(:image).try(:url(:tiny))), admin_deal_path(deal))
-#   end
-  
   controller do
     def scoped_collection
       Deal.unscoped
@@ -136,7 +134,7 @@ ActiveAdmin.register Deal do
     def resource_params
       permitted_params = Array.new
       unless request.get?
-        permitted_params.push params.require(:deal).permit(:merchant_id,:categoy_id,:purchase_link,
+        permitted_params.push params.require(:deal).permit(:merchant_id,:purchase_link,
           :location,:due_date,:amazing_price,[links_attributes: [:url,:id,:_destroy]], :display_title,
           :display_body, :display_body_extra,[pictures_attributes: [:image, :id, :_destroy]],:category_ids=>[])
       end

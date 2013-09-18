@@ -2,6 +2,7 @@ require 'nokogiri'
 require 'domainatrix'
 class Deal < ActiveRecord::Base
   include AASM
+  
   default_scope {where(state: [:published,:deprecated]).order("created_at DESC")}
   scope :owned_by, ->(user) { where(user: user)}
   paginates_per 20
@@ -93,7 +94,7 @@ class Deal < ActiveRecord::Base
     self.display_title = self.title
     
     if self.body.length > 200
-      self.display_body = self.body[0..200]
+      self.display_body = self.body[0..199]
       self.display_body_extra = self.body[200..self.body.length]
     else
       self.display_body = self.body
