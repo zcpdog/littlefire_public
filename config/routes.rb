@@ -7,7 +7,6 @@ Littlefire::Application.routes.draw do
   }
   #resources :merchants, only: [:index, :show]
   resources :categories, only: [:index, :show]
-  resources :deals, only: [:index, :new, :create, :show]
   resources :posts, only: [:index, :new, :create, :show]
   resources :deals do
     member do
@@ -17,6 +16,7 @@ Littlefire::Application.routes.draw do
       get 'search'
     end
   end
+  resources :deals, only: [:index, :new, :create, :show]
   get 'user/dashboard' => 'user#dashboard'
   get 'user/profile' => 'user#profile'
   namespace :user do
