@@ -7,7 +7,7 @@
 		  <div><a href="javascript:void(0);"><i class="icon-th-list"></i></a>
 			  <%=deal.categories.map{|category|link_to category.name, 
 				  deals_path(:category_id => category.id)}.join(" | ").html_safe if deal.categories.any?%>
-			  <div class="pull-right"><%=time_ago_in_words deal.created_at%>前@<%=deal.merchant.try(:name)%></div>
+			  <div class="pull-right"><%#time_ago_in_words deal.created_at%><%=deal.merchant.try(:name)%></div>
 		  </div>
 		  <hr class="low-margin">
 	    <div class="deal-body-presview"><%=deal.display_body.html_safe%></div>
