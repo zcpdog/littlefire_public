@@ -1,6 +1,6 @@
 #source 'https://rubygems.org'
 source 'http://ruby.taobao.org/'
-gem 'rails', '4.0.0'
+gem "rails", "~> 4.0.2"
 gem "mysql2", "~> 0.3.13"
 gem "sass-rails", "~> 4.0.0"
 gem 'uglifier', '>= 1.3.0'
@@ -41,6 +41,7 @@ gem "whenever", "~> 0.8.4"
 gem "resque_mailer", "~> 2.2.4"
 gem "ckeditor", "~> 4.0.6"
 #gem "rack-ssl-enforcer", "~> 0.2.5"
+gem "foundation-rails", "~> 5.0.2.0"
 
 group :doc do
   gem 'sdoc', require: false
