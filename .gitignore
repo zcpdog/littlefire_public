@@ -9,6 +9,7 @@ tmp/*
 public/system/*
 public/uploads/*
 public/data/*
+public/assets/*
 vendor/cache
 .bundle
 *.log

@@ -10,7 +10,7 @@
 				<%end%>
             </td>
             <td><%=link_to favorite.favorable.title,
-				 eval("#{favorite.favorable_type.downcase}_path")(favorite.favorable)%></td>
+				 eval("#{favorite.favorable_type.downcase}_path(#{favorite.favorable_id})")%></td>
 			<td>
 				<%=link_to "取消收藏", user_favorite_path(favorite), method: :delete, remote: true%>
 			</td>

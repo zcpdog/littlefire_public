@@ -5,4 +5,6 @@ class WelcomeController < ApplicationController
       wants.html # index.html.erb
     end
   end
+  def notify
+  end
 end

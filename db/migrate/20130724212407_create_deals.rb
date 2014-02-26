@@ -4,26 +4,19 @@ class CreateDeals < ActiveRecord::Migration
       t.references  :user,  index: true
       t.references  :merchant,  index: true
       t.string      :state
+      t.string      :name
       t.string      :title
-      t.text        :body
+      t.text        :content
       t.string      :location
       t.datetime    :due_date
       t.boolean     :amazing_price
+      t.string      :link
       t.string      :purchase_link
-      
-      t.string      :display_title
-      t.text        :display_body
-      t.text        :display_body_extra
       
       t.integer     :comments_count, default: 0
       t.integer     :agree_count,  default: 0
       t.integer     :disagree_count,  default: 0
       t.integer     :favorites_count, default: 0
-      
-      t.string      :type
-      t.string      :original_site
-      t.string      :original_link
-      t.boolean     :clone
       
       t.timestamps
     end

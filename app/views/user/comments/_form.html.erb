@@ -10,7 +10,7 @@
 					<%end%>
 	            </td>
 	            <td>
-	            	<%=link_to comment.commentable.title, eval("#{comment.commentable_type.downcase}_path")(comment.commentable)%>
+	            	<%=link_to comment.commentable.title, eval("#{comment.commentable_type.downcase}_path(#{comment.commentable_id})")%>
 					<br>
 					你的评论: <%=comment.content%>
 	            </td>

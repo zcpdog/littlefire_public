@@ -14,7 +14,8 @@ Littlefire::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -25,7 +26,16 @@ Littlefire::Application.configure do
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
-  config.assets.debug = true
+  config.assets.debug = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      :port           => 587,
+      :address        => 'smtp.mailgun.org',
+      :user_name      => 'postmaster@maishoudang.com',
+      :password       => '0pwanpvbs6f1',
+      :domain         => 'maishoudang.com',
+      :authentication => :plain,
+  }
   
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 end

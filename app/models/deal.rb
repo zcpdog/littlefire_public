@@ -3,32 +3,29 @@ require 'domainatrix'
 class Deal < ActiveRecord::Base
   include AASM
   
-  default_scope {where(state: [:published,:deprecated]).order("created_at DESC")}
+  #default_scope {where(state: [:published,:deprecated]).order("created_at DESC")}
   scope :owned_by, ->(user) { where(user: user)}
-  paginates_per 20
+  #paginates_per 20
   
   belongs_to :user
   belongs_to :merchant
   
   has_and_belongs_to_many :categories
-  accepts_nested_attributes_for :categories
-  
-  has_many   :links, dependent: :destroy
-  accepts_nested_attributes_for :links
   
   has_many   :comments, as: :commentable, dependent: :destroy
   has_many   :favorites, as: :favorable, dependent: :destroy
   has_many   :grades, as: :gradable, dependent: :destroy
   has_many   :reports, dependent: :destroy
   
-  has_many   :pictures, as: :imageable, dependent: :destroy
-  accepts_nested_attributes_for :pictures, allow_destroy: true
+  has_one   :picture, as: :imageable, dependent: :destroy
+  accepts_nested_attributes_for :picture, allow_destroy: true
   
   before_save :generate_info, if: Proc.new {|deal| deal.new_record?}
-  before_save :update_plain_text, unless: Proc.new {|deal| deal.new_record?}
+  before_save :update_name, unless: Proc.new {|deal| deal.new_record?}
   
+  validates :name, length: { in: 5..50}
   validates :title, length: { in: 10..255}
-  validates :body, length: { maximum: 10000}
+  validates :content, length: { maximum: 10000}
   
   aasm_column :state
   aasm do
@@ -82,30 +79,53 @@ class Deal < ActiveRecord::Base
     true
   end
   
+  rails_admin do
+    list do
+      field :id
+      field :name
+      field :state
+    end
+    edit do
+      field :categories do
+        nested_form false
+        inverse_of :deals
+      end
+      field :merchant
+      field :purchase_link
+      field :title, :ck_editor
+      field :content, :ck_editor
+      field :due_date, :datetime
+      field :amazing_price
+      field :picture
+    end
+  end
+  
   protected
   
-  def generate_info
-    if self.links.any? and self.purchase_link.nil?
-      self.purchase_link = self.links.first.url
-      domainatrix = Domainatrix.parse(purchase_link)
-      merchant_domain = "#{domainatrix.domain}.#{domainatrix.public_suffix}"
-      self.merchant =  Merchant.find_by domain: merchant_domain
-    end
-    self.display_title = self.title
+    # def generate_info
+#       if self.links.any? and self.purchase_link.nil?
+#         self.purchase_link = self.links.first.url
+#         domainatrix = Domainatrix.parse(purchase_link)
+#         merchant_domain = "#{domainatrix.domain}.#{domainatrix.public_suffix}"
+#         self.merchant =  Merchant.find_by domain: merchant_domain
+#       end
+#       self.display_title = self.title
+#     
+#       if self.body.length > 200
+#         self.display_body = self.body[0..199]
+#         self.display_body_extra = self.body[200..self.body.length]
+#       else
+#         self.display_body = self.body
+#         self.display_body_extra = ""
+#       end
+#     end
     
-    if self.body.length > 200
-      self.display_body = self.body[0..199]
-      self.display_body_extra = self.body[200..self.body.length]
-    else
-      self.display_body = self.body
-      self.display_body_extra = ""
+    def generate_info
+      self.name = Nokogiri::HTML(title).text.gsub(/&nbsp;/,"").strip unless self.title.nil?
+      self.purchase_link = self.link unless self.link.nil?
     end
-  end
-     
-  def update_plain_text
-    if self.display_body_changed? or self.display_body_extra_changed? or self.display_title_changed?
-      self.body = Nokogiri::HTML(display_body+display_body_extra).text
-      self.title = Nokogiri::HTML(display_title).text
+    
+    def update_name
+      self.name = Nokogiri::HTML(title).text.gsub(/&nbsp;/,"").strip if self.title_changed?
     end
-  end
 end

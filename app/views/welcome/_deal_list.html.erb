@@ -13,15 +13,13 @@
 	    <div class="deal-body-presview"><%=deal.display_body.html_safe%></div>
 		<div class="deal-body-extra" style="display:none;">
 			<%=deal.display_body_extra.try(:html_safe)%>
-			<%deal.pictures.each do |pic|%>
-				<%=image_tag pic.image.url(:large)%>
-			<%end%>
+			<%deal.picture.image.url(:large)%>
 		</div>
 	  </div>
 	  <div class="span3">
 		<div class="thumbnail">	
-			<%if deal.pictures.any?%>
-				<%=image_tag deal.pictures.first.image.url(:thumb), class: "media-object"%>
+			<%if deal.picture.present?%>
+				<%=image_tag deal.picture.image.url(:thumb), class: "media-object"%>
 			<%else%>
 		    	<img data-src="holder.js/130x130" alt="" class="media-object">
 			<%end%>

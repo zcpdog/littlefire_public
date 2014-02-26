@@ -1,10 +1,10 @@
+require 'sidekiq/web'
 Littlefire::Application.routes.draw do
+  devise_for :admin_users
+  devise_for :users, :controllers=>{:registrations => "registrations",:passwords => "passwords"}
   mount Ckeditor::Engine => '/ckeditor'
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
-  devise_for :users, controllers: {
-    omniauth_callbacks: :authentications
-  }
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+  mount Sidekiq::Web => '/sidekiq'
   #resources :merchants, only: [:index, :show]
   resources :categories, only: [:index, :show]
   resources :posts, only: [:index, :new, :create, :show]
@@ -19,6 +19,7 @@ Littlefire::Application.routes.draw do
   resources :deals, only: [:index, :new, :create, :show]
   get 'user/dashboard' => 'user#dashboard'
   get 'user/profile' => 'user#profile'
+  
   namespace :user do
     resources :deals, except: :destroy
     resources :pictures, only: :create
@@ -40,6 +41,7 @@ Littlefire::Application.routes.draw do
   get "syncs/:type/callback" => "syncs#callback", :as => :sync_callback
   
   root 'welcome#index'
+  get 'welcome/notify' => 'welcome#notify'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

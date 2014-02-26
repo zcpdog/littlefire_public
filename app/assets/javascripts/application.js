@@ -24,6 +24,8 @@
 //= require deals
 //= require devise
 //= require messages_zh
+//= require ckeditor/override
+//= require ckeditor/init
 
 //= require turbolinks
 

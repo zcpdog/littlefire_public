@@ -4,6 +4,7 @@ class CreateMerchants < ActiveRecord::Migration
       t.string  :name
       t.string  :link
       t.string  :domain
+      t.string  :code
       
       t.timestamps
     end
