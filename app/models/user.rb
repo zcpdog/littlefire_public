@@ -1,10 +1,9 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
-  # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,:async,:confirmable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:weibo]
-  
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable, :confirmable, :lockable,
+         :recoverable, :rememberable, :trackable, :validatable, :async
+
   has_one       :picture, as: :imageable, dependent: :destroy
   has_many      :deals
   has_many      :favorites, dependent: :destroy
@@ -23,5 +22,4 @@ class User < ActiveRecord::Base
       field :credit
     end
   end
-  
 end

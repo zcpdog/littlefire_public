@@ -1,11 +1,10 @@
 require 'sidekiq/web'
 Littlefire::Application.routes.draw do
-  devise_for :admin_users
   devise_for :users, :controllers=>{:registrations => "registrations",:passwords => "passwords"}
+  devise_for :admin_users, :controllers=>{:registrations => "registrations",:passwords => "passwords"}
   mount Ckeditor::Engine => '/ckeditor'
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   mount Sidekiq::Web => '/sidekiq'
-  #resources :merchants, only: [:index, :show]
   resources :categories, only: [:index, :show]
   resources :posts, only: [:index, :new, :create, :show]
   resources :deals do
