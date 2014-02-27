@@ -37,9 +37,8 @@ gem "resque_mailer", "~> 2.2.6"
 gem "ckeditor", "~> 4.0.10"
 gem "foundation-rails", "~> 5.1.1.0"
 gem "rails_admin", "~> 0.6.1"
-gem "rails_admin-i18n", "~> 0.0.9"
 gem 'paper_trail', '~> 3.0.0'
-gem "rails_admin_state", "~> 1.3.2"
+#gem "rails_admin_state", "~> 1.3.2"
 gem "mailgun", "~> 0.7"
 gem "sidekiq", "~> 2.17.6"
 gem "sinatra", "~> 1.4.4", :require => nil

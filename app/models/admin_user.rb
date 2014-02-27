@@ -1,33 +1,38 @@
 class AdminUser < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
-  # :lockable, :timeoutable and :omniauthable
+  has_paper_trail
   devise :database_authenticatable, 
          :recoverable, :rememberable, :trackable, :validatable, :timeoutable
+         
   rails_admin do
     list do
       field :id
       field :username
       field :email
-      field :current_sign_in_at
+      field :role do
+        pretty_value do
+          ROLES_CN[bindings[:object].role]
+        end
+      end
       field :current_sign_in_ip
-      field :role
+      field :current_sign_in_at
+    end
+    edit do
+      field :username
+      field :email
+      field :role, :enum do 
+        enum do
+          ROLES_ENUM[ROLES_RANK[bindings[:view]._current_user.role]..ROLES_RANK.size-1].reverse
+        end
+      end
     end
   end
   
   ROLES = ["admin","manager","staff"]
-  ROLES_RANK = {"admin"=>1,"manager"=>2,"staff"=>3}
-  ROLES_CN = {"admin"=>"系统管理员","manager"=>"管理员","staff"=>"员工"}
+  ROLES_RANK = {"admin"=>0,"manager"=>1,"staff"=>2}
+  ROLES_CN = {"admin"=>I18n.t("role.admin"),"manager"=>I18n.t("role.manager"),"staff"=>I18n.t("role.staff")}
+  ROLES_ENUM = [[I18n.t("role.admin"),"admin"],[I18n.t("role.manager"),"manager"],[I18n.t("role.staff"),"staff"]]
   
-  def admin?
-    role.eql? "admin"
-  end
-  
-  def manager?
-    role.eql? "manager"
-  end
-  
-  def staff?
-    role.eql? "staff"
+  def has_role? the_role
+    role.eql? the_role
   end
 end

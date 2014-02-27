@@ -1,6 +1,6 @@
 <%deals.each do |deal|%>
 <div id="deal_<%=deal.id%>">
-	<h4><%=link_to deal.display_title.html_safe, deal_path(deal),:class=>:header%></h4>
+	<h4><%=link_to deal.title.html_safe, deal_path(deal),:class=>:header%></h4>
 	<hr class="low-margin">
 	<div class="row-fluid">
 	  <div class="span9 deal-body">
@@ -10,7 +10,7 @@
 			  <div class="pull-right"><%#time_ago_in_words deal.created_at%><%=deal.merchant.try(:name)%></div>
 		  </div>
 		  <hr class="low-margin">
-	    <div class="deal-body-presview"><%=deal.display_body.html_safe%></div>
+	    <div class="deal-body-presview"><%=deal.content%></div>
 		<div class="deal-body-extra" style="display:none;">
 			<%=deal.display_body_extra.try(:html_safe)%>
 			<%deal.picture.image.url(:large)%>

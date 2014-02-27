@@ -2,7 +2,7 @@ require 'nokogiri'
 require 'domainatrix'
 class Deal < ActiveRecord::Base
   include AASM
-  
+  has_paper_trail
   #default_scope {where(state: [:published,:deprecated]).order("created_at DESC")}
   scope :owned_by, ->(user) { where(user: user)}
   #paginates_per 20
@@ -23,7 +23,6 @@ class Deal < ActiveRecord::Base
   before_save :generate_info, if: Proc.new {|deal| deal.new_record?}
   before_save :update_name, unless: Proc.new {|deal| deal.new_record?}
   
-  validates :name, length: { in: 5..50}
   validates :title, length: { in: 10..255}
   validates :content, length: { maximum: 10000}
   
@@ -101,25 +100,6 @@ class Deal < ActiveRecord::Base
   end
   
   protected
-  
-    # def generate_info
-#       if self.links.any? and self.purchase_link.nil?
-#         self.purchase_link = self.links.first.url
-#         domainatrix = Domainatrix.parse(purchase_link)
-#         merchant_domain = "#{domainatrix.domain}.#{domainatrix.public_suffix}"
-#         self.merchant =  Merchant.find_by domain: merchant_domain
-#       end
-#       self.display_title = self.title
-#     
-#       if self.body.length > 200
-#         self.display_body = self.body[0..199]
-#         self.display_body_extra = self.body[200..self.body.length]
-#       else
-#         self.display_body = self.body
-#         self.display_body_extra = ""
-#       end
-#     end
-    
     def generate_info
       self.name = Nokogiri::HTML(title).text.gsub(/&nbsp;/,"").strip unless self.title.nil?
       self.purchase_link = self.link unless self.link.nil?

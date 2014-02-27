@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_paper_trail
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable, :lockable,
@@ -19,6 +20,15 @@ class User < ActiveRecord::Base
       field :email
       field :current_sign_in_at
       field :current_sign_in_ip
+      field :credit
+    end
+    edit do
+      field :username do
+        read_only true
+      end
+      field :email do
+        read_only true
+      end
       field :credit
     end
   end

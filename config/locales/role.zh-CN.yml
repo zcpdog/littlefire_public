@@ -1,0 +1,5 @@
+zh-CN:
+  role:
+    admin: "系统管理员"
+    manager: "管理员"
+    staff: "员工"

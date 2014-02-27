@@ -1,4 +1,5 @@
 class Category < ActiveRecord::Base
+  has_paper_trail
   belongs_to  :parent, foreign_key: :parent_id , class_name: :Category
   has_many    :children, foreign_key: :parent_id , class_name: :Category , dependent: :destroy
   has_and_belongs_to_many :deals
