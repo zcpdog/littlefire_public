@@ -6,9 +6,10 @@ production:
   
 development:
  solr:
-  hostname: 192.168.56.102
+  hostname: 23.253.41.149
   port: 8080
   log_level: INFO
+  path: /solr
 
 test:
  solr:

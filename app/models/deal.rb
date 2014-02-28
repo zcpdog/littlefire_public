@@ -5,7 +5,6 @@ class Deal < ActiveRecord::Base
   has_paper_trail
   #default_scope {where(state: [:published,:deprecated]).order("created_at DESC")}
   scope :owned_by, ->(user) { where(user: user)}
-  #paginates_per 20
   
   belongs_to :user
   belongs_to :merchant
@@ -57,14 +56,14 @@ class Deal < ActiveRecord::Base
   end
   
   searchable do
-    text :title, :boost => 5,:stored => true
+    text :name, :boost => 5,:stored => true
+    text :content,:stored => true
     text :body,:stored => true
     time :created_at
     text :categories do
       categories.map { |category| category.name }
     end
   end
-  handle_asynchronously :solr_index, :queue => 'solr_index'
   
   def short_title
     if title.length > 15

@@ -10,10 +10,9 @@
 			  <div class="pull-right"><%#time_ago_in_words deal.created_at%><%=deal.merchant.try(:name)%></div>
 		  </div>
 		  <hr class="low-margin">
-	    <div class="deal-body-presview"><%=deal.content%></div>
+	    <div class="deal-body-presview"><%=(deal.content||deal.display_body).try(:html_safe)%></div>
 		<div class="deal-body-extra" style="display:none;">
-			<%=deal.display_body_extra.try(:html_safe)%>
-			<%deal.picture.image.url(:large)%>
+			<%#=deal.display_.try(:html_safe)%>
 		</div>
 	  </div>
 	  <div class="span3">
