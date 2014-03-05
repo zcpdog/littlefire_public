@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require foundation
 
 //= require twitter/bootstrap
 //= require holder
@@ -24,11 +25,18 @@
 //= require deals
 //= require devise
 //= require messages_zh
+
 //= require ckeditor/override
 //= require ckeditor/init
+//= require ckeditor/config
+//= require jquery.menu-aim
+//= require main
+//= require comment
+//= require recommend
 
 //= require turbolinks
 
 
 
 
+$(function(){ $(document).foundation(); });

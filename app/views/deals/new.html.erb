@@ -1,92 +1,34 @@
-<div class="container-fluid">
-	<div class="row-fluid">
-		<div class="span9">
-			<div class="panel">
-				<div class="row-fluid">
-					<div class="span12">
-					<fieldset>
-						<%= form_for @deal, html: {class: "deal-form",multipart: true} do |f| %>
-					    <div class="control-group">
-							<div class="controls">
-							<%=f.label :title, t("deal.title")%>
-							<%= f.text_field :title, autofocus: true, placeholder: t("deal.title"), class: "input-block-level" %>
-							</div>
-					    </div>
-						 <%= f.fields_for :links do |builder| %>
-   						 <div class="fields control-group">
-   							<div class="controls">
-							 	<div class="row-fluid">
-							 		<div class="span11">
-									<%=builder.label :url, t("deal.link")%>
-						 			<%=builder.text_field :url, placeholder: t("deal.link"), class: "input-block-level required url" %>
-									</div>
-						 		</div>
-						 	</div>
-						 </div>
-						 <% end %>
- 						<div class="control-group">
- 						  <p class="pull-right"><%= link_to_add_fields "Add Link", f, :links %></p>
- 					    </div>
-						<div class="control-group">
-							<div class="controls">
-							  <%=f.label :body, t("deal.body")%>
-							  <%= f.text_area :body, class: "input-block-level", rows: "6", placeholder: "请填写理由，100至5000字" %>
-					  		</div>
-					    </div>
-						 <%= f.fields_for :pictures do |builder| %>
-						 <div class="fields control-group">
-							 <div class="controls">
-							 	<div class="row-fluid">
-							 		<div class="span11 file-upload">
-										<%=builder.label :image, t("deal.picture")%>
-										<%=builder.file_field :image, class: "real-file", style: "display:none;" %>
-										<div class="row-fluid">
-											<div class="span9">
-												<input class="input-block-level file-display-field required"
-													 placeholder="<%=t("deal.picture")%>"  type="text" readonly="readonly">
-								 		 	</div>
-											<div class="span3">
-								      		  <a class="btn btn-primary file-upload-btn"><i class="icon-cloud-upload"></i></i> 
-												  浏览</a>
-										    </div>
-										</div>
-							 		</div>
-							 	</div>
-							</div>
-						 </div>
-						 <% end %>
-   						<div class="control-group">
- 							<div class="controls">
-   						  	  <div class="pull-right"><%= link_to_add_fields "Add Picture", f, :pictures %></div>
- 						    </div>
-   					    </div>
-						 <hr>
-						 <div class="control-group">
-							<div class="controls">
-		  					<%=f.label :location, t("deal.location")%>
-		  					<%= f.text_field :location, placeholder: t("deal.location"), class: "input-block-level" %>
-							</div>
-		  			    </div>
-					    <div class="control-group" >
-							<div class="controls">
-							<%=f.label :due_date, t("deal.due_date")%>
-							<%= f.text_field :due_date, placeholder: t("deal.due_date"), class: "input-block-level datepicker"%>
-							</div>
-					    </div>
-					    <div class="control-group">
-						    <div class="checkbox">
-						      <%= f.check_box :amazing_price%>
-							  <%= f.label :amazing_price, t("deal.is_amazing_price") %>
-						    </div>
-					    </div>
-						  <%= f.submit "Create", class: "btn btn-primary" %>
-						  <%=link_to t(:go_back), root_path%>
-						<% end %>
-					</fieldset>
-					</div>
-				</div>
-			</div>
+<div class="main">              
+	<div class="yui3-g-r margin30">
+	  <div class="yui3-u-2-3">
+      <h1>我要爆料</h1>
+	  <%= form_for Deal.new, html: {class: "want-bomb"} do |f| %>
+	  	<div class="fgroup">
+			<%=f.label :purchase_link, t("deal.link")%>
+			<%= f.text_field :purchase_link, placeholder: "~粘帖商品链接地址", class: "yui3-u-3-4" %>
 		</div>
+		<div class="fgroup">
+			<%=f.label :title, t("deal.title")%>
+			<%= f.text_field :title, placeholder: "~爆料标题", class: "yui3-u-3-4" %>
+		</div>
+		<div class="fgroup">
+			<%=f.label :content, t("deal.body")%>
+	  		<%= f.text_area :content, class: "yui3-u-3-4", 
+			rows: "15", placeholder: "需要什么优惠券？凑单品？限定特殊地区？都可以写在这里。爆料出无需小编修改的优惠，有额外积分奖励。" %>
+		</div>
+		<div class="fgroup">
+	  		<button type="submit" style="width:77.5%" class="btn btn-primary go yui3-u-3-4">写好了，提交</button>
+		</div>
+	  <% end %>
+	  </div>
+	  <div class="yui3-u-1-3">
+	    <div class="color6 bomb-tip">
+	        <h3>如何提交一篇好爆料</h3>
+	        <p>1. 品牌佳、价格优、描述精（全站活动？还是分仓特惠）</p>
+	        <p>2. 例行推荐，比如每日Myhabit、每日易迅天黑黑活动集合不再接受</p>
+	        <p>3. 小众精品请多写几句，给小编科普科普，特别优秀爆料，有额外积分奖励。</p>
+			<%=link_to "<< 返回首页", root_path%>
+	    </div>    
+	  </div>
 	</div>
 </div>
-

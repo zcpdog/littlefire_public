@@ -1,0 +1,43 @@
+<div class="nav-content">
+
+    <!-- nav start -->
+    <div class="nav clearfix">
+
+        <!-- part start -->
+        <ul class="pull-left ul-f">
+            <li id="categroy">
+                <a href="#"><i class="icon-list"></i>所有分类</a>
+            </li>
+            
+            <li>
+				<%=link_to "首页", root_path, class: "current"%>
+            </li>
+			
+            <li>
+				<%=link_to "发现频道", "javascript:void(0)"%>
+            </li>
+            
+            <li>
+				<%=link_to "名人堂", "javascript:void(0)"%>
+            </li>
+			
+        </ul>
+        <ul class="pull-right ul-f">
+            <li>
+                
+				<%=link_to '<i class="icon-write"></i>我要爆料'.html_safe, new_deal_path%>
+            </li>
+            <li>
+                <a href="http://www.mgpyh.com/solarize/want_to_show/">我要发现</a>
+            </li>
+        </ul>
+        <!-- part stop -->
+
+        <!-- category start -->
+        <%=render "layouts/commons/menu"%>
+        <!-- category stop -->
+
+    </div>
+    <!-- nav stop -->
+
+</div>

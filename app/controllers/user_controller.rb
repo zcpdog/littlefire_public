@@ -5,6 +5,10 @@ class UserController< ApplicationController
     @comments  = Comment.all.limit(5)
   end
   
+  def show
+    @user = User.find_by(username: params[:username]) || not_found
+    @objs  = Comment.owned_by(@user)
+  end
   def profile
     render "user/profile/show"
   end

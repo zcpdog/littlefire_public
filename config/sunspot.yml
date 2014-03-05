@@ -10,6 +10,12 @@ development:
   port: 8080
   log_level: INFO
   path: /solr
+  
+# development:
+#  solr:
+#   hostname: localhost
+#   port: 8983
+#   log_level: WARNING
 
 test:
  solr:

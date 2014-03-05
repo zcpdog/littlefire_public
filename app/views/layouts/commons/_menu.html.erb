@@ -1,0 +1,21 @@
+<div style="left: -162px;" class="categroy-menu" id="categroy-menu">
+    <h1>所有分类</h1>
+    <ul class="dropdown-menu" role="menu">
+		<%Category.root.each do |category|%>
+        <li data-submenu-id="submenu-<%=category.id%>">
+			<%=link_to category.name, "/search?category_id=#{category.id}"%>
+            <div id="submenu-<%=category.id%>" class="popover">
+                <h3 class="popover-title"><%=category.name%></h3>
+                <div class="popover-content">
+					<%category.children.each do |cat|%>
+						<%=link_to cat.name, "/search?category_id=#{cat.id}"%>
+					<%end%>
+                    <!-- <a href="javascript:void(0)" class="area-ad">
+						<%#=image_tag category.picture.image(:thumb)%>
+                    </a> -->
+                </div>
+            </div>
+        </li>
+        <%end%>
+    </ul>
+</div>

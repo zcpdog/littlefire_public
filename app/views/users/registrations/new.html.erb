@@ -1,0 +1,36 @@
+<h1>注册maishoudang.com</h1>
+<%=form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|%>
+	<%=devise_error_messages!%>
+	<div class="control">
+		<%=f.label :email, t(:email)%>
+		<%=f.email_field :email%>
+	</div>
+	<div class="control">
+		<%=f.label :username, t(:username)%>
+		<%=f.text_field :username%>
+	</div>
+	<div class="control">
+    	<%=f.label :password, t(:password)%>
+    	<%=f.password_field :password%>
+	</div>
+	<div class="control">
+		<%=f.label :password_confirmation, t(:password_confirmation)%>
+		<%=f.password_field :password_confirmation%> 
+	</div>
+	<div class="yui3-g">
+    	<button type="submit" class="btn btn-success yui3-u-1-4"><%=t(:sign_up)%></button>
+	</div>
+    <!-- <div class="third-login title-line">
+        <h2><span>直接使用合作账号登录</span></h2>
+        <div class="yui3-g">
+            <a href="#" class="yui3-u-1-2"><img src=/static/img/sina.png ></a>
+            <a href="#" class="yui3-u-1-2"><img src=/static/img/qq.png ></a>
+        </div>
+    </div> -->
+    <div class="no-account title-line">
+        <h2><span>已有账号？</span></h2>
+        <div>
+			<%= link_to "直接登录", new_session_path(resource_name),:class=> "btn" %><br/>
+        </div>
+    </div>
+<%end%>

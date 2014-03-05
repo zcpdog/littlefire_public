@@ -1,11 +1,11 @@
 require 'nokogiri'
-require 'domainatrix'
 class Deal < ActiveRecord::Base
   include AASM
   has_paper_trail
-  #default_scope {where(state: [:published,:deprecated]).order("created_at DESC")}
+  default_scope {order("created_at DESC")}
   scope :owned_by, ->(user) { where(user: user)}
-  
+  scope :active, ->{ where(state: [:published,:deprecated])}
+  paginates_per 20
   belongs_to :user
   belongs_to :merchant
   
@@ -19,12 +19,12 @@ class Deal < ActiveRecord::Base
   has_one   :picture, as: :imageable, dependent: :destroy
   accepts_nested_attributes_for :picture, allow_destroy: true
   
-  before_save :generate_info, if: Proc.new {|deal| deal.new_record?}
-  before_save :update_name, unless: Proc.new {|deal| deal.new_record?}
+  before_save :update_content_plain_text, if: Proc.new {|deal| deal.content_changed?}
+  before_save :update_name, if: Proc.new {|deal| deal.title_changed?}
   
-  validates :title, length: { in: 10..255}
+  validates :title, length: { in: 5..200}
   validates :content, length: { maximum: 10000}
-  
+  validates_presence_of :title, :content
   aasm_column :state
   aasm do
      state :unchecked, :initial => true
@@ -55,32 +55,25 @@ class Deal < ActiveRecord::Base
      end
   end
   
-  searchable do
-    text :name, :boost => 5,:stored => true
-    text :content,:stored => true
-    text :body,:stored => true
-    time :created_at
-    text :categories do
+  searchable :ignore_attribute_changes_of => [ :purchase_link, :comments_count, :grades_count, 
+      :favorites_ount, :updated_at, :due_date, :amazing_price ] do
+    text :title, :boost => 5, :stored => true
+    text :content_plain_text, :stored => true
+    string :state, :stored => true
+    text :categories, :stored => true do
       categories.map { |category| category.name }
     end
-  end
-  
-  def short_title
-    if title.length > 15
-      title[0,15] << "..."
-    else
-      title
-    end
+    time :created_at, :stored => true
   end
   
   def ready?
-    true
+    picture.present? and purchase_link.present? and categories.any?
   end
   
   rails_admin do
     list do
       field :id
-      field :name
+      field :title
       field :state
     end
     edit do
@@ -90,21 +83,19 @@ class Deal < ActiveRecord::Base
       end
       field :merchant
       field :purchase_link
-      field :title, :ck_editor
+      field :title
       field :content, :ck_editor
       field :due_date, :datetime
-      field :amazing_price
       field :picture
     end
   end
   
   protected
-    def generate_info
-      self.name = Nokogiri::HTML(title).text.gsub(/&nbsp;/,"").strip unless self.title.nil?
-      self.purchase_link = self.link unless self.link.nil?
+    def update_content_plain_text
+      self.content_plain_text = Nokogiri::HTML(content).text.gsub(/&nbsp;/,"")
     end
     
     def update_name
-      self.name = Nokogiri::HTML(title).text.gsub(/&nbsp;/,"").strip if self.title_changed?
+      self.name = Nokogiri::HTML(title).text.gsub(/&nbsp;/,"");
     end
 end

@@ -1,21 +1,17 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>我和我的小伙伴们都惊呆了</title>
-  <!--[if lt IE 9]>
-      <%= javascript_include_tag "html5shiv" %>
-  <![endif]-->
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application","data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-	<%=render "/layouts/navbar"%>
-	<%=render "/layouts/header"%>
-	<header class="jumbotron subhead" id="overview">
-	  
-	</header>
-  	<%=yield%>
-</body>
-
+	<head>
+	  <title>麦收档</title>
+	  <%= stylesheet_link_tag    "application", media: "all" %>
+	  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+	  <%= csrf_meta_tags %>
+	</head>
+	<body>
+		<%=render "layouts/commons/header"%>
+		<%=render "layouts/commons/navbar"%>
+		<%= yield %>
+		<div class="clearfix"></div>
+		<div id="push"></div>
+		<%=render "layouts/commons/footer"%>
+	</body>
 </html>

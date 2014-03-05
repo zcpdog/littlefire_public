@@ -1,0 +1,18 @@
+<div class="main">
+	<div class="yui3-g-r">
+		<div class="yui3-u-1 fixed-sidebar">
+			<div class="hot margin30 yui3-u pull-left left-margin">
+			    <h1 class="head">
+			            搜索关键字：<span style="color:#DC3D45"><%=@keyword%></span>
+			    </h1>
+			    <div class="items">
+    				<%=render "deals/items"%>
+			    </div>
+			    <div class="text-center margin30">
+			        <%=paginate @deals, :theme => 'my_theme', :window => 3%>
+			    </div>
+			</div>
+			<%=render "layouts/commons/right_side"%>
+		</div>
+	</div>
+</div>

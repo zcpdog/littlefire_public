@@ -1,0 +1,45 @@
+<div class="main">
+            	<!--user homepage -->
+                <div class="user-hp-content">
+                	<div class="yui3-g-r userhome-hd">
+                        <div class="yui3-u-1 person">
+                            <a href="#">
+								<%=image_tag @user.picture.image.url(:thumb), class: "avatar"%>
+                            </a>
+                            <div class="yui3-u">
+                                <p>
+                                    <span class="nickname"><%=@user.username%></span>
+                                </p>
+                                <!-- <p class="credits">
+                                    历史积分：0
+                                </p>
+                                 <p>
+                                     可用积分：0 <a href="#">去兑换</a>
+                                 </p>
+	                            <p>
+	                                <a href="/user/score_history">积分历史</a>
+	                            </p> -->
+                                <p>
+                                    加入时间 <%=l @user.created_at, :format => :long%>
+                                </p>
+                            </div>    
+                        </div>
+						
+                        <div class="user-hp-nav yui3-g-r">
+                            <a class="yui3-u-1-5" id="my_bomb" href="javascript:void(0);">我的爆料</a>
+                            <a class="yui3-u-1-5" id="my_comment" href="javascript:void(0);">我的评论</a>
+							<a class="yui3-u-1-5 current" href="/user/zcpdog123/">我的收藏</a>
+                            <a class="yui3-u-1-5" id="my_solarize" href="javascript:void(0);">我的发现</a>
+							<a class="yui3-u-1-5" id="my_solarize" href="javascript:void(0);">我点的赞</a>
+                        </div>
+                    </div>
+                    
+                    <div id="mgpyh-timeline" class="clearfix" data-name="<%=@user.username%>" data-next="2014-02">
+						<%= render partial: "user/common/items", locals: {objs: @objs} %>
+                    </div>
+                    <div id="stance"><img src=/static/img/loading.gif></div>
+                    
+                </div>
+            </div>
+            <div id="push"></div>
+        </div>

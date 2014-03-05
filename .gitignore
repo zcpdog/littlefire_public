@@ -22,3 +22,4 @@ db/*.sql
 # piv config file:
 .piv
 dump.rdb
+solr/*

@@ -1,0 +1,21 @@
+<li>
+    <div class="w28-img">
+		<%=image_tag "comment.user.picture.image", class: "avatar"%>
+    </div>
+    <div class="cmtcnt yui3-u-1">
+        <div class="eR">
+            <div class="cmtune">
+				<%=link_to comment.user.username, "javascript:void(0);"%>
+                <span><%=time_ago_in_words comment.created_at%></span>
+            </div>  
+            <div class="HA">
+                <a href="javascript:;" class="dR report" 
+					data-commentid="110111" title="举报垃圾评论" style="display: none;">举报</a>
+                <a href="#commentPs" class="d-s Kv dR" data-target="@<%=comment.user.username%>">回复</a>
+            </div>  
+        </div>
+        <div class="Ct">
+        	<p><%=comment.content.try(:html_safe)%></p>
+        </div>
+    </div>
+</li>

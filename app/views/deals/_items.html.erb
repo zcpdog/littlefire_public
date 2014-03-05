@@ -1,0 +1,41 @@
+<%@deals.each do |deal|%>
+    <div class="item yui3-g-r <%= cycle("odd", "even") -%>">
+        <div class="time yui3-u-1-12">
+            <span><%=time_ago_in_words deal.created_at%></span>
+        </div>
+        <div class="content yui3-u-2-3">
+            <h1 class="title">
+				<%=link_to deal.title, deal_path(deal), :target=>"_blank"%>
+			</h1>
+            <div class="post-wrap post-hide">
+                <div class="post">
+                    <%=deal.content.try(:html_safe)%>
+                </div>    
+            </div>
+            <div class="entry-share margin20 clearfix">
+                <div class="share-content clearfix">
+                    <div class="pull-left">
+                        <span>分类：</span><a href="http://www.mgpyh.com/category/39?is_subcate=True">皮具箱包</a>
+                    </div>
+                    <div class="pull-left">
+                        <span>热度：</span><a href="javascript:;">41°</a>
+                    </div>
+                    <div class="pull-left">
+                        
+                        <a href="javascript:;" class="add-like" data-id="/recommend/kate-spade-new-york-cobble-hill-tenley-/">收藏</a>
+                        
+                    </div>
+                    <div class="pull-left">
+                        <a href="http://www.mgpyh.com/recommend/kate-spade-new-york-cobble-hill-tenley-/#commentWrap">评论</a>
+                    </div>
+                    <div style="visibility: hidden;" class="more pull-right"><a href="#">全文 ↓</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-1-4 thumb">
+            <img src="mgpyh/60a05037gw1edz6myp9qpj20ek0ey3zx.jpg" alt="">
+			<%#=image_tag deal.picture.image.url(:thumb)%>
+            <a class="btn btn-danger" target="_blank" href="http://www.mgpyh.com/goods/g2bqp">直达链接</a>
+        </div>
+    </div>
+<%end%>

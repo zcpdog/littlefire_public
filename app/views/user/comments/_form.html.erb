@@ -4,9 +4,9 @@
 		  <%comments.each do |comment|%>
 	          <tr>
 	            <td>
-	            	<%if comment.commentable.pictures.any?%>
-						<%=image_tag comment.commentable.pictures.first.image.url(:tiny),
-						:height => 50, :width => 50 unless comment.commentable.pictures.first.image.nil?%>
+	            	<%if comment.commentable.picture.present?%>
+						<%=image_tag comment.commentable.picture.image.url(:tiny),
+						:height => 50, :width => 50 unless comment.commentable.picture.image.nil?%>
 					<%end%>
 	            </td>
 	            <td>
