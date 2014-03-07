@@ -1,6 +1,12 @@
 class User::FavoritesController < UserController
   def index
-    @favorites = Favorite.owned_by(current_user).page params[:page]
+    @obj_class = Favorite.name.downcase.pluralize
+    @objs = Favorite.owned_by(@user).month_of(@current_time)
+    @stop = beyond_date?
+    respond_to do |format|
+      format.html {render "user/show"}
+      format.js {render "user/common/index"}
+    end
   end
   
   def create

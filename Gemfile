@@ -5,9 +5,8 @@ gem "sass-rails", "~> 4.0.1"
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.1'
 gem "less-rails", "~> 2.4.2"
-gem "twitter-bootstrap-rails"
 gem "therubyracer", "~> 0.12.1"
-gem "jquery-rails", "~> 3.0.4"
+gem "jquery-rails", "~> 3.1.0"
 gem "turbolinks", "~> 1.3.0"
 gem "jquery-turbolinks", "~> 1.0.0"
 gem 'jbuilder', '~> 1.2'
@@ -18,9 +17,6 @@ gem "aasm", "~> 3.0.26"
 gem "rest-client", "~> 1.6.7"
 gem "carrierwave-upyun", "~> 0.1.6"
 gem "carrierwave", "~> 0.10.0"
-gem "bootstrap-glyphicons", "~> 0.0.1"
-gem "bootstrap-datepicker-rails", "~> 1.1.1.11"
-gem "domainatrix", "~> 0.0.11"
 gem "sunspot_rails", "~> 2.1.0"
 gem "sunspot-queue", "~> 0.10.2"
 gem "omniauth-weibo-oauth2", "~> 0.3.0"
@@ -32,12 +28,13 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem "mini_magick", "~> 3.6.0"
 gem "whenever", "~> 0.9.0"
 gem "ckeditor", "~> 4.0.10"
-gem "foundation-rails", "~> 5.1.1.0"
 gem "rails_admin", "~> 0.6.1"
 gem 'paper_trail', '~> 3.0.0'
 gem "sidekiq", "~> 2.17.6"
 gem "sinatra", "~> 1.4.4", :require => nil
 gem "redis-store", "~> 1.1.4"
+gem "holder_rails", "~> 2.3.1"
+
 group :doc do
   gem 'sdoc', require: false
 end

@@ -4,7 +4,11 @@ class Deal < ActiveRecord::Base
   has_paper_trail
   default_scope {order("created_at DESC")}
   scope :owned_by, ->(user) { where(user: user)}
-  scope :active, ->{ where(state: [:published,:deprecated])}
+  scope :active, ->{ where(state: ACTIVE_STATES)}
+  scope :month_of, ->(time) { where(created_at: time..time+1.month)}
+  
+  ACTIVE_STATES = ["published","deprecated"]
+  
   paginates_per 20
   belongs_to :user
   belongs_to :merchant
@@ -20,7 +24,7 @@ class Deal < ActiveRecord::Base
   accepts_nested_attributes_for :picture, allow_destroy: true
   
   before_save :update_content_plain_text, if: Proc.new {|deal| deal.content_changed?}
-  before_save :update_name, if: Proc.new {|deal| deal.title_changed?}
+  before_save :update_title
   
   validates :title, length: { in: 5..200}
   validates :content, length: { maximum: 10000}
@@ -73,7 +77,7 @@ class Deal < ActiveRecord::Base
   rails_admin do
     list do
       field :id
-      field :title
+      field :name
       field :state
     end
     edit do
@@ -83,11 +87,19 @@ class Deal < ActiveRecord::Base
       end
       field :merchant
       field :purchase_link
-      field :title
+      field :title, :ck_editor
       field :content, :ck_editor
       field :due_date, :datetime
       field :picture
     end
+  end
+  
+  def active?
+    ACTIVE_STATES.include? self.state
+  end
+  
+  def owned_by? theuser
+    self.user == theuser
   end
   
   protected
@@ -95,7 +107,8 @@ class Deal < ActiveRecord::Base
       self.content_plain_text = Nokogiri::HTML(content).text.gsub(/&nbsp;/,"")
     end
     
-    def update_name
+    def update_title
       self.name = Nokogiri::HTML(title).text.gsub(/&nbsp;/,"");
+      self.title.gsub!(/<(\/)?p>/,"");
     end
 end

@@ -10,7 +10,8 @@ class CreatePosts < ActiveRecord::Migration
       t.text        :plain_text_body
       t.string      :state
       
-      t.integer     :comments_count, default: 0
+      t.integer     :comments_count,  default: 0
+      t.integer     :grades_count,    default: 0
       t.integer     :favorites_count, default: 0
       
       t.timestamps

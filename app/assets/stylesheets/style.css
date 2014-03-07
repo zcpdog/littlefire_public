@@ -1412,7 +1412,7 @@ form.want-bomb .btn-block { margin-top: 15px }
     background: #fff;
     padding: 10px 0;
 }
-#mgpyh-timeline {
+#msd-timeline {
     background: url(/assets/time-line-v.png) repeat-y center top;
     padding: 20px 0;
 }
@@ -2026,7 +2026,7 @@ body.solarize-body {
 	}
 	.hot .content img { max-width: 90% }
 	.upload-img { padding: 20px 0 0 40px }
-	#mgpyh-timeline {
+	#msd-timeline {
 	    padding-left: 20px;
 	    padding-right: 20px;
 	}

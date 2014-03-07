@@ -2,7 +2,7 @@
     <!-- product_test start -->
 	<div class="yui3-g-r margin30 xmas-hidden">
 	    <!-- slide start -->
-	    <div class="yui3-u-3-4" id="slidebox">
+	    <!-- <div class="yui3-u-3-4" id="slidebox">
 	        <a href="#" class="unslider-arrow prev">Previous slide</a>
 	        <a href="#" class="unslider-arrow next">Next slide</a>
 	        <div id="slideshow">
@@ -40,7 +40,7 @@
 	                </ul>
 	            <ol class="dots"><li class="dot">1</li><li class="dot">2</li><li class="dot">3</li><li class="dot">4</li><li class="dot active">5</li></ol></div> 
 	        </div>
-	    </div>
+	    </div> -->
 	    <!-- slide stop -->
 
 	    <div class="yui3-u-1-4">
@@ -95,7 +95,7 @@
 					<%=render "deals/items"%>
 				</div>
 			    <div class="text-center margin30">
-			        <div id="stance"><img src="mgpyh/loading.gif"></div>
+			        <div id="stance"><%=image_tag "loading.gif"%></div>
 			        <%=paginate @deals, :theme => 'my_theme', :window => 3%>
 			    </div>
 			   	<a style="display:none" href="#" data-next="2" data-type="newest" class="loadmore btn yui3-u-2-3">载入更多推荐</a>

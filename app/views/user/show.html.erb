@@ -26,19 +26,24 @@
                         </div>
 						
                         <div class="user-hp-nav yui3-g-r">
-                            <a class="yui3-u-1-5" id="my_bomb" href="javascript:void(0);">我的爆料</a>
-                            <a class="yui3-u-1-5" id="my_comment" href="javascript:void(0);">我的评论</a>
-							<a class="yui3-u-1-5 current" href="/user/zcpdog123/">我的收藏</a>
-                            <a class="yui3-u-1-5" id="my_solarize" href="javascript:void(0);">我的发现</a>
-							<a class="yui3-u-1-5" id="my_solarize" href="javascript:void(0);">我点的赞</a>
+                            <a class="yui3-u-1-5 my_info <%='current' if @obj_class.eql? 'deals'%>" 
+								id="deals" href="/user/<%=@user.username%>/deals">我的爆料</a>
+							<a class="yui3-u-1-5 my_info <%='current' if @obj_class.eql? 'discoveries'%>" 
+								id="discoveries" href="/user/<%=@user.username%>/discoveries">我的发现</a>
+							<a class="yui3-u-1-5 my_info <%='current' if @obj_class.eql? 'favorites'%>" 
+								id="favorites" href="/user/<%=@user.username%>/favorites">我的收藏</a>
+                            <a class="yui3-u-1-5 my_info <%='current' if @obj_class.eql? 'comments'%>" 
+								id="comments" href="/user/<%=@user.username%>/comments">我的评论</a>
+							<a class="yui3-u-1-5 my_info <%='current' if @obj_class.eql? 'grades'%>" 
+								id="grades" href="/user/<%=@user.username%>/grades">我点的赞</a>
                         </div>
                     </div>
                     
-                    <div id="mgpyh-timeline" class="clearfix" data-name="<%=@user.username%>" data-next="2014-02">
-						<%= render partial: "user/common/items", locals: {objs: @objs} %>
+                    <div id="msd-timeline" class="clearfix" data-name="<%=@user.username%>" 
+						data-next="<%=@next_date%>" data-klass="<%=@obj_class%>">
+						<%=render partial: "user/#{@obj_class}/items", locals: { objs: @objs, year_month: @current_date }%>
                     </div>
-                    <div id="stance"><img src=/static/img/loading.gif></div>
-                    
+                    <div id="stance" class="loadmore"><%=image_tag "loading.gif"%></div>
                 </div>
             </div>
             <div id="push"></div>

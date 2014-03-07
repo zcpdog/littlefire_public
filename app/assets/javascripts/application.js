@@ -13,30 +13,17 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
-//= require foundation
-
-//= require twitter/bootstrap
+//= require bootstrap.affix.min
+//= require jquery.menu-aim
+//= require jquery.inview.min
 //= require holder
-//= require bootstrap-hover-dropdown
-//= require bootstrap-datepicker/core
-//= require bootstrap-fileupload.min
-//= require bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN
+//= require index
+//= require loadmore
+//= require comments
+//= require navigation
+
 //= require jquery.validate.min
-//= require deals
 //= require devise
 //= require messages_zh
 
-//= require ckeditor/override
-//= require ckeditor/init
-//= require ckeditor/config
-//= require jquery.menu-aim
-//= require main
-//= require comment
-//= require recommend
-
 //= require turbolinks
-
-
-
-
-$(function(){ $(document).foundation(); });

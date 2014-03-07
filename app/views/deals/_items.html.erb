@@ -5,7 +5,7 @@
         </div>
         <div class="content yui3-u-2-3">
             <h1 class="title">
-				<%=link_to deal.title, deal_path(deal), :target=>"_blank"%>
+				<%=link_to deal.title.try(:html_safe), deal_path(deal), :target=>"_blank"%>
 			</h1>
             <div class="post-wrap post-hide">
                 <div class="post">
@@ -21,9 +21,7 @@
                         <span>热度：</span><a href="javascript:;">41°</a>
                     </div>
                     <div class="pull-left">
-                        
                         <a href="javascript:;" class="add-like" data-id="/recommend/kate-spade-new-york-cobble-hill-tenley-/">收藏</a>
-                        
                     </div>
                     <div class="pull-left">
                         <a href="http://www.mgpyh.com/recommend/kate-spade-new-york-cobble-hill-tenley-/#commentWrap">评论</a>
@@ -33,8 +31,8 @@
             </div>
         </div>
         <div class="yui3-u-1-4 thumb">
-            <img src="mgpyh/60a05037gw1edz6myp9qpj20ek0ey3zx.jpg" alt="">
-			<%#=image_tag deal.picture.image.url(:thumb)%>
+			<%=image_tag deal.picture.image.url(:thumb) if deal.picture.present?%>
+			<%=image_tag "holder.js/194x194/sky" unless deal.picture.present?%>
             <a class="btn btn-danger" target="_blank" href="http://www.mgpyh.com/goods/g2bqp">直达链接</a>
         </div>
     </div>

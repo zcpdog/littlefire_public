@@ -2,16 +2,16 @@
     <span><%=year_month%></span>
 </div>
 <div id="timeline-container">
-	<%objs.each do |favorite|%>
+	<%objs.each do |grade|%>
 	    <div class="activity <%= cycle("left", "right") -%>">
 	        <div class="line-item yui3-g-r">
 	            <div class="line-content">
 	                <div class="yui3-u-1-4">
 	                   <img src="http://ww2.sinaimg.cn/bmiddle/745a8c23gw1ee1vdlhkeej20f20f0dhh.jpg" alt="pussyluv" width="80">
-					   <%#=image_tag favorite.favorable.picture.image.url(:thumb), width: "80"%>
+					   <%#=image_tag grade.gradable.picture.image.url(:thumb), width: "80"%>
 	                </div>
 	                <div class="yui3-u-3-4">
-					   <%=link_to favorite.favorable.title, eval("#{favorite.favorable_type.downcase}_path(favorite.favorable)")%>
+					   <%=link_to grade.gradable.title, eval("#{grade.gradable_type.downcase}_path(grade.gradable)")%>
 	                </div>    
 	            </div>
 	        </div>

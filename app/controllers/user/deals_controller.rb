@@ -1,9 +1,12 @@
 class User::DealsController < UserController
   def index
-    @deals = Deal.owned_by(current_user).page params[:page]
-  end
-  
-  def show
+    @obj_class = Deal.name.downcase.pluralize
+    @objs = Deal.owned_by(@user).month_of(@current_time)
+    @stop = beyond_date?
+    respond_to do |format|
+      format.html {render "user/show"}
+      format.js {render "user/common/index"}
+    end
   end
   
 end

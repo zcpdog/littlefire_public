@@ -1,5 +1,4 @@
 class DealsController < ApplicationController
-  before_filter :find_model, :only => [:show]
   before_filter :authenticate_user!, :only =>[:new, :create]
 
   def index
@@ -27,9 +26,8 @@ class DealsController < ApplicationController
   end
 
   def show
-    respond_to do |format|
-      format.html 
-    end
+    @deal = Deal.find(params[:id])
+    not_found unless @deal.active? or (current_user.present? and @deal.owned_by? current_user)
   end
   
   def new
@@ -40,6 +38,7 @@ class DealsController < ApplicationController
 
   def create
     @deal = Deal.new(deal_params)
+    @deal.user = current_user
     respond_to do |format|
       if @deal.save
         flash[:notice] = 'Deal was successfully created.'

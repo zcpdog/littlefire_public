@@ -17,10 +17,17 @@ Littlefire::Application.routes.draw do
     resources :comments
   end
   get 'user/:username' => 'user#show'
-  #get 'user/dashboard' => 'user#dashboard'
   get 'user/profile' => 'user#profile'
   
+  resources :grades, except: :destroy
+  resources :comments
+  resources :favorites
+  
   namespace :user do
+    get '/:username/comments' => 'comments#index'
+    get '/:username/favorites' => 'favorites#index'
+    get '/:username/grades' => 'grades#index'
+    get '/:username/deals' => 'deals#index'
     resources :deals, except: :destroy
     resources :pictures, only: :create
     resources :credit_histories, only: [:index]

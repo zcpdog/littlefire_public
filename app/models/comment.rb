@@ -1,17 +1,20 @@
 require 'nokogiri'
 class Comment < ActiveRecord::Base
+  paginates_per 20
+  
   default_scope {order("created_at DESC")}
   scope :owned_by, ->(user) { where(user: user)}
-  scope :commented_by, ->(user) { where(user: user)}
-  paginates_per 20
+  scope :occured_between, ->(time_begin,time_end) { where(created_at: time_begin..time_end)}
+  scope :month_of, ->(time) { where(created_at: time..time+1.month)}
+  
   belongs_to  :user
   belongs_to  :commentable, polymorphic: true, counter_cache: true
   has_many    :grades,  as: :gradable
   belongs_to  :parent, foreign_key: :parent_id, class_name: :Comment
   has_many    :children, foreign_key: :parent_id, class_name: :Comment , dependent: :destroy
   
-  validates :content, length: { in: 5..140 }, presence: true
-  validates_presence_of :user, :commentable
+  validates :content, length: { in: 5..140 }
+  validates_presence_of :user, :commentable, :content
   
   before_save :generate_html, if: Proc.new {|comment| comment.new_record?}
   
@@ -19,6 +22,7 @@ class Comment < ActiveRecord::Base
   
   protected
     def generate_html
+      self.content_origin = self.content
       self.content = Nokogiri::HTML(content).text.gsub(/&nbsp;/,"")
       EMOTIONS.each do |em|
         self.content.gsub!(/\[#{em}\]/, ActionController::Base.helpers.image_tag("#{em}.png"))

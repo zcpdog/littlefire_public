@@ -10,8 +10,8 @@ class CreateDeals < ActiveRecord::Migration
       t.datetime    :due_date
       t.string      :purchase_link
       
-      t.integer     :comments_count, default: 0
-      t.integer     :grades_count,  default: 0
+      t.integer     :comments_count,  default: 0
+      t.integer     :grades_count,    default: 0
       t.integer     :favorites_count, default: 0
       
       t.timestamps

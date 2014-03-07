@@ -1,4 +1,4 @@
 class Report < ActiveRecord::Base
-  belongs_to  :deal
-  belongs_to  :report_type
+  belongs_to  :reportable, polymorphic: true
+  validates   :ip, uniqueness: {scope: [ :reportable_type, :reportable_id ]}
 end

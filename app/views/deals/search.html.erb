@@ -6,13 +6,17 @@
 			            搜索关键字：<span style="color:#DC3D45"><%=@keyword%></span>
 			    </h1>
 			    <div class="items">
-    				<%=render "deals/items"%>
+					<%if @deals.any?%>
+						<%=render "deals/items"%>
+					<%else%>
+						<p class="text-center no-result">sorry~ 没找到相关结果，换个词试试吧！</p>
+					<%end%>
 			    </div>
 			    <div class="text-center margin30">
-			        <%=paginate @deals, :theme => 'my_theme', :window => 3%>
+			        <%=paginate @deals, :theme => 'my_theme', :window => 3 %>
 			    </div>
 			</div>
-			<%=render "layouts/commons/right_side"%>
+			<%=render "layouts/commons/right_side" %>
 		</div>
 	</div>
 </div>

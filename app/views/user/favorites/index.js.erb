@@ -1,0 +1,3 @@
+$("#msd-timeline").data("next","<%=@next_date%>");
+$("#msd-timeline").append('<%=escape_javascript render(partial: "user/#{@obj_class}/items", 
+	locals: { objs: @objs, year_month: @current_date })%>');
