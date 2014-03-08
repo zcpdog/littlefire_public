@@ -380,8 +380,8 @@ i.bing {
     display: none;
 }
 .header {
-    +position: relative;
-    +z-index: 1;
+    position: relative;
+    z-index: 1;
 }
 .hd1 {
     height: 100px;
@@ -1705,9 +1705,9 @@ body.solarize-body {
 .solarize_content .so-box1 .link-cut {
     margin-top: 2px;
     float: right;
-    +float: none;
-    +display: inline-block;
-    +vertical-align: bottom;
+    float: none;
+    display: inline-block;
+    vertical-align: bottom;
     *zoom: 1;
     width: 29px;
     height: 42px;
