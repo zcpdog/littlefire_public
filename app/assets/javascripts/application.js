@@ -22,9 +22,6 @@
 //= require comments
 //= require navigation
 
-//= require ckeditor/override
-//= require ckeditor/init
-
 //= require jquery.validate.min
 //= require devise
 //= require messages_zh

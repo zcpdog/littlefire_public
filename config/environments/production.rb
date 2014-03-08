@@ -79,7 +79,7 @@ Littlefire::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
   
   config.assets.precompile += %w( ie6.css ie7.css )  
-  config.action_mailer.default_url_options = { :host => '106.186.18.91' }
+  
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
       :port           => 587,
@@ -89,4 +89,5 @@ Littlefire::Application.configure do
       :domain         => 'maishoudang.com',
       :authentication => :plain,
   }
+  config.action_mailer.default_url_options = { :host => '106.186.18.91' }
 end
