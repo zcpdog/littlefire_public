@@ -5,7 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-AdminUser.create({username: "朱传品", email: "zcphs@sina.comn", role: "admin", password: "zcp2746257"})
+AdminUser.create({username: "朱传品", email: "zcphs@sina.com", role: "admin", password: "zcp2746257"},
+  {username: "万翔", email: "542257510@qq.com", role: "manager", password: "542257510qq"})
 Category.create([{ name: '数码家电' }, { name: '食品保障' },{name: "家居生活"}, {name: "图书音像"}, 
   {name: "服饰鞋包"},{name: "母婴玩具"}, {name: "钟表首饰"}, {name: "运动户外"}, {name: "个护化妆"},{name: "杂七杂八"},
   {name: "国内优惠"}, {name: "海淘咨询"},{name: "手机平板"},{name: "笔记本", parent_id: 1},{name: "相机影像", parent_id: 1},

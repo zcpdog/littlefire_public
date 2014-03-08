@@ -275,7 +275,7 @@ th { text-align: left }
 .table-striped>tbody>tr:nth-child(odd)>td,
 .table-striped>tbody>tr:nth-child(odd)>th { background-color: #f9f9f9 }
 i {
-    background-image: url(/assets/sprit.png);
+    background-image: url(<%=asset_path "sprit.png"%>);
     background-repeat: no-repeat;
     display: inline-block;
     zoom: 1;
@@ -325,7 +325,7 @@ i.toparrow {
     margin-right: 3px;
 }
 i.hotdot {
-    background: url(/assets/hotdot.gif) no-repeat;
+    background: url(<%=asset_path "hotdot.gif"%>) no-repeat;
     width: 6px;
     height: 6px;
     margin-right: 3px;
@@ -354,7 +354,7 @@ i.good {
     margin-right: 4px;
 }
 i.bing {
-    background: url(/assets/hot.gif) no-repeat;
+    background: url(<%=asset_path "hot.gif"%>) no-repeat;
     width: 22px;
     height: 11px;
     position: absolute;
@@ -443,7 +443,7 @@ i.bing {
     margin-top: 4px;
 }
 .search .searchbtn button {
-    background: url(/assets/sprit.png) no-repeat 0 2px;
+    background: url(<%=asset_path "sprit.png"%>) no-repeat 0 2px;
     width: 20px;
     height: 22px;
     margin-right: 8px;
@@ -659,14 +659,14 @@ h3.popover-title {
 .banner .dots li {
     width: 14px;
     height: 14px;
-    background: url(/assets/pagination.png) no-repeat 0 0;
+    background: url(<%=asset_path "pagination.png"%>) no-repeat 0 0;
 }
 .banner .dots li.active { background-position: 0 -14px }
 #slidebox { position: relative }
 .unslider-arrow {
     position: absolute;
     top: 37%;
-    background-image: url(/assets/Arrow.png);
+    background-image: url(<%=asset_path "Arrow.png"%>);
     background-repeat: no-repeat;
     width: 30px;
     height: 58px;
@@ -940,7 +940,7 @@ a.singleLink span.sName {
     width: 64px;
     height: 64px;
     display: block;
-    background-image: url(/assets/sprit.png);
+    background-image: url(<%=asset_path "sprit.png"%>);
     text-indent: -9999px;
     margin-left: 5px;
     position: relative;
@@ -960,7 +960,7 @@ a.singleLink span.sName {
     width: 66px;
     float: left;
     height: 6px;
-    background-image: url(/assets/sShadow.png);
+    background-image: url(<%=asset_path "sShadow.png"%>);
     background-position: center;
     margin-top: -10px;
     z-index: 1000;
@@ -1307,7 +1307,7 @@ a.close:hover { background: #4bb9ff }
 }
 .recommond-reason p a { color: #338ACF }
 #book {
-    background: url(/assets/book-bg.png) no-repeat;
+    background: url(<%=asset_path "book-bg.png"%>) no-repeat;
     width: 960px;
     height: 640px;
     position: relative;
@@ -1413,7 +1413,7 @@ form.want-bomb .btn-block { margin-top: 15px }
     padding: 10px 0;
 }
 #msd-timeline {
-    background: url(/assets/time-line-v.png) repeat-y center top;
+    background: url(<%=asset_path "time-line-v.png"%>) repeat-y center top;
     padding: 20px 0;
 }
 .timeline-marker {
@@ -1447,7 +1447,7 @@ form.want-bomb .btn-block { margin-top: 15px }
     display: block;
     width: 16px;
     height: 15px;
-    background-image: url(/assets/timeline-p.png);
+    background-image: url(<%=asset_path "timeline-p.png"%>);
     background-repeat: no-repeat;
     top: 20px;
 }
@@ -1821,10 +1821,6 @@ body.solarize-body {
 .messages .new a { color: #c21543 }
 .messages .hover { background: #f8f8f8 }
 .messages .date-timer { color: #888 }
-.christmas { background: url(/assets/xmas_bg.gif) repeat-x 0 0!important }
-.christmas ul.ul-f li a { color: #fff }
-.christmas ul.ul-f li a.current { color: #fff }
-.christmas ul.ul-f li a:hover { color: #fff }
 .survey-content {
     width: 800px;
     margin: auto;
@@ -1866,23 +1862,23 @@ body.solarize-body {
     height: 20px;
     background: 0;
 }
-.survey-content .check i { background: url(/assets/checked.png) no-repeat }
+.survey-content .check i { background: url(<%=asset_path "checked.png"%>) no-repeat }
 .survey-content a.checked { border: 2px solid #1abc9c }
 .habbit a { margin-bottom: 15px }
-.male { background: #fff url(/assets/Male.png) no-repeat 10px center }
-.female { background: #fff url(/assets/Female.png) no-repeat 10px center }
-.et { background: #fff url(/assets/Alien.png) no-repeat 10px center }
-.book { background: #fff url(/assets/book.png) no-repeat 10px center }
-.digital { background: #fff url(/assets/phone.png) no-repeat 10px center }
-.computer { background: #fff url(/assets/computer.png) no-repeat 10px center }
-.house { background: #fff url(/assets/ikea.png) no-repeat 10px center }
-.food { background: #fff url(/assets/food.png) no-repeat 10px center }
-.health { background: #fff url(/assets/lipstick.png) no-repeat 10px center }
-.toy { background: #fff url(/assets/toy.png) no-repeat 10px center }
-.dress { background: #fff url(/assets/shoes.png) no-repeat 10px center }
-.watch { background: #fff url(/assets/watch.png) no-repeat 10px center }
-.auto { background: #fff url(/assets/auto.png) no-repeat 5px -5px }
-.geek { background: #fff url(/assets/geek.png) no-repeat center }
+.male { background: #fff url(<%=asset_path "Male.png"%>) no-repeat 10px center }
+.female { background: #fff url(<%=asset_path "Female.png"%>) no-repeat 10px center }
+.et { background: #fff url(<%=asset_path "Alien.png"%>) no-repeat 10px center }
+.book { background: #fff url(<%=asset_path "book.png"%>) no-repeat 10px center }
+.digital { background: #fff url(<%=asset_path "phone.png"%>) no-repeat 10px center }
+.computer { background: #fff url(<%=asset_path "computer.png"%>) no-repeat 10px center }
+.house { background: #fff url(<%=asset_path "ikea.png"%>) no-repeat 10px center }
+.food { background: #fff url(<%=asset_path "food.png"%>) no-repeat 10px center }
+.health { background: #fff url(<%=asset_path "lipstick.png"%>) no-repeat 10px center }
+.toy { background: #fff url(<%=asset_path "toy.png"%>) no-repeat 10px center }
+.dress { background: #fff url(<%=asset_path "shoes.png"%>) no-repeat 10px center }
+.watch { background: #fff url(<%=asset_path "watch.png"%>) no-repeat 10px center }
+.auto { background: #fff url(<%=asset_path "auto.png"%>) no-repeat 5px -5px }
+.geek { background: #fff url(<%=asset_path "geek.png"%>) no-repeat center }
 .tooltip.top {
     padding: 5px 0;
     margin-top: -3px;
@@ -2062,7 +2058,7 @@ body.solarize-body {
 }
 @media all and (device-width:768px) and (device-height:1024px) and (orientation:portrait) { 
 	#book {
-	    background: url(/assets/book-bg-min.png) no-repeat;
+	    background: url(<%=asset_path "admin/book-bg-min.png"%>) no-repeat;
 	    width: 700px;
 	    height: 467px;
 	}
@@ -2078,7 +2074,7 @@ body.solarize-body {
 }
 @media all and (device-width:768px) and (device-height:1024px) and (orientation:landscape) { 
 	#book {
-	    background: url(/assets/book-bg-min.png) no-repeat;
+	    background: url(<%=asset_path "admin/book-bg-min.png"%>) no-repeat;
 	    width: 700px;
 	    height: 467px;
 	}
