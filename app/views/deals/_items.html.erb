@@ -15,16 +15,23 @@
             <div class="entry-share margin20 clearfix">
                 <div class="share-content clearfix">
                     <div class="pull-left">
-                        <span>分类：</span><a href="http://www.mgpyh.com/category/39?is_subcate=True">皮具箱包</a>
+                        <span>分类：</span>
+						<%=show_categories deal%>
                     </div>
                     <div class="pull-left">
                         <span>热度：</span><a href="javascript:;">41°</a>
                     </div>
                     <div class="pull-left">
-                        <a href="javascript:;" class="add-like" data-id="/recommend/kate-spade-new-york-cobble-hill-tenley-/">收藏</a>
+			  		  	<%=link_to "收藏", user_deal_favorites_path(deal), 
+						method: :post, remote: true, class: "deal-toolbar-link deal-favorite"%>
                     </div>
                     <div class="pull-left">
-                        <a href="http://www.mgpyh.com/recommend/kate-spade-new-york-cobble-hill-tenley-/#commentWrap">评论</a>
+			  		  	<%=link_to "赞", user_deal_grades_path(deal), method: :post, remote: true, 
+							class: "deal-toolbar-link deal-grade"%>
+                    </div>
+                    <div class="pull-left">
+			  		  	<%=link_to "评论", deal_path(deal), target: "_blank",
+							class: "deal-toolbar-link deal-comment"%>
                     </div>
                     <div style="visibility: hidden;" class="more pull-right"><a href="#">全文 ↓</a></div>
                 </div>
@@ -32,8 +39,8 @@
         </div>
         <div class="yui3-u-1-4 thumb">
 			<%=image_tag deal.picture.image.url(:thumb) if deal.picture.present?%>
-			<%=image_tag "holder.js/194x194/sky" unless deal.picture.present?%>
-            <a class="btn btn-danger" target="_blank" href="http://www.mgpyh.com/goods/g2bqp">直达链接</a>
+			<%=holder_tag 194, "picture" unless deal.picture.present?%>
+			<%=link_to "直达链接", purchase_deal_path(deal), class: "btn btn-danger", target: "_blank"%>
         </div>
     </div>
 <%end%>

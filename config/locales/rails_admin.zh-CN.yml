@@ -127,3 +127,6 @@ zh-CN:
         default_col_sep: ","
         col_sep: "分隔符"
         col_sep_help: "留空使用默认设置（'%{value}'）" # value is default_col_sep
+    state_machine:
+      event_fired: "操作成功"
+      error: "操作失败"

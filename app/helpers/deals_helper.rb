@@ -28,4 +28,8 @@ module DealsHelper
 #       f.hidden_field(:_destroy) + link_to_function(name, "remove_form_partial(this)", :class => "buttony top")
 #     end
 
+  def show_categories deal
+		deal.categories.map{|category|link_to category.name, search_path(:category_id=>category.id)}.join(" | ").html_safe
+  end
+
 end

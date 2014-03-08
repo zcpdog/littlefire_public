@@ -13,7 +13,6 @@ gem 'jbuilder', '~> 1.2'
 gem "devise", "~> 3.2.3"
 gem "devise-async", "~> 0.9.0"
 gem "cancan", "~> 1.6.10"
-gem "aasm", "~> 3.0.26"
 gem "rest-client", "~> 1.6.7"
 gem "carrierwave-upyun", "~> 0.1.6"
 gem "carrierwave", "~> 0.10.0"
@@ -32,8 +31,10 @@ gem "rails_admin", "~> 0.6.1"
 gem 'paper_trail', '~> 3.0.0'
 gem "sidekiq", "~> 2.17.6"
 gem "sinatra", "~> 1.4.4", :require => nil
-gem "redis-store", "~> 1.1.4"
 gem "holder_rails", "~> 2.3.1"
+gem "dalli", "~> 2.7.0"
+gem 'rails_admin_state'
+gem "state_machine", "~> 1.2.0"
 
 group :doc do
   gem 'sdoc', require: false

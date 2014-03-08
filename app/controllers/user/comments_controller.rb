@@ -15,19 +15,14 @@ class User::CommentsController < UserController
   end
   
   def create
-    @comment = Comment.new(comment_params)
-    @comment.commentable = Deal.find params[:deal_id]
+    @commentable = find_polymorphic_object
+    @comment = @commentable.comments.build(params[:comment].permit(:content))
     @comment.user = current_user
     respond_to do |format|
       if @comment.save
-        format.html
-        format.js {render :show}
+        format.js {render :partial => 'comment', :locals => { :comment => @comment }}
       end
     end
   end
-  
-  private
-  def comment_params
-    params.require(:comment).permit(:content)
-  end
+
 end

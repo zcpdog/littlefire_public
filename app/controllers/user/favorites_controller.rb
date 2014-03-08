@@ -10,14 +10,12 @@ class User::FavoritesController < UserController
   end
   
   def create
-    @favorite = Favorite.new
-    @favorite.favorable= Deal.find params[:deal_id]
+    @favorable = find_polymorphic_object
+    @favorite = @favorable.favorites.build
     @favorite.user = current_user
+    @favorite.save
     respond_to do |format|
-      if @favorite.save
-        format.html
         format.js {render :show}
-      end
     end
   end
   

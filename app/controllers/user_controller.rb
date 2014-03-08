@@ -1,7 +1,6 @@
 class UserController< ApplicationController
   before_filter :authenticate_user!
-  before_filter :find_user
-  before_filter :caculate_date, only: [:index]
+  before_filter :find_user, :caculate_date, only: [:index,:show]
   def dashboard
     @favorites = Favorite.owned_by(current_user).limit(5)
     @comments  = Comment.all.limit(5)
@@ -10,7 +9,6 @@ class UserController< ApplicationController
   def show
     @obj_class = Favorite.name.downcase.pluralize
     @objs = Favorite.owned_by(@user)
-    caculate_date
     respond_to do |format|
       format.html
     end
@@ -41,5 +39,14 @@ class UserController< ApplicationController
     
     def beyond_date?
       @current_time<@user.created_at
+    end
+    
+    def find_polymorphic_object
+      params.each do |name, value|
+        if name =~ /(.+)_id$/
+          return $1.classify.constantize.find(value)
+        end
+      end
+      nil
     end
 end

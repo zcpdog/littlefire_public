@@ -11,12 +11,13 @@
 					<div class="yui3-g-r">
 						<div class="yui3-u-3-4">
 						    <div class="post-detail">
-								<%=(@deal.content||@deal.content_plain_text).html_safe%>
+								<p><%=@deal.content.try(:html_safe)%></p>
 						    </div>
 						    <div class="entry-share margin30">
 						        <div class="bg-gray clearfix">
 						            <div class="pull-left">
-						                <span>分类：</span><a href="/category/43?is_subcate=True">限时抢购</a>
+						                <span>分类：</span>
+										<%=show_categories @deal%>
 						            </div>
 						            <div class="pull-right">
 						                <a href="#"  target='_blank' title='分享到新浪微博'>分享到新浪微博</a>
@@ -27,9 +28,8 @@
 							<div class="sp20 sc margin20" style="" id="commentWrap">
 								
 								<%if user_signed_in?%>
-									<%= form_for([@deal,Comment.new], html: {id: "cmtfm"}) do |f| %>
+									<%= form_for([:user,@deal,Comment.new], html: {id: "cmtfm"}) do |f| %>
 								        <h3>发布评论</h3>
-										<%=f.hidden_field :user_id, value: current_user.id%>
 										<%=f.text_area :content, class: "sc-input", cols: "30", rows: "5", autocomplete: "off" %>
 								        <div class="yui3-g">
 								            <p></p>
@@ -55,7 +55,7 @@
 									
 								<%end%>
 								
-							    <h3>评论(5)</h3>
+							    <h3>评论(<%=@deal.comments.size%>)</h3>
 							    <ul id="s-cmts" class="s-cmts">
 									<%@deal.comments.each do |comment|%>
 							        	<%= render partial: "comments/comment", locals: {comment: comment} %>

@@ -1,7 +1,5 @@
 require 'nokogiri'
-class Post < ActiveRecord::Base
-  include AASM
-  
+class Post < ActiveRecord::Base  
   paginates_per 20
   
   default_scope {where(state: :published).order("created_at DESC")}
@@ -24,20 +22,19 @@ class Post < ActiveRecord::Base
   validates_presence_of :label
   
   before_save :update_plain_text
-  
-  aasm_column :state
-  aasm do
-     state :started, :initial => true
-     state :finished
-     state :published
-     
-     event :finish do
-       transitions :from => :started, :to => :finished
-     end
-  
-     event :publish do
-       transitions :from => :finished, :to => :published
-     end
+    
+  state_machine :state, :initial => :started do
+    state :started
+    state :finished
+    state :published
+    
+    event :finish do
+      transition :started => :finished
+    end
+    
+    event :publish do
+      transition :finished => :published
+    end
   end
   
   def short_title

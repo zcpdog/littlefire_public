@@ -8,8 +8,12 @@ Littlefire::Application.routes.draw do
   resources :categories, only: [:index, :show]
   resources :posts, only: [:index, :new, :create, :show]
   resources :deals do
+    resources :comments
+    resources :favorites
+    resources :grades
     member do
       get 'unfold'
+      get 'purchase'
     end
     get 'page/:page', :action => :index, :on => :collection
   end
@@ -39,6 +43,7 @@ Littlefire::Application.routes.draw do
         end
       end
       resources :favorites
+      resources :grades
     end
     resources :comments
     resources :favorites

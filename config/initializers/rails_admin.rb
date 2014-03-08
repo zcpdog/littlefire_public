@@ -32,6 +32,7 @@ RailsAdmin.config do |config|
     show_in_app do
       only 'Deal'
     end
+    state
 
     ## With an audit adapter, you can add:
     history_index

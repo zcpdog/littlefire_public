@@ -19,4 +19,14 @@ class User::GradesController < UserController
       end
     end
   end
+  
+  def create
+    @gradable = find_polymorphic_object
+    @grade = @gradable.grades.build
+    @grade.user = current_user
+    @grade.save
+    respond_to do |format|
+        format.js {render :show}
+    end
+  end
 end

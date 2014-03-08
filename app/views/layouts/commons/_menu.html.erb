@@ -1,5 +1,6 @@
 <div style="left: -162px;" class="categroy-menu" id="categroy-menu">
     <h1>所有分类</h1>
+	<% cache do %>
     <ul class="dropdown-menu" role="menu">
 		<%Category.root.each do |category|%>
         <li data-submenu-id="submenu-<%=category.id%>">
@@ -18,4 +19,5 @@
         </li>
         <%end%>
     </ul>
+	<% end %>
 </div>

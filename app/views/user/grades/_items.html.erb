@@ -7,8 +7,8 @@
 	        <div class="line-item yui3-g-r">
 	            <div class="line-content">
 	                <div class="yui3-u-1-4">
-	                   <img src="http://ww2.sinaimg.cn/bmiddle/745a8c23gw1ee1vdlhkeej20f20f0dhh.jpg" alt="pussyluv" width="80">
-					   <%#=image_tag grade.gradable.picture.image.url(:thumb), width: "80"%>
+					   	<%=image_tag(grade.gradable.picture.image.url(:thumb), width: 80) if grade.gradable.picture.present?%>
+						<%=holder_tag 80,"picture","sky" unless grade.gradable.picture.present?%>
 	                </div>
 	                <div class="yui3-u-3-4">
 					   <%=link_to grade.gradable.title, eval("#{grade.gradable_type.downcase}_path(grade.gradable)")%>

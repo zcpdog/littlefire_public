@@ -4,7 +4,8 @@
                 	<div class="yui3-g-r userhome-hd">
                         <div class="yui3-u-1 person">
                             <a href="#">
-								<%=image_tag @user.picture.image.url(:thumb), class: "avatar"%>
+								<%=image_tag @user.picture.image.url(:thumb), class: "avatar" if @user.picture.present?%>
+								<%=holder_tag 122,"",class: "avatar" unless @user.picture.present?%>
                             </a>
                             <div class="yui3-u">
                                 <p>
@@ -28,8 +29,10 @@
                         <div class="user-hp-nav yui3-g-r">
                             <a class="yui3-u-1-5 my_info <%='current' if @obj_class.eql? 'deals'%>" 
 								id="deals" href="/user/<%=@user.username%>/deals">我的爆料</a>
+							<!-- <a class="yui3-u-1-5 my_info <%='current' if @obj_class.eql? 'discoveries'%>" 
+								id="discoveries" href="/user/<%=@user.username%>/discoveries">我的发现</a> -->
 							<a class="yui3-u-1-5 my_info <%='current' if @obj_class.eql? 'discoveries'%>" 
-								id="discoveries" href="/user/<%=@user.username%>/discoveries">我的发现</a>
+								id="discoveries" href="javascript:void(0)">我的发现</a>
 							<a class="yui3-u-1-5 my_info <%='current' if @obj_class.eql? 'favorites'%>" 
 								id="favorites" href="/user/<%=@user.username%>/favorites">我的收藏</a>
                             <a class="yui3-u-1-5 my_info <%='current' if @obj_class.eql? 'comments'%>" 
