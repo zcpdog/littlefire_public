@@ -12,12 +12,13 @@
 #   runner "MyModel.some_method"
 #   rake "some:great:rake:task"
 # end
-case @environment
-when 'production'
-  every 2.hours do
-    rake "app:web_spider"
-  end
-end
+
+# case @environment
+# when 'production'
+#   every 2.hours do
+#     rake "app:web_spider"
+#   end
+# end
 
 #
 # every 4.days do
