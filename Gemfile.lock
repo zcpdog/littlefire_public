@@ -306,6 +306,7 @@ DEPENDENCIES
   rails_admin_state
   rest-client (~> 1.6.7)
   rvm-capistrano (~> 1.4.4)
+  sass-rails (~> 4.0.1)
   sdoc
   sidekiq (~> 2.17.6)
   sinatra (~> 1.4.4)

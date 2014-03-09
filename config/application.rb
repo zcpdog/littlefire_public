@@ -14,5 +14,6 @@ module Littlefire
     config.time_zone = 'Beijing'
     config.i18n.locale = "zh-CN"
     config.i18n.default_locale = "zh-CN"
+    Rails.application.routes.default_url_options[:host] = 'maishoudang.com'
   end
 end
