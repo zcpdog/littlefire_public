@@ -1,1 +1,1 @@
-ActionMailer::Base.default_url_options = { :host => 'www.maishoudang.com' }
+ActionMailer::Base.default_url_options[:host] = "maishoudang.com"
