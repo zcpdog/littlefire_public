@@ -79,6 +79,9 @@ class Deal < ActiveRecord::Base
       field :categories do
         nested_form false
         inverse_of :deals
+        associated_collection_scope do
+          Proc.new { |scope| scope = scope.leaf}
+        end
       end
       field :merchant
       field :purchase_link

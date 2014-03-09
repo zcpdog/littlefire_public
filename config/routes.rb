@@ -7,6 +7,7 @@ Littlefire::Application.routes.draw do
   authenticate :admin_user, lambda { |u| u.has_role? "admin" } do
     mount Sidekiq::Web => '/sidekiq'
   end
+  
   resources :categories, only: [:index, :show]
   resources :posts, only: [:index, :new, :create, :show]
   resources :deals do
@@ -53,10 +54,9 @@ Littlefire::Application.routes.draw do
   
   get "syncs/:type/new" => "syncs#new", :as => :sync_new
   get "syncs/:type/callback" => "syncs#callback", :as => :sync_callback
-  
-  root 'deals#index'
-  get 'welcome/notify' => 'welcome#notify'
+  get 'notify' => 'notify#show'
   get 'search' => 'deals#search'
+  root 'deals#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

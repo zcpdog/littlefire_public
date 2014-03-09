@@ -15,7 +15,7 @@
             <div class="checkbox">
 		        <%= f.check_box :remember_me%>
 		  	  	<%= f.label :remember_me, t(:remember_me) %>
-                <%= link_to "忘记密码?", new_password_path(resource_name) %>
+                
             </div>
         </div>
     </div>
@@ -26,6 +26,15 @@
             <a href="#" class="yui3-u-1-2"><img src=/static/img/qq.png ></a>
         </div>
     </div> -->
+    <div class="no-account title-line">
+        <h2><span>登陆出现问题？</span></h2>
+        <div>
+			<%= link_to "忘记密码?", new_password_path(resource_name) %><br/>
+			<%= link_to "没有收到确认邮件？", new_confirmation_path(resource_name) %><br />
+			<%= link_to "没有收到解锁邮件？", new_unlock_path(resource_name) %>
+        </div>
+    </div>
+	
     <div class="no-account title-line">
         <h2><span>还没有账号？</span></h2>
         <div>
