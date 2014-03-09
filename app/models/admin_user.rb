@@ -2,10 +2,10 @@ class AdminUser < ActiveRecord::Base
   has_paper_trail
   devise :database_authenticatable, 
          :recoverable, :rememberable, :trackable, :validatable, :timeoutable
-         
+  validates_presence_of :role
+  validates :username, :presence => true, :uniqueness => true
   rails_admin do
     list do
-      field :id
       field :username
       field :email
       field :role do
@@ -19,6 +19,7 @@ class AdminUser < ActiveRecord::Base
     edit do
       field :username
       field :email
+      field :password, :password 
       field :role, :enum do 
         enum do
           ROLES_ENUM[ROLES_RANK[bindings[:view]._current_user.role]..ROLES_RANK.size-1].reverse

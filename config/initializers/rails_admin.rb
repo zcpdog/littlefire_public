@@ -24,7 +24,6 @@ RailsAdmin.config do |config|
     new do
       except ['User', 'Picture']
     end
-    #export
     bulk_delete
     show
     edit
@@ -33,8 +32,6 @@ RailsAdmin.config do |config|
       only 'Deal'
     end
     state
-
-    ## With an audit adapter, you can add:
     history_index
     history_show
   end

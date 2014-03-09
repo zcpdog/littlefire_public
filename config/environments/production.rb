@@ -89,7 +89,6 @@ Littlefire::Application.configure do
       :domain         => 'maishoudang.com',
       :authentication => :plain,
   }
-  config.action_mailer.default_url_options = { :host => 'maishoudang.com' }
+  config.action_mailer.default_url_options = { :host => 'www.maishoudang.com' }
 end
-
-Rails.application.routes.default_url_options[:host] = "maishoudang.com"
+ActionMailer::Base.default_url_options[:host] = "www.maishoudang.com"

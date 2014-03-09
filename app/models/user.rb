@@ -1,7 +1,5 @@
 class User < ActiveRecord::Base
   has_paper_trail
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable, :lockable,
          :recoverable, :rememberable, :trackable, :validatable, :async
 
@@ -12,6 +10,8 @@ class User < ActiveRecord::Base
   has_many      :comments
   has_many      :grades
   has_many      :authentications
+  validates     :username, :presence => true, :uniqueness => true
+  
   
   rails_admin do
     list do
