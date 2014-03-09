@@ -1,4 +1,5 @@
 RailsAdmin.config do |config|
+  config.assets.initialize_on_precompile = false
   config.main_app_name = ["买手党", "后台"]
   
   ### Popular gems integration
