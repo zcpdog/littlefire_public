@@ -11,7 +11,6 @@ module Littlefire
     I18n.enforce_available_locales = false
     config.assets.precompile += Ckeditor.assets
     config.assets.precompile += %w(ckeditor/*)
-    config.assets.initialize_on_precompile = false
     config.time_zone = 'Beijing'
     config.i18n.locale = "zh-CN"
     config.i18n.default_locale = "zh-CN"
