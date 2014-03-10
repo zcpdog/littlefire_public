@@ -60,6 +60,13 @@ task :copy_nondigest_assets, roles: :app do
 end
 after 'deploy:assets:precompile', 'copy_nondigest_assets'
 
+namespace :solr do                                                              
+  task :reindex do
+    run "cd #{current_path} && #{rake} RAILS_ENV=#{rails_env} sunspot:solr:reindex" 
+  end
+end 
+after "deploy:restart", "solr:reindex"
+
 # namespace :delayed_job do
 #   desc "Start delayed_job process"
 #   task :start, :roles => :app do
