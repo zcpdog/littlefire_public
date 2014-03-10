@@ -90,5 +90,4 @@ Littlefire::Application.configure do
       :authentication => :plain,
   }
   config.action_mailer.default_url_options = { :host => 'maishoudang.com' }
-  HOST = "maishoudang.com"
 end

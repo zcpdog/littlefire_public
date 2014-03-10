@@ -12,7 +12,6 @@ gem "jquery-turbolinks", "~> 1.0.0"
 gem 'jbuilder', '~> 1.2'
 gem "devise", "~> 3.2.3"
 gem "devise_invitable", "~> 1.3.4"
-gem "devise-async", "~> 0.9.0"
 gem "cancan", "~> 1.6.10"
 gem "rest-client", "~> 1.6.7"
 gem "carrierwave-upyun", "~> 0.1.6"
