@@ -26,6 +26,8 @@ class DealsController < ApplicationController
   end
   
   def purchase
+    @deal = Deal.find(params[:id])
+    render layout: "devise"
   end
 
   def show

@@ -68,13 +68,11 @@
 						        <div class="thumb">
 									<%=image_tag @deal.picture.image.url(:thumb) if @deal.picture.present?%>
 									<%=holder_tag 194, "", "sky" unless @deal.picture.present?%>
-						            <a class="btn btn-danger" target="_blank" href="/goods/n85pj">直达链接</a>
+									<%=link_to "直达链接", purchase_deal_path(@deal), class: "btn btn-danger", target: "_blank"%>
 						        </div>
 						        <div class="text-center addlike">
 						            <a class="btn btn-primary" href="#" data-id="/recommend/0303-ruelala-gilt-myhabit-ebay-sale/">
-        
 						                收藏(<%=@deal.favorites.size%>)
-        
 						            </a>
 						        </div>
 
