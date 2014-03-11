@@ -22,7 +22,7 @@ class AdminUser < ActiveRecord::Base
       field :password, :password 
       field :role, :enum do 
         enum do
-          ROLES_ENUM[ROLES_RANK[bindings[:view]._current_user.role]+1..ROLES_RANK.size-1].reverse
+          ROLES_ENUM[ROLES_RANK[bindings[:view]._current_user.role]..ROLES_RANK.size-1].reverse
         end
       end
     end

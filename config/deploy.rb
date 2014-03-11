@@ -6,7 +6,6 @@ require "whenever/capistrano"
 require 'capistrano/local_precompile'
 
 set :whenever_command, "bundle exec whenever"
-set :turbosprockets_enabled, true
 set :stages, ["staging", "production"]
 set :default_stage, "staging"
 default_run_options[:pty] = true
@@ -54,6 +53,10 @@ namespace :deploy do
   task :seed do
     run "cd #{current_path}; bundle exec rake db:seed RAILS_ENV=#{rails_env}"
   end
+  
+  task :reindex do
+    run "cd #{current_path} && #{rake} RAILS_ENV=#{rails_env} sunspot:solr:reindex" 
+  end
 end
 
 desc 'copy ckeditor nondigest assets'
@@ -62,12 +65,12 @@ task :copy_nondigest_assets, roles: :app do
 end
 after 'deploy:assets:precompile', 'copy_nondigest_assets'
 
-namespace :solr do                                                              
-  task :reindex do
-    run "cd #{current_path} && #{rake} RAILS_ENV=#{rails_env} sunspot:solr:reindex" 
-  end
-end 
-after "deploy:restart", "solr:reindex"
+# namespace :solr do                                                              
+#   task :reindex do
+#     run "cd #{current_path} && #{rake} RAILS_ENV=#{rails_env} sunspot:solr:reindex" 
+#   end
+# end 
+#after "deploy:restart", "solr:reindex"
 
 # namespace :delayed_job do
 #   desc "Start delayed_job process"
