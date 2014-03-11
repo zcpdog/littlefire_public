@@ -4,6 +4,7 @@ require 'capistrano/ext/multistage'
 require 'sidekiq/capistrano'
 set :whenever_command, "bundle exec whenever"
 require "whenever/capistrano"
+require 'capistrano/local_precompile'
 
 set :stages, ["staging", "production"]
 set :default_stage, "staging"
