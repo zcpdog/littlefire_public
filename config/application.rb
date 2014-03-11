@@ -14,7 +14,6 @@ module Littlefire
     config.time_zone = 'Beijing'
     config.i18n.locale = "zh-CN"
     config.i18n.default_locale = "zh-CN"
-    config.assets.initialize_on_precompile = false
     config.to_prepare do
         Devise::SessionsController.layout "devise"
         Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application"   : "devise" }

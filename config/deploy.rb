@@ -3,6 +3,7 @@ require "bundler/capistrano"
 require 'capistrano/ext/multistage'
 require 'sidekiq/capistrano'
 require "whenever/capistrano"
+require 'capistrano/local_precompile'
 
 set :whenever_command, "bundle exec whenever"
 set :stages, ["staging", "production"]
@@ -55,25 +56,6 @@ namespace :deploy do
   
   task :reindex do
     run "cd #{current_path} && #{rake} RAILS_ENV=#{rails_env} sunspot:solr:reindex" 
-  end
-end
-
-namespace :deploy do
-  namespace :assets do
-    desc 'Run the precompile task locally and rsync with shared'
-    task :precompile, :roles => :app, :except => { :no_release => true } do
-      system("bundle check"); exit if $? != 0
-      system("RAILS_ENV=#{stage} bundle exec rake assets:precompile"); exit if $? != 0
-      servers = find_servers :roles => :web, :except => { :no_release => true }
-      run <<-CMD.compact
-        cp -- #{shared_manifest_path.shellescape} #{current_path.to_s.shellescape}/assets_manifest#{File.extname(shared_manifest_path)}
-      CMD
-      run <<-CMD.compact
-        rm -- #{shared_manifest_path.shellescape}
-      CMD
-      servers.each { |server| system("rsync --recursive --times --rsh=ssh --compress --human-readable --progress public/assets #{user}@#{server}:#{shared_path} > /dev/null"); exit if $? != 0 }
-      system("RAILS_ENV=#{stage} bundle exec rake assets:clean")
-    end
   end
 end
 
