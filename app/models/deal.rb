@@ -42,7 +42,7 @@ class Deal < ActiveRecord::Base
     end
     
     event :publish do
-      transition :checking => :published
+      transition :checking => :published, :if => lambda {|deal| deal.ready_to_go?}
     end
     
     event :reject do
@@ -65,7 +65,7 @@ class Deal < ActiveRecord::Base
     time :created_at, :stored => true
   end
   
-  def ready?
+  def ready_to_go?
     picture.present? and purchase_link.present? and categories.any?
   end
   
