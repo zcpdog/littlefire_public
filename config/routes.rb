@@ -19,10 +19,8 @@ Littlefire::Application.routes.draw do
     end
     get 'page/:page', :action => :index, :on => :collection
   end
-  resources :deals, only: [:index, :new, :create, :show] do
-    resources :comments
-  end
   
+  resources :deals, only: [:index, :new, :create, :show]
   resources :grades, except: :destroy
   resources :comments
   resources :favorites
@@ -39,11 +37,7 @@ Littlefire::Application.routes.draw do
     resources :credit_histories, only: [:index]
     resources :grades, except: :destroy
     resources :deals do
-      resources :comments do
-        collection do
-          get 'show_recent'
-        end
-      end
+      resources :comments 
       resources :favorites
       resources :grades
     end
@@ -51,8 +45,6 @@ Littlefire::Application.routes.draw do
     resources :favorites
   end
   
-  get "syncs/:type/new" => "syncs#new", :as => :sync_new
-  get "syncs/:type/callback" => "syncs#callback", :as => :sync_callback
   get 'notify' => 'notify#show'
   get 'search' => 'deals#search'
   root 'deals#index'
