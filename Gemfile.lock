@@ -285,7 +285,7 @@ DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   cancan (~> 1.6.10)
   capistrano (~> 2.15.5)
-  capistrano-local-precompile (~> 0.0.3)
+  capistrano-local-precompile
   carrierwave (~> 0.10.0)
   carrierwave-upyun (~> 0.1.6)
   ckeditor (~> 4.0.10)

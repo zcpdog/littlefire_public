@@ -2,10 +2,11 @@ require "rvm/capistrano"
 require "bundler/capistrano"
 require 'capistrano/ext/multistage'
 require 'sidekiq/capistrano'
-set :whenever_command, "bundle exec whenever"
 require "whenever/capistrano"
 require 'capistrano/local_precompile'
 
+set :whenever_command, "bundle exec whenever"
+set :turbosprockets_enabled, true
 set :stages, ["staging", "production"]
 set :default_stage, "staging"
 default_run_options[:pty] = true
