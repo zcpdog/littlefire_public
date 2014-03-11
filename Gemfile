@@ -35,6 +35,7 @@ gem "holder_rails", "~> 2.3.1"
 gem "dalli", "~> 2.7.0"
 gem 'rails_admin_state'
 gem "state_machine", "~> 1.2.0"
+gem 'exceptional'
 
 group :doc do
   gem 'sdoc', require: false

@@ -15,7 +15,6 @@ Littlefire::Application.routes.draw do
     resources :favorites
     resources :grades
     member do
-      get 'unfold'
       get 'purchase'
     end
     get 'page/:page', :action => :index, :on => :collection
@@ -23,13 +22,13 @@ Littlefire::Application.routes.draw do
   resources :deals, only: [:index, :new, :create, :show] do
     resources :comments
   end
-  get 'user/:username' => 'user#show'
-  get 'user/profile' => 'user#profile'
   
   resources :grades, except: :destroy
   resources :comments
   resources :favorites
   
+  get '/user/profile' => 'user#profile'
+  get '/user/:username' => 'user#show'
   namespace :user do
     get '/:username/comments' => 'comments#index'
     get '/:username/favorites' => 'favorites#index'

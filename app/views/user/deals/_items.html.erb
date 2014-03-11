@@ -8,10 +8,10 @@
 	            <div class="line-content">
 	                <div class="yui3-u-1-4">
 					   	<%=image_tag(deal.picture.image.url(:thumb), width: 80) if deal.picture.present?%>
-						<%=holder_tag 80,"picture","sky" unless deal.picture.present?%>
+						<%=holder_tag 80,"picture","图片" unless deal.picture.present?%>
 	                </div>
 	                <div class="yui3-u-3-4">
-					   <%=link_to deal.title, deal_path(deal)%>
+					   <%=link_to deal.name, deal_path(deal)%>
 	                </div>    
 	            </div>
 	        </div>

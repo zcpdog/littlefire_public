@@ -11,7 +11,7 @@
 						<%=holder_tag 80,"picture","sky" unless grade.gradable.picture.present?%>
 	                </div>
 	                <div class="yui3-u-3-4">
-					   <%=link_to grade.gradable.title, eval("#{grade.gradable_type.downcase}_path(grade.gradable)")%>
+					   <%=link_to grade.gradable.name, eval("#{grade.gradable_type.downcase}_path(grade.gradable)")%>
 	                </div>    
 	            </div>
 	        </div>

@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one       :picture, as: :imageable, dependent: :destroy
+  accepts_nested_attributes_for :picture
   has_many      :deals
   has_many      :favorites, dependent: :destroy
   has_many      :credit_histories, dependent: :destroy
@@ -11,7 +12,6 @@ class User < ActiveRecord::Base
   has_many      :grades
   has_many      :authentications
   validates     :username, :presence => true, :uniqueness => true
-  
   
   rails_admin do
     list do

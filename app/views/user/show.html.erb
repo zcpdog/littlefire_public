@@ -5,21 +5,22 @@
                         <div class="yui3-u-1 person">
                             <a href="#">
 								<%=image_tag @user.picture.image.url(:thumb), class: "avatar" if @user.picture.present?%>
-								<%=holder_tag 122,"",class: "avatar" unless @user.picture.present?%>
+								<%=holder_tag 122,"图像",class: "avatar" unless @user.picture.present?%>
                             </a>
                             <div class="yui3-u">
                                 <p>
                                     <span class="nickname"><%=@user.username%></span>
+									<%=link_to "修改资料","/user/profile", type: "button", class: "btn btn-success"%>
                                 </p>
-                                <!-- <p class="credits">
+                                <p class="credits">
                                     历史积分：0
                                 </p>
                                  <p>
                                      可用积分：0 <a href="#">去兑换</a>
                                  </p>
 	                            <p>
-	                                <a href="/user/score_history">积分历史</a>
-	                            </p> -->
+	                                <a href="#">积分历史</a>
+	                            </p>
                                 <p>
                                     加入时间 <%=l @user.created_at, :format => :long%>
                                 </p>

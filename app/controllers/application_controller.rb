@@ -10,6 +10,9 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     if resource_class == User
       devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation) }
+      devise_parameter_sanitizer.for(:account_update) do |u|
+        u.permit(:username, :password, :password_confirmation, picture_attributes: [:image, :image_cache])
+      end
     end
   end
   

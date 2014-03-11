@@ -1,0 +1,74 @@
+<div class="main">
+    <!--user setting -->
+    <div class="yui3-g-r">
+        <%=render "user/common/left_sidebar"%>
+            
+        <div class="yui3-u-3-4 user-right">
+		<% if flash[:notice] %>
+		    <p class="alert"><%= flash[:notice] %></p>
+		<% end %>
+		<div class="edit-avatar">
+    	<h1>修改头像</h1>
+	    <div class="yui3-g-r">
+	        <div class="yui3-u-1-8">
+	            <div class="pd40">
+					<%=image_tag current_user.picture.image.url(:thumb), class: "avatar" if current_user.picture.present?%>
+					<%=holder_tag 64, "头像" unless current_user.picture.present?%>
+	            </div>
+	        </div>
+	        <div class="upload-img yui3-u-5-6">
+				
+				<%= form_for(current_user, :as => resource_name, :url => registration_path(resource_name), 
+					:html => { :method => :put,:multipart => true }) do |f| %>
+				  <%= f.fields_for :picture_attributes, current_user.picture do |pic| %>
+				      <%= pic.label :image,"头像（如果无需修改头像，请忽略）" %><br />
+				      <%= pic.file_field :image %>
+					  <%= pic.hidden_field :image_cache%>
+				  <% end %>
+                <div>
+                    <p class="input-tip">支持 JPG、GIF、PNG 格式，不超过 2MB。</p>
+                </div>
+				<p><button type="submit" class="btn btn-success btn-primary">上传图片</button></p>
+			  <%end%>
+			
+	        </div>
+	    </div>
+        </div>
+		<hr>
+	    <div class="edit-user-info">
+	        <!--  -->
+	        <h1>修改密码</h1>
+	        <div class="yui3-g">
+	            <div class="yui3-u-1">
+	                <div class="pd40">
+						<%= form_for(current_user, :as => resource_name, :url => "/user/settings/update_password", 
+							:html => { :method => :put }) do |f| %>
+						<div class="fgroup">
+							邮箱: <%=current_user.email%>
+						</div>
+						<br/>
+						<div class="fgroup">
+							昵称: <%=current_user.username%>
+						</div>
+						<br/>
+						  <div class="fgroup">
+							  <%= f.label :current_password, "原密码" %> <br />
+						  <%= f.password_field :current_password %></div>
+						  <div class="fgroup">
+							  <%= f.label :password,"新密码" %> <br />
+						  <%= f.password_field :password, :autocomplete => "off" %></div>
+			  
+						  <div class="fgroup">
+							  <%= f.label :password_confirmation, "确认新密码" %><br />
+						  <%= f.password_field :password_confirmation %></div>
+ 
+			  			  <div>
+			  				  <button type="submit" class="btn btn-success btn-primary">修改信息</button>
+			  			  </div>
+							<% end %>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</div>

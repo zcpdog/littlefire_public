@@ -65,6 +65,10 @@ $(function() {
 	    }
 	});
 	
+	$('.best-choice').affix({
+		offset: { top: $('.nav-content').offset().top }
+	});
+	
 	$(".items").on("mouseenter", ".item", function () {
         $(this).find(".more").css("visibility", "visible")
     }).on("mouseleave", ".item", function () {

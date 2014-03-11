@@ -11,7 +11,7 @@
 					   <%=holder_tag 80, "picture" unless comment.commentable.picture.present?%>
 	                </div>
 	                <div class="yui3-u-3-4">
-					   <%=link_to comment.commentable.title, eval("#{comment.commentable_type.downcase}_path(comment.commentable)")%>
+					   <%=link_to comment.commentable.name, eval("#{comment.commentable_type.downcase}_path(comment.commentable)")%>
 					   <p>
 					   	   <span style="color:#EB7171;">评论：</span>
 					   	   <%=comment.content.try(:html_safe)%>

@@ -1,5 +1,5 @@
 <div class="timeline-marker">
-    <span><%=year_month%></span>
+<span><%=year_month%></span>
 </div>
 <div id="timeline-container">
 	<%objs.each do |favorite|%>
@@ -11,7 +11,7 @@
 					   <%=holder_tag 80, "picture" unless favorite.favorable.picture.present?%>
 	                </div>
 	                <div class="yui3-u-3-4">
-					   <%=link_to favorite.favorable.title, eval("#{favorite.favorable_type.downcase}_path(favorite.favorable)")%>
+					   <%=link_to favorite.favorable.name, eval("#{favorite.favorable_type.downcase}_path(favorite.favorable)")%>
 	                </div>    
 	            </div>
 	        </div>

@@ -15,7 +15,9 @@ class UserController< ApplicationController
   end
   
   def profile
-    render "user/profile/show"
+  end
+  
+  def change_password
   end
   
   protected
