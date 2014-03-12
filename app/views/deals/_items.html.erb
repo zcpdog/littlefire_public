@@ -38,7 +38,7 @@
             </div>
         </div>
         <div class="yui3-u-1-4 thumb">
-			<%=image_tag deal.picture.image.url(:thumb) if deal.picture.present?%>
+			<%=image_tag deal.picture.image.url(:medium) if deal.picture.present?%>
 			<%=holder_tag 194, "picture" unless deal.picture.present?%>
 			<%=link_to "直达链接", purchase_deal_path(deal), class: "btn btn-danger", target: "_blank"%>
         </div>

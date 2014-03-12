@@ -7,7 +7,7 @@
 	        <div class="line-item yui3-g-r">
 	            <div class="line-content">
 	                <div class="yui3-u-1-4">
-					   	<%=image_tag(grade.gradable.picture.image.url(:thumb), width: 80) if grade.gradable.picture.present?%>
+					   	<%=image_tag(grade.gradable.picture.image.url(:small), width: 80) if grade.gradable.picture.present?%>
 						<%=holder_tag 80,"picture","sky" unless grade.gradable.picture.present?%>
 	                </div>
 	                <div class="yui3-u-3-4">

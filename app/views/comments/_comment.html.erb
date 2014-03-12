@@ -1,6 +1,6 @@
 <li>
     <div class="w28-img">
-		<%=image_tag comment.user.picture.image.url(:thumb), class: "avatar" if comment.user.picture.present?%>
+		<%=image_tag comment.user.picture.image.url(:tiny), class: "avatar" if comment.user.picture.present?%>
 		<%=holder_tag 48, "avatar", class: "avatar" unless comment.user.picture.present?%>
     </div>
     <div class="cmtcnt yui3-u-1">

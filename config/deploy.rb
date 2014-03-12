@@ -73,9 +73,8 @@ namespace :deploy do
         local_manifest_path = run_locally "ls public/assets/manifest*"
         local_manifest_path.strip!
         servers = find_servers :roles => assets_role, :except => { :no_release => true }
-        run "cd #{shared_path}/assets && rm -f manifest*"
         servers.each do |srvr|
-          run_locally "rsync -av public/assets #{user}@#{srvr}:#{shared_path}"
+          run_locally "rsync -rtvu --delete public/assets #{user}@#{srvr}:#{shared_path}"
           run_locally "rsync -av #{local_manifest_path} #{user}@#{srvr}:#{release_path}/assets_manifest#{File.extname(local_manifest_path)}"
         end
       else

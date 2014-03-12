@@ -7,7 +7,7 @@
 	        <div class="line-item yui3-g-r">
 	            <div class="line-content">
 	                <div class="yui3-u-1-4">
-					   <%=image_tag comment.commentable.picture.image.url(:thumb), width: "80" if comment.commentable.picture.present?%>
+					   <%=image_tag comment.commentable.picture.image.url(:small), width: "80" if comment.commentable.picture.present?%>
 					   <%=holder_tag 80, "picture" unless comment.commentable.picture.present?%>
 	                </div>
 	                <div class="yui3-u-3-4">

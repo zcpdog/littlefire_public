@@ -66,7 +66,7 @@
 						<div class="yui3-u-1-4">
 						    <div class="thumb-fix">
 						        <div class="thumb">
-									<%=image_tag @deal.picture.image.url(:thumb) if @deal.picture.present?%>
+									<%=image_tag @deal.picture.image.url(:medium) if @deal.picture.present?%>
 									<%=holder_tag 194, "", "sky" unless @deal.picture.present?%>
 									<%=link_to "直达链接", purchase_deal_path(@deal), class: "btn btn-danger", target: "_blank"%>
 						        </div>
