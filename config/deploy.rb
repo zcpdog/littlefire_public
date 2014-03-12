@@ -3,7 +3,6 @@ require "bundler/capistrano"
 require 'capistrano/ext/multistage'
 require 'sidekiq/capistrano'
 require "whenever/capistrano"
-require 'capistrano/local_precompile'
 
 set :whenever_command, "bundle exec whenever"
 set :stages, ["staging", "production"]
@@ -64,6 +63,27 @@ task :copy_nondigest_assets, roles: :app do
   run "cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} ckeditor:create_nondigest_assets"
 end
 after 'deploy:assets:precompile', 'copy_nondigest_assets'
+
+namespace :deploy do
+  namespace :assets do
+    task :precompile, :roles => :web, :except => { :no_release => true } do
+      from = source.next_revision(current_revision)
+      if capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ | wc -l").to_i > 0
+        run_locally "RAILS_ENV=#{rails_env.to_s.shellescape} #{asset_env} #{rake} assets:precompile"
+        local_manifest_path = run_locally "ls public/assets/manifest*"
+        local_manifest_path.strip!
+        servers = find_servers :roles => assets_role, :except => { :no_release => true }
+        run "cd #{shared_path}/assets && rm -f manifest*"
+        servers.each do |srvr|
+          run_locally "rsync -av public/assets #{user}@#{srvr}:#{shared_path}"
+          run_locally "rsync -av #{local_manifest_path} #{user}@#{srvr}:#{release_path}/assets_manifest#{File.extname(local_manifest_path)}"
+        end
+      else
+        logger.info "Skipping asset pre-compilation because there were no asset changes"
+      end
+    end
+  end
+end
 
 # namespace :solr do                                                              
 #   task :reindex do
