@@ -10,20 +10,8 @@ class User::GradesController < UserController
   end
   
   def create
-    @grade =Grade.new(gradable_id: params[:gradable_id],
-     gradable_type: params[:gradable_type],user: current_user, agree: params[:agree])
-    respond_to do |format|
-      if @grade.save
-        format.html
-        format.js {render :show}
-      end
-    end
-  end
-  
-  def create
     @gradable = find_polymorphic_object
-    @grade = @gradable.grades.build
-    @grade.user = current_user
+    @grade = Grade.new(user_id: current_user.id, gradable: @gradable, grade_type: params[:grade_type])
     @grade.save
     respond_to do |format|
         format.js {render :show}
