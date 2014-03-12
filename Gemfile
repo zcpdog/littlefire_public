@@ -48,3 +48,9 @@ group :development do
   gem 'sunspot_solr', "~> 2.1.0"
   gem "progress_bar", "~> 1.0.0"
 end
+
+group :test do
+  gem "rspec-rails", "~> 2.14.1"
+end
+
+
