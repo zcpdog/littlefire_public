@@ -5,7 +5,7 @@
 			<%Deal.active.first(5).each do |deal|%>
 	        <ul>
 	            <li>
-					<%=link_to image_tag(deal.picture.image.url(:thumb),width:48)+"<p>#{deal.name}</p>".html_safe, deal_path(deal) %>
+					<%=link_to image_tag(deal.picture.image.url(:tiny),width:48)+"<p>#{deal.name}</p>".html_safe, deal_path(deal) %>
 	        	</li>
 	        </ul>
 			<%end%>

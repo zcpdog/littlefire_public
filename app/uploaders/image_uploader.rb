@@ -41,15 +41,15 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   version :medium do
-    process :resize_to_limit => [200,200]
+    process :resize_to_limit => [194,194]
   end
 
   version :thumb do
-      process :resize_to_limit => [130,130]
+      process :resize_to_limit => [122,122]
   end
 
   version :tiny do
-      process :resize_to_limit => [50,50]
+      process :resize_to_limit => [48,48]
   end 
   
   version :tiny do
