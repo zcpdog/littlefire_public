@@ -1,6 +1,6 @@
 production:
  solr:
-  hostname: 106.186.18.91
+  hostname: 127.0.0.1
   port: 8080
   log_level: WARNING
   path: /solr
