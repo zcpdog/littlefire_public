@@ -84,6 +84,21 @@ namespace :deploy do
   end
 end
 
+# namespace :deploy do
+#   namespace :assets do
+#     task :precompile, :roles => :web, :except => { :no_release => true } do
+#       run_locally "RAILS_ENV=#{rails_env.to_s.shellescape} #{asset_env} #{rake} assets:precompile"
+#       local_manifest_path = run_locally "ls public/assets/manifest*"
+#       local_manifest_path.strip!
+#       servers = find_servers :roles => assets_role, :except => { :no_release => true }
+#       servers.each do |srvr|
+#         run_locally "rsync -rtvu --delete public/assets #{user}@#{srvr}:#{shared_path}"
+#         run_locally "rsync -av #{local_manifest_path} #{user}@#{srvr}:#{release_path}/assets_manifest#{File.extname(local_manifest_path)}"
+#       end
+#     end
+#   end
+# end
+
 # namespace :solr do                                                              
 #   task :reindex do
 #     run "cd #{current_path} && #{rake} RAILS_ENV=#{rails_env} sunspot:solr:reindex" 
