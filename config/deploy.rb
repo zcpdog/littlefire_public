@@ -52,9 +52,19 @@ namespace :deploy do
   task :seed do
     run "cd #{current_path}; bundle exec rake db:seed RAILS_ENV=#{rails_env}"
   end
-  
-  task :reindex do
-    run "cd #{current_path} && #{rake} RAILS_ENV=#{rails_env} sunspot:solr:reindex" 
+end
+
+namespace :sunspot do
+  namespace :solr do
+    task :reindex do
+      run "cd #{current_path} && #{rake} RAILS_ENV=#{rails_env} sunspot:solr:reindex" 
+    end
+    task :start do
+      run "cd #{current_path} && #{rake} RAILS_ENV=#{rails_env} sunspot:solr:start" 
+    end
+    task :stop do
+      run "cd #{current_path} && #{rake} RAILS_ENV=#{rails_env} sunspot:solr:stop" 
+    end
   end
 end
 
