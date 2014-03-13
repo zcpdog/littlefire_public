@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_paper_trail
   devise :database_authenticatable, :registerable, :confirmable, :lockable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :async
 
   has_one       :picture, as: :imageable, dependent: :destroy
   accepts_nested_attributes_for :picture

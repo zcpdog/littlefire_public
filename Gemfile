@@ -33,9 +33,10 @@ gem "sidekiq", "~> 2.17.6"
 gem "sinatra", "~> 1.4.4", :require => nil
 gem "holder_rails", "~> 2.3.1"
 gem "dalli", "~> 2.7.0"
-gem 'rails_admin_state'
+gem "rails_admin_state", "~> 1.3.3"
 gem "state_machine", "~> 1.2.0"
-gem 'exceptional'
+gem "exceptional", "~> 2.0.33"
+gem "devise-async", "~> 0.9.0"
 
 group :doc do
   gem 'sdoc', require: false
