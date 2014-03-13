@@ -1,10 +1,5 @@
-<div>
+<div class="purchase_redirect">
 正在跳转，请等待...<br/>
 如果没有跳转，请直接点击链接<br/><br/>
-<%=link_to @deal.name, @deal.purchase_link%>
+<%=link_to @deal.name, @deal.purchase_link, class: "purchase_redirect_url"%>
 </div>
-<script type="text/javascript">
-$(function(){
-	setTimeout( function() {window.location.href = "<%=@deal.purchase_link%>";}, 800);
-})
-</script>

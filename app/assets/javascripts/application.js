@@ -21,6 +21,7 @@
 //= require loadmore
 //= require comments
 //= require navigation
+//= require deals
 
 //= require jquery.validate.min
 //= require devise

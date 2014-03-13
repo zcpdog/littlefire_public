@@ -77,6 +77,7 @@ namespace :deploy do
           run_locally "rsync -rtvu --delete public/assets #{user}@#{srvr}:#{shared_path}"
           run_locally "rsync -av #{local_manifest_path} #{user}@#{srvr}:#{release_path}/assets_manifest#{File.extname(local_manifest_path)}"
         end
+        run_locally "RAILS_ENV=#{rails_env.to_s.shellescape} #{asset_env} #{rake} assets:clean"
       else
         logger.info "Skipping asset pre-compilation because there were no asset changes"
       end

@@ -64,10 +64,11 @@ $(function() {
 	      }
 	    }
 	});
-	
-	$('.best-choice').affix({
-		offset: { top: $('.nav-content').offset().top }
-	});
+	if($(".best-choice").length>0 && $(".nav-content").length>0){
+		$('.best-choice').affix({
+			offset: { top: $('.nav-content').offset().top }
+		});
+	}
 	
 	$(".items").on("mouseenter", ".item", function () {
         $(this).find(".more").css("visibility", "visible")
