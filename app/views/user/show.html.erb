@@ -5,7 +5,7 @@
                         <div class="yui3-u-1 person">
                             <a href="#">
 								<%=image_tag @user.picture.image.url(:thumb), class: "avatar" if @user.picture.present?%>
-								<%=holder_tag 122,"图像",class: "avatar" unless @user.picture.present?%>
+								<%=holder_tag 122,"Avatar", "sky" unless @user.picture.present?%>
                             </a>
                             <div class="yui3-u">
                                 <p>

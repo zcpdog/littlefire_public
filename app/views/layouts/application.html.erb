@@ -7,6 +7,9 @@
 	  <%= csrf_meta_tags %>
 	</head>
 	<body>
+		<div id="top-tip" class="top-tip">
+		    <span id="inner-msg">请先登录 !</span>
+		</div>
 		<%=render "layouts/commons/header"%>
 		<%=render "layouts/commons/navbar"%>
 		<%= yield %>
