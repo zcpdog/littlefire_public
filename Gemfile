@@ -17,7 +17,6 @@ gem "rest-client", "~> 1.6.7"
 gem "carrierwave-upyun", "~> 0.1.6"
 gem "carrierwave", "~> 0.10.0"
 gem "sunspot_rails", "~> 2.1.0"
-gem 'sunspot_solr', github: 'xhj/sunspot', require: 'sunspot_solr'
 gem "sunspot-queue", "~> 0.10.2"
 gem "omniauth-weibo-oauth2", "~> 0.3.0"
 gem "nokogiri", "~> 1.6.0"
@@ -46,6 +45,7 @@ group :development do
   gem "quiet_assets", "~> 1.0.2"
   gem "capistrano", "~> 2.15.5"
   gem "net-ssh", "~> 2.7.0"
+  gem 'sunspot_solr', "~> 2.1.0"
   gem "progress_bar", "~> 1.0.0"
 end
 
