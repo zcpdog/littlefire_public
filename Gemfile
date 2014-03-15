@@ -3,7 +3,7 @@ gem "rails", "~> 4.0.4"
 gem "mysql2", "~> 0.3.15"
 gem "sass-rails", "~> 4.0.2"
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.0.2'
+gem 'coffee-rails', '~> 4.0.1'
 gem "less-rails", "~> 2.4.2"
 gem "therubyracer", "~> 0.12.1"
 gem "jquery-rails", "~> 3.1.0"
