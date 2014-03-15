@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 gem "rails", "~> 4.0.4"
 gem "mysql2", "~> 0.3.15"
-gem "sass-rails", "~> 4.0.1"
+gem "sass-rails", "~> 4.0.2"
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.0.1'
+gem 'coffee-rails', '~> 4.0.2'
 gem "less-rails", "~> 2.4.2"
 gem "therubyracer", "~> 0.12.1"
 gem "jquery-rails", "~> 3.1.0"
@@ -25,11 +25,11 @@ gem "active_link_to", "~> 1.0.2"
 gem "rvm-capistrano", "~>1.4.4"
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem "mini_magick", "~> 3.6.0"
-gem "whenever", "~> 0.9.0"
+gem "whenever", "~> 0.9.2"
 gem "ckeditor", "~> 4.0.10"
 gem "rails_admin", "~> 0.6.1"
-gem 'paper_trail', '~> 3.0.0'
-gem "sidekiq", "~> 2.17.6"
+gem 'paper_trail', '~> 3.0.1'
+gem "sidekiq", "~> 2.17.7"
 gem "sinatra", "~> 1.4.4", :require => nil
 gem "holder_rails", "~> 2.3.1"
 gem "dalli", "~> 2.7.0"
