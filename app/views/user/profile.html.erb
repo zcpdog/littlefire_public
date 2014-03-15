@@ -13,7 +13,7 @@
 	        <div class="yui3-u-1-8">
 	            <div class="pd40">
 					<%=image_tag current_user.picture.image.url(:thumb), class: "avatar" if current_user.picture.present?%>
-					<%=holder_tag 64, "头像" unless current_user.picture.present?%>
+					<%=holder_tag 64, "avatar" unless current_user.picture.present?%>
 	            </div>
 	        </div>
 	        <div class="upload-img yui3-u-5-6">

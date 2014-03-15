@@ -17,11 +17,15 @@
 //= require jquery.menu-aim
 //= require jquery.inview.min
 //= require holder
+//= require masonry.pkgd.min
 //= require index
 //= require loadmore
 //= require comments
 //= require navigation
 //= require deals
+//= require discovery
+//= require baidu_ueditor
+//= require ueditor_custom_config
 
 //= require jquery.validate.min
 //= require devise

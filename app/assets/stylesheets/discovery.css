@@ -1,0 +1,122 @@
+.masonryBrick {
+	float: left;
+	width: 20%;
+	height: auto;
+	background-color: #fff;
+	padding: 15px;
+	margin: 0 9px 18px 9px;
+	_display: inline;
+	border-bottom: 2px solid #d9d9d9;
+}
+
+.masonryBrick:hover {
+padding: 14px;
+border: 1px solid #b1d3e6;
+border-bottom: 2px solid #b1d3e6;
+}
+
+a.blTitle {
+display: block;
+font: 14px/1.6em Arial,"MicroSoft YaHei","SimSun";
+}
+
+a.blTitle:hover, a.blTitle:active {
+color: #5183c0;
+text-decoration: none;
+}
+
+.blInfo {
+display: block;
+font: 13px/1.6em Arial,"SimSun";
+}
+
+.mB10 {
+margin-bottom: 10px;
+}
+
+.conBotBlock {
+width: 481px;
+height: 26px;
+margin-left: 32px;
+}
+
+.blBot {
+width: 206px;
+height: 28px;
+border-top: 1px solid #ececec;
+padding-top: 8px;
+margin-left: 0;
+}
+
+.blStore {
+position: absolute;
+bottom: 8px;
+right: 5px;
+background-color: #eff6fc;
+opacity: .7;
+font-size: 12px;
+padding: 3px 8px;
+color: #0078b6;
+}
+
+.blPic {
+display: block;
+width: 206px;
+margin: 0 auto 2px;
+height: auto;
+position: relative;
+}
+
+.gray-background{
+	background-color:#dde1e5;
+}
+
+.blzd {
+margin-top: 6px;
+height: 30px;
+}
+
+.blzd a {
+float: right;
+padding: 5px 40px
+}
+
+a.likeCount:hover, .conBotBlock a.likeCount:active {
+background-position: 0 -577px;
+text-decoration: none;
+}
+
+.blBot a.commentCount, .fxDetailsBot a.commentCount {
+float: left;
+margin-left: 0;
+}
+
+.blTime {
+color: #999;
+width: auto;
+float: right;
+padding-top: 5px;
+font-family: Arial;
+text-align: right;
+}
+
+.conBotBlock a {
+line-height: 26px;
+}
+
+.conBotBlock a.likeCount:hover, .conBotBlock a.likeCount:active {
+background-position: 0 -577px;
+text-decoration: none;
+}
+
+.discover-container{
+	margin: auto; /* center in viewport */
+	width: 80%;
+}
+
+.displaynone {
+position: absolute;
+display: block;
+top: 1500px;
+left: 0;
+}

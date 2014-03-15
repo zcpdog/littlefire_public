@@ -1,0 +1,21 @@
+<div id="timeline-container">
+	<%@discoveries.each do |discovery|%>
+	    <div class="activity <%= cycle("left", "right") -%>">
+	        <div class="line-item yui3-g-r">
+	            <div class="line-content item">
+	                <div class="yui3-u-1-4">
+					   <%=image_tag discovery.picture.image.url(:thumb), width: "122" if discovery.picture.present?%>
+					   <%=holder_tag 122, "picture" unless discovery.picture.present?%>
+	                </div>
+	                <div class="yui3-u-3-4 content">
+					   <%=link_to discovery.name, discovery_path(discovery)%>
+					   <p>
+					   	   <%=discovery.content.try(:html_safe)%>
+					   </p>
+	                </div>    
+	            </div>
+	        </div>
+	        <i></i> 
+	    </div>
+	<%end%>
+</div>

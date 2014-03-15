@@ -1,11 +1,8 @@
-class DealsController < ApplicationController
+class DiscoveriesController < ApplicationController
   before_filter :authenticate_user!, :only =>[:new, :create]
 
   def index
-    @deals = Deal.active.page params[:page]
-    respond_to do |wants|
-      wants.html # index.html.erb
-    end
+    @discoveries = Discovery.all
   end
   
   def search
@@ -36,17 +33,16 @@ class DealsController < ApplicationController
   end
   
   def new
-    respond_to do |format|
-      format.html 
-    end
+    @discovery = Discovery.new
+    @discovery.build_picture
   end
 
   def create
-    @deal = Deal.new(deal_params)
-    @deal.user = current_user
+    @discovery = Discovery.new(deal_params)
+    @discovery.user = current_user
     respond_to do |format|
-      if @deal.save
-        flash[:notice] = '爆料发布成功'
+      if @discovery.save
+        flash[:notice] = '发现发布成功！'
         format.html { redirect_to root_path }
       else
         format.html { render :action => "new" }
@@ -78,7 +74,7 @@ class DealsController < ApplicationController
     end
     
     def deal_params
-      params.require(:deal).permit(:title,:content,:purchase_link)
+      params.require(:discovery).permit(:title,:content,:purchase_link,:merchant_id,picture_attributes: [:image, :image_cache])
     end
 
 end

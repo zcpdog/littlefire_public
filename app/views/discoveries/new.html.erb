@@ -1,0 +1,51 @@
+<div class="main">              
+	<div class="yui3-g-r margin30">
+	  <div class="yui3-u-2-3">
+      <h1>我要发现</h1>
+	  
+	  <%= simple_form_for @discovery, html: {class: "want-bomb"} do |f| %>
+		<div class="fgroup">
+			<%=f.label :title, t("deal.title")%>
+			<%= f.input_field :title, placeholder: "~发现的标题", class: "yui3-u-3-4" %>
+		</div>
+	  	<div class="fgroup">
+			<%=f.label :purchase_link, t("deal.link")%>
+			<%= f.input_field :purchase_link, placeholder: "~发现的商品链接地址", class: "yui3-u-3-4" %>
+		</div>
+		<div class="fgroup">
+			<%=f.association :merchant,  collection: Merchant.all(order: 'name'), prompt: "选择一个商店", label: "商品来源"%>
+		</div>
+		<div class="fgroup">
+			<%= f.simple_fields_for :picture do |p| %>
+		       <%= p.input :image, label: "商品照片" %>
+		    <% end %>
+			<div>
+	            <span class="input-tip">支持 JPG、GIF、PNG 格式，不超过 2MB。</span>
+	        </div>
+		</div>
+		
+		<div class="fgroup">
+			<%=f.label :content, t("deal.body")%>
+	  		<%= f.input_field :content, class: "yui3-u-3-4", id: "myEditor",
+			rows: "15", placeholder: "说说你介绍推荐给大家的理由" %>
+		</div>
+		<div class="fgroup">
+	  		<button type="submit" style="width:77.5%" class="btn btn-primary go yui3-u-3-4">写好了，提交</button>
+		</div>
+	  <% end %>
+	  </div>
+	  <div class="yui3-u-1-3">
+	    <div class="color6 bomb-tip">
+	        <h3>如何提交一篇好发现</h3>
+	        <p>1. 品牌佳、价格优、描述精（全站活动？还是分仓特惠）</p>
+	        <p>2. 例行推荐，比如每日Myhabit、每日易迅天黑黑活动集合不再接受</p>
+	        <p>3. 小众精品请多写几句，给小编科普科普，特别优秀爆料，有额外积分奖励。</p>
+			<%=link_to "<< 返回首页", root_path%>
+	    </div>    
+	  </div>
+	</div>
+</div>
+<script type="text/javascript">
+  var editor = new UE.ui.Editor();
+  editor.render("myEditor");
+</script>

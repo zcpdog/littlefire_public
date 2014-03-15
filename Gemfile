@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-gem "rails", "~> 4.0.3"
+gem "rails", "~> 4.0.4"
 gem "mysql2", "~> 0.3.15"
 gem "sass-rails", "~> 4.0.1"
 gem 'uglifier', '>= 1.3.0'
@@ -37,6 +37,9 @@ gem "rails_admin_state", "~> 1.3.3"
 gem "state_machine", "~> 1.2.0"
 gem "exceptional", "~> 2.0.33"
 gem "devise-async", "~> 0.9.0"
+gem "simple_form", "~> 3.0.1"
+#gem "font-awesome-sass", "~> 4.0.3.1"
+gem 'baidu_ueditor_rails', github: 'zcpdog/baidu_ueditor_rails'
 
 group :doc do
   gem 'sdoc', require: false

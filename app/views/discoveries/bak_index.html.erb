@@ -1,0 +1,74 @@
+<div class="main">
+	<div class="yui3-g-r">
+		<div class="yui3-u-1 fixed-sidebar">
+			<div class="bomb margin30 yui3-u pull-left left-margin">
+				<% if flash[:notice] %>
+				    <p class="alert"><%= flash[:notice] %></p>
+				<% end %>                    
+				<div class="text-center">
+			        <!-- <img src="/static/img/working.gif" id="working"> -->
+			    </div>
+			    <div class="yui3-g-r">
+			        <div class="yui3-u-1">
+			            <div class="bing-items" id="bing-items">
+							<%@discoveries.each do |discovery|%>
+								<div class="bing-item">
+				                    <div class="yui3-g">
+				                        <div class="bing-avatar yui3-u-1-6">
+											<%=image_tag discovery.picture.image.url(:medium), class: "pull-left"%>
+				                        </div>
+				                        <div class="bing-item-content yui3-u-5-6">
+				                            <div class="bing-content p15 arrow_box2">
+				                                <div class="recommond-reason clearfix">
+				                                    <h2 class="title"><%=discovery.title.try(:html_safe)%></h2>
+				                                    <p><%=discovery.content.try(:html_safe)%></p>
+				                                    <p class="thksgiving"><%=time_ago_in_words discovery.created_at%>
+														 by: <%=discovery.user.username%></p>
+				                                </div>
+				                            </div>
+				                            <div class="bing-thumb text-center eR">
+				                                <a class="dir-link" target="_blank" href="/goods/v3psf">直达链接</a>
+				                            </div>
+											
+				                            <div class="yui3-g margin20">
+												<div class="sp20 sc margin20" style="" id="commentWrap">
+								
+																					<form accept-charset="UTF-8" action="/user/deals/12/comments" class="new_comment" id="cmtfm" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="7Vb3S/J7KrspxG4aj4BZBT25te4P581bREy6QLXxlhk="></div>
+																				        <h3></h3>
+																						<textarea autocomplete="off" class="sc-input" cols="30" id="comment_content" name="comment[content]" rows="5"></textarea>
+																				        <div class="yui3-g">
+																				            <p></p>
+																				            <div id="emotion" class="yui3-u-5-6">
+																								<img alt="Laugh" src="/assets/Laugh-78c40edc0fe9a2ab7ae3c5c4d3c3e3fa.png" title="Laugh">
+																								<img alt="Angry" src="/assets/Angry-729c83446a27fa5d32f5cd2a4f2ac023.png" title="Angry">
+																								<img alt="Blush" src="/assets/Blush-a22b0bc72dc7a6a1472fecbd4012a6a6.png" title="Blush">
+																								<img alt="Crazy" src="/assets/Crazy-f424c6a2fd5beea3f112f1467fe60e3a.png" title="Crazy">
+																								<img alt="Crying" src="/assets/Crying-526a89fd429df88924e2dad6af57a4c8.png" title="Crying">
+																								<img alt="Sweat" src="/assets/Sweat-11a7cd780f6cc710346edbd994e6678c.png" title="Sweat">
+																								<img alt="Grin" src="/assets/Grin-188d14a741858e9bbf3d31bd62746e62.png" title="Grin">
+																								<img alt="Hot" src="/assets/Hot-a23f6d3310576defad697d2c119bfccc.png" title="Hot">
+																								<img alt="Largegasp" src="/assets/LargeGasp-972a1a8292d03ae1c3565c66f153e444.png" title="LargeGasp">
+																								<img alt="Naughty" src="/assets/Naughty-37ec3db5bd3ea044f5a7a2f613257f14.png" title="Naughty">
+																				            </div>
+																				            <div class="text-right yui3-u-1-6">
+																				                <button type="submit" class="btn btn-block btn-primary">发布</button>
+																				            </div>
+																				        </div>
+												</form>								
+																			    <h3>评论</h3>
+																			    <ul id="s-cmts" class="s-cmts">
+																			    </ul> 
+																			</div>
+				                            </div>
+				                        </div>
+				                    </div>
+								</div>
+							<%end%>
+			            </div>  
+					</div>
+				</div>      
+			</div>
+			<%=render "layouts/commons/right_side"%>
+		</div>
+	</div>
+</div>

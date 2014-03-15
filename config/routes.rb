@@ -8,6 +8,7 @@ Littlefire::Application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
   
+  resources :ueditor_images
   resources :categories, only: [:index, :show]
   resources :posts, only: [:index, :new, :create, :show]
   resources :deals do
@@ -20,6 +21,7 @@ Littlefire::Application.routes.draw do
     get 'page/:page', :action => :index, :on => :collection
   end
   
+  resources :discoveries
   resources :deals, only: [:index, :new, :create, :show]
   resources :grades, except: :destroy
   resources :comments

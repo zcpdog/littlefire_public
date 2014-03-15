@@ -1,25 +1,20 @@
 # encoding: utf-8
 
-class ProductionImageUploader < CarrierWave::Uploader::Base
+class UeditorImageUploader < CarrierWave::Uploader::Base
   #include Ckeditor::Backend::CarrierWave
-  storage :upyun
+  # Include RMagick or MiniMagick support:
+  # include CarrierWave::RMagick
+  include CarrierWave::MiniMagick
 
+  # Choose what kind of storage to use for this uploader:
+  storage :file
+  #storage :fog
+
+  # Override the directory where uploaded files will be stored.
+  # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    "production/uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  end
-
-  def url(version_name="")
-    @url ||= super({})
-    return @url if version_name.blank?
-    [@url, version_name].join("!") # 我这里在图片空间里面选用 ! 作为“间隔标志符”
-  end
-  
-  # def default_url
-#     # 搞一个大一点的默认图片取名 blank.png 用 FTP 传入图片空间，用于作为默认图片
-#     # 由于有自动的缩略图处理，小图也不成问题
-#     # Setting.upload_url 这个是你的图片空间 URL
-#     "#{Setting.upload_url}/blank.png#{version_name}"
-#   end
+    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  end 
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
@@ -40,7 +35,7 @@ class ProductionImageUploader < CarrierWave::Uploader::Base
   # version :thumb do
   #   process :scale => [50, 50]
   # end
-
+  
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_white_list
@@ -52,7 +47,6 @@ class ProductionImageUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
-  
   def filename
     if super.present?
       "#{Time.zone.now.to_i}.#{file.extension.downcase}"
