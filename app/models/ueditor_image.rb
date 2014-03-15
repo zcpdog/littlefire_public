@@ -1,4 +1,8 @@
 class UeditorImage < ActiveRecord::Base
   validates :image, presence: true
-  mount_uploader :image, UeditorImageUploader
+  if Rails.env.production?
+    mount_uploader :image, ProductionImageUploader
+  else
+    mount_uploader :image, ImageUploader
+  end
 end
