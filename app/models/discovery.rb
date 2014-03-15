@@ -21,7 +21,7 @@ class Discovery < ActiveRecord::Base
   before_save :update_name_and_title
 
   validates :title, length: { in: 5..30}
-  validates :content, length: { maximum: 150}
+  validates :content, length: { maximum: 1500}
   validates_presence_of :title, :content, :picture, :merchant, :purchase_link
 
   state_machine :state, :initial => :editable do
@@ -30,6 +30,9 @@ class Discovery < ActiveRecord::Base
       
     event :disable do
       transition :editable => :uneditable
+    end
+    event :undo do
+      transition :uneditable => :editable 
     end
   end
 
@@ -41,9 +44,13 @@ class Discovery < ActiveRecord::Base
     end
     edit do
       field :merchant
-      field :purchase_link
-      field :title, :ck_editor
-      field :content, :ck_editor
+      field :purchase_link do
+        html_attributes do
+          {size: '100'}
+        end
+      end
+      field :title, :text
+      field :content
       field :due_date, :datetime
       field :picture
     end

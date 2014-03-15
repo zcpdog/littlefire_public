@@ -10,4 +10,11 @@ class Favorite < ActiveRecord::Base
   
   validates :favorable_id, uniqueness: { scope: [:user, :favorable_type]}
   validates_presence_of :user, :favorable
+  
+  rails_admin do
+    list do
+      field :user
+      field :favorable
+    end
+  end
 end

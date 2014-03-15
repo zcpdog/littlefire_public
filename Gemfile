@@ -26,7 +26,6 @@ gem "rvm-capistrano", "~>1.4.4"
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem "mini_magick", "~> 3.6.0"
 gem "whenever", "~> 0.9.2"
-gem "ckeditor", "~> 4.0.10"
 gem "rails_admin", "~> 0.6.1"
 gem 'paper_trail', '~> 3.0.1'
 gem "sidekiq", "~> 2.17.7"
@@ -38,8 +37,7 @@ gem "state_machine", "~> 1.2.0"
 gem "exceptional", "~> 2.0.33"
 gem "devise-async", "~> 0.9.0"
 gem "simple_form", "~> 3.0.1"
-#gem "font-awesome-sass", "~> 4.0.3.1"
-gem 'baidu_ueditor_rails', github: 'zcpdog/baidu_ueditor_rails'
+gem "baidu_ueditor_rails", "~> 0.0.3"
 
 group :doc do
   gem 'sdoc', require: false

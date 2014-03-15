@@ -12,6 +12,14 @@ class Grade < ActiveRecord::Base
   validates_presence_of :user, :gradable_type, :gradable_id, :grade_type
   validates :user , uniqueness: { scope: [:gradable_id, :gradable_type]}
   
+  rails_admin do
+    list do
+      field :user
+      field :grade_type
+      field :gradable
+    end
+  end
+  
   def update_count
     if grade_type.eql? "up"
       self.gradable.agree_count +=1

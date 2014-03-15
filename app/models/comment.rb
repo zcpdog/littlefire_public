@@ -20,6 +20,14 @@ class Comment < ActiveRecord::Base
   
   EMOTIONS = ["Laugh", "Angry", "Blush", "Crazy", "Crying", "Sweat", "Grin", "Hot", "LargeGasp", "Naughty"]
   
+  rails_admin do
+    list do
+      field :user
+      field :content_origin
+      field :commentable
+    end
+  end
+  
   protected
     def generate_html
       self.content_origin = self.content

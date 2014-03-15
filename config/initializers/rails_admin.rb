@@ -16,17 +16,19 @@ RailsAdmin.config do |config|
   config.audit_with :paper_trail, 'AdminUser', 'PaperTrail::Version' 
   
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
-  config.included_models = ["Deal", "Category", "Merchant","User","AdminUser","Picture"]
+  config.included_models = ["Deal", "Category", "Merchant","User","AdminUser","Picture","Comment","Grade","Favorite","Discovery"]
   
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
     new do
-      except ['User', 'Picture']
+      except ['User', 'Picture',"Comment","Grade","Favorite"]
     end
     bulk_delete
     show
-    edit
+    edit do
+      except ["Comment","Grade","Favorite"]
+    end
     delete 
     show_in_app do
       only 'Deal'

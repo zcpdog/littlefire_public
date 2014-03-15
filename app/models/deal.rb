@@ -84,9 +84,13 @@ class Deal < ActiveRecord::Base
         end
       end
       field :merchant
-      field :purchase_link
-      field :title, :ck_editor
-      field :content, :ck_editor
+      field :purchase_link do
+        html_attributes do
+          {size: '100'}
+        end
+      end
+      field :title, :text
+      field :content
       field :due_date, :datetime
       field :picture
     end
