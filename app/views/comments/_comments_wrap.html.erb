@@ -1,0 +1,4 @@
+<h3 class="comments-size">评论(<%=commentable.comments.size%>)</h3>
+<ul id="s-cmts" class="s-cmts">
+	<%=render partial: "comments/items", locals:{commentable: commentable}%>
+</ul> 

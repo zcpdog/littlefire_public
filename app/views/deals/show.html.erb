@@ -28,10 +28,7 @@
 							<div class="sp20 sc margin20" style="" id="commentWrap">
 								<%=render partial: "comments/form", locals: {commentable: @deal}%>
 								
-							    <h3>评论(<%=@deal.comments.size%>)</h3>
-							    <ul id="s-cmts" class="s-cmts">
-									<%=render partial: "comments/items", locals:{commentable: @deal}%>
-							    </ul> 
+							    <%=render partial: "comments/comments_wrap", locals: {commentable: @deal}%>
 							</div>
 						</div>
 						<div class="yui3-u-1-4">
@@ -42,9 +39,7 @@
 									<%=link_to "直达链接", purchase_deal_path(@deal), class: "btn btn-danger", target: "_blank"%>
 						        </div>
 						        <div class="text-center addlike">
-						            <a class="btn btn-primary" href="#" data-id="/recommend/0303-ruelala-gilt-myhabit-ebay-sale/">
-						                收藏(<%=@deal.favorites.size%>)
-						            </a>
+									<%=render partial: "user/common/favorite_bar", locals: {favorable: @deal}%>
 						        </div>
 
 						    </div>
