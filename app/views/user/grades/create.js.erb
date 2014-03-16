@@ -1,0 +1,15 @@
+link = $(".grade-<%=@gradable.class.name.downcase%>-<%=@gradable.id%>.grade-<%=@grade.grade_type%>");
+num = parseInt(link.text().replace( /\D+/g, ''));
+<%if @success%>
+	num+=1;
+<%end%>
+<%if @grade.grade_type=='down'%>
+link.text("已踩("+num+")");
+<%else%>
+link.text("已顶("+num+")");
+<%end%>
+$(".grade-<%=@gradable.class.name.downcase%>-<%=@gradable.id%>")
+	.attr("href","javascript:void(0)")
+	.removeClass("toolbar-link")
+	.removeAttr("data-remote")
+	.removeAttr("data-method");

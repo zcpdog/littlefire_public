@@ -30,16 +30,14 @@
                         <div class="user-hp-nav yui3-g-r">
                             <a class="yui3-u-1-5 my_info <%='current' if @obj_class.eql? 'deals'%>" 
 								id="deals" href="/user/<%=@user.username%>/deals">我的爆料</a>
-							<!-- <a class="yui3-u-1-5 my_info <%='current' if @obj_class.eql? 'discoveries'%>" 
-								id="discoveries" href="/user/<%=@user.username%>/discoveries">我的发现</a> -->
 							<a class="yui3-u-1-5 my_info <%='current' if @obj_class.eql? 'discoveries'%>" 
-								id="discoveries" href="javascript:void(0)">我的发现</a>
+								id="discoveries" href="/user/<%=@user.username%>/discoveries">我的发现</a>
 							<a class="yui3-u-1-5 my_info <%='current' if @obj_class.eql? 'favorites'%>" 
 								id="favorites" href="/user/<%=@user.username%>/favorites">我的收藏</a>
                             <a class="yui3-u-1-5 my_info <%='current' if @obj_class.eql? 'comments'%>" 
 								id="comments" href="/user/<%=@user.username%>/comments">我的评论</a>
 							<a class="yui3-u-1-5 my_info <%='current' if @obj_class.eql? 'grades'%>" 
-								id="grades" href="/user/<%=@user.username%>/grades">我点的赞</a>
+								id="grades" href="/user/<%=@user.username%>/grades">我点顶踩</a>
                         </div>
                     </div>
                     

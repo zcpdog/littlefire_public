@@ -21,7 +21,7 @@ class Grade < ActiveRecord::Base
   end
   
   def update_count
-    if grade_type.eql? "up"
+    if grade_type == "up"
       self.gradable.agree_count +=1
     else
       self.gradable.disagree_count +=1

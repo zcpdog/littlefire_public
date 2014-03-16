@@ -1,0 +1,10 @@
+link = $(".favorite-<%=@favorable.class.name.downcase%>-<%=@favorable.id%>");
+num = parseInt(link.text().replace( /\D+/g, ''));
+<%if @success%>
+	num+=1;
+<%end%>
+link.text("已收藏("+num+")");
+link.attr("href","javascript:void(0)")
+	.removeClass("toolbar-link")
+	.removeAttr("data-remote")
+	.removeAttr("data-method");

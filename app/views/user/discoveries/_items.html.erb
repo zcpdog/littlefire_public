@@ -1,0 +1,21 @@
+<div class="timeline-marker">
+    <span><%=year_month%></span>
+</div>
+<div id="timeline-container">
+	<%objs.each do |discovery|%>
+	    <div class="activity <%= cycle("left", "right") -%>">
+	        <div class="line-item yui3-g-r">
+	            <div class="line-content">
+	                <div class="yui3-u-1-4">
+					   	<%=image_tag(discovery.picture.image.url(:small), width: 80) if discovery.picture.present?%>
+						<%=holder_tag 80,"picture","sky" unless discovery.picture.present?%>
+	                </div>
+	                <div class="yui3-u-3-4">
+					   <%=link_to discovery.name, discovery_path(discovery)%>
+	                </div>    
+	            </div>
+	        </div>
+	        <i></i> 
+	    </div>
+	<%end%>
+</div>

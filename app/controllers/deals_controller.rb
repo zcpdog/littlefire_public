@@ -3,9 +3,6 @@ class DealsController < ApplicationController
 
   def index
     @deals = Deal.active.page params[:page]
-    respond_to do |wants|
-      wants.html # index.html.erb
-    end
   end
   
   def search
@@ -36,9 +33,8 @@ class DealsController < ApplicationController
   end
   
   def new
-    respond_to do |format|
-      format.html 
-    end
+    @deal = Deal.new
+    @deal.build_picture
   end
 
   def create
@@ -53,14 +49,7 @@ class DealsController < ApplicationController
       end
     end
   end
-  
-  def unfold
-    @deal = Deal.find params[:id]
-    respond_to do |format|
-      format.js
-    end
-  end
-  
+
   def update
     respond_to do |format|
       if @deal.update_attributes(deal_params)
@@ -78,7 +67,7 @@ class DealsController < ApplicationController
     end
     
     def deal_params
-      params.require(:deal).permit(:title,:content,:purchase_link)
+      params.require(:deal).permit(:title,:content,:purchase_link,:merchant_id,picture_attributes: [:image, :image_cache])
     end
 
 end

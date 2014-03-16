@@ -4,7 +4,8 @@ class Discovery < ActiveRecord::Base
   default_scope {order("created_at DESC")}
   scope :owned_by, ->(user) { where(user: user)}
   scope :day_of, ->(time) { where(created_at: time..time+1.month)}
-
+  scope :month_of, ->(time) { where(created_at: time..time+1.month)}
+  
   paginates_per 20
   belongs_to :user
   belongs_to :merchant

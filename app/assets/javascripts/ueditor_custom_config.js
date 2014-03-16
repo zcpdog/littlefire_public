@@ -8,7 +8,7 @@
 	  ,wordCount:0 
 	  ,maximumWords:5000
 	  ,savePath: ['upload']
-	  ,initialFrameHeight:500
+	  ,initialFrameHeight:300
       ,toolbars: [
 	   	  ['Bold','UnderLine','ForeColor','FontSize','|','JustifyLeft',
 	       'JustifyCenter','JustifyRight','JustifyJustify','|',

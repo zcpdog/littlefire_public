@@ -1,34 +1,75 @@
-<div class="main">              
-	<div class="yui3-g-r margin30">
-	  <div class="yui3-u-2-3">
-      <h1>我要爆料</h1>
-	  <%= form_for Deal.new, html: {class: "want-bomb"} do |f| %>
-	  	<div class="fgroup">
-			<%=f.label :purchase_link, t("deal.link")%>
-			<%= f.text_field :purchase_link, placeholder: "~粘帖商品链接地址", class: "yui3-u-3-4" %>
+<div class="solarize_content">
+	<div class="yui3-g-r">
+		<div class="yui3-u-1">
+			<h1>我要爆料</h1>
 		</div>
-		<div class="fgroup">
-			<%=f.label :title, t("deal.title")%>
-			<%= f.text_field :title, placeholder: "~爆料标题", class: "yui3-u-3-4" %>
+		
+		<div class="yui3-u-1">
+			<div class="p20 sai-desc">
+				<h3>如何提交一篇好爆料</h3>
+				<strong>爆料注意事项：</strong>
+				<ol>
+					<li>
+						<p>品牌佳、价格优、描述精（全站活动？还是分仓特惠）</p>
+					</li>
+					<li>
+						<p>例行推荐，比如每日Myhabit、每日易迅天黑黑活动集合不再接受</p>
+					</li>
+					<li>
+						<p>小众精品请多写几句，给小编科普科普，特别优秀爆料，有额外积分奖励。</p>
+					</li>
+					
+				<div class="alert alert-info"><p>奖励：优秀爆料将获得买手党积分（后期增加），用以兑换礼品卡等礼物。恶意爆料、捣乱、违反相关规定的，第一次给予警告处分并删除相关信息，第二次将永久Ban ID。</p></div>
+				<p>保持言之有物，真正指导网友购买、选择的爆料，保证爆料有价值，你我需要共同参与。</p>
+			</div>
 		</div>
-		<div class="fgroup">
-			<%=f.label :content, t("deal.body")%>
-	  		<%= f.text_area :content, class: "yui3-u-3-4", 
-			rows: "15", placeholder: "需要什么优惠券？凑单品？限定特殊地区？都可以写在这里。爆料出无需小编修改的优惠，有额外积分奖励。" %>
+		<div class="yui3-u-1">
+		  <div class="p20 s-c">
+			  <%= simple_form_for @deal do |f| %>
+				<div class="so-box1">
+					<%=f.label :title, t("deal.title")%>
+					<%= f.input_field :title, placeholder: "~爆料标题"%>
+				</div>
+				<div class="so-box1">
+					<div class="clearfix">
+						<%=f.label :content, t("deal.body")%>
+					</div>
+			  		<%= f.input_field :content,rows: "15", 
+					placeholder: "需要什么优惠券？凑单品？限定特殊地区？都可以写在这里。爆料出无需小编修改的优惠，有额外积分奖励。" %>
+				</div>
+			  	<div class="so-box1 so-box2">
+					<%=f.label :purchase_link, t("deal.link")%>
+					<%= f.input_field :purchase_link, placeholder: "~粘帖商品链接地址", class: "yui3-u-3-4" %>
+				</div>
+				<div class="yui3-g">
+					<%= f.simple_fields_for :picture do |p| %>
+				       <%= p.input_field :image, label: "商品照片", style: "display:none;", id: "real-file"%>
+				    <% end %>
+					<div class="yui3-u-3-4 so-box1">
+						<input id="uploadFile" placeholder="~选择封面图片" disabled="disabled" type="text"/>
+					</div>
+					<div class="yui3-u-1-4 so-box1">
+				    	<input id="uploadBtn" type="button" class="upload s-submit btn w60 btn-primary" value="浏览"/>
+					</div>
+				</div>
+				<div>
+		            <span class="input-tip">支持 JPG、GIF、PNG 格式，不超过 2MB。</span>
+		        </div>
+				<div class="so-box1 ">
+					<%=f.association :merchant,  collection: Merchant.all, prompt: "选择一个商店", label: "商品来源"%>
+				</div>
+			    <hr>
+			    <div class="so-box1 ">
+					<button type="submit" class="s-submit btn w60 btn-primary">提交</button>	
+			    </div>
+			  <% end %>
+		  </div>
 		</div>
-		<div class="fgroup">
-	  		<button type="submit" style="width:77.5%" class="btn btn-primary go yui3-u-3-4">写好了，提交</button>
 		</div>
-	  <% end %>
-	  </div>
-	  <div class="yui3-u-1-3">
-	    <div class="color6 bomb-tip">
-	        <h3>如何提交一篇好爆料</h3>
-	        <p>1. 品牌佳、价格优、描述精（全站活动？还是分仓特惠）</p>
-	        <p>2. 例行推荐，比如每日Myhabit、每日易迅天黑黑活动集合不再接受</p>
-	        <p>3. 小众精品请多写几句，给小编科普科普，特别优秀爆料，有额外积分奖励。</p>
-			<%=link_to "<< 返回首页", root_path%>
-	    </div>    
-	  </div>
 	</div>
 </div>
+<script type="text/javascript">
+if($("#deal_content").length>0){
+	new UE.ui.Editor({ initialFrameHeight:300}).render("deal_content");
+}
+</script>

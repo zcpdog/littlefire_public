@@ -11,11 +11,10 @@ class User::FavoritesController < UserController
   
   def create
     @favorable = find_polymorphic_object
-    @favorite = @favorable.favorites.build
-    @favorite.user = current_user
-    @favorite.save
+    @favorite = Favorite.new({favorable: @favorable, user_id: current_user.id})
+    @success = @favorite.save
     respond_to do |format|
-        format.js {render :show}
+      format.js
     end
   end
   

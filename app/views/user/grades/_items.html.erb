@@ -12,6 +12,11 @@
 	                </div>
 	                <div class="yui3-u-3-4">
 					   <%=link_to grade.gradable.name, eval("#{grade.gradable_type.downcase}_path(grade.gradable)")%>
+					   <p>
+						   <span style="color:#EB7171;">观点：</span>
+					   	   <%="顶" if grade.grade_type=="up" %>
+						   <%="踩" if grade.grade_type=="down" %>
+					   </p>
 	                </div>    
 	            </div>
 	        </div>

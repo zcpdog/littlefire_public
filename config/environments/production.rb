@@ -82,12 +82,11 @@ Littlefire::Application.configure do
   
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-      :port           => 587,
-      :address        => 'smtp.mailgun.org',
-      :user_name      => 'postmaster@maishoudang.com',
-      :password       => '0pwanpvbs6f1',
-      :domain         => 'maishoudang.com',
-      :authentication => :plain,
+      :port           => 25,
+      :address        => 'smtpcloud.sohu.com',
+      :user_name      => 'postmaster@msd.sendcloud.org',
+      :password       => 'D3XQA1KJ',
+      :authentication => 'login'
   }
   config.action_mailer.default_url_options = { :host => 'maishoudang.com' }
 end

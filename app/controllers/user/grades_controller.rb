@@ -12,9 +12,9 @@ class User::GradesController < UserController
   def create
     @gradable = find_polymorphic_object
     @grade = Grade.new(user_id: current_user.id, gradable: @gradable, grade_type: params[:grade_type])
-    @grade.save
+    @success = @grade.save
     respond_to do |format|
-        format.js {render :show}
+      format.js
     end
   end
 end

@@ -11,16 +11,19 @@ Littlefire::Application.routes.draw do
   resources :categories, only: [:index, :show]
   resources :posts, only: [:index, :new, :create, :show]
   resources :deals do
-    resources :comments
-    resources :favorites
-    resources :grades
     member do
       get 'purchase'
     end
     get 'page/:page', :action => :index, :on => :collection
   end
   
-  resources :discoveries
+  resources :discoveries do
+    member do
+      get 'purchase'
+    end
+    get 'page/:page', :action => :index, :on => :collection
+  end
+  
   resources :deals, only: [:index, :new, :create, :show]
   resources :grades, except: :destroy
   resources :comments
@@ -33,11 +36,18 @@ Littlefire::Application.routes.draw do
     get '/:username/favorites' => 'favorites#index'
     get '/:username/grades' => 'grades#index'
     get '/:username/deals' => 'deals#index'
-    resources :deals, except: :destroy
+    get '/:username/discoveries' => 'discoveries#index'
+    resources :deals, except: [:destroy, :update]
+    resources :discoveries, except: [:destroy, :update]
     resources :pictures, only: :create
     resources :credit_histories, only: [:index]
     resources :grades, except: :destroy
     resources :deals do
+      resources :comments 
+      resources :favorites
+      resources :grades
+    end
+    resources :discoveries do
       resources :comments 
       resources :favorites
       resources :grades

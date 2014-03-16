@@ -18,22 +18,7 @@
                         <span>分类：</span>
 						<%=show_categories deal%>
                     </div>
-                    <div class="pull-left">
-			  		  	<%=link_to "踩", user_deal_grades_path(deal, grade_type: "down"), method: :post, remote: true, 
-							class: "deal-toolbar-link deal-grade"%>
-                    </div>
-                    <div class="pull-left">
-			  		  	<%=link_to "顶", user_deal_grades_path(deal, grade_type: "up" ), method: :post, remote: true, 
-							class: "deal-toolbar-link deal-grade"%>
-                    </div>
-                    <div class="pull-left">
-			  		  	<%=link_to "收藏", user_deal_favorites_path(deal), 
-						method: :post, remote: true, class: "deal-toolbar-link deal-favorite"%>
-                    </div>
-                    <div class="pull-left">
-			  		  	<%=link_to "评论", deal_path(deal, anchor: 'commentWrap'), target: "_blank",
-							class: "deal-toolbar-link deal-comment"%>
-                    </div>
+					<%=render partial: "user/common/tool_bar", locals: {obj: deal}%>
                     <div style="visibility: hidden;" class="more pull-right"><a href="#">全文 ↓</a></div>
                 </div>
             </div>
