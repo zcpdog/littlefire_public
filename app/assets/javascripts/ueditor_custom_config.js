@@ -3,7 +3,6 @@
     window.CUSTOM_CONFIG = {
 	  imageUrl: "/ueditor_images"
 	  ,imagePath: ""
-	  ,maxImageSideLength: 600
 	  ,elementPathEnabled: false
 	  ,wordCount:0 
 	  ,maximumWords:5000
