@@ -44,7 +44,7 @@ $(function(){
 					$(".sc-input").val("");
 					$(cmt).hide().prependTo("ul#s-cmts").slideDown();
 					num = parseInt($(".comments-size").text().replace( /\D+/g, ''))+1;
-					$(".comments-size").text("评论("+num+")")
+					$(".comments-size").text("评论("+num+")");
 				})
 	    	});
 	    }
