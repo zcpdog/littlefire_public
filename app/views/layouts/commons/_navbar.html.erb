@@ -16,25 +16,24 @@
 				<%=active_link_to "发现频道", discoveries_path, class_active: 'current'%>
             </li>
             <li>
-				<%=active_link_to "经验晒单", "javascript:void(0)", class_active: 'current'%>
+				<%=active_link_to "经验晒单", experiences_path, class_active: 'current'%>
             </li>
             <li>
-				<%=active_link_to "名人堂", "javascript:void(0)", class_active: 'current'%>
+				<%=active_link_to "教程攻略", articles_path, class_active: 'current'%>
             </li>
-            <li>
-				<%=active_link_to "教程攻略", "javascript:void(0)", class_active: 'current'%>
-            </li>
-			
         </ul>
         <ul class="pull-right ul-f">
             <li>
-				<%=active_link_to '<i class="icon-write"></i>我要爆料'.html_safe, new_deal_path, class_active: 'current'%>
+				<%=active_link_to '<i class="icon-write"></i>我要爆料'.html_safe, new_deal_path, 
+					class_active: 'current', active: :exclusive%>
             </li>
             <li>
-				<%=active_link_to '<i class="icon-write"></i>我要发现'.html_safe, new_discovery_path, class_active: 'current'%>
+				<%=active_link_to '<i class="icon-write"></i>我要发现'.html_safe, new_discovery_path, 
+					class_active: 'current', active: :exclusive%>
             </li>
             <li>
-				<%=active_link_to '<i class="icon-write"></i>我要晒单'.html_safe, "#", class_active: 'current'%>
+				<%=active_link_to '<i class="icon-write"></i>我要晒单'.html_safe, new_experience_path, 
+					class_active: 'current', active: :exclusive%>
             </li>
         </ul>
         <!-- part stop -->

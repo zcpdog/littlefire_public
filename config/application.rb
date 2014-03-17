@@ -8,6 +8,9 @@ Bundler.require(:default, Rails.env)
 
 module Littlefire
   class Application < Rails::Application
+    config.generators do |g|
+      g.test_framework :rspec
+    end
     I18n.enforce_available_locales = false
     config.time_zone = 'Beijing'
     config.i18n.locale = "zh-CN"

@@ -1,6 +1,6 @@
 require 'nokogiri'
 class Deal < ActiveRecord::Base
-  has_paper_trail
+  has_paper_trail :ignore => [:comments_count, :favorites_count, :agree_count, :disagree_count]
   default_scope {order("created_at DESC")}
   scope :owned_by, ->(user) { where(user: user)}
   scope :active, ->{ where(state: ACTIVE_STATES)}
@@ -21,6 +21,9 @@ class Deal < ActiveRecord::Base
   
   has_one   :picture, as: :imageable, dependent: :destroy
   accepts_nested_attributes_for :picture, allow_destroy: true
+  
+  has_one   :credit, as: :creditable, dependent: :destroy
+  accepts_nested_attributes_for :credit, allow_destroy: true
   
   before_save :update_content_plain_text, if: Proc.new {|deal| deal.content_changed?}
   before_save :update_name_and_title
@@ -93,6 +96,7 @@ class Deal < ActiveRecord::Base
       field :content
       field :due_date, :datetime
       field :picture
+      field :credit
     end
     
     state({

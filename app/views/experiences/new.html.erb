@@ -1,0 +1,81 @@
+
+<div class="solarize_content">
+	<div class="yui3-g-r">
+		<div class="yui3-u-1">
+			<h1>我要晒单</h1>
+		</div>
+		
+		<div class="yui3-u-1">
+			<div class="p20 sai-desc">
+				<h3>晒单说明</h3>
+								<strong>以下晒单将获得通过：</strong>
+								<ol>
+									<li>
+										<p>要言之有物，避免我开箱，你看着，毫无意义的开箱。要有爱，爱家爱自己，爱你所晒之物，爱读你晒单的网友。</p>
+									</li>
+									<li>
+										<p><strong style="color:#15A4D1;">标准品鉴贴格式：</strong><br>介绍商品是什么，东西来源，每张图片带附带简介+个人感受，有使用评价就更好了，最后附上东西+ID图。</p>
+									</li>
+									<li>
+										<p><strong style="color:#E48282">标准坑爹贴格式：</strong><br>
+											介绍商品是什么，东西来源，每张图片带附带简介+个人感受，为什么不好？哪里不舒服？哪里坑爹了？哪里不靠谱？制造了多差的影响？，最后附上东西+ID图。</p>
+									</li>
+								</ol>
+								<strong>以下晒单将<em style="color:#E48282">不会</em>通过审核：</strong>
+								<ol>
+									<li>
+										<p>一张流（最少5张图片），照片模糊不清，高噪点，无叙述性文字，纯图片</p>
+									</li>
+									<li>
+										<p>内容存在不和谐、辱骂、中伤、煽动性内容，晒单文字存在较大不合规倾向</p>
+									</li>
+									<li>
+										<p>盗用他人图片，图片存在版权问题，非原创</p>
+									</li>
+								</ol>
+								<div class="alert alert-info"><p>奖励：优秀晒单贴将获得mgpyh积分（后期增加），用以兑换礼品卡等礼物。恶意晒单、捣乱、违反相关规定的，第一次给予警告处分并删除相关信息，第二次将永久Ban ID。</p></div>
+								<p>保持言之有物，真正指导网友购买、选择的晒单区，保证晒单区的有价值，你我需要共同参与。</p>
+			</div>
+		</div>
+		<div class="yui3-u-1">
+		  <div class="p20 s-c">
+			  <%= simple_form_for @experience do |f| %>
+				<div class="so-box1">
+					<%=f.label :title, t("deal.title")%>
+					<%= f.input_field :title, placeholder: "~晒单标题"%>
+				</div>
+				<div class="so-box1">
+					<div class="clearfix">
+						<%=f.label :content,"~晒单内容"%>
+					</div>
+			  		<%= f.input_field :content,rows: "15" %>
+				</div>
+				<div class="yui3-g">
+					<%= f.simple_fields_for :picture do |p| %>
+				       <%= p.input_field :image, label: "封面图片", style: "display:none;", id: "real-file"%>
+				    <% end %>
+					<div class="yui3-u-3-4 so-box1">
+						<input id="uploadFile" placeholder="~选择封面图片" disabled="disabled" type="text"/>
+					</div>
+					<div class="yui3-u-1-4 so-box1">
+				    	<input id="uploadBtn" type="button" class="upload s-submit btn w60 btn-primary" value="浏览"/>
+					</div>
+				</div>
+				<div>
+		            <span class="input-tip">支持 JPG、GIF、PNG 格式，不超过 2MB。</span>
+		        </div>
+			    <hr>
+			    <div class="so-box1 ">
+					<button type="submit" class="s-submit btn w60 btn-primary">提交</button>	
+			    </div>
+			  <% end %>
+		  </div>
+		</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+if($("#experience_content").length>0){
+	new UE.ui.Editor({ initialFrameHeight:300}).render("experience_content");
+}
+</script>

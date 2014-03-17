@@ -1,5 +1,5 @@
 class AdminUser < ActiveRecord::Base
-  has_paper_trail
+  has_paper_trail only: [:username,:email,:password]
   devise :database_authenticatable, 
          :recoverable, :rememberable, :trackable, :validatable, :timeoutable
   validates_presence_of :role

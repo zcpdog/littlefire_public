@@ -1,0 +1,33 @@
+class ExperiencesController < ApplicationController
+  def new
+    @experience = Experience.new
+    @experience.build_picture
+  end
+  
+  def show
+    @experience = Experience.find(params[:id])
+    not_found unless @experience.active? or (current_user.present? and @experience.owned_by? current_user)
+  end
+  
+  def index
+    @experiences = Experience.active.page params[:page]
+  end
+  
+  def create
+    @experience = Experience.new(discovery_params)
+    @experience.user = current_user
+    respond_to do |format|
+      if @experience.save
+        flash[:notice] = '晒单经验发布成功！'
+        format.html { redirect_to root_path }
+      else
+        format.html { render :action => "new" }
+      end
+    end
+  end
+  
+  private
+    def discovery_params
+      params.require(:experience).permit(:title,:content,picture_attributes: [:image, :image_cache])
+    end
+end

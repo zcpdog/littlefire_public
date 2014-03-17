@@ -7,6 +7,7 @@
 	  ,wordCount:0 
 	  ,maximumWords:5000
 	  ,savePath: ['upload']
+	  ,pasteplain:true
 	  ,initialFrameHeight:300
       ,toolbars: [
 	   	  ['Bold','UnderLine','ForeColor','FontSize','|','JustifyLeft',

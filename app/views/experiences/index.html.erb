@@ -1,0 +1,20 @@
+<div class="main">
+	<div class="yui3-g-r">
+		<div class="yui3-u-1 fixed-sidebar">
+			<div class="recommond yui3-u pull-left left-margin">
+				<% if flash[:notice] %>
+				    <p class="alert"><%= flash[:notice] %></p>
+				<% end %>                    
+			    <div class="items">
+    				<%=render partial: "items", locals: {experiences: @experiences}%>
+				</div>
+			    <div class="text-center margin30">
+			        <div id="stance"><%=image_tag "loading.gif"%></div>
+			        <%=paginate @experiences, :theme => 'my_theme', :window => 3%>
+			    </div>
+			   	<a style="display:none" href="#" data-next="2" data-type="newest" class="loadmore btn yui3-u-2-3">载入更多推荐</a>
+			</div>
+			<%=render "layouts/commons/right_side"%>
+		</div>
+	</div>
+</div>

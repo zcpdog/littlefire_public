@@ -9,7 +9,8 @@ Littlefire::Application.routes.draw do
   
   resources :ueditor_images, only: [:create]
   resources :categories, only: [:index, :show]
-  resources :posts, only: [:index, :new, :create, :show]
+  resources :articles, only: [:index,:show]
+  resources :experiences, only: [:index,:show,:new,:create]
   resources :deals do
     member do
       get 'purchase'
@@ -48,6 +49,16 @@ Littlefire::Application.routes.draw do
       resources :grades
     end
     resources :discoveries do
+      resources :comments 
+      resources :favorites
+      resources :grades
+    end
+    resources :articles do
+      resources :comments 
+      resources :favorites
+      resources :grades
+    end
+    resources :experiences do
       resources :comments 
       resources :favorites
       resources :grades

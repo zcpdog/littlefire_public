@@ -1,6 +1,5 @@
 RailsAdmin.config do |config|
   config.main_app_name = ["买手党", "后台"]
-  
   ### Popular gems integration
 
   # == Devise ==
@@ -16,13 +15,14 @@ RailsAdmin.config do |config|
   config.audit_with :paper_trail, 'AdminUser', 'PaperTrail::Version' 
   
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
-  config.included_models = ["Deal", "Category", "Merchant","User","AdminUser","Picture","Comment","Grade","Favorite","Discovery"]
+  config.included_models = ["Deal", "Category", "Merchant","User","AdminUser","Picture",
+    "Comment","Grade","Favorite","Discovery","Article","ArticleType", "Experience", "Credit"]
   
   config.actions do
-    dashboard                     # mandatory
-    index                         # mandatory
+    dashboard                     
+    index
     new do
-      except ['User', 'Picture',"Comment","Grade","Favorite"]
+      except ['User', 'Picture',"Comment","Grade","Favorite","Experience"]
     end
     bulk_delete
     show

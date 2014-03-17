@@ -1,0 +1,52 @@
+<div class="main">
+    <div class="yui3-g-r">
+    	<div class="yui3-u-1 fixed-sidebar">
+		<div class="detail margin20 yui3-u left-margin pull-left">
+		    <div class="item yui3-g-r">
+			    <div class="time yui3-u-1-12">
+			        <span><%=time_ago_in_words @article.created_at%></span>
+			    </div>
+				<div class="content yui3-u-11-12">
+					<h1 class="title"><%=link_to @article.title.try(:html_safe), "javascript:void(0);"%></h1>
+					<div class="yui3-g-r">
+						<div class="yui3-u-3-4">
+						    <div class="post-detail">
+								<p><%=@article.content.try(:html_safe)%></p>
+						    </div>
+						    <div class="entry-share margin30">
+						        <div class="bg-gray clearfix">
+						            <div class="pull-left">
+						            </div>
+						            <div class="pull-right">
+						                <a href="#"  target='_blank' title=''></a>
+						            </div>
+						        </div>
+						    </div>
+						    <!-- <p class="text-center cmtload">评论加载中...</p> -->
+							<div class="sp20 sc margin20" style="" id="commentWrap">
+								<%=render partial: "comments/form", locals: {commentable: @article}%>
+								
+							    <%=render partial: "comments/comments_wrap", locals: {commentable: @article}%>
+							</div>
+						</div>
+						<div class="yui3-u-1-4">
+						    <div class="thumb-fix">
+						        <div class="thumb">
+									<%=image_tag @article.picture.image.url(:medium) if @article.picture.present?%>
+									<%=holder_tag 194, "", "sky" unless @article.picture.present?%>
+						        </div>
+						        <div class="text-center addlike">
+						            <%=render partial: "user/common/favorite_bar", locals: {favorable: @article}%>
+						        </div>
+
+						    </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<%=render "layouts/commons/right_side"%>
+		</div>
+	</div>
+	<div>
+</div>

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_paper_trail
+  has_paper_trail only: [:username,:email,:password,:credit]
   devise :database_authenticatable, :registerable, :confirmable, :lockable,
          :recoverable, :rememberable, :trackable, :validatable, :async
 
@@ -7,7 +7,6 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :picture
   has_many      :deals
   has_many      :favorites, dependent: :destroy
-  has_many      :credit_histories, dependent: :destroy
   has_many      :comments
   has_many      :grades
   has_many      :authentications
