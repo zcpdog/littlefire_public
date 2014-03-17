@@ -1,7 +1,7 @@
 class Article < ActiveRecord::Base
   has_paper_trail :ignore => [:comments_count, :favorites_count, :agree_count, :disagree_count]
   default_scope {order("created_at DESC")}
-  scope :type_of, ->(type_id) { where(article_type_id: type_id)}
+  scope :type_of, ->(type) { where(article_type_id: type)}
   scope :active, ->{ where(state: "published")}
   scope :owned_by, ->(user) { where(user: user)}
   paginates_per 20
