@@ -8,7 +8,7 @@ set :db_user,        "root"
 set :db_password,    "zcp@4762832"
 set :db_encoding,    "utf8"
 set :db_adapter,     "mysql2"
-set :db_pool,         "10"
+set :db_pool,         10
 set :remote_db_name,  "#{application}_#{rails_env}"
 
 set :aws_db_adapter,   "mysql2"
