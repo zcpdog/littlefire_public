@@ -33,7 +33,7 @@ namespace :deploy do
     sudo "mkdir -p #{shared_path}/config"
     sudo "chown #{user}:#{user} #{shared_path}/config"
     db = {"#{rails_env}" => {'adapter' => db_adapter, 'encoding' => db_encoding, 
-        'database' => "#{remote_db_name}", 'username' => db_user, 'password' => db_password}}
+        'database' => "#{remote_db_name}", 'username' => db_user, 'password' => db_password, 'pool' => db_pool}}
     put db.to_yaml, "#{shared_path}/config/database.yml"
   end
   
@@ -57,8 +57,8 @@ namespace :deploy do
     run "cd #{current_path} && #{rake} RAILS_ENV=#{rails_env} sunspot:solr:reindex" 
   end
   
-  task :generate_avator do
-    run "cd #{current_path} && #{rake} RAILS_ENV=#{rails_env} data:generate_avator" 
+  task :generate_avatar do
+    run "cd #{current_path} && #{rake} RAILS_ENV=#{rails_env} data:generate_avatar" 
   end
 end
 
