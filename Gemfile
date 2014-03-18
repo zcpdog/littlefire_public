@@ -38,6 +38,7 @@ gem "exceptional", "~> 2.0.33"
 gem "devise-async", "~> 0.9.0"
 gem "simple_form", "~> 3.0.1"
 gem "baidu_ueditor_rails", "~> 0.0.3"
+gem "ruby_identicon", "~> 0.0.3"
 
 group :doc do
   gem 'sdoc', require: false

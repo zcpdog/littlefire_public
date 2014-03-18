@@ -56,6 +56,10 @@ namespace :deploy do
   task :reindex do
     run "cd #{current_path} && #{rake} RAILS_ENV=#{rails_env} sunspot:solr:reindex" 
   end
+  
+  task :generate_avator do
+    run "cd #{current_path} && #{rake} RAILS_ENV=#{rails_env} data:generate_avator" 
+  end
 end
 
 namespace :deploy do

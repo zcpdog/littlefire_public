@@ -1,12 +1,12 @@
 <li>
     <div class="w28-img">
 		<%=image_tag comment.user.picture.image.url(:thumb), class: "avatar" if comment.user.picture.present?%>
-		<%=holder_tag 48, "图像" unless comment.user.picture.present?%>
+		<%=holder_tag 48, "avatar" unless comment.user.picture.present?%>
     </div>
     <div class="cmtcnt yui3-u-1">
         <div class="eR">
             <div class="cmtune">
-				<%=link_to comment.user.username, "javascript:void(0);"%>
+				<%=link_to comment.user.username, "/user/#{comment.user.username}", target: "_blank"%>
                 <span><%=time_ago_in_words comment.created_at%></span>
             </div>  
             <div class="HA">

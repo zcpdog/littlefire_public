@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ActiveRecord::Base  
   has_paper_trail only: [:username,:email,:password,:credit]
   devise :database_authenticatable, :registerable, :confirmable, :lockable,
          :recoverable, :rememberable, :trackable, :validatable, :async
@@ -10,7 +10,9 @@ class User < ActiveRecord::Base
   has_many      :comments
   has_many      :grades
   has_many      :authentications
-  validates     :username, :presence => true, :uniqueness => true
+  validates     :username, presence: true, uniqueness: true, length: { in: 2..15}
+  
+  after_save :generate_avatar, if: Proc.new {|user| user.picture.nil?}
   
   rails_admin do
     list do
@@ -30,5 +32,10 @@ class User < ActiveRecord::Base
       end
       field :credit
     end
+  end
+  
+  private
+  def generate_avatar
+    AvatarGenerator.perform_async(self.id)
   end
 end
