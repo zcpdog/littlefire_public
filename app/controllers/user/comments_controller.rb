@@ -18,11 +18,7 @@ class User::CommentsController < UserController
     @commentable = find_polymorphic_object
     @comment = @commentable.comments.build(params[:comment].permit(:content))
     @comment.user = current_user
-    respond_to do |format|
-      if @comment.save
-        format.js {render :partial => 'comment', :locals => { :comment => @comment }}
-      end
-    end
+    @comment.save
+    render partial: 'comment', locals: {comment: @comment}
   end
-
 end

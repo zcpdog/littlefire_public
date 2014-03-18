@@ -1,5 +1,5 @@
 class ArticleType < ActiveRecord::Base
-  has_many   :aritcles
+  has_many  :aritcles
   validates :name, presence: true
   validates :code, presence: true, uniqueness: true
   rails_admin do
@@ -7,6 +7,7 @@ class ArticleType < ActiveRecord::Base
       field :id
       field :code
       field :name
+      field :description
     end
     edit do
       field :name

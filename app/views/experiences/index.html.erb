@@ -9,7 +9,11 @@
 				        这里是一些买手分享的晒单和经验...
 				</h1>          
 			    <div class="items">
-    				<%=render partial: "items", locals: {experiences: @experiences}%>
+					<%if @experiences.blank?%>
+						<p class="text-center no-result">sorry~ 小编太懒，还没开始行动呢！</p>
+					<%else%>
+    					<%=render partial: "items", locals: {experiences: @experiences}%>
+					<%end%>
 				</div>
 			    <div class="text-center margin30">
 			        <div id="stance"><%=image_tag "loading.gif"%></div>

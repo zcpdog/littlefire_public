@@ -31,23 +31,19 @@ $(function(){
 	                c = "[" + b.attr("title") + "]";
 	            $(".sc-input").val($('.sc-input').val()+c);
 	        })
-	$("#cmtfm").submit(function () {
-		if ("" == $(".sc-input").val().trim()) {
+	
+	$("#cmtfm").on("ajax:before",function(){
+		if ("" == $(".sc-input").val().trim()){
 			alert("\u4ec0\u4e48\u90fd\u4e0d\u5199\u5c31\u60f3\u53d1\u8868\uff0c\u8fd9\u662f\u65e0\u58f0\u7684\u8d5e\u7f8e\u4e48\uff1f");
-	    }else{
-	    	$.ajax({
-	    		type: "POST",
-				url: $(this).attr("action"),
-				data: $(this).serialize(),
-				dataType: 'html',
-				success: (function(cmt){
-					$(".sc-input").val("");
-					$(cmt).hide().prependTo("ul#s-cmts").slideDown();
-					num = parseInt($(".comments-size").text().replace( /\D+/g, ''))+1;
-					$(".comments-size").text("评论("+num+")");
-				})
-	    	});
-	    }
-		return false;
+			return false;
+		}
+	}).on("ajax:success",function(evt, data, status, xhr){
+		$(".sc-input").val("");
+		$(xhr.responseText).hide().prependTo("ul#s-cmts").slideDown();
+		num = parseInt($(".comments-size").text().replace( /\D+/g, ''))+1;
+		$(".comments-size").text("评论("+num+")");
+	}).on("ajax:error",function(xhr, status, error){
+		alert("评论失败,请刷新后重试");
 	});
+	
 });

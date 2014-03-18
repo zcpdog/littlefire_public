@@ -9,7 +9,11 @@
 				        这里是小标为大家准备的一些攻略教程...
 				</h1>
 				<div class="items recommond">
-					<%=render "items"%>
+					<%if @articles.blank?%>
+						<p class="text-center no-result">sorry~ 小编太懒，还没开始行动呢！</p>
+					<%else%>
+    					<%=render partial: "items", locals: {articles: @articles}%>
+					<%end%>
 				</div>
 			    <div class="text-center margin30">
 			        <div id="stance"><%=image_tag "loading.gif"%></div>

@@ -1,4 +1,4 @@
-<%@articles.each do |article|%>
+<%articles.each do |article|%>
     <div class="item yui3-g-r <%= cycle("odd", "even") -%>">
         <div class="time yui3-u-1-12">
             <span><%=time_ago_in_words article.created_at%></span>
