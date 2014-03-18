@@ -23,6 +23,7 @@
 //= require comments
 //= require navigation
 //= require deals
+//= require discovery
 //= require baidu_ueditor
 //= require ueditor_custom_config
 
