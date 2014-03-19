@@ -24,7 +24,7 @@ class Discovery < ActiveRecord::Base
   before_save :update_content_plain_text, if: Proc.new {|discovery| discovery.content_changed?}
   before_save :update_name_and_title
 
-  validates :title, length: { in: 5..30}
+  validates :title, length: { in: 3..60}
   validates :content, length: { maximum: 1500}
   validates_presence_of :title, :content, :picture, :merchant, :purchase_link
 
