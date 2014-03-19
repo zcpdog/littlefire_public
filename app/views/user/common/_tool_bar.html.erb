@@ -1,30 +1,3 @@
-<%if current_user.present?%>
-	<div class="pull-left">
-		<%if Grade.where(user_id: current_user.id, gradable: obj, grade_type: 'down').blank?%>
-			<%=link_to "踩(#{obj.disagree_count})", eval("user_#{obj.class.name.downcase}_grades_path(obj,grade_type: 'down')"), 
-				method: :post, remote: true, class: "toolbar-link grade-#{obj.class.name.downcase}-#{obj.id} grade-down"%>
-		
-		<%else%>
-		  	<%=link_to "已踩(#{obj.disagree_count})", "javascript:void(0)"%>
-		<%end%>
-	</div>
-	<div class="pull-left">
-		<%if Grade.where(user_id: current_user.id, gradable: obj, grade_type: 'up').blank?%>
-			<%=link_to "顶(#{obj.agree_count})", eval("user_#{obj.class.name.downcase}_grades_path(obj,grade_type: 'up')"), 
-				method: :post, remote: true, class: "toolbar-link grade-#{obj.class.name.downcase}-#{obj.id} grade-up"%>
-		<%else%>
-		  	<%=link_to "已顶(#{obj.agree_count})", "javascript:void(0)"%>
-		<%end%>
-	</div>
-	<div class="pull-left">
-		<%if Favorite.where(user_id: current_user.id, favorable: obj).blank?%>
-			  	<%=link_to "收藏(#{obj.favorites.size})", eval("user_#{obj.class.name.downcase}_favorites_path(obj)"), 
-				method: :post, remote: true, class: "toolbar-link favorite-#{obj.class.name.downcase}-#{obj.id}"%>
-		<%else%>
-		  	<%=link_to "已收藏(#{obj.favorites.size})", "javascript:void(0)"%>
-		<%end%>
-	</div>
-<%else%>
 <div class="pull-left">
   	<%=link_to "踩(#{obj.disagree_count})", eval("user_#{obj.class.name.downcase}_grades_path(obj,grade_type: 'down')"), method: :post, remote: true, 
 		class: "toolbar-link grade-#{obj.class.name.downcase}-#{obj.id} grade-down"%>
@@ -37,7 +10,6 @@
   	<%=link_to "收藏(#{obj.favorites.size})", eval("user_#{obj.class.name.downcase}_favorites_path(obj)"),
 	method: :post, remote: true, class: "toolbar-link favorite-#{obj.class.name.downcase}-#{obj.id}"%>
 </div>
-<%end%>
 <div class="pull-left">
   	<%=link_to "评论(#{obj.comments.size})", eval("#{obj.class.name.downcase}_path(obj, anchor: 'commentWrap')"), target: "_blank",
 		class: "toolbar-redirect comment"%>

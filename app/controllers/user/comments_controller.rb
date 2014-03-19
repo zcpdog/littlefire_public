@@ -1,7 +1,7 @@
 class User::CommentsController < UserController
   def index
     @obj_class = Comment.name.downcase.pluralize
-    @objs = Comment.includes(:commentable).owned_by(@user).month_of(@current_time)
+    @objs = Comment.includes(commentable: :picture).owned_by(@user).month_of(@current_time)
     @stop = beyond_date?
     respond_to do |format|
       format.html {render "user/show"}
