@@ -50,6 +50,7 @@ group :development do
   gem "net-ssh", "~> 2.7.0"
   gem 'sunspot_solr', "~> 2.1.0"
   gem "progress_bar", "~> 1.0.0"
+  gem 'bullet'
 end
 
 group :test do

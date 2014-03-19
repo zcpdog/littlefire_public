@@ -8,7 +8,7 @@ class UserController< ApplicationController
   
   def show
     @obj_class = Favorite.name.downcase.pluralize
-    @objs = Favorite.owned_by(@user)
+    @objs = Favorite.includes(:favorable).owned_by(@user)
     respond_to do |format|
       format.html
     end

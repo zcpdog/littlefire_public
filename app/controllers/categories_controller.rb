@@ -2,14 +2,11 @@ class CategoriesController < ApplicationController
   before_filter :find_model, :only => [:show]
 
   def index
-    @categories = Category.all
-    respond_to do |wants|
-      wants.html # index.html.erb
-    end
+    @categories = Category.includes(:children).where(parent_id: nil)
   end
   
   def show
-    @deals = @category.deals.page params[:page] 
+    @deals = @category.includes(:children).deals.page(params[:page])
     respond_to do |wants|
       wants.html # show.html.erb
     end

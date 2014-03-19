@@ -1,7 +1,7 @@
 <div style="left: -162px;" class="categroy-menu" id="categroy-menu">
     <h1>所有分类</h1>
     <ul class="dropdown-menu" role="menu">
-		<%Category.root.each do |category|%>
+		<%Category.includes(:children).root.each do |category|%>
         <li data-submenu-id="submenu-<%=category.id%>">
 			<%=link_to category.name, "/search?category_id=#{category.id}"%>
             <div id="submenu-<%=category.id%>" class="popover">

@@ -1,7 +1,7 @@
 class User::FavoritesController < UserController
   def index
     @obj_class = Favorite.name.downcase.pluralize
-    @objs = Favorite.owned_by(@user).month_of(@current_time)
+    @objs = Favorite.includes(:favorable).owned_by(@user).month_of(@current_time)
     @stop = beyond_date?
     respond_to do |format|
       format.html {render "user/show"}
