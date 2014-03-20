@@ -1,8 +1,7 @@
 $(function(){
-	$(window).load(function() {
-		$('#container').masonry({
+	$('.image-loaded').waitForImages(function() {
+		$('#discovery-container').masonry({
 		  itemSelector: '.masonryBrick'
-		});
-	});
-	
+		})
+	})
 })

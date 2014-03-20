@@ -26,6 +26,7 @@
 //= require discovery
 //= require baidu_ueditor
 //= require ueditor_custom_config
+//= require jquery.waitforimages.min
 
 //= require jquery.validate.min
 //= require devise
