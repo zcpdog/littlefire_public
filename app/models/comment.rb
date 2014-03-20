@@ -35,10 +35,10 @@ class Comment < ActiveRecord::Base
       EMOTIONS.each do |em|
         self.content.gsub!(/\[#{em}\]/, ActionController::Base.helpers.image_tag("#{em}.png"))
       end
-      self.content.gsub!(/@(\w+)(\s{2})/){
+      self.content.gsub!(/@([\w\P{ASCII}]+)(\s{2})/){
         user = User.where(username: $1).take
         if user.present?
-          ActionController::Base.helpers.link_to($&, "/user/#{self.user.username}", target: "_blank")
+          ActionController::Base.helpers.link_to($&, "/user/#{user.username}", target: "_blank")
         else
           $&
         end
