@@ -1,5 +1,8 @@
 $(function(){
-	$('#container').masonry({
-	  itemSelector: '.masonryBrick'
+	$(window).load(function() {
+		$('#container').masonry({
+		  itemSelector: '.masonryBrick'
+		});
 	});
+	
 })
