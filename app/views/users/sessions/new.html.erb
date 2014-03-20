@@ -1,8 +1,9 @@
 <h1>登录到maishoudang.com</h1>
-<%=form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|%>
+<%=form_for(resource, :as => resource_name, :url => session_path(resource_name),
+	:html => {:class => 'login-form'}) do |f|%>
 	<%- flash.each do |name, msg| -%>
-	    <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-	  <%- end -%>
+		<%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+	<%- end -%>
 	<div class="control">
 	<%=f.label :email, t(:email)%>
 	<%=f.email_field :email%>

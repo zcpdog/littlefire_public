@@ -1,5 +1,6 @@
 <h1>注册maishoudang.com</h1>
-<%=form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|%>
+<%=form_for(resource, :as => resource_name, :url => registration_path(resource_name),
+	:html => {:class => 'signup-form'}) do |f|%>
 	<%=devise_error_messages!%>
 	<div class="control">
 		<%=f.label :email, t(:email)%>

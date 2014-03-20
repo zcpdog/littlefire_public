@@ -10,16 +10,10 @@ $(document).ready(function(){
 				maxlength: 20,
 				required: true
 			}
- 	    },
-		highlight: function(element,errorClass, validClass) {
-			$(element).closest('.control-group').addClass('warning');
-		},
-		unhighlight: function(element,errorClass, validClass){
-			$(element).closest('.control-group').removeClass('warning');
-		}
+ 	    }
 	 });
 	 
-	 $(".register-form").validate({
+	 $(".signup-form").validate({
  	    rules: {
 			"user[email]": {
 				email: true,
@@ -41,13 +35,6 @@ $(document).ready(function(){
 				required: true,
 				equalTo : "#user_password"
 			}
-			
- 	    },
-		highlight: function(element,errorClass, validClass) {
-			$(element).closest('.control-group').addClass('warning');
-		},
-		unhighlight: function(element,errorClass, validClass){
-			$(element).closest('.control-group').removeClass('warning');
-		}
+ 	    }
 	 });
 });
