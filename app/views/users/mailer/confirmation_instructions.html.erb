@@ -1,5 +1,9 @@
-<p>Welcome <%= @email %>!</p>
+<p>欢迎来到买手党，<%= @email %>!</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>请点击下面链接以验证您的邮箱:</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @token) %></p>
+<p><%= link_to '点我验证邮箱', confirmation_url(@resource, :confirmation_token => @token) %></p>
+<p>如果上面链接不能点击，请复制下面链接粘贴到浏览器<p>
+<p><%= confirmation_url(@resource, :confirmation_token => @token) %></p>
+<hr>
+<p><a href="www.maishoudang.com">买手党</a>, 买手聚集的地方</p>

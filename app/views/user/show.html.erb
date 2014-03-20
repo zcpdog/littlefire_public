@@ -3,6 +3,9 @@
                 <div class="user-hp-content">
                 	<div class="yui3-g-r userhome-hd">
                         <div class="yui3-u-1 person">
+							<% if flash[:notice] %>
+							    <p class="alert"><%= flash[:notice] %></p>
+							<% end %>
                             <a href="#">
 								<%=image_tag @user.picture.image.url(:thumb), class: "avatar" if @user.picture.present?%>
 								<%=holder_tag 122,"Avatar", "sky" unless @user.picture.present?%>
