@@ -12,6 +12,10 @@ class Category < ActiveRecord::Base
   
   validates :name, presence: true, uniqueness: true, length: { in: 2..10}
   
+  def is_root?
+    parent.nil?
+  end
+  
   rails_admin do 
     list do
       field :name

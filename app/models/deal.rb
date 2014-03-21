@@ -1,7 +1,7 @@
 require 'nokogiri'
 class Deal < ActiveRecord::Base
   has_paper_trail :ignore => [:comments_count, :favorites_count, :agree_count, :disagree_count]
-  default_scope {order("created_at DESC")}
+  default_scope {order("deals.created_at DESC")}
   scope :owned_by, ->(user) { where(user: user)}
   scope :active, ->{ where(state: ACTIVE_STATES)}
   scope :month_of, ->(time) { where(created_at: time..time+1.month)}

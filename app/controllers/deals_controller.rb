@@ -2,14 +2,19 @@ class DealsController < ApplicationController
   before_filter :authenticate_user!, :only =>[:new, :create]
 
   def index
-    @deals = Deal.includes([:categories,:picture, :merchant]).active.page(params[:page])
+    @deals = Deal.includes([:categories,:picture,:merchant]).active.page(params[:page])
   end
   
   def search
     if params[:category_id].present?
-      @category = Category.find_by(id: params[:category_id])||Category.first
+      @category = Category.find(params[:category_id])||Category.first
       @keyword = @category.name
+      category_ids = Array.new
+      category_ids.push @category
+      @category.children.each{|cat|category_ids.push cat.id}
       @deals = @category.deals.page params[:page] 
+      @deals = Deal.includes([:categories,:picture,:merchant]).joins(:categories).
+        where("categories.id in (?)", category_ids).page(params[:page]) 
     else
       @keyword = params[:q]
       @search = Sunspot.search(Deal) do

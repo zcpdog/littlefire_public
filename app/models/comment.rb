@@ -36,7 +36,7 @@ class Comment < ActiveRecord::Base
         self.content.gsub!(/\[#{em}\]/, ActionController::Base.helpers.image_tag("#{em}.png"))
       end
       self.content.gsub!(/@([\w\P{ASCII}]+)(\s{2})/){
-        user = User.where(username: $1).take
+        user = User.find_by(username: $1)
         if user.present?
           ActionController::Base.helpers.link_to($&, "/user/#{user.username}", target: "_blank")
         else

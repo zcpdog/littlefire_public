@@ -22,7 +22,7 @@ class Experience < ActiveRecord::Base
   before_save :update_name_and_title
 
   validates :title, length: { in: 5..30}
-  validates :content, length: { maximum: 1500}
+  validates :content, length: { maximum: 15000}
   validates_presence_of :title, :content, :picture
 
   state_machine :state, :initial => :checking do
