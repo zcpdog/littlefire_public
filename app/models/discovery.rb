@@ -43,6 +43,7 @@ class Discovery < ActiveRecord::Base
   rails_admin do
     list do
       field :id
+      field :user
       field :name
       field :state, :state
     end

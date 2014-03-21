@@ -1,5 +1,6 @@
 RailsAdmin.config do |config|
   config.main_app_name = ["买手党", "后台"]
+  config.label_methods << :username
   ### Popular gems integration
 
   # == Devise ==
