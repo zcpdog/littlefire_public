@@ -1,29 +1,35 @@
 <%experiences.each do |experience|%>
-    <div class="item yui3-g-r <%= cycle("odd", "even") -%>">
-        <div class="time yui3-u-1-12">
-            <span><%=time_ago_in_words experience.created_at%></span>
-        </div>
-        <div class="content yui3-u-2-3">
-            <h1 class="title">
-				<%=link_to experience.title.try(:html_safe), experience_path(experience), :target=>"_blank"%>
-			</h1>
-            <div class="post-wrap post-hide">
-                <div class="post">
-                    <p><%=experience.content.try(:html_safe)%></p>
-                </div>    
-            </div>
-            <div class="entry-share margin20 clearfix">
-                <div class="share-content clearfix">
-                    <div class="pull-left">
-                    </div>
-					<%=render partial: "user/common/tool_bar", locals: {obj: experience}%>
-                    <div style="visibility: hidden;" class="more pull-right"><a href="#">全文 ↓</a></div>
-                </div>
-            </div>
-        </div>
-        <div class="yui3-u-1-4 thumb">
-			<%=image_tag experience.picture.image.url(:medium) if experience.picture.present?%>
-			<%=holder_tag 194, "picture" unless experience.picture.present?%>
-        </div>
-    </div>
+	<div class="item yui3-g-r">
+	    <div class="avatar text-center yui3-u-1-6">
+				<%=image_tag experience.user.picture.image.url(:avatar64), class: "avatar"%>
+	            <p><%=link_to experience.user.username, "/user/#{experience.user.username}", class: "snn"%></p>
+	            <p class="sdesc"></p>
+	            <p class="stc"><%=time_ago_in_words experience.created_at%></p>
+	    </div>
+	    <div class="yui3-u-5-6">
+	        <div class="sp20 arrow_box">
+	            <h1 class="title">
+					<%=link_to experience.name, experience_path(experience), :target=>"_blank"%>
+				</h1>
+	            <div class="content clearfix">
+	                <div class="thumb pull-left">
+						<%=image_tag experience.picture.image.url(:medium) if experience.picture.present?%>
+						<%=holder_tag 194, "picture" unless experience.picture.present?%>
+	                </div>
+	                <div class="post-exerpt" style="display: block;">
+	                    <p><%=experience.content_plain_text[0..200]%>...</p>
+	                </div>
+	            </div>
+	            <div class="entry-share margin20 clearfix">
+	                <div class="share-content clearfix">
+	                    <div class="pull-left">
+	                    </div>
+	                    <div class="pull-right sma20">
+	                        <%=render partial: "user/common/tool_bar", locals: {obj: experience}%>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
 <%end%>

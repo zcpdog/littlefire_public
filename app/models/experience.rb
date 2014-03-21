@@ -5,6 +5,7 @@ class Experience < ActiveRecord::Base
   scope :owned_by, ->(user) { where(user: user)}
   
   paginates_per 20
+  
   belongs_to :user
   
   has_many   :comments, as: :commentable, dependent: :destroy
@@ -23,7 +24,7 @@ class Experience < ActiveRecord::Base
 
   validates :title, length: { in: 5..30}
   validates :content, length: { maximum: 15000}
-  validates_presence_of :title, :content, :picture
+  validates_presence_of :title, :content, :picture, :user
 
   state_machine :state, :initial => :checking do
     state :checking

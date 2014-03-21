@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_one       :picture, as: :imageable, dependent: :destroy
   accepts_nested_attributes_for :picture
   has_many      :deals
+  has_many      :experience
   has_many      :favorites, dependent: :destroy
   has_many      :comments
   has_many      :grades

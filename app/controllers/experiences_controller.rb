@@ -1,4 +1,6 @@
 class ExperiencesController < ApplicationController
+  before_filter :authenticate_user!, :only =>[:new, :create]
+  
   def new
     @experience = Experience.new
     @experience.build_picture
@@ -10,7 +12,7 @@ class ExperiencesController < ApplicationController
   end
   
   def index
-    @experiences = Experience.active.page params[:page]
+    @experiences = Experience.includes([:user,:picture]).active.page params[:page]
   end
   
   def create

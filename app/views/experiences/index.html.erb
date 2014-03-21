@@ -1,13 +1,10 @@
 <div class="main">
 	<div class="yui3-g-r">
 		<div class="yui3-u-1 fixed-sidebar">
-			<div class="recommond yui3-u pull-left left-margin">
+			<div class="solarize margin30 yui3-u pull-left left-margin">
 				<% if flash[:notice] %>
 				    <p class="alert"><%= flash[:notice] %></p>
 				<% end %>          
-				<h1 class="head">
-				        这里是一些买手分享的晒单和经验...
-				</h1>          
 			    <div class="items">
 					<%if @experiences.blank?%>
 						<p class="text-center no-result">sorry~ 小编太懒，还没开始行动呢！</p>
