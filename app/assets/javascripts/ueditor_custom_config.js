@@ -14,7 +14,7 @@
 	       'JustifyCenter','JustifyRight','JustifyJustify','|',
 		   'insertorderedlist', 'insertunorderedlist','|',
 		   'InsertImage', 'Link','InsertTable','|',
-		   'RemoveFormat','FormatMatch','SearchReplace',
+		   'RemoveFormat','FormatMatch','SearchReplace','source',
 	       'FullScreen' ]
       ]
     };
