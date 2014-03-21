@@ -2,7 +2,7 @@ class DealsController < ApplicationController
   before_filter :authenticate_user!, :only =>[:new, :create]
 
   def index
-    @deals = Deal.includes([:categories,:picture,:merchant]).active.page(params[:page])
+    @deals = Deal.includes([:categories,:picture,:merchant,:user]).active.page(params[:page])
   end
   
   def search

@@ -1,7 +1,8 @@
 <%@deals.each do |deal|%>
     <div class="item yui3-g-r <%= cycle("odd", "even") -%>">
         <div class="time yui3-u-1-12">
-            <span><%=time_ago_in_words deal.created_at%></span>
+			<span><%=time_ago_in_words deal.created_at%></span>
+			<span><%=l deal.created_at, format: :digit%></span>
         </div>
         <div class="content yui3-u-2-3">
             <h1 class="title">
@@ -9,7 +10,12 @@
 			</h1>
             <div class="post-wrap post-hide">
                 <div class="post">
-                    <p><%=deal.content.try(:html_safe)%></p>
+                    <p>
+						<%=link_to "#{deal.user.username}:&nbsp&nbsp".html_safe, 
+							"/user/#{deal.user.username}", target: "_blank", 
+								style: "float:left" if deal.user.present?%>
+						<%=deal.content.try(:html_safe)%>
+					</p>
                 </div>    
             </div>
             <div class="entry-share margin20 clearfix">
