@@ -2,7 +2,7 @@ class DealsController < ApplicationController
   before_filter :authenticate_user!, :only =>[:new, :create]
 
   def index
-    @deals = Deal.includes([:categories,:picture,:merchant,:user]).active.page(params[:page])
+    @deals = Deal.active.page(params[:page])
   end
   
   def search
@@ -33,8 +33,8 @@ class DealsController < ApplicationController
   end
 
   def show
-    @deal = Deal.includes([:picture]).find(params[:id])
-    not_found unless @deal.active? or (current_user.present? and @deal.owned_by? current_user)
+    @deal = Deal.find(params[:id])
+    not_found unless current_admin_user.present? or @deal.active? or (current_user.present? and @deal.owned_by? current_user)
   end
   
   def new

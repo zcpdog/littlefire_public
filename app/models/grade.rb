@@ -6,7 +6,7 @@ class Grade < ActiveRecord::Base
   scope :owned_by, ->(user) { where(user: user)}
   scope :month_of, ->(time) { where(created_at: time..time+1.month)}
   
-  belongs_to  :gradable, polymorphic: true
+  belongs_to  :gradable, polymorphic: true, touch: true
   belongs_to :user
   
   validates_presence_of :user, :gradable_type, :gradable_id, :grade_type

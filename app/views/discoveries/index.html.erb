@@ -2,6 +2,7 @@
 	<div class="clear"></div>
 	<div class="discovery-container" id="discovery-container">
 		<%@discoveries.each do |discovery|%>
+			<%cache discovery do%>
 			<div class="item masonryBrick displaynone masonry-brick">
 				<div class="blBox">
 					<div class="blPic">
@@ -27,6 +28,7 @@
 					</div>
 				</div>
 			</div>
+			<%end%>
 		<%end%>
 	</div>
 </div>

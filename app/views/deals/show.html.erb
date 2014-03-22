@@ -2,9 +2,11 @@
     <div class="yui3-g-r">
     	<div class="yui3-u-1 fixed-sidebar">
 		<div class="detail margin20 yui3-u left-margin pull-left">
+			<%cache ["show",@deal] do%>
 		    <div class="item yui3-g-r">
 			    <div class="time yui3-u-1-12">
-			        <span><%=time_ago_in_words @deal.created_at%></span>
+					<span><%=time_ago_in_words @deal.created_at%></span>
+					<span><%=l @deal.created_at, format: :digit%></span>
 			    </div>
 				<div class="content yui3-u-11-12">
 					<h1 class="title"><%=link_to @deal.title.try(:html_safe), "javascript:void(0);"%></h1>
@@ -47,6 +49,7 @@
 					</div>
 				</div>
 			</div>
+			<%end%>
 		</div>
 		<%=render "layouts/commons/right_side"%>
 		</div>

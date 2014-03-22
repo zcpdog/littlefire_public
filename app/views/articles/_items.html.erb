@@ -1,4 +1,5 @@
 <%articles.each do |article|%>
+	<%cache [article.article_type, article] do%>
     <div class="item yui3-g-r <%= cycle("odd", "even") -%>">
         <div class="time yui3-u-1-12">
             <span><%=time_ago_in_words article.created_at%></span>
@@ -26,4 +27,5 @@
 			<%=holder_tag 194, "picture" unless article.picture.present?%>
         </div>
     </div>
+	<%end%>
 <%end%>

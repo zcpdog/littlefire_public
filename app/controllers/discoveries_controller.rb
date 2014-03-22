@@ -2,7 +2,7 @@ class DiscoveriesController < ApplicationController
   before_filter :authenticate_user!, :only =>[:new, :create]
 
   def index
-    @discoveries = Discovery.includes([:picture,:merchant,:user]).page params[:page]
+    @discoveries = Discovery.page params[:page]
   end
   
   def purchase

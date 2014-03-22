@@ -8,7 +8,7 @@ class Comment < ActiveRecord::Base
   scope :month_of, ->(time) { where(created_at: time..time+1.month)}
   
   belongs_to  :user
-  belongs_to  :commentable, polymorphic: true, counter_cache: true
+  belongs_to  :commentable, polymorphic: true, counter_cache: true, touch: true
   has_many    :grades,  as: :gradable
   belongs_to  :parent, foreign_key: :parent_id, class_name: :Comment
   has_many    :children, foreign_key: :parent_id, class_name: :Comment , dependent: :destroy

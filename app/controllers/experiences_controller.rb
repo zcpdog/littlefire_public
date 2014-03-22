@@ -8,11 +8,11 @@ class ExperiencesController < ApplicationController
   
   def show
     @experience = Experience.find(params[:id])
-    not_found unless @experience.active? or (current_user.present? and @experience.owned_by? current_user)
+    not_found unless current_admin_user.present? or @experience.active? or (current_user.present? and @experience.owned_by? current_user)
   end
   
   def index
-    @experiences = Experience.includes([:user,:picture]).active.page params[:page]
+    @experiences = Experience.active.page params[:page]
   end
   
   def create

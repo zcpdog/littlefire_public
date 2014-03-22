@@ -1,4 +1,5 @@
 <%experiences.each do |experience|%>
+	<%cache experience do%>
 	<div class="item yui3-g-r">
 	    <div class="avatar text-center yui3-u-1-6">
 				<%=image_tag experience.user.picture.image.url(:avatar64), class: "avatar"%>
@@ -32,4 +33,5 @@
 	        </div>
 	    </div>
 	</div>
+	<%end%>
 <%end%>

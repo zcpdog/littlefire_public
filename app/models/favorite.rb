@@ -5,7 +5,7 @@ class Favorite < ActiveRecord::Base
   scope :owned_by, ->(user) { where(user: user)}
   scope :month_of, ->(time) { where(created_at: time..time+1.month)}
   
-  belongs_to :favorable, polymorphic: true, counter_cache: true
+  belongs_to :favorable, polymorphic: true, counter_cache: true, touch: true
   belongs_to :user
   
   validates :favorable_id, uniqueness: { scope: [:user, :favorable_type]}

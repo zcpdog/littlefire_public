@@ -2,12 +2,16 @@
 <div class="yui3-u-1 margin38">
 	<div class="sidebar best-choice">
 	        <h1><i class="good"></i>精选</h1>
-			<%Deal.includes(:picture).active.first(5).each do |deal|%>
-	        <ul>
-	            <li>
-					<%=link_to image_tag(deal.picture.image.url(:tiny),width:48)+"<p>#{deal.name}</p>".html_safe, deal_path(deal) %>
-	        	</li>
-	        </ul>
+			<%cache("best_deals", expires_in: 3.hours) do%>
+				<%Deal.includes(:picture).active.first(5).each do |deal|%>
+				<%cache ["best_deals","deal",deal] do%>
+		        <ul>
+		            <li>
+						<%=link_to image_tag(deal.picture.image.url(:tiny),width:48)+"<p>#{deal.name}</p>".html_safe, deal_path(deal) %>
+		        	</li>
+		        </ul>
+				<%end%>
+				<%end%>
 			<%end%>
 	    </div>
 
