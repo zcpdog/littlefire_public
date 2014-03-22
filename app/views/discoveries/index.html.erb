@@ -2,8 +2,8 @@
 	<div class="clear"></div>
 	<div class="discovery-container" id="discovery-container">
 		<%@discoveries.each do |discovery|%>
-			<%cache discovery do%>
 			<div class="item masonryBrick displaynone masonry-brick">
+				<%cache ["index",discovery] do%>
 				<div class="blBox">
 					<div class="blPic">
 						<%=link_to image_tag(discovery.picture.image.url(:medium), style: "text-align:center;", width: "190px"),
@@ -22,13 +22,14 @@
 		                <div class="entry-share clearfix">
 		                    <%=render partial: "user/common/tool_bar", locals: {obj: discovery}%>
 		                </div>
-	                               
+	                    <%cache ["index","discovery","created_at"], expires_in: 15.minutes do%>           
 						<div class="blTime"><%=time_ago_in_words discovery.created_at%></div>
+						<%end%>
 						<div class="clear"></div>
 					</div>
 				</div>
+				<%end%>
 			</div>
-			<%end%>
 		<%end%>
 	</div>
 </div>

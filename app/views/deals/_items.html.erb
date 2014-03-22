@@ -1,10 +1,10 @@
 <%@deals.each do |deal|%>
-	<%cache deal do%>
     <div class="item yui3-g-r <%= cycle("odd", "even") -%>">
         <div class="time yui3-u-1-12">
 			<span><%=time_ago_in_words deal.created_at%></span>
 			<span><%=l deal.created_at, format: :digit%></span>
         </div>
+		<%cache ["index",deal] do%>
         <div class="content yui3-u-2-3">
             <h1 class="title">
 				<%=link_to deal.title.try(:html_safe), deal_path(deal), :target=>"_blank"%>
@@ -36,6 +36,6 @@
 			<%=link_to "直达链接", purchase_deal_path(deal), class: "btn btn-danger", target: "_blank"%>
 			<p><%=deal.merchant.try(:name)%></p>
         </div>
+		<%end%>
     </div>
-	<%end%>
 <%end%>

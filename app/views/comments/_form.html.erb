@@ -1,4 +1,4 @@
-<%cache ["comment_form",commentable, user_signed_in?.to_s] do%>
+<%cache ["comment_form",commentable,user_signed_in?.to_s] do%>
 	<%if user_signed_in?%>
 		<%= form_for([:user,commentable,Comment.new],remote: true, html: {id: "cmtfm"}) do |f| %>
 	        <h3>发布评论</h3>
