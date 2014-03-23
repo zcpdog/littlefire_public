@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   has_many      :grades
   has_many      :authentications
   validates     :username, presence: true, uniqueness: true, length: { in: 2..15}
-  
+  validates_format_of :username, :with => /\A[\d\w\P{ASCII}]+\z/
   after_save :generate_avatar, if: Proc.new {|user| user.picture.nil?}
   
   rails_admin do
