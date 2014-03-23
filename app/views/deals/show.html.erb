@@ -37,7 +37,7 @@
 						        <div class="thumb">
 									<%=image_tag @deal.picture.image.url(:medium) if @deal.picture.present?%>
 									<%=holder_tag 194, "", "sky" unless @deal.picture.present?%>
-									<%=link_to "直达链接", purchase_deal_path(@deal), class: "btn btn-danger", target: "_blank"%>
+									<%=link_to "直达链接", @deal.purchase_link, class: "btn btn-danger", target: "_blank"%>
 						        </div>
 						        <div class="text-center addlike">
 									<%=render partial: "user/common/favorite_bar", locals: {favorable: @deal}%>

@@ -3,7 +3,7 @@
 	<div class="discovery-container" id="discovery-container">
 		<%@discoveries.each do |discovery|%>
 			<div class="item masonryBrick displaynone masonry-brick">
-				<%cache ["index",discovery] do%>
+				<%cache ["index-v2",discovery] do%>
 				<div class="blBox">
 					<div class="blPic">
 						<%=link_to image_tag(discovery.picture.image.url(:medium), style: "text-align:center;", width: "190px"),
@@ -15,7 +15,7 @@
 			                    </h2>
 					<div class="blInfo mB10">
 					<strong><%=discovery.user.username%>：</strong><%=discovery.content_plain_text%>                                                                       <div class="blzd">
-						<%=link_to "直达链接",purchase_discovery_path(discovery), class: "btn btn-danger", target: "_blank"%>
+						<%=link_to "直达链接", discovery.purchase_link, class: "btn btn-danger", target: "_blank"%>
 					</div>
 			</div>	
 					<div class="conBotBlock blBot">
