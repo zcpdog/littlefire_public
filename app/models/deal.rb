@@ -39,7 +39,7 @@ class Deal < ActiveRecord::Base
     state :rejected
     state :published
     state :deprecated
-    
+    after_transition :on => :publish, :do => :expire_first_five_pages
     event :check do
       transition :unchecked => :checking
     end
@@ -116,6 +116,12 @@ class Deal < ActiveRecord::Base
     self.user == theuser
   end
   
+  def self.cached_published page=1
+    Rails.cache.fetch([name, "published", page], expires_in: 1.hour) do
+      Kaminari.paginate_array(active.includes([:user,:picture,:merchant,:categories]).to_a).page(page)
+    end
+  end
+  
   protected
     def update_content_plain_text
       self.content_plain_text = Nokogiri::HTML(content).text.gsub(/&nbsp;/,"")
@@ -129,5 +135,10 @@ class Deal < ActiveRecord::Base
     def do_check
       self.state = "checking" if self.can_check?
     end
-    
+  
+  private
+    def expire_first_five_pages
+      Rails.cache.delete([self.class.name,"published",nil])
+      [1..5].each{|i| Rails.cache.delete([self.class.name,"published",i])}
+    end
 end

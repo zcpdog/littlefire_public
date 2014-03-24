@@ -5,6 +5,7 @@ class Discovery < ActiveRecord::Base
   scope :owned_by, ->(user) { where(user: user)}
   scope :day_of, ->(time) { where(created_at: time..time+1.month)}
   scope :month_of, ->(time) { where(created_at: time..time+1.month)}
+  scope :active, ->{ where(state: [:editable,:uneditable])}
   
   paginates_per 20
   belongs_to :user
@@ -27,16 +28,24 @@ class Discovery < ActiveRecord::Base
   validates :title, length: { in: 3..60}
   validates :content, length: { maximum: 1500}
   validates_presence_of :title, :content, :picture, :merchant, :purchase_link
-
+  after_save :expire_first_five_pages
+  
   state_machine :state, :initial => :editable do
     state :editable
     state :uneditable
-      
-    event :disable do
+    state :hidden
+    after_transition :on => [:hide, :publish], :do => :expire_first_five_pages
+    event :lock do
       transition :editable => :uneditable
     end
-    event :undo do
+    event :unlock do
       transition :uneditable => :editable 
+    end
+    event :hide do
+      transition [:uneditable,:editable] => :hidden
+    end
+    event :publish do
+      transition :hidden => :uneditable
     end
   end
 
@@ -68,6 +77,12 @@ class Discovery < ActiveRecord::Base
         disable: [:check]
       })
   end
+  
+  def self.cached_published page=1
+    Rails.cache.fetch([name, "published", page], expires_in: 1.hour) do
+      Kaminari.paginate_array(active.includes([:user,:picture,:merchant]).to_a).page(page)
+    end
+  end
 
   def active?
     ACTIVE_STATES.include? self.state
@@ -87,4 +102,9 @@ class Discovery < ActiveRecord::Base
       self.title = self.title.gsub(/<(\/)?p>/,"");
     end
 
+  private
+    def expire_first_five_pages
+      Rails.cache.delete([self.class.name,"published",nil])
+      [1..5].each{|i| Rails.cache.delete([self.class.name,"published",i])}
+    end
 end

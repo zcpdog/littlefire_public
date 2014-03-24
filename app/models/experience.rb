@@ -30,7 +30,7 @@ class Experience < ActiveRecord::Base
     state :checking
     state :published
     state :hidden
-      
+    after_transition :on => [:hide, :publish], :do => :expire_first_five_pages
     event :publish do
       transition :checking => :published
     end
@@ -58,6 +58,12 @@ class Experience < ActiveRecord::Base
     end
   end
   
+  def self.cached_published page=1
+    Rails.cache.fetch([name, "published", page], expires_in: 1.hour) do
+      Kaminari.paginate_array(active.includes([:user,:picture]).to_a).page(page)
+    end
+  end
+  
   def active?
     state == "published"
   end
@@ -74,5 +80,11 @@ class Experience < ActiveRecord::Base
     def update_name_and_title
       self.name = Nokogiri::HTML(title).text.gsub(/&nbsp;/,"");
       self.title = self.title.gsub(/<(\/)?p>/,"");
+    end
+    
+  private
+    def expire_first_five_pages
+      Rails.cache.delete([self.class.name,"published",nil])
+      [1..5].each{|i| Rails.cache.delete([self.class.name,"published",i])}
     end
 end

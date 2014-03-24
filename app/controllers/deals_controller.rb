@@ -2,7 +2,7 @@ class DealsController < ApplicationController
   before_filter :authenticate_user!, :only =>[:new, :create]
 
   def index
-    @deals = Deal.active.page(params[:page])
+    @deals = Deal.cached_published(params[:page])
   end
   
   def search

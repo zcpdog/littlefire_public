@@ -1,5 +1,5 @@
 class Picture < ActiveRecord::Base
-  belongs_to :imageable, polymorphic: true
+  belongs_to :imageable, polymorphic: true, touch: true
   validates :image, presence: true
   
   if Rails.env.production?

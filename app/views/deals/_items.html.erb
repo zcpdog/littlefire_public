@@ -4,7 +4,7 @@
 			<span><%=time_ago_in_words deal.created_at%></span>
 			<span><%=l deal.created_at, format: :digit%></span>
         </div>
-		<%cache ["index-v2",deal] do%>
+		<%cache ["index",deal], expires_in: 1.hour do%>
         <div class="content yui3-u-2-3">
             <h1 class="title">
 				<%=link_to deal.title.try(:html_safe), deal_path(deal), :target=>"_blank"%>

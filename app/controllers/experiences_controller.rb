@@ -12,7 +12,7 @@ class ExperiencesController < ApplicationController
   end
   
   def index
-    @experiences = Experience.active.page params[:page]
+    @experiences = Experience.cached_published(params[:page])
   end
   
   def create
@@ -20,8 +20,8 @@ class ExperiencesController < ApplicationController
     @experience.user = current_user
     respond_to do |format|
       if @experience.save
-        flash[:notice] = '晒单经验发布成功！'
-        format.html { redirect_to root_path }
+        flash[:notice] = '晒单发布成功！'
+        format.html { redirect_to experiences_path }
       else
         format.html { render :action => "new" }
       end

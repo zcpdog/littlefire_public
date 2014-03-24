@@ -2,7 +2,7 @@ class DiscoveriesController < ApplicationController
   before_filter :authenticate_user!, :only =>[:new, :create]
 
   def index
-    @discoveries = Discovery.page params[:page]
+    @discoveries = Discovery.cached_published(params[:page])
   end
   
   def purchase
@@ -25,7 +25,7 @@ class DiscoveriesController < ApplicationController
     respond_to do |format|
       if @discovery.save
         flash[:notice] = '发现发布成功！'
-        format.html { redirect_to root_path }
+        format.html { redirect_to discoveries_path }
       else
         format.html { render :action => "new" }
       end

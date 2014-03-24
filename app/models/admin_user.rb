@@ -4,6 +4,8 @@ class AdminUser < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :timeoutable
   validates_presence_of :role
   validates :username, :presence => true, :uniqueness => true
+  after_save :expire_cache
+  
   rails_admin do
     list do
       field :username
@@ -35,5 +37,17 @@ class AdminUser < ActiveRecord::Base
   
   def has_role? the_role
     role.eql? the_role
+  end
+  
+  def self.serialize_from_session(key, salt)
+    single_key = key.is_a?(Array) ? key.first : key
+    Rails.cache.fetch("admin_user:#{single_key}") do
+       AdminUser.where(:id => single_key).entries.first
+    end
+  end
+  
+  private 
+  def expire_cache
+    Rails.cache.delete("admin_user:#{id}")
   end
 end

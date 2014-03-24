@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   validates     :username, presence: true, uniqueness: true, length: { in: 2..15}
   validates_format_of :username, :with => /\A[\d\w\P{ASCII}]+\z/
   after_save :generate_avatar, if: Proc.new {|user| user.picture.nil?}
+  after_save :expire_cache
   
   rails_admin do
     list do
@@ -35,8 +36,18 @@ class User < ActiveRecord::Base
     end
   end
   
+  def self.serialize_from_session(key, salt)
+    single_key = key.is_a?(Array) ? key.first : key
+    Rails.cache.fetch("user:#{single_key}") do
+       User.where(:id => single_key).entries.first
+    end
+  end
+  
   private
   def generate_avatar
     AvatarGenerator.perform_async(self.id)
+  end
+  def expire_cache
+    Rails.cache.delete("user:#{id}")
   end
 end
