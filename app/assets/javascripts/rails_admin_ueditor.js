@@ -23,4 +23,9 @@ $(document).on('rails_admin.dom_ready', function(){
 	if($("#experience_content").length>0){
 		new UE.ui.Editor().render("experience_content");
 	}
+	$(document).on("keydown", function (e) {
+	    if (e.which === 8 && !$(e.target).is("input, textarea")) {
+	        e.preventDefault();
+	    }
+	});
 })

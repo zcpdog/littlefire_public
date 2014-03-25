@@ -22,7 +22,7 @@ class Experience < ActiveRecord::Base
   before_save :update_content_plain_text, if: Proc.new {|article| article.content_changed?}
   before_save :update_name_and_title
 
-  validates :title, length: { in: 5..30}
+  validates :title, length: { in: 5..200}
   validates :content, length: { maximum: 15000}
   validates_presence_of :title, :content, :picture, :user
 
