@@ -42,11 +42,11 @@
 			  <%= simple_form_for @experience do |f| %>
 				<div class="so-box1">
 					<%=f.label :title, t("deal.title")%>
-					<%= f.input_field :title, placeholder: "~晒单标题"%>
+					<%= f.input_field :title, placeholder: "~晒单标题(必填)"%>
 				</div>
 				<div class="so-box1">
 					<div class="clearfix">
-						<%=f.label :content,"~晒单内容"%>
+						<%=f.label :content,"~晒单内容(必填)"%>
 					</div>
 			  		<%= f.input_field :content,rows: "15" %>
 				</div>
@@ -55,7 +55,7 @@
 				       <%= p.input_field :image, label: "封面图片", style: "display:none;", id: "real-file"%>
 				    <% end %>
 					<div class="yui3-u-3-4 so-box1">
-						<input id="uploadFile" placeholder="~选择封面图片" disabled="disabled" type="text"/>
+						<input id="uploadFile" placeholder="~选择封面图片(必填)" disabled="disabled" type="text"/>
 					</div>
 					<div class="yui3-u-1-4 so-box1">
 				    	<input id="uploadBtn" type="button" class="upload s-submit btn w60 btn-primary" value="浏览"/>

@@ -27,26 +27,26 @@
 		  <div class="p20 s-c">
 			  <%= simple_form_for @deal do |f| %>
 				<div class="so-box1">
-					<%=f.label :title, t("deal.title")%>
-					<%= f.input_field :title, placeholder: "~爆料标题"%>
+					<%=f.label :title, "标题*"%>
+					<%= f.input_field :title, placeholder: "~爆料标题(必填)"%>
 				</div>
 				<div class="so-box1">
 					<div class="clearfix">
-						<%=f.label :content, t("deal.body")%>
+						<%=f.label :content, "内容*"%>
 					</div>
 			  		<%= f.input_field :content,rows: "15", 
 					placeholder: "需要什么优惠券？凑单品？限定特殊地区？都可以写在这里。爆料出无需小编修改的优惠，有额外积分奖励。" %>
 				</div>
 			  	<div class="so-box1 so-box2">
-					<%=f.label :purchase_link, t("deal.link")%>
-					<%= f.input_field :purchase_link, placeholder: "~粘帖商品链接地址", class: "yui3-u-3-4" %>
+					<%=f.label :purchase_link, "链接*"%>
+					<%= f.input_field :purchase_link, placeholder: "~粘帖商品链接地址(必填)", class: "yui3-u-3-4" %>
 				</div>
 				<div class="yui3-g">
 					<%= f.simple_fields_for :picture do |p| %>
 				       <%= p.input_field :image, label: "商品照片", style: "display:none;", id: "real-file"%>
 				    <% end %>
 					<div class="yui3-u-3-4 so-box1">
-						<input id="uploadFile" placeholder="~选择封面图片" disabled="disabled" type="text"/>
+						<input id="uploadFile" placeholder="~选择封面图片(必填)" disabled="disabled" type="text"/>
 					</div>
 					<div class="yui3-u-1-4 so-box1">
 				    	<input id="uploadBtn" type="button" class="upload s-submit btn w60 btn-primary" value="浏览"/>
@@ -56,7 +56,7 @@
 		            <span class="input-tip">支持 JPG、GIF、PNG 格式，不超过 2MB。</span>
 		        </div>
 				<div class="so-box1 ">
-					<%=f.association :merchant,  collection: Merchant.all, prompt: "选择一个商店", label: "商品来源"%>
+					<%=f.association :merchant,  collection: Merchant.all, prompt: "选择一个电商", label: "爆料来源*"%>
 				</div>
 			    <hr>
 			    <div class="so-box1 ">
