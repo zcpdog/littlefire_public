@@ -7,6 +7,17 @@ Littlefire::Application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
   
+  resources :user do
+    resources :comments
+    resources :favorites
+    resources :grades
+    resources :deals
+    resources :discoveries
+    member do
+      get 'profile'
+    end
+  end
+  
   resources :ueditor_images, only: [:create]
   resources :categories, only: [:index, :show]
   resources :articles, only: [:index,:show]
@@ -31,13 +42,7 @@ Littlefire::Application.routes.draw do
   resources :favorites
   
   get '/user/profile' => 'user#profile'
-  get '/user/:username' => 'user#show'
   namespace :user do
-    get '/:username/comments' => 'comments#index'
-    get '/:username/favorites' => 'favorites#index'
-    get '/:username/grades' => 'grades#index'
-    get '/:username/deals' => 'deals#index'
-    get '/:username/discoveries' => 'discoveries#index'
     resources :deals, except: [:destroy, :update]
     resources :discoveries, except: [:destroy, :update]
     resources :pictures, only: :create

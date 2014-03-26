@@ -7,7 +7,7 @@ class ExperiencesController < ApplicationController
   end
   
   def show
-    @experience = Experience.find(params[:id])
+    @experience = Experience.friendly.find(params[:id])
     not_found unless current_admin_user.present? or @experience.active? or (current_user.present? and @experience.owned_by? current_user)
   end
   

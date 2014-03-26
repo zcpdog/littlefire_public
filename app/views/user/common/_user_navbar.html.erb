@@ -1,6 +1,6 @@
-<%=active_link_to generate_label("爆料",user), "/user/#{user.username}/deals", 
+<%=active_link_to generate_label("爆料",user), user_deals_path(current_user), 
 	class: "yui3-u-1-5 my_info", id: "deals",class_active: 'current', active: :exclusive%>
-<%=active_link_to generate_label("发现",user), "/user/#{user.username}/discoveries", 
+<%=active_link_to generate_label("发现",user), user_discoveries_path(current_user), 
 	class: "yui3-u-1-5 my_info", id: "discoveries",class_active: 'current', active: :exclusive%>
 <%=active_link_to generate_label("收藏",user), "/user/#{user.username}/favorites", 
 	class: "yui3-u-1-5 my_info", id: "favorites",class_active: 'current', active: :exclusive%>

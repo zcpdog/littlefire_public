@@ -22,7 +22,7 @@ class UserController< ApplicationController
   
   protected
     def find_user
-      @user = User.find_by(username: params[:username]) || not_found
+      @user = User.friendly.find params[:id] || not_found
     end
     
     def current_date
@@ -46,7 +46,7 @@ class UserController< ApplicationController
     def find_polymorphic_object
       params.each do |name, value|
         if name =~ /(.+)_id$/
-          return $1.classify.constantize.find(value)
+          return $1.classify.constantize.friendly.find(value)
         end
       end
       nil
