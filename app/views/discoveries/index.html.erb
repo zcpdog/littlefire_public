@@ -22,7 +22,7 @@
 		                <div class="entry-share clearfix">
 		                    <%=render partial: "user/common/tool_bar", locals: {obj: discovery}%>
 		                </div>
-	                    <%cache ["index","discovery","created_at"], expires_in: 15.minutes do%>           
+	                    <%cache ["index",discovery,"created_at"], expires_in: 15.minutes do%>           
 						<div class="blTime"><%=time_ago_in_words discovery.created_at%></div>
 						<%end%>
 						<div class="clear"></div>
