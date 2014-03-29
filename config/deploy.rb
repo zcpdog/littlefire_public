@@ -60,6 +60,10 @@ namespace :deploy do
   task :generate_avatar do
     run "cd #{current_path} && #{rake} RAILS_ENV=#{rails_env} data:generate_avatar" 
   end
+  
+  task :clean_cache do
+    run "cd #{current_path} && #{rake} RAILS_ENV=#{rails_env} cache:clear" 
+  end
 end
 
 namespace :deploy do
