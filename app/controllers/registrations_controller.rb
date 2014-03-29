@@ -16,7 +16,7 @@ class RegistrationsController < Devise::RegistrationsController
       redirect_to profile_user_path(current_user)
     else
       flash[:notice] = "信息修改失败，请仔细检查"
-      render profile_user_path(current_user)
+      redirect_to profile_user_path(current_user)
     end
   end
   

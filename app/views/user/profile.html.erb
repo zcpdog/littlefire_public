@@ -17,9 +17,8 @@
 	            </div>
 	        </div>
 	        <div class="upload-img yui3-u-5-6">
-				
-				<%= form_for(current_user, :as => resource_name, :url => registration_path(resource_name), 
-					:html => { :method => :put,:multipart => true }) do |f| %>
+				<%= form_for(current_user, :url => { :action => "update_avatar" }, 
+					:html => {:multipart => true }) do |f| %>
 				  <%= f.fields_for :picture_attributes, current_user.picture do |pic| %>
 				      <%= pic.label :image,"头像（如果无需修改头像，请忽略）" %><br />
 				      <%= pic.file_field :image %>
@@ -41,8 +40,7 @@
 	        <div class="yui3-g">
 	            <div class="yui3-u-1">
 	                <div class="pd40">
-						<%= form_for(current_user, :as => resource_name, :url => "/user/settings/update_password", 
-							:html => { :method => :put }) do |f| %>
+						<%= form_for(current_user, :url => { :action => "update_password" }) do |f| %>
 						<div class="fgroup">
 							邮箱: <%=current_user.email%>
 						</div>
@@ -53,17 +51,20 @@
 						<br/>
 						  <div class="fgroup">
 							  <%= f.label :current_password, "原密码" %> <br />
-						  <%= f.password_field :current_password %></div>
+						  <%= f.password_field :current_password, :autocomplete => "off"%></div>
+						  
 						  <div class="fgroup">
 							  <%= f.label :password,"新密码" %> <br />
 						  <%= f.password_field :password, :autocomplete => "off" %></div>
 			  
 						  <div class="fgroup">
 							  <%= f.label :password_confirmation, "确认新密码" %><br />
-						  <%= f.password_field :password_confirmation %></div>
- 
+						  <%= f.password_field :password_confirmation, :autocomplete => "off" %></div>
+						  
 			  			  <div>
-			  				  <button type="submit" class="btn btn-success btn-primary">修改信息</button>
+			  				  <button type="submit" class="btn btn-success btn-primary">
+								  修改信息
+							  </button>
 			  			  </div>
 							<% end %>
 	                </div>

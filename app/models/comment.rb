@@ -38,7 +38,8 @@ class Comment < ActiveRecord::Base
       self.content.gsub!(/@([\w\P{ASCII}]+)(\s{2})/){
         user = User.find_by(username: $1)
         if user.present?
-          ActionController::Base.helpers.link_to($&, "/user/#{user.username}", target: "_blank")
+          ActionController::Base.helpers.link_to($&,
+           Rails.application.routes.url_helpers.user_path(user), target: "_blank")
         else
           $&
         end

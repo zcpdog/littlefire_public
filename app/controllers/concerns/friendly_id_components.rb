@@ -3,12 +3,12 @@ module FriendlyIdComponents
   included do
     extend FriendlyId
     friendly_id :name_pinyin
-    before_save :update_name_pinyin, if: Proc.new{|obj|not obj.new_record? and obj.title_changed?}
-    after_save  :update_name_pinyin!, if: Proc.new{|obj|obj.name_pinyin.nil?}
+    after_save  :update_name_pinyin!, if: Proc.new{|obj|obj.name_pinyin.blank?}
   end
   
   def generate_name_pinyin
-    self.name_pinyin = Pinyin.t(self.name.strip[0..20], splitter: '-')<<"-#{self.id}"
+    self.name_pinyin = (Pinyin.t(self.name.strip[0..20], splitter: '-').strip<<"-#{self.id}").
+      gsub(/-+/,"-")
   end
   
   def generate_name_pinyin!

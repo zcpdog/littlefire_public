@@ -13,7 +13,7 @@
                             <div class="yui3-u">
                                 <p>
                                     <span class="nickname"><%=@user.username%></span>
-									<%=link_to("修改资料",profile_user_path(current_user), type: "button", class: "btn btn-success") if current_user==@user %>
+									<%=link_to("修改资料", "/user/profile", type: "button", class: "btn btn-success") if current_user==@user %>
                                 </p>
                                 <p class="credits">
                                     历史积分：0
@@ -35,7 +35,7 @@
                         </div>
                     </div>
                     
-                    <div id="msd-timeline" class="clearfix" data-name="<%=@user.username_pinyin||@user.id%>" 
+                    <div id="msd-timeline" class="clearfix" data-name="<%=@user.friendlyid%>" 
 						data-next="<%=@next_date%>" data-klass="<%=@obj_class%>">
 						<%=render partial: "user/#{@obj_class}/items", locals: { objs: @objs, year_month: @current_date }%>
                     </div>
