@@ -1,6 +1,10 @@
-require 'nokogiri'
 class Deal < ActiveRecord::Base
-  has_paper_trail :ignore => [:comments_count, :favorites_count, :agree_count, :disagree_count]
+  include InteractionComponents
+  include ContentPlainText
+  include FriendlyIdComponents  
+  include PaperTrailConfig
+  include CacheManagement
+  
   default_scope {order("deals.created_at DESC")}
   scope :owned_by, ->(user) { where(user: user)}
   scope :active, ->{ where(state: ACTIVE_STATES)}
@@ -14,21 +18,7 @@ class Deal < ActiveRecord::Base
   
   has_and_belongs_to_many :categories
   
-  has_many   :comments, as: :commentable, dependent: :destroy
-  has_many   :favorites, as: :favorable, dependent: :destroy
-  has_many   :grades, as: :gradable, dependent: :destroy
-  has_many   :reports, as: :reportable, dependent: :destroy
-  
-  has_one   :picture, as: :imageable, dependent: :destroy
-  accepts_nested_attributes_for :picture, allow_destroy: true
-  
-  has_one   :credit, as: :creditable, dependent: :destroy
-  accepts_nested_attributes_for :credit, allow_destroy: true
-  
-  before_save :update_content_plain_text, if: Proc.new {|deal| deal.content_changed?}
-  before_save :update_name_and_title
   before_save :do_check, unless: Proc.new {|deal| deal.new_record?}
-  
   validates :title, length: { in: 5..200}
   validates :content, length: { maximum: 10000}
   validates_presence_of :title, :content
@@ -123,22 +113,7 @@ class Deal < ActiveRecord::Base
   end
   
   protected
-    def update_content_plain_text
-      self.content_plain_text = Nokogiri::HTML(content).text.gsub(/&nbsp;/,"")
-    end
-    
-    def update_name_and_title
-      self.name = Nokogiri::HTML(title).text.gsub(/&nbsp;/,"");
-      self.title = self.title.gsub(/<(\/)?p>/,"");
-    end
-    
     def do_check
       self.state = "checking" if self.can_check?
-    end
-  
-  private
-    def expire_first_five_pages
-      Rails.cache.delete([self.class.name,"published",nil])
-      [1..5].each{|i| Rails.cache.delete([self.class.name,"published",i])}
     end
 end

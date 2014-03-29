@@ -4,7 +4,8 @@ $(function(){
 		$.ajax({
 			type: "GET",
 			dataType: "SCRIPT",
-			url: "/user/" + $("#msd-timeline").data("name")+ "/" +$("#msd-timeline").data("klass")+ "?date=" +$("#msd-timeline").data("next")
+			url: "/user/"+$("#msd-timeline").data("klass")+ 
+				"?user_id="+ $("#msd-timeline").data("name")+"&date=" +$("#msd-timeline").data("next")
 		});
 	})
 })

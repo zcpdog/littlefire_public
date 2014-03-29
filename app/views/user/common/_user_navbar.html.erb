@@ -1,10 +1,10 @@
-<%=active_link_to generate_label("爆料",user), "/user/#{user.username}/deals", 
+<%=active_link_to generate_label("爆料",user), user_deals_path(user_id: user.friendlyid), 
 	class: "yui3-u-1-5 my_info", id: "deals",class_active: 'current', active: :exclusive%>
-<%=active_link_to generate_label("发现",user), "/user/#{user.username}/discoveries", 
+<%=active_link_to generate_label("发现",user), user_discoveries_path(user_id: user.friendlyid), 
 	class: "yui3-u-1-5 my_info", id: "discoveries",class_active: 'current', active: :exclusive%>
-<%=active_link_to generate_label("收藏",user), "/user/#{user.username}/favorites", 
+<%=active_link_to generate_label("收藏",user), user_favorites_path(user_id: user.friendlyid), 
 	class: "yui3-u-1-5 my_info", id: "favorites",class_active: 'current', active: :exclusive%>
-<%=active_link_to generate_label("评论",user), "/user/#{user.username}/comments", 
+<%=active_link_to generate_label("评论",user), user_comments_path(user_id: user.friendlyid), 
 	class: "yui3-u-1-5 my_info", id: "comments",class_active: 'current', active: :exclusive%>
-<%=active_link_to generate_label("顶踩",user), "/user/#{user.username}/grades", 
+<%=active_link_to generate_label("顶踩",user), user_grades_path(user_id: user.friendlyid), 
 	class: "yui3-u-1-5 my_info", id: "grades",class_active: 'current', active: :exclusive%>

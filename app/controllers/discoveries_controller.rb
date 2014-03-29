@@ -11,7 +11,7 @@ class DiscoveriesController < ApplicationController
   end
 
   def show
-    @discovery = Discovery.find(params[:id])
+    @discovery = Discovery.friendly.find(params[:id])
   end
   
   def new

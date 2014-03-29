@@ -33,7 +33,7 @@ class DealsController < ApplicationController
   end
 
   def show
-    @deal = Deal.find(params[:id])
+    @deal = Deal.friendly.find(params[:id])
     not_found unless current_admin_user.present? or @deal.active? or (current_user.present? and @deal.owned_by? current_user)
   end
   

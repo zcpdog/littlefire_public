@@ -13,10 +13,10 @@ class RegistrationsController < Devise::RegistrationsController
       set_flash_message :notice, :updated
       sign_in @user, :bypass => true
       flash[:notice] = "信息修改成功"
-      redirect_to "/user/profile"
+      redirect_to profile_user_path(current_user)
     else
       flash[:notice] = "信息修改失败，请仔细检查"
-      render "/user/profile"
+      redirect_to profile_user_path(current_user)
     end
   end
   
