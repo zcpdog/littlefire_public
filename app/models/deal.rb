@@ -4,8 +4,9 @@ class Deal < ActiveRecord::Base
   include FriendlyIdComponents  
   include PaperTrailConfig
   include CacheManagement
+  include AdminActionRecord
   
-  default_scope {order("deals.created_at DESC")}
+  default_scope {order("deals.published_at DESC, deals.created_at DESC")}
   scope :owned_by, ->(user) { where(user: user)}
   scope :active, ->{ where(state: ACTIVE_STATES)}
   scope :month_of, ->(time) { where(created_at: time..time+1.month)}
@@ -19,6 +20,7 @@ class Deal < ActiveRecord::Base
   has_and_belongs_to_many :categories
   
   before_save :do_check, unless: Proc.new {|deal| deal.new_record?}
+  before_save :record_published_time, if: Proc.new{|deal| deal.top?}
   validates :title, length: { in: 5..200}
   validates :content, length: { maximum: 10000}
   validates_presence_of :title, :content
@@ -29,7 +31,10 @@ class Deal < ActiveRecord::Base
     state :rejected
     state :published
     state :deprecated
+    
     after_transition :on => :publish, :do => :expire_first_five_pages
+    before_transition :on => :publish, :do => :record_published_time
+    
     event :check do
       transition :unchecked => :checking
     end
@@ -88,6 +93,7 @@ class Deal < ActiveRecord::Base
       field :due_date, :datetime
       field :picture
       field :credit
+      field :top
     end
     
     state({
@@ -116,4 +122,9 @@ class Deal < ActiveRecord::Base
     def do_check
       self.state = "checking" if self.can_check?
     end
-end
+    
+  private
+    def record_published_time
+      self.published_at = Time.zone.now
+    end
+  end

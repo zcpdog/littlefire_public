@@ -4,6 +4,7 @@ class Experience < ActiveRecord::Base
   include FriendlyIdComponents
   include PaperTrailConfig
   include CacheManagement
+  include AdminActionRecord
   
   default_scope {order("created_at DESC")}
   scope :active, ->{ where(state: "published")}
@@ -17,11 +18,16 @@ class Experience < ActiveRecord::Base
   validates :content, length: { maximum: 15000}
   validates_presence_of :title, :content, :picture, :user
 
+  before_save :record_published_time, if: Proc.new{|experience| experience.top?}
+  
   state_machine :state, :initial => :checking do
     state :checking
     state :published
     state :hidden
+    
     after_transition :on => [:hide, :publish], :do => :expire_first_five_pages
+    before_transition :on => :publish, :do => :record_published_time
+    
     event :publish do
       transition :checking => :published
     end
@@ -64,8 +70,7 @@ class Experience < ActiveRecord::Base
   end
     
   private
-    def expire_first_five_pages
-      Rails.cache.delete([self.class.name,"published",nil])
-      [1..5].each{|i| Rails.cache.delete([self.class.name,"published",i])}
+    def record_published_time
+      self.published_at = Time.zone.now
     end
 end

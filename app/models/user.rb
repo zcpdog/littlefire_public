@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :async
 
   has_one       :picture, as: :imageable, dependent: :destroy
+  has_one       :admin_user
+  
   accepts_nested_attributes_for :picture
   has_many      :deals
   has_many      :experience

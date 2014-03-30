@@ -4,6 +4,7 @@ class Discovery < ActiveRecord::Base
   include FriendlyIdComponents  
   include PaperTrailConfig
   include CacheManagement
+  include AdminActionRecord
   
   default_scope {order("created_at DESC")}
   scope :owned_by, ->(user) { where(user: user)}

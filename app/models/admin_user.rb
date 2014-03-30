@@ -6,6 +6,8 @@ class AdminUser < ActiveRecord::Base
   validates :username, :presence => true, :uniqueness => true
   after_save :expire_cache
   
+  belongs_to :user
+  
   rails_admin do
     list do
       field :username
@@ -27,6 +29,7 @@ class AdminUser < ActiveRecord::Base
           ROLES_ENUM[ROLES_RANK[bindings[:view]._current_user.role]..ROLES_RANK.size-1].reverse
         end
       end
+      field :user
     end
   end
   

@@ -23,7 +23,7 @@ RailsAdmin.config do |config|
     dashboard                     
     index
     new do
-      except ['User', 'Picture',"Comment","Grade","Favorite","Experience","Discovery"]
+      except ['User', 'Picture',"Comment","Grade","Favorite"]
     end
     bulk_delete
     show
