@@ -4,7 +4,7 @@ class AddPublishedAtToDeals < ActiveRecord::Migration
     if direction == :up
       begin
         Deal.find_each do |deal|
-          if deal.active? and deal.published_at.blank?
+          if deal.active? and deal.published_at.nil?
             deal.published_at = deal.created_at
             deal.save
           end

@@ -4,7 +4,7 @@ class AddPublishedAtToExperiences < ActiveRecord::Migration
     if direction == :up
       begin
         Experience.find_each do |experience|
-          if experience.active? and experience.published_at.blank?
+          if experience.active? and experience.published_at.nil?
             experience.published_at = experience.created_at
             experience.save
           end
