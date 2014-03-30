@@ -6,6 +6,6 @@ module AdminActionRecord
   
   private
     def update_user_of_admin
-      self.user = current_admin_user.user
+      self.user = current_admin_user.user if current_admin_user.present?
     end
 end

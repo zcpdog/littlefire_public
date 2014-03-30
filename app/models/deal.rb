@@ -4,7 +4,7 @@ class Deal < ActiveRecord::Base
   include FriendlyIdComponents  
   include PaperTrailConfig
   include CacheManagement
-  include AdminActionRecord
+  #include AdminActionRecord
   
   default_scope {order("deals.published_at DESC, deals.created_at DESC")}
   scope :owned_by, ->(user) { where(user: user)}
