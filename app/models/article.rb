@@ -44,10 +44,10 @@ class Article < ActiveRecord::Base
       field :state, :state
     end
     edit do
-      field :user, :hidden do
+      field :user_id, :hidden do
         help ""
         default_value do
-          bindings[:view]._current_user.user
+          bindings[:view]._current_user.user.try(:id)
         end
       end
       field :article_type
