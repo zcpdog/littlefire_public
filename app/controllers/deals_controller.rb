@@ -13,7 +13,7 @@ class DealsController < ApplicationController
       category_ids.push @category
       @category.children.each{|cat|category_ids.push cat.id}
       @deals = @category.deals.page params[:page] 
-      @deals = Deal.includes([:categories,:picture,:merchant]).joins(:categories).
+      @deals = Deal.active.includes([:categories,:picture,:merchant]).joins(:categories).
         where("categories.id in (?)", category_ids).page(params[:page]) 
     else
       @keyword = params[:q]
