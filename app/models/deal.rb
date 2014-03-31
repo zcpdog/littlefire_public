@@ -59,6 +59,7 @@ class Deal < ActiveRecord::Base
     text :categories, :stored => true do
       categories.map { |category| category.name }
     end
+    time :published_at, :stored => true
     time :created_at, :stored => true
   end
   
