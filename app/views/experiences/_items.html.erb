@@ -2,12 +2,12 @@
 	<%cache ["index",experience] do%>
 	<div class="item yui3-g-r">
 	    <div class="avatar text-center yui3-u-1-6">
-				<%=image_tag experience.user.picture.image.url(:avatar64), class: "avatar"%>
-	            <p><%=link_to experience.user.username, "/user/#{experience.user.username}", class: "snn"%></p>
-	            <p class="sdesc"></p>
-				<%cache ["index","experience","created_at"], expires_in: 15.minutes do%>
-	            <p class="stc"><%=time_ago_in_words experience.published_at%></p>
-				<%end%>
+			<%=image_tag experience.user.picture.image.url(:avatar64), class: "avatar"%>
+            <p><%=link_to experience.user.username, user_path(experience.user), target: "_blank", class: "snn"%></p>
+            <p class="sdesc"></p>
+			<%cache ["index","experience","created_at"], expires_in: 15.minutes do%>
+            <p class="stc"><%=time_ago_in_words experience.published_at%></p>
+			<%end%>
 	    </div>
 	    <div class="yui3-u-5-6">
 	        <div class="sp20 arrow_box">
