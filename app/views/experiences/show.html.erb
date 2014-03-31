@@ -34,7 +34,6 @@
 						        <div class="thumb">
 									<%=image_tag @experience.picture.image.url(:medium) if @experience.picture.present?%>
 									<%=holder_tag 194, "", "sky" unless @experience.picture.present?%>
-									<%=link_to "直达链接", purchase_deal_path(@experience), class: "btn btn-danger", target: "_blank"%>
 						        </div>
 						        <div class="text-center addlike">
 						            <%=render partial: "user/common/favorite_bar", locals: {favorable: @experience}%>

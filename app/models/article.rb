@@ -44,6 +44,12 @@ class Article < ActiveRecord::Base
       field :state, :state
     end
     edit do
+      field :user, :hidden do
+        help ""
+        default_value do
+          bindings[:view]._current_user.user
+        end
+      end
       field :article_type
       field :title, :text
       field :content, :text

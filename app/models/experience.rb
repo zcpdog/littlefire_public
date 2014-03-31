@@ -4,7 +4,6 @@ class Experience < ActiveRecord::Base
   include FriendlyIdComponents
   include PaperTrailConfig
   include CacheManagement
-  include AdminActionRecord
   
   default_scope {order("created_at DESC")}
   scope :active, ->{ where(state: "published")}
@@ -47,6 +46,12 @@ class Experience < ActiveRecord::Base
       field :state, :state
     end
     edit do
+      field :user, :hidden do
+        help ""
+        default_value do
+          bindings[:view]._current_user.user
+        end
+      end
       field :title, :text
       field :content, :text
       field :related_deal_id

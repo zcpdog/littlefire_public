@@ -4,7 +4,6 @@ class Deal < ActiveRecord::Base
   include FriendlyIdComponents  
   include PaperTrailConfig
   include CacheManagement
-  #include AdminActionRecord
   
   default_scope {order("deals.published_at DESC, deals.created_at DESC")}
   scope :owned_by, ->(user) { where(user: user)}
@@ -75,6 +74,12 @@ class Deal < ActiveRecord::Base
       field :state, :state
     end
     edit do
+      field :user, :hidden do
+        help ""
+        default_value do
+          bindings[:view]._current_user.user
+        end
+      end
       field :categories do
         nested_form false
         inverse_of :deals

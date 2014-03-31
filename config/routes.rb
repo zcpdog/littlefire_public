@@ -9,7 +9,6 @@ Littlefire::Application.routes.draw do
   
   resources :ueditor_images, only: [:create]
   resources :categories, only: [:index, :show]
-  resources :articles, only: [:index,:show]
   resources :experiences, only: [:index,:show,:new,:create]
   resources :deals do
     member do
@@ -42,11 +41,6 @@ Littlefire::Application.routes.draw do
       resources :grades
     end
     resources :discoveries do
-      resources :comments 
-      resources :favorites
-      resources :grades
-    end
-    resources :articles do
       resources :comments 
       resources :favorites
       resources :grades

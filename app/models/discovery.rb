@@ -4,7 +4,6 @@ class Discovery < ActiveRecord::Base
   include FriendlyIdComponents  
   include PaperTrailConfig
   include CacheManagement
-  include AdminActionRecord
   
   default_scope {order("created_at DESC")}
   scope :owned_by, ->(user) { where(user: user)}
@@ -47,6 +46,12 @@ class Discovery < ActiveRecord::Base
       field :state, :state
     end
     edit do
+      field :user, :hidden do
+        help ""
+        default_value do
+          bindings[:view]._current_user.user
+        end
+      end
       field :merchant
       field :purchase_link do
         html_attributes do

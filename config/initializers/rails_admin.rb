@@ -17,7 +17,7 @@ RailsAdmin.config do |config|
   
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
   config.included_models = ["Deal", "Category", "Merchant","User","AdminUser","Picture",
-    "Comment","Grade","Favorite","Discovery","Article","ArticleType", "Experience", "Credit"]
+    "Comment","Grade","Favorite","Discovery","Experience", "Credit"]
   
   config.actions do
     dashboard                     
