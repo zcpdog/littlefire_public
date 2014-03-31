@@ -1,8 +1,8 @@
 <%@deals.each do |deal|%>
     <div class="item yui3-g-r <%= cycle("odd", "even") -%>">
         <div class="time yui3-u-1-12">
-			<span><%=time_ago_in_words deal.published_at%></span>
-			<span><%=l deal.published_at, format: :digit%></span>
+			<span><%=time_ago_in_words (deal.published_at||deal.created_at)%></span>
+			<span><%=l (deal.published_at||deal.created_at), format: :digit%></span>
         </div>
 		<%cache ["index",deal], expires_in: 1.hour do%>
         <div class="content yui3-u-2-3">

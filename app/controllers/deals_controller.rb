@@ -20,6 +20,7 @@ class DealsController < ApplicationController
       @search = Sunspot.search(Deal) do
         fulltext params[:q]
         with(:state, ["published","deprecated"])
+        order_by(:published_at, :desc)
         order_by(:created_at, :desc)
         paginate :page => params[:page], :per_page => 20
       end
