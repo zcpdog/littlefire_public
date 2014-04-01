@@ -89,11 +89,7 @@ class Deal < ActiveRecord::Base
         end
       end
       field :merchant
-      field :purchase_link do
-        html_attributes do
-          {size: '100'}
-        end
-      end
+      field :purchase_link, :text
       field :title, :text
       field :content
       field :due_date, :datetime
