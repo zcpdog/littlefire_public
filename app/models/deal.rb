@@ -73,6 +73,7 @@ class Deal < ActiveRecord::Base
       field :user
       field :name
       field :state, :state
+      field :top
     end
     edit do
       field :user_id, :hidden do
