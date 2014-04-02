@@ -29,6 +29,7 @@ gem "whenever", "~> 0.9.2"
 gem "rails_admin", "~> 0.6.1"
 gem 'paper_trail', '~> 3.0.1'
 gem 'sidekiq', '~> 3.0.0'
+gem 'capistrano-sidekiq', '~> 0.1.3'
 gem "sinatra", "~> 1.4.4", :require => nil
 gem "holder_rails", "~> 2.3.1"
 gem "dalli", "~> 2.7.0"
