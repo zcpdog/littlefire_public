@@ -1,7 +1,7 @@
 require "rvm/capistrano"
 require "bundler/capistrano"
 require 'capistrano/ext/multistage'
-require 'sidekiq/capistrano'
+require 'capistrano/sidekiq'
 require "whenever/capistrano"
 
 set :whenever_command, "bundle exec whenever"
