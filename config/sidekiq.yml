@@ -8,8 +8,8 @@
 # Set timeout to 8 on Heroku, longer if you manage your own systems.
 :timeout: 30
 :queues:
-  - [critical, 8]
-  - [devise_mailer, 7]
-  - [mailer, 6]
-  - [sunspot, 5]
-  - [default, 3]
+  - [avatar, 	8]
+  - [pinyin, 	8]
+  - [devise, 	7]
+  - [default, 	5]
+  - [sunspot, 	3]

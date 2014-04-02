@@ -1,6 +1,6 @@
 class AvatarGenerator
   include Sidekiq::Worker
-  sidekiq_options :queue => :critical
+  sidekiq_options :queue => :avatar
   
   def perform(user_id)
     user = User.find user_id

@@ -1,4 +1,3 @@
-require 'chinese_pinyin'
 class User < ActiveRecord::Base  
   extend FriendlyId
   friendly_id :username_pinyin
@@ -17,13 +16,13 @@ class User < ActiveRecord::Base
   has_many      :grades
   has_many      :authentications
   validates     :username, presence: true, uniqueness: true, length: { in: 2..15}
-  validates_format_of :username, :with => /\A[\d\w\P{ASCII}]+\z/
+  validates     :username, :format => { :with => /\A[\d\w\P{ASCII}]+\z/,:message => "用户名只能包含数字，英文字母，汉字" }
   validates     :username_pinyin, uniqueness: true
+  validates     :credit, numericality: { only_integer: true, less_than: 2147483647}
   
-  after_save  :generate_avatar, if: Proc.new {|user| user.picture.nil?}
-  after_save  :generate_username_pinyin!, 
-    if: Proc.new{|obj|obj.username_pinyin.blank?}
-  after_save  :expire_cache
+  after_commit  :generate_avatar, on: :create, if: Proc.new {|user| user.picture.nil?}
+  after_save    :generate_username_pinyin!, if: Proc.new{|obj|obj.username_pinyin.blank?}
+  after_save    :expire_cache
   
   rails_admin do
     list do
@@ -57,13 +56,7 @@ class User < ActiveRecord::Base
   end
   
   def generate_username_pinyin!
-    self.username_pinyin = Pinyin.t(self.username, splitter: '')
-    begin
-      self.save!
-    rescue ActiveRecord::RecordInvalid => e
-      self.username_pinyin<<"#{self.id}"
-      self.save
-    end
+    UsernamePinyinGenerator.perform_async(self.id)
   end
   
   def friendlyid

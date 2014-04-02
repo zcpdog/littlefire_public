@@ -10,7 +10,7 @@ gem "jquery-rails", "~> 3.1.0"
 gem "turbolinks", "~> 1.3.0"
 gem "jquery-turbolinks", "~> 1.0.0"
 gem 'jbuilder', '~> 1.2'
-gem "devise", "~> 3.2.3"
+gem "devise", "~> 3.2.4"
 gem "devise_invitable", "~> 1.3.4"
 gem "cancan", "~> 1.6.10"
 gem "rest-client", "~> 1.6.7"
@@ -28,7 +28,7 @@ gem "mini_magick", "~> 3.6.0"
 gem "whenever", "~> 0.9.2"
 gem "rails_admin", "~> 0.6.1"
 gem 'paper_trail', '~> 3.0.1'
-gem "sidekiq", "~> 2.17.7"
+gem 'sidekiq', '~> 3.0.0'
 gem "sinatra", "~> 1.4.4", :require => nil
 gem "holder_rails", "~> 2.3.1"
 gem "dalli", "~> 2.7.0"

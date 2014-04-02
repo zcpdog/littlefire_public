@@ -12,7 +12,7 @@ Devise.setup do |config|
   config.mailer_sender = '"maishoudang.com" <noreply@maishoudang.com>'
 
   # Configure the class responsible to send e-mails.
-  #config.mailer = 'DeviseBackgrounder'
+  # config.mailer = 'DeviseBackgrounder'
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
@@ -110,7 +110,7 @@ Devise.setup do |config|
   # their account can't be confirmed with the token any more.
   # Default is nil, meaning there is no restriction on how long a user can take
   # before confirming their account.
-  config.confirm_within = 1.days
+  config.confirm_within = 2.weeks
 
   # If true, requires any email changes to be confirmed (exactly the same way as
   # initial account confirmation) to be applied. Requires additional unconfirmed_email
@@ -123,7 +123,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.
-  config.remember_for = 2.weeks
+  config.remember_for = 1.month
 
   # If true, extends the user's remember period when remembered via cookie.
   # config.extend_remember_period = false

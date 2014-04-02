@@ -13,7 +13,11 @@ class Credit < ActiveRecord::Base
       field :points
     end
     edit do
-      field :points
+      field :points do
+        default_value do
+          0
+        end
+      end
     end
   end
   
