@@ -14,7 +14,6 @@ class Experience < ActiveRecord::Base
   belongs_to :user
 
   validates :title, length: { in: 5..200}
-  validates :content, length: { maximum: 15000}
   validates_presence_of :title, :content, :picture, :user
 
   before_save :record_published_time, if: Proc.new{|experience| experience.top?}

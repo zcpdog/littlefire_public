@@ -15,8 +15,7 @@ class Discovery < ActiveRecord::Base
   belongs_to :user
   belongs_to :merchant
 
-  validates :title, length: { in: 3..60}
-  validates :content, length: { maximum: 1500}
+  validates :title, length: { in: 3..255}
   validates_presence_of :title, :content, :picture, :merchant, :purchase_link
     
   state_machine :state, :initial => :editable do
