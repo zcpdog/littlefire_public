@@ -12,8 +12,7 @@
             <div class="post-wrap post-hide">
                 <div class="post">
                     <p>
-						<%=link_to "#{deal.user.username}:&nbsp&nbsp".html_safe, 
-							"/user/#{deal.user.username}", target: "_blank", 
+						<%=link_to "#{deal.user.username}:&nbsp&nbsp".html_safe, user_path(deal.user), target: "_blank", 
 								style: "float:left" if deal.user.present?%>
 						<%=deal.content.try(:html_safe)%>
 					</p>

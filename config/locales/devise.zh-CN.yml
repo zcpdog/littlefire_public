@@ -5,7 +5,7 @@
 zh-CN:
   devise:
     confirmations:
-      confirmed: "您的帐号已经确认，请登录使用该账号登录系统。"
+      confirmed: "您的帐号已经确认，请使用该账号登录系统。"
       send_instructions: "几分钟后，您将收到确认帐号的电子邮件。"
       send_paranoid_instructions: "如果您的邮箱存在于我们的数据库中，您将收到一封确认账号的邮件。"
     failure:
