@@ -1,5 +1,6 @@
 <%if @stop%>
 	$("#stance").remove();
+	$("#msd-timeline").append("没有更多了")
 <%else%>
 	$("#msd-timeline").data("next","<%=@next_date%>");
 	$("#msd-timeline").append('<%=escape_javascript render(partial: "user/#{@obj_class}/items", 

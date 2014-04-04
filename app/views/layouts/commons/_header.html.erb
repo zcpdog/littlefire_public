@@ -29,7 +29,7 @@
             <div class="userbar">
                 <div class="sign">
 					<%if user_signed_in?%>
-						<%=link_to t(:dashboard),user_path(current_user), class: "btn"%>
+						<%=link_to current_user.username, user_path(current_user), class: "btn"%>
 						<%=link_to t(:sign_out), destroy_user_session_path, method: :delete, class: "btn"%>
 					<%else%>
 						<%=link_to t('sign_in'),new_user_session_path, class: "btn"%>

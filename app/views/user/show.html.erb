@@ -15,12 +15,15 @@
                                     <span class="nickname"><%=@user.username%></span>
 									<%=link_to("修改资料", "/user/profile", type: "button", class: "btn btn-success") if current_user==@user %>
                                 </p>
-                                <p>
-                                    加入时间 <%=l @user.created_at, :format => :long%>
-                                </p>
+								<br>
                                 <p>
                                     可用金币：<%=@user.credit%>
                                 </p>
+								<br>
+                                <p>
+                                    加入时间 <%=l @user.created_at, :format => :long%>
+                                </p>
+                                
                             </div>    
                         </div>
 						

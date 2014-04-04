@@ -63,7 +63,7 @@ class UserController< ApplicationController
     end
     
     def beyond_date?
-      @current_time<@user.created_at
+      (@current_time+1.month)<@user.created_at
     end
     
     def find_polymorphic_object

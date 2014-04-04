@@ -1,10 +1,10 @@
 <div class="pull-left">
-  	<%=link_to "踩(#{obj.disagree_count})", eval("user_#{obj.class.name.downcase}_grades_path(obj,grade_type: 'down')"), method: :post, remote: true, 
-		class: "toolbar-link grade-#{obj.class.name.downcase}-#{obj.id} grade-down"%>
-</div>
-<div class="pull-left">
   	<%=link_to "顶(#{obj.agree_count})", eval("user_#{obj.class.name.downcase}_grades_path(obj,grade_type: 'up')"), method: :post, remote: true, 
 		class: "toolbar-link grade-#{obj.class.name.downcase}-#{obj.id} grade-up"%>
+</div>
+<div class="pull-left">
+  	<%=link_to "踩(#{obj.disagree_count})", eval("user_#{obj.class.name.downcase}_grades_path(obj,grade_type: 'down')"), method: :post, remote: true, 
+		class: "toolbar-link grade-#{obj.class.name.downcase}-#{obj.id} grade-down"%>
 </div>
 <div class="pull-left">
   	<%=link_to "收藏(#{obj.favorites.size})", eval("user_#{obj.class.name.downcase}_favorites_path(obj)"),
