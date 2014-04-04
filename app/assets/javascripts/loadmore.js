@@ -7,5 +7,18 @@ $(function(){
 			url: "/user/"+$("#msd-timeline").data("klass")+ 
 				"?user_id="+ $("#msd-timeline").data("name")+"&date=" +$("#msd-timeline").data("next")
 		});
-	})
+	});
+	
+	$("#stance.kaminari-resources").on('inview', function(){
+		var url = $("ul.pure-paginator").find("li a[rel=next]").attr("href");
+		if(url.match(/\/\w+\/page\/\d+/)){
+			$(".loadmore img").show();
+			$.ajax({
+				type: "GET",
+				dataType: "SCRIPT",
+				url: url
+			});
+		}
+	});
+		
 })

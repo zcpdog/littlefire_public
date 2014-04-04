@@ -1,35 +1,10 @@
 <div class="gray-background image-loaded">
 	<div class="clear"></div>
 	<div class="discovery-container" id="discovery-container">
-		<%@discoveries.each do |discovery|%>
-			<div class="item masonryBrick displaynone masonry-brick">
-				<%cache ["index",discovery], expires_in: 1.hour do%>
-				<div class="blBox">
-					<div class="blPic">
-						<%=link_to image_tag(discovery.picture.image.url(:medium), style: "text-align:center;", width: "190px"),
-							 discovery_path(discovery)%>
-						<div class="blStore"><%=discovery.merchant.name%></div>
-					</div>
-			                    <h2>
-									<%=link_to discovery.name, discovery_path(discovery), class: "mB10 blTitle"%>
-			                    </h2>
-					<div class="blInfo mB10">
-					<strong><%=discovery.user.username%>：</strong><%=discovery.content_plain_text%>                                                                       <div class="blzd">
-						<%=link_to "直达链接", discovery.purchase_link, class: "btn btn-danger", target: "_blank"%>
-					</div>
-			</div>	
-					<div class="conBotBlock blBot">
-		                <div class="entry-share clearfix">
-		                    <%=render partial: "user/common/tool_bar", locals: {obj: discovery}%>
-		                </div>
-	                    <%cache ["index",discovery,"created_at"], expires_in: 15.minutes do%>           
-						<div class="blTime"><%=time_ago_in_words discovery.created_at%></div>
-						<%end%>
-						<div class="clear"></div>
-					</div>
-				</div>
-				<%end%>
-			</div>
-		<%end%>
+		<%=render "items"%>
 	</div>
+    <div>
+        <div id="stance" class="kaminari-resources"><%=image_tag "loading.gif"%></div>
+        <%=paginate @discoveries, :theme => 'my_theme', :window => 3%>
+    </div>
 </div>

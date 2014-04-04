@@ -11,7 +11,7 @@ class Discovery < ActiveRecord::Base
   scope :month_of, ->(time) { where(created_at: time..time+1.month)}
   scope :active, ->{ where(state: [:editable,:uneditable])}
   
-  paginates_per 20
+  paginates_per 8
   belongs_to :user
   belongs_to :merchant
 

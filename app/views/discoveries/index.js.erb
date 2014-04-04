@@ -1,0 +1,17 @@
+var html =  $("<%= j render('items')%>");
+var loadmore = $("#stance.kaminari-resources");
+loadmore.removeClass("kaminari-resources");
+discovery_container.append(html);
+discovery_container.waitForImages(function() {
+	discovery_container.masonry({
+	  itemSelector: '.masonryBrick'
+	});
+	discovery_container.masonry('appended', $(html));
+	discovery_container.masonry("layout");
+});
+<% if @discoveries.next_page %>
+  $('ul.pure-paginator').replaceWith("<%= j paginate(@discoveries, theme: 'my_theme', window: 3)%>");
+  loadmore.addClass("kaminari-resources");
+<% else %>
+  $('ul.pure-paginator').remove();
+<% end %>

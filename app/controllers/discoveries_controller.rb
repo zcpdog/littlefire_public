@@ -2,7 +2,11 @@ class DiscoveriesController < ApplicationController
   before_filter :authenticate_user!, :only =>[:new, :create]
 
   def index
-    @discoveries = Discovery.cached_published(params[:page])
+    @discoveries = Discovery.active.includes([:user,:picture,:merchant]).page params[:page]
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
   
   def purchase

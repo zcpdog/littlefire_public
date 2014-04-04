@@ -18,6 +18,7 @@
 //= require jquery.inview.min
 //= require holder
 //= require masonry.pkgd.min
+//= require jquery.waitforimages.min
 //= require index
 //= require loadmore
 //= require comments
@@ -26,7 +27,6 @@
 //= require discovery
 //= require baidu_ueditor
 //= require ueditor_custom_config
-//= require jquery.waitforimages.min
 
 //= require jquery.validate.min
 //= require devise
