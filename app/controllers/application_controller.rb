@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
+  before_filter :restrict_access
+  
   before_filter :configure_permitted_parameters, if: :devise_controller?
   
   protected
@@ -14,6 +16,13 @@ class ApplicationController < ActionController::Base
   
     def not_found
       raise ActionController::RoutingError.new('Not Found')
+    end
+    
+    def restrict_access
+      if IpFinder::Ip.find(request.remote_ip)=="中国"
+        render :file => "#{Rails.public_path}/401.html", :status => :unauthorized
+        return
+      end
     end
 
 end
