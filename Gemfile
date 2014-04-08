@@ -56,8 +56,11 @@ group :development do
   gem 'bullet'
 end
 
+gem "rspec-rails", :group => [:test, :development]
+
 group :test do
-  gem "rspec-rails", "~> 2.14.1"
+  gem "factory_girl_rails"
+  gem "capybara"  
 end
 
 
