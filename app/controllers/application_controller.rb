@@ -19,8 +19,8 @@ class ApplicationController < ActionController::Base
     end
     
     def restrict_access
-      if IpFinder::Ip.find(request.remote_ip)=="中国"
-        render :file => "#{Rails.public_path}/401.html", :status => :unauthorized
+      if IpFinder::Ip.find(request.remote_ip)!="中国"
+        render :file => "#{Rails.public_path}/401.html", :status => :unauthorized, :layout => false
         return
       end
     end
